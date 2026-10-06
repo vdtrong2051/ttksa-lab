@@ -3,42 +3,58 @@ import {
 } from '../catalog/registry'
 
 import GradeCard from '../components/curriculum/GradeCard'
+import PageContainer from '../components/ui/PageContainer'
 
 export default function LandingPage() {
   return (
-    <main className="relative overflow-hidden">
-      {/* BACKGROUND AURA */}
-      <div className="pointer-events-none absolute -left-24 top-10 h-80 w-80 rounded-full bg-pink-300/30 blur-3xl" />
+    <main>
+      <PageContainer>
+        {/* ===============================================
+            HERO
 
-      <div className="pointer-events-none absolute -right-24 top-40 h-96 w-96 rounded-full bg-purple-300/30 blur-3xl" />
+            Nội dung giữ theo lab-old.
+            Tách hoàn toàn khỏi khu vực chọn khối lớp.
+            =============================================== */}
 
-      <div className="pointer-events-none absolute bottom-0 left-1/3 h-80 w-80 rounded-full bg-cyan-300/30 blur-3xl" />
-
-      <div className="relative mx-auto max-w-6xl px-6 py-14 md:py-20">
-        {/* HERO */}
-        <section className="mx-auto max-w-4xl text-center">
-          <span className="inline-flex rounded-full bg-white/60 px-4 py-2 text-xs font-black tracking-widest text-brand-600 shadow-sm backdrop-blur">
-            PHÒNG THÍ NGHIỆM VẬT LÝ TRỰC TUYẾN
-          </span>
-
-          <h1 className="mt-6 text-4xl font-black leading-tight text-ink md:text-6xl">
+        <section className="mx-auto max-w-5xl py-16 text-center md:py-24">
+          <h1 className="brand-gradient-text m-0 py-1 text-4xl leading-tight font-bold tracking-tight uppercase md:text-6xl">
             Hệ thống thí nghiệm
-            <span className="block bg-gradient-to-r from-violet-600 via-fuchsia-500 to-pink-500 bg-clip-text text-transparent">
-              Vật lý ảo
-            </span>
+            Vật lý ảo
           </h1>
 
-          <p className="mx-auto mt-6 max-w-2xl text-base leading-7 text-muted md:text-lg">
-            Quan sát hiện tượng, thao tác
-            mô phỏng và thực hành các nội
-            dung Vật lý THPT trong môi
-            trường trực quan.
+          <p className="mx-auto mt-5 max-w-3xl text-base leading-7 font-medium text-brand-700/80 md:text-xl md:leading-8">
+            Khám phá và Luyện tập
+            các định luật Vật lý
+            cực chill qua mô phỏng
+            3D tương tác.
           </p>
         </section>
 
-        {/* 3 GRADE CARDS */}
-        <section className="mt-14">
-          <div className="grid gap-6 md:grid-cols-3">
+        {/* ===============================================
+            GRADE SELECTION
+
+            Landing chỉ có 3 lớp.
+            Không hiển thị chapter/experiment tại đây.
+            =============================================== */}
+
+        <section className="border-t border-(--color-border-soft) py-12 md:py-16">
+          <header className="mb-8 md:mb-10">
+            <p className="mb-2 text-sm font-semibold tracking-wider text-brand-600">
+              CHƯƠNG TRÌNH THPT
+            </p>
+
+            <h2 className="m-0 text-2xl font-bold tracking-tight text-ink md:text-3xl">
+              Chọn khối lớp
+            </h2>
+
+            <p className="mt-3 max-w-2xl text-sm leading-6 text-soft md:text-base">
+              Chọn khối lớp để xem
+              các chuyên đề và thí
+              nghiệm tương ứng.
+            </p>
+          </header>
+
+          <div className="grid gap-5 md:grid-cols-3 md:gap-6">
             {curriculum.map(
               (item) => (
                 <GradeCard
@@ -49,7 +65,7 @@ export default function LandingPage() {
             )}
           </div>
         </section>
-      </div>
+      </PageContainer>
     </main>
   )
 }

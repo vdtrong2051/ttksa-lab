@@ -1,65 +1,133 @@
 import {
+  Navigate,
   createBrowserRouter,
 } from 'react-router'
 
 import RootLayout from './RootLayout'
 
-import LandingPage from '../pages/LandingPage'
-import ExperimentsPage from '../pages/ExperimentsPage'
-import GradePage from '../pages/GradePage'
-import ChapterPage from '../pages/ChapterPage'
-import LoginPage from '../pages/LoginPage'
-import RegisterPage from '../pages/RegisterPage'
-import NotFoundPage from '../pages/NotFoundPage'
+const router =
+  createBrowserRouter([
+    {
+      Component:
+        RootLayout,
 
-import ExperimentPlaceholder from '../experiments/ExperimentPlaceholder'
+      children: [
+        {
+          index: true,
 
-const router = createBrowserRouter([
-  {
-    Component: RootLayout,
+          lazy: {
+            Component:
+              async () =>
+                (
+                  await import(
+                    '../pages/LandingPage'
+                  )
+                ).default,
+          },
+        },
 
-    children: [
-      {
-        index: true,
-        Component: LandingPage,
-      },
+        {
+          path:
+            'experiments',
 
-      {
-        path: 'experiments',
-        Component: ExperimentsPage,
-      },
+          element: (
+            <Navigate
+              to="/"
+              replace
+            />
+          ),
+        },
 
-      {
-        path: 'experiments/:grade',
-        Component: GradePage,
-      },
+        {
+          path:
+            'experiments/:grade',
 
-      {
-        path: 'experiments/:grade/:chapterSlug',
-        Component: ChapterPage,
-      },
+          lazy: {
+            Component:
+              async () =>
+                (
+                  await import(
+                    '../pages/GradePage'
+                  )
+                ).default,
+          },
+        },
 
-      {
-        path: 'experiments/:grade/:chapterSlug/:experimentSlug',
-        Component: ExperimentPlaceholder,
-      },
+        {
+          path:
+            'experiments/:grade/:chapterSlug',
 
-      {
-        path: 'login',
-        Component: LoginPage,
-      },
+          lazy: {
+            Component:
+              async () =>
+                (
+                  await import(
+                    '../pages/ChapterPage'
+                  )
+                ).default,
+          },
+        },
 
-      {
-        path: 'register',
-        Component: RegisterPage,
-      },
+        {
+          path:
+            'experiments/:grade/:chapterSlug/:experimentSlug',
 
-      {
-        path: '*',
-        Component: NotFoundPage,
-      },
-    ],
-  },
-])
+          lazy: {
+            Component:
+              async () =>
+                (
+                  await import(
+                    '../experiments/ExperimentPlaceholder'
+                  )
+                ).default,
+          },
+        },
+
+        {
+          path:
+            'login',
+
+          lazy: {
+            Component:
+              async () =>
+                (
+                  await import(
+                    '../pages/LoginPage'
+                  )
+                ).default,
+          },
+        },
+
+        {
+          path:
+            'register',
+
+          lazy: {
+            Component:
+              async () =>
+                (
+                  await import(
+                    '../pages/RegisterPage'
+                  )
+                ).default,
+          },
+        },
+
+        {
+          path: '*',
+
+          lazy: {
+            Component:
+              async () =>
+                (
+                  await import(
+                    '../pages/NotFoundPage'
+                  )
+                ).default,
+          },
+        },
+      ],
+    },
+  ])
 
 export default router

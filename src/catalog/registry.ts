@@ -7,6 +7,7 @@ export const curriculum: GradeCurriculum[] = [
   // =========================================================
   // VẬT LÝ 10
   // =========================================================
+
   {
     grade: 10,
     title: 'Vật lý 10',
@@ -18,6 +19,7 @@ export const curriculum: GradeCurriculum[] = [
   // =========================================================
   // VẬT LÝ 11
   // =========================================================
+
   {
     grade: 11,
     title: 'Vật lý 11',
@@ -29,10 +31,7 @@ export const curriculum: GradeCurriculum[] = [
         id: 'grade-11-mechanical-oscillation',
         slug: 'dao-dong-co',
         title: 'Dao động cơ',
-
-        // Lucide: Activity
         icon: 'activity',
-
         theme: 'amber',
 
         experiments: [
@@ -40,15 +39,10 @@ export const curriculum: GradeCurriculum[] = [
             slug: 'harmonic-motion',
             title:
               'Dao động điều hòa & chuyển động tròn đều',
-
-            // Lucide: Orbit
             icon: 'orbit',
-
             tag: 'Quan sát hình chiếu',
-
             description:
               'Trực quan hóa mối liên hệ giữa dao động điều hòa của con lắc lò xo và hình chiếu của chuyển động tròn đều.',
-
             status: 'ready',
           },
 
@@ -56,15 +50,10 @@ export const curriculum: GradeCurriculum[] = [
             slug: 'damped-oscillation',
             title:
               'Dao động tắt dần',
-
-            // Lucide: Activity
             icon: 'activity',
-
             tag: 'Đồ thị động',
-
             description:
               'Khảo sát sự suy giảm biên độ của con lắc theo thời gian dưới tác dụng của lực cản môi trường.',
-
             status: 'ready',
           },
 
@@ -72,15 +61,10 @@ export const curriculum: GradeCurriculum[] = [
             slug: 'forced-resonance',
             title:
               'Cộng hưởng cơ',
-
-            // Lucide: Waves
             icon: 'waves',
-
             tag: 'Mô phỏng năng lượng',
-
             description:
               'Khảo sát dao động cưỡng bức của hệ nhiều con lắc và điều kiện xảy ra hiện tượng cộng hưởng.',
-
             status: 'ready',
           },
         ],
@@ -90,7 +74,9 @@ export const curriculum: GradeCurriculum[] = [
 
   // =========================================================
   // VẬT LÝ 12
+  // Nội dung đồng bộ từ LAB_TOPICS của lab-old.
   // =========================================================
+
   {
     grade: 12,
     title: 'Vật lý 12',
@@ -101,14 +87,12 @@ export const curriculum: GradeCurriculum[] = [
       // =====================================================
       // NHIỆT HỌC
       // =====================================================
+
       {
         id: 'grade-12-thermal',
         slug: 'nhiet-hoc',
-        title: 'Nhiệt học',
-
-        // Lucide: Thermometer
+        title: 'Nhiệt Học',
         icon: 'thermometer',
-
         theme: 'rose',
 
         experiments: [
@@ -116,31 +100,21 @@ export const curriculum: GradeCurriculum[] = [
             slug: 'brownian',
             title:
               'Chuyển động Brown',
-
-            // Lucide: Microscope
             icon: 'microscope',
-
-            tag: 'Quan sát vi mô',
-
+            tag: 'Quan sát Vi mô',
             description:
               'Quan sát sự chuyển động hỗn loạn của hạt phấn hoa trong môi trường nước bằng kính hiển vi.',
-
             status: 'ready',
           },
 
           {
             slug: 'internal-energy',
             title:
-              'Sự biến đổi nội năng',
-
-            // Lucide: Flame
+              'Sự biến đổi Nội năng',
             icon: 'flame',
-
-            tag: 'Mô phỏng trực quan',
-
+            tag: 'Mô phỏng Trực quan',
             description:
-              'Thực hành đun nóng ống nghiệm kín để quan sát sự chuyển hóa từ nhiệt năng thành động năng phân tử.',
-
+              'Thực hành đun nóng ống nghiệm kín để quan sát sự chuyển hóa từ Nhiệt năng thành Động năng phân tử.',
             status: 'ready',
           },
 
@@ -148,63 +122,43 @@ export const curriculum: GradeCurriculum[] = [
             slug: 'joule',
             title:
               'Thí nghiệm Joule',
-
-            // Lucide: Cog
             icon: 'cog',
-
-            tag: 'Tính toán năng lượng',
-
+            tag: 'Tính toán Năng lượng',
             description:
-              'Mô phỏng quả nặng rơi làm quay cánh khuấy, minh họa sự chuyển hóa từ cơ năng thành nhiệt năng.',
-
+              'Mô phỏng quả nặng rơi làm quay cánh khuấy chứng minh sự chuyển hóa từ Cơ năng thành Nhiệt năng.',
             status: 'ready',
           },
 
           {
             slug: 'specific-heat',
             title:
-              'Nhiệt dung riêng',
-
-            // Lucide: Thermometer
+              'Nhiệt Dung Riêng',
             icon: 'thermometer',
-
-            tag: 'Đo lường nhiệt lượng',
-
+            tag: 'Đo lường Nhiệt lượng',
             description:
-              'Xác định chiều truyền năng lượng nhiệt giữa các vật có nhiệt độ khác nhau.',
-
+              'Xác định chiều truyền năng lượng nhiệt giữa cốc nước nóng và cốc nước lạnh tiếp xúc nhau.',
             status: 'ready',
           },
 
           {
             slug: 'latent-heat',
             title:
-              'Nhiệt nóng chảy riêng',
-
-            // Lucide: Snowflake
+              'Nhiệt Nóng Chảy Riêng',
             icon: 'snowflake',
-
-            tag: 'Phân tích đồ thị',
-
+            tag: 'Phân tích Đồ thị T(t)',
             description:
-              'Khảo sát quá trình nóng chảy và xác định nhiệt nóng chảy riêng.',
-
+              'Sử dụng nhiệt lượng kế hiện đại để xác định chính xác nhiệt nóng chảy riêng của nước đá ở 0°C.',
             status: 'ready',
           },
 
           {
             slug: 'vaporization',
             title:
-              'Nhiệt hóa hơi riêng',
-
-            // Lucide: Cloud
+              'Nhiệt Hóa Hơi Riêng',
             icon: 'cloud',
-
-            tag: 'Phân tích đồ thị',
-
+            tag: 'Phân tích Đồ thị M(t)',
             description:
-              'Khảo sát quá trình đun sôi, hiện tượng hóa hơi và nhiệt lượng cần thiết cho quá trình chuyển pha.',
-
+              'Khảo sát quá trình đun sôi, hiện tượng hóa hơi và tính toán nhiệt lượng cần thiết để chuyển pha.',
             status: 'ready',
           },
         ],
@@ -213,30 +167,23 @@ export const curriculum: GradeCurriculum[] = [
       // =====================================================
       // KHÍ LÍ TƯỞNG
       // =====================================================
+
       {
         id: 'grade-12-ideal-gas',
         slug: 'khi-li-tuong',
-        title: 'Khí lí tưởng',
-
-        // Lucide: Gauge
+        title: 'Khí Lí Tưởng',
         icon: 'gauge',
-
         theme: 'sky',
 
         experiments: [
           {
             slug: 'boyle',
             title:
-              'Định luật Boyle–Mariotte',
-
-            // Lucide: Gauge
+              'Định luật Boyle-Mariotte',
             icon: 'gauge',
-
-            tag: 'Khảo sát P–V',
-
+            tag: 'Khảo sát P-V',
             description:
-              'Khảo sát mối liên hệ giữa áp suất và thể tích của một lượng khí xác định trong quá trình đẳng nhiệt.',
-
+              'Nén khí đẳng nhiệt: Quan sát mối liên hệ tỉ lệ nghịch giữa Áp suất và Thể tích của lượng khí xác định.',
             status: 'ready',
           },
 
@@ -244,31 +191,21 @@ export const curriculum: GradeCurriculum[] = [
             slug: 'charles',
             title:
               'Định luật Charles',
-
-            // Lucide: Thermometer
             icon: 'thermometer',
-
-            tag: 'Khảo sát V–T',
-
+            tag: 'Khảo sát V-T',
             description:
-              'Khảo sát mối liên hệ giữa thể tích và nhiệt độ tuyệt đối trong quá trình đẳng áp.',
-
+              'Giãn nở đẳng áp: Đun nóng chất khí và quan sát sự tăng lên của Thể tích tỉ lệ thuận với Nhiệt độ tuyệt đối.',
             status: 'ready',
           },
 
           {
             slug: 'ideal-gas-law',
             title:
-              'Phương trình trạng thái khí lí tưởng',
-
-            // Lucide: FlaskConical
+              'Phương trình Trạng thái',
             icon: 'flask',
-
-            tag: 'Mô phỏng động học',
-
+            tag: 'Mô phỏng Động học',
             description:
-              'Khảo sát mối quan hệ giữa áp suất, thể tích và nhiệt độ của chất khí.',
-
+              'Mô phỏng buồng chứa khí 3D: Tự do điều chỉnh Nhiệt độ, Áp suất, Thể tích và Số mol khí.',
             status: 'planned',
           },
         ],
@@ -277,30 +214,23 @@ export const curriculum: GradeCurriculum[] = [
       // =====================================================
       // TỪ TRƯỜNG
       // =====================================================
+
       {
         id: 'grade-12-magnetic',
         slug: 'tu-truong',
-        title: 'Từ trường',
-
-        // Lucide: Magnet
+        title: 'Từ Trường',
         icon: 'magnet',
-
         theme: 'violet',
 
         experiments: [
           {
             slug: 'magnetic-field',
             title:
-              'Từ phổ & từ trường',
-
-            // Lucide: Magnet
+              'Từ phổ & Từ trường',
             icon: 'magnet',
-
-            tag: 'Quan sát từ phổ',
-
+            tag: 'Quan sát Từ phổ',
             description:
-              'Quan sát từ phổ và hình dạng các đường sức từ trong không gian.',
-
+              'Rắc mạt sắt xung quanh nam châm chữ U và nam châm thẳng để vẽ lại đường sức từ trong không gian 3D.',
             status: 'planned',
           },
 
@@ -308,31 +238,21 @@ export const curriculum: GradeCurriculum[] = [
             slug: 'lorentz-force',
             title:
               'Lực Lorentz',
-
-            // Lucide: Orbit
             icon: 'orbit',
-
-            tag: 'Phân tích lực',
-
+            tag: 'Phân tích Lực',
             description:
-              'Khảo sát chuyển động của điện tích trong vùng từ trường dưới tác dụng của lực Lorentz.',
-
+              'Bắn hạt điện tích bay vào vùng từ trường đều và phân tích quỹ đạo cong của hạt dưới tác dụng của lực Lorentz.',
             status: 'planned',
           },
 
           {
             slug: 'faraday',
             title:
-              'Cảm ứng điện từ',
-
-            // Lucide: Zap
+              'Cảm ứng Điện từ',
             icon: 'zap',
-
-            tag: 'Đo lường dòng điện',
-
+            tag: 'Đo lường Dòng điện',
             description:
-              'Khảo sát hiện tượng cảm ứng điện từ và sự xuất hiện của dòng điện cảm ứng.',
-
+              'Thí nghiệm Faraday: Đẩy nam châm xuyên qua cuộn dây dẫn kín để tạo ra dòng điện cảm ứng xoay chiều.',
             status: 'planned',
           },
         ],
@@ -341,62 +261,45 @@ export const curriculum: GradeCurriculum[] = [
       // =====================================================
       // VẬT LÝ HẠT NHÂN
       // =====================================================
+
       {
         id: 'grade-12-nuclear',
         slug: 'vat-ly-hat-nhan',
-        title: 'Vật lý hạt nhân',
-
-        // Lucide: Atom
+        title: 'Vật lý Hạt Nhân',
         icon: 'atom',
-
         theme: 'teal',
 
         experiments: [
           {
             slug: 'nucleus-structure',
             title:
-              'Cấu tạo hạt nhân',
-
-            // Lucide: Atom
+              'Cấu tạo Hạt nhân',
             icon: 'atom',
-
-            tag: 'Khám phá vi mô',
-
+            tag: 'Khám phá Vi mô',
             description:
-              'Khám phá cấu trúc cơ bản của nguyên tử và hạt nhân.',
-
+              'Khám phá cấu trúc siêu vi mô của nguyên tử: Hạt nhân (Proton, Neutron) và lớp vỏ Electron.',
             status: 'planned',
           },
 
           {
             slug: 'radioactivity',
             title:
-              'Hiện tượng phóng xạ',
-
-            // Lucide: Radio
+              'Hiện tượng Phóng xạ',
             icon: 'radio',
-
-            tag: 'Mô phỏng phân rã',
-
+            tag: 'Mô phỏng Phân rã',
             description:
-              'Khảo sát quá trình phân rã, chu kỳ bán rã và các dạng phóng xạ.',
-
+              'Khảo sát chu kỳ bán rã và khả năng đâm xuyên của các tia phóng xạ Alpha (α), Beta (β), Gamma (γ).',
             status: 'planned',
           },
 
           {
             slug: 'fission',
             title:
-              'Phản ứng phân hạch',
-
-            // Lucide: Atom
+              'Phản ứng Phân hạch',
             icon: 'atom',
-
-            tag: 'Quan sát năng lượng',
-
+            tag: 'Quan sát Năng lượng',
             description:
-              'Mô phỏng phản ứng phân hạch và quá trình giải phóng năng lượng.',
-
+              'Mô phỏng phản ứng dây chuyền: Bắn nơtron chậm vào hạt nhân Uranium-235 để giải phóng năng lượng.',
             status: 'planned',
           },
         ],
