@@ -55,12 +55,12 @@ export default function ExperimentCard({
         'border',
         'border-white/85',
 
-        'bg-[var(--surface)]',
+        'bg-(--surface)',
 
         'p-5',
         'md:p-6',
 
-        '[border-radius:var(--radius-card)]',
+        'rounded-(--radius-card)',
         '[box-shadow:var(--shadow-xs)]',
 
         'backdrop-blur-md',
@@ -70,7 +70,7 @@ export default function ExperimentCard({
 
         'hover:-translate-y-0.5',
         'hover:border-white',
-        'hover:bg-[var(--surface-strong)]',
+        'hover:bg-(--surface-strong)',
         'hover:[box-shadow:var(--shadow-md)]',
       ].join(' ')}
     >
@@ -85,7 +85,7 @@ export default function ExperimentCard({
           'items-center',
           'justify-center',
 
-          '[border-radius:var(--radius-control)]',
+          'rounded-(--radius-control)',
 
           classes.icon,
         ].join(' ')}
@@ -132,7 +132,7 @@ export default function ExperimentCard({
               'text-xs',
               'font-semibold',
 
-              '[border-radius:var(--radius-pill)]',
+              'rounded-(--radius-pill)',
 
               classes.tag,
             ].join(' ')}
@@ -156,7 +156,7 @@ export default function ExperimentCard({
                 'text-sm',
                 'font-semibold',
 
-                '[border-radius:var(--radius-button)]',
+                'rounded-(--radius-button)',
 
                 'transition',
                 'duration-150',

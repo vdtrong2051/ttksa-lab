@@ -51,11 +51,11 @@ function BackLink({
         'px-4 py-2.5',
 
         'border',
-        'border-[var(--color-border)]',
+        'border-(--color-border)',
 
         'bg-white/75',
 
-        '[border-radius:var(--radius-button)]',
+        'rounded-(--radius-button)',
 
         'text-sm',
         'font-semibold',
@@ -89,7 +89,7 @@ function NotFoundState() {
     <main className="flex min-h-[calc(100vh-var(--header-height))] items-center py-16">
       <PageContainer>
         <section className="mx-auto max-w-xl text-center">
-          <div className="mx-auto flex h-14 w-14 items-center justify-center bg-brand-100 text-brand-600 [border-radius:var(--radius-control)]">
+          <div className="mx-auto flex h-14 w-14 items-center justify-center bg-brand-100 text-brand-600 rounded-(--radius-control)">
             <AppIcon
               name="flask"
               size={28}
@@ -101,7 +101,7 @@ function NotFoundState() {
             KHÔNG TÌM THẤY
           </p>
 
-          <h1 className="mt-2 text-3xl font-bold tracking-[-0.025em] text-ink">
+          <h1 className="mt-2 text-3xl font-bold tracking-tight text-ink">
             Không tìm thấy thí nghiệm
           </h1>
 
@@ -192,12 +192,12 @@ export default function ExperimentPlaceholder() {
             'border',
             theme.border,
 
-            'bg-[var(--surface)]',
+            'bg-(--surface)',
 
             'p-6',
             'md:p-9',
 
-            '[border-radius:var(--radius-panel)]',
+            'rounded-(--radius-panel)',
             '[box-shadow:var(--shadow-md)]',
 
             'backdrop-blur-md',
@@ -211,7 +211,7 @@ export default function ExperimentPlaceholder() {
             <p className="m-0 text-sm font-semibold text-muted">
               Vật lý {gradeNumber}
               <span
-                className="mx-2 text-[var(--color-border)]"
+                className="mx-2 text-(--color-border)"
                 aria-hidden="true"
               >
                 /
@@ -249,7 +249,7 @@ export default function ExperimentPlaceholder() {
                 'items-center',
                 'justify-center',
 
-                '[border-radius:var(--radius-control)]',
+                'rounded-(--radius-control)',
 
                 theme.icon,
               ].join(' ')}
@@ -263,7 +263,7 @@ export default function ExperimentPlaceholder() {
               />
             </div>
 
-            <h1 className="mt-5 text-3xl font-bold tracking-[-0.025em] text-ink md:text-4xl">
+            <h1 className="mt-5 text-3xl font-bold tracking-tight text-ink md:text-4xl">
               {experiment.title}
             </h1>
 
@@ -279,7 +279,7 @@ export default function ExperimentPlaceholder() {
               STATUS MESSAGE
               =============================================== */}
 
-          <div className="mt-8 border-t border-[var(--color-border-soft)] pt-6">
+          <div className="mt-8 border-t border-(--color-border-soft) pt-6">
             {isReady ? (
               <>
                 <p className="m-0 font-semibold text-ink">

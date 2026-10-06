@@ -51,9 +51,9 @@ export default function ChapterAccordion({
         'border',
         theme.border,
 
-        'bg-[var(--surface)]',
+        'bg-(--surface)',
 
-        '[border-radius:var(--radius-panel)]',
+        'rounded-(--radius-panel)',
         '[box-shadow:var(--shadow-sm)]',
 
         'backdrop-blur-md',
@@ -96,7 +96,7 @@ export default function ChapterAccordion({
               'items-center',
               'justify-center',
 
-              '[border-radius:var(--radius-control)]',
+              'rounded-(--radius-control)',
 
               theme.icon,
             ].join(' ')}
@@ -148,7 +148,7 @@ export default function ChapterAccordion({
             'items-center',
             'justify-center',
 
-            '[border-radius:var(--radius-control)]',
+            'rounded-(--radius-control)',
 
             'transition',
             'duration-200',

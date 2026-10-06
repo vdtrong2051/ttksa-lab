@@ -9,6 +9,7 @@ import {
 
 import ChapterAccordion from '../components/curriculum/ChapterAccordion'
 import ExperimentCard from '../components/curriculum/ExperimentCard'
+import AppIcon from '../components/ui/AppIcon'
 
 export default function ChapterPage() {
   const {
@@ -35,9 +36,18 @@ export default function ChapterPage() {
 
         <Link
           to="/experiments"
-          className="mt-6 inline-block font-bold text-brand-600"
+          className="mt-6 inline-flex items-center gap-2 font-bold text-brand-600 transition hover:text-brand-700"
         >
-          ← Thí nghiệm
+          <AppIcon
+            name="chevron-right"
+            size={17}
+            strokeWidth={2}
+            className="rotate-180"
+          />
+
+          <span>
+            Thí nghiệm
+          </span>
         </Link>
       </main>
     )
@@ -58,9 +68,18 @@ export default function ChapterPage() {
 
         <Link
           to={`/experiments/${gradeNumber}`}
-          className="mt-6 inline-block font-bold text-brand-600"
+          className="mt-6 inline-flex items-center gap-2 font-bold text-brand-600 transition hover:text-brand-700"
         >
-          ← Vật lý {gradeNumber}
+          <AppIcon
+            name="chevron-right"
+            size={17}
+            strokeWidth={2}
+            className="rotate-180"
+          />
+
+          <span>
+            Vật lý {gradeNumber}
+          </span>
         </Link>
       </main>
     )
@@ -70,9 +89,18 @@ export default function ChapterPage() {
     <main className="mx-auto max-w-6xl px-6 py-12">
       <Link
         to={`/experiments/${gradeNumber}`}
-        className="text-sm font-bold text-brand-600"
+        className="inline-flex items-center gap-2 text-sm font-bold text-brand-600 transition hover:text-brand-700"
       >
-        ← Vật lý {gradeNumber}
+        <AppIcon
+          name="chevron-right"
+          size={16}
+          strokeWidth={2}
+          className="rotate-180"
+        />
+
+        <span>
+          Vật lý {gradeNumber}
+        </span>
       </Link>
 
       <header className="mt-6 mb-10">
@@ -92,11 +120,12 @@ export default function ChapterPage() {
       >
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {chapter.experiments.map(
-            (experiment) => (
+            (
+              experiment,
+              index,
+            ) => (
               <ExperimentCard
-                key={
-                  experiment.slug
-                }
+                key={experiment.slug}
                 grade={gradeNumber}
                 chapterSlug={
                   chapter.slug
@@ -106,6 +135,9 @@ export default function ChapterPage() {
                 }
                 theme={
                   chapter.theme
+                }
+                order={
+                  index + 1
                 }
               />
             ),

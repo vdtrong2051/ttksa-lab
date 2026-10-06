@@ -120,11 +120,11 @@ export default function GradeCard({
         'border',
         'border-white/90',
 
-        'bg-[var(--surface)]',
+        'bg-(--surface)',
 
         'p-6',
 
-        '[border-radius:var(--radius-card)]',
+        'rounded-(--radius-card)',
         '[box-shadow:var(--shadow-sm)]',
 
         'backdrop-blur-md',
@@ -133,7 +133,7 @@ export default function GradeCard({
         'duration-200',
 
         'hover:-translate-y-0.5',
-        'hover:bg-[var(--surface-strong)]',
+        'hover:bg-(--surface-strong)',
         'hover:[box-shadow:var(--shadow-md)]',
 
         style.hoverBorder,
@@ -153,7 +153,7 @@ export default function GradeCard({
             'items-center',
             'justify-center',
 
-            '[border-radius:var(--radius-control)]',
+            'rounded-(--radius-control)',
 
             style.iconSurface,
             style.iconColor,
@@ -202,7 +202,7 @@ export default function GradeCard({
             FOOTER
             =================================================== */}
 
-        <div className="mt-7 flex items-center justify-between gap-4 border-t border-[var(--color-border-soft)] pt-4">
+        <div className="mt-7 flex items-center justify-between gap-4 border-t border-(--color-border-soft) pt-4">
           <span
             className={[
               'text-sm',
@@ -224,7 +224,7 @@ export default function GradeCard({
               'items-center',
               'justify-center',
 
-              '[border-radius:var(--radius-control)]',
+              'rounded-(--radius-control)',
 
               'text-brand-600',
 

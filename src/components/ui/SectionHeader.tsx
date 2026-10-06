@@ -32,7 +32,7 @@ export default function SectionHeader({
         </p>
       )}
 
-      <h2 className="m-0 text-3xl font-bold tracking-[-0.025em] text-ink md:text-4xl">
+      <h2 className="m-0 text-3xl font-bold tracking-tight text-ink md:text-4xl">
         {title}
       </h2>
 

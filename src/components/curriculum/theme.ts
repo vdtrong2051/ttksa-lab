@@ -15,47 +15,87 @@ export const chapterThemeClasses: Record<
   ChapterThemeClasses
 > = {
   rose: {
-    border: 'border-rose-200/80',
-    title: 'text-rose-600',
-    icon: 'bg-rose-100 text-rose-600',
-    tag: 'bg-rose-50 text-rose-600',
+    border:
+      'border-(--topic-thermal-accent)/40',
+
+    title:
+      'text-(--topic-thermal)',
+
+    icon:
+      'bg-(--topic-thermal-soft) text-(--topic-thermal)',
+
+    tag:
+      'bg-(--topic-thermal-soft) text-(--topic-thermal)',
+
     action:
-      'bg-rose-100 text-rose-700 hover:bg-rose-200',
+      'bg-(--topic-thermal-soft) text-(--topic-thermal) hover:brightness-95',
   },
 
   sky: {
-    border: 'border-sky-200/80',
-    title: 'text-sky-600',
-    icon: 'bg-sky-100 text-sky-600',
-    tag: 'bg-sky-50 text-sky-600',
+    border:
+      'border-(--topic-gas-accent)/40',
+
+    title:
+      'text-(--topic-gas)',
+
+    icon:
+      'bg-(--topic-gas-soft) text-(--topic-gas)',
+
+    tag:
+      'bg-(--topic-gas-soft) text-(--topic-gas)',
+
     action:
-      'bg-sky-100 text-sky-700 hover:bg-sky-200',
+      'bg-(--topic-gas-soft) text-(--topic-gas) hover:brightness-95',
   },
 
   violet: {
-    border: 'border-violet-200/80',
-    title: 'text-violet-600',
-    icon: 'bg-violet-100 text-violet-600',
-    tag: 'bg-violet-50 text-violet-600',
+    border:
+      'border-(--topic-magnetic-accent)/40',
+
+    title:
+      'text-(--topic-magnetic)',
+
+    icon:
+      'bg-(--topic-magnetic-soft) text-(--topic-magnetic)',
+
+    tag:
+      'bg-(--topic-magnetic-soft) text-(--topic-magnetic)',
+
     action:
-      'bg-violet-100 text-violet-700 hover:bg-violet-200',
+      'bg-(--topic-magnetic-soft) text-(--topic-magnetic) hover:brightness-95',
   },
 
   teal: {
-    border: 'border-teal-200/80',
-    title: 'text-teal-600',
-    icon: 'bg-teal-100 text-teal-600',
-    tag: 'bg-teal-50 text-teal-600',
+    border:
+      'border-(--topic-nuclear-accent)/40',
+
+    title:
+      'text-(--topic-nuclear)',
+
+    icon:
+      'bg-(--topic-nuclear-soft) text-(--topic-nuclear)',
+
+    tag:
+      'bg-(--topic-nuclear-soft) text-(--topic-nuclear)',
+
     action:
-      'bg-teal-100 text-teal-700 hover:bg-teal-200',
+      'bg-(--topic-nuclear-soft) text-(--topic-nuclear) hover:brightness-95',
   },
 
   amber: {
-    border: 'border-amber-200/80',
-    title: 'text-amber-600',
-    icon: 'bg-amber-100 text-amber-700',
-    tag: 'bg-amber-50 text-amber-700',
+    border:
+      'border-(--topic-oscillation-accent)/40',
+
+    title:
+      'text-(--topic-oscillation)',
+
+    icon:
+      'bg-(--topic-oscillation-soft) text-(--topic-oscillation)',
+
+    tag:
+      'bg-(--topic-oscillation-soft) text-(--topic-oscillation)',
+
     action:
-      'bg-amber-100 text-amber-800 hover:bg-amber-200',
+      'bg-(--topic-oscillation-soft) text-(--topic-oscillation) hover:brightness-95',
   },
 }
