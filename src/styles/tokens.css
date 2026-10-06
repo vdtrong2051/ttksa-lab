@@ -1,0 +1,353 @@
+/* =========================================================
+   TTKSA LAB — VISUAL FOUNDATION
+   Reference:
+   - Palette / feeling: lab-old
+   - Flatness / semantic tokens: lab-new
+   ========================================================= */
+
+
+/* =========================================================
+   1. TAILWIND THEME
+   Các màu này sinh ra utility:
+   text-brand-600
+   bg-brand-100
+   text-ink
+   text-muted
+   ...
+   ========================================================= */
+
+@theme {
+  /* BRAND */
+
+  --color-brand-50: #faf5ff;
+  --color-brand-100: #f3e8ff;
+  --color-brand-200: #e9d5ff;
+  --color-brand-500: #a78bfa;
+  --color-brand-600: #8b5cf6;
+  --color-brand-700: #7c3aed;
+
+
+  /* TEXT */
+
+  --color-ink: #172033;
+  --color-soft: #52627a;
+  --color-muted: #718096;
+
+
+  /* SURFACE */
+
+  --color-surface: #ffffff;
+
+
+  /* TOPIC */
+
+  --color-thermal: #e11d48;
+  --color-gas: #0284c7;
+  --color-magnetic: #7c3aed;
+  --color-nuclear: #0f9f8f;
+  --color-oscillation: #d97706;
+}
+
+
+/* =========================================================
+   2. SEMANTIC COLORS
+   Không gọi trực tiếp pink-300/purple-400... trong layout chung.
+   ========================================================= */
+
+:root {
+  /* ---------------------------------------------------------
+     TEXT
+     --------------------------------------------------------- */
+
+  --color-white: #ffffff;
+
+  --color-text-main: #172033;
+  --color-text-soft: #52627a;
+  --color-text-muted: #718096;
+
+
+  /* ---------------------------------------------------------
+     BORDER
+     --------------------------------------------------------- */
+
+  --color-border: #e7e5f0;
+  --color-border-soft: #f2eff8;
+
+
+  /* =========================================================
+     3. PORTAL PALETTE
+     ========================================================= */
+
+  --portal-bg: #fbf7ff;
+
+  --portal-purple: #8b5cf6;
+  --portal-purple-hover: #7c3aed;
+  --portal-purple-soft: #f3e8ff;
+
+  --portal-pink: #ec4899;
+  --portal-pink-soft: #fce7f3;
+
+  --portal-cyan: #06b6d4;
+  --portal-cyan-soft: #cffafe;
+
+  --portal-blue: #0ea5e9;
+  --portal-blue-soft: #e0f2fe;
+
+
+  /* ---------------------------------------------------------
+     BRAND GRADIENT
+
+     Chỉ dùng cho:
+     - logo text
+     - landing headline accent
+     - primary CTA đặc biệt
+     - Register
+
+     KHÔNG dùng làm background mọi card.
+     --------------------------------------------------------- */
+
+  --portal-gradient:
+    linear-gradient(
+      135deg,
+      var(--portal-purple),
+      #d946ef,
+      var(--portal-pink)
+    );
+
+
+  /* ---------------------------------------------------------
+     PAGE BACKGROUND
+
+     Đây là phiên bản "phẳng hóa" nền pastel của lab-old.
+     --------------------------------------------------------- */
+
+  --portal-page-background:
+    radial-gradient(
+      circle at 8% 8%,
+      var(--portal-pink-soft),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 92% 12%,
+      var(--portal-purple-soft),
+      transparent 36%
+    ),
+    radial-gradient(
+      circle at 50% 100%,
+      var(--portal-cyan-soft),
+      transparent 42%
+    ),
+    var(--portal-bg);
+
+
+  /* =========================================================
+     4. SURFACES
+     ========================================================= */
+
+  --surface:
+    rgba(255, 255, 255, 0.88);
+
+  --surface-soft:
+    rgba(255, 255, 255, 0.68);
+
+  --surface-strong:
+    rgba(255, 255, 255, 0.95);
+
+  --surface-solid:
+    #ffffff;
+
+  --surface-border:
+    rgba(255, 255, 255, 0.82);
+
+  --backdrop-blur:
+    14px;
+
+
+  /* =========================================================
+     5. TOPIC ACCENT
+     Chỉ topic mới được đổi màu.
+     ========================================================= */
+
+  /* DAO ĐỘNG CƠ */
+
+  --topic-oscillation:
+    #d97706;
+
+  --topic-oscillation-soft:
+    #fffbeb;
+
+  --topic-oscillation-accent:
+    #f59e0b;
+
+
+  /* NHIỆT HỌC */
+
+  --topic-thermal:
+    #e11d48;
+
+  --topic-thermal-soft:
+    #fff1f2;
+
+  --topic-thermal-accent:
+    #fb7185;
+
+
+  /* KHÍ LÍ TƯỞNG */
+
+  --topic-gas:
+    #0284c7;
+
+  --topic-gas-soft:
+    #e0f2fe;
+
+  --topic-gas-accent:
+    #38bdf8;
+
+
+  /* TỪ TRƯỜNG */
+
+  --topic-magnetic:
+    #7c3aed;
+
+  --topic-magnetic-soft:
+    #f3e8ff;
+
+  --topic-magnetic-accent:
+    #a78bfa;
+
+
+  /* VẬT LÝ HẠT NHÂN */
+
+  --topic-nuclear:
+    #0f9f8f;
+
+  --topic-nuclear-soft:
+    #ccfbf1;
+
+  --topic-nuclear-accent:
+    #2dd4bf;
+
+
+  /* =========================================================
+     6. STATUS
+     ========================================================= */
+
+  --color-success:
+    #16a34a;
+
+  --color-success-soft:
+    #dcfce7;
+
+  --color-warning:
+    #d97706;
+
+  --color-warning-soft:
+    #fef3c7;
+
+  --color-danger:
+    #dc2626;
+
+  --color-danger-soft:
+    #fee2e2;
+
+
+  /* =========================================================
+     7. RADIUS
+
+     Cố tình giảm mạnh so với UI GĐ1.
+     ========================================================= */
+
+  --radius-sm:
+    6px;
+
+  --radius-control:
+    8px;
+
+  --radius-button:
+    10px;
+
+  --radius-card:
+    14px;
+
+  --radius-panel:
+    16px;
+
+  --radius-dialog:
+    18px;
+
+  --radius-pill:
+    999px;
+
+
+  /* =========================================================
+     8. SHADOW
+
+     Không glow.
+     Không shadow màu theo từng card.
+     ========================================================= */
+
+  --shadow-xs:
+    0 1px 3px rgba(76, 29, 149, 0.04);
+
+  --shadow-sm:
+    0 2px 8px rgba(76, 29, 149, 0.06);
+
+  --shadow-md:
+    0 10px 28px rgba(76, 29, 149, 0.09);
+
+  --shadow-lg:
+    0 20px 48px rgba(76, 29, 149, 0.12);
+
+
+  /* =========================================================
+     9. TYPOGRAPHY
+     ========================================================= */
+
+  --font-main:
+    Inter,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  --font-normal:
+    400;
+
+  --font-medium:
+    500;
+
+  --font-semibold:
+    600;
+
+  --font-bold:
+    700;
+
+
+  /* =========================================================
+     10. LAYOUT
+     ========================================================= */
+
+  --header-height:
+    64px;
+
+  --content-max-width:
+    1180px;
+
+  --page-padding:
+    24px;
+
+  --section-gap:
+    88px;
+
+
+  /* =========================================================
+     11. TRANSITION
+     ========================================================= */
+
+  --transition-fast:
+    150ms ease;
+
+  --transition-normal:
+    250ms ease;
+}
