@@ -54,6 +54,9 @@ export const curriculum: GradeCurriculum[] = [
             status: 'ready',
 
             accent: 'amber',
+
+            runtimePath:
+              '/lab/harmonic-motion/intro',
           },
 
           {
@@ -73,6 +76,9 @@ export const curriculum: GradeCurriculum[] = [
             status: 'ready',
 
             accent: 'rose',
+
+            runtimePath:
+              '/lab/damped-oscillation/intro',
           },
 
           {
@@ -92,6 +98,9 @@ export const curriculum: GradeCurriculum[] = [
             status: 'ready',
 
             accent: 'orange',
+
+            runtimePath:
+              '/lab/forced-resonance/intro',
           },
         ],
       },
@@ -153,6 +162,9 @@ export const curriculum: GradeCurriculum[] = [
 
             accent:
               'rose',
+
+            // runtimePath:
+            //   '/lab/brownian/intro',
           },
 
           {
@@ -176,6 +188,9 @@ export const curriculum: GradeCurriculum[] = [
 
             accent:
               'orange',
+
+            // runtimePath:
+            //   '/lab/internal-energy/intro',            
           },
 
           {

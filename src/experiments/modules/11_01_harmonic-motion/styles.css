@@ -1,0 +1,2276 @@
+/* =========================================================
+   HARMONIC MOTION — UI ADAPTER
+   =========================================================
+   Core simulation remains in legacy/Experiment.tsx.
+   This file only adapts layout/presentation to current TTKSA.
+   ========================================================= */
+
+.harmonic-motion-runtime {
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+}
+
+
+/* =========================================================
+   PRACTICE — KEEP LEGACY CORE, REFINE PRESENTATION
+   ========================================================= */
+
+.harmonic-motion-runtime > div {
+  position: relative;
+  display: block !important;
+
+  width: 100%;
+  height: 100%;
+
+  min-width: 0;
+  min-height: 0;
+
+  overflow: hidden;
+}
+
+
+/* Legacy canvas viewport */
+.harmonic-motion-runtime
+> div
+> div:first-child {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  min-width: 0;
+  min-height: 0;
+}
+
+
+/* Legacy right control panel becomes a floating lab panel */
+.harmonic-motion-runtime
+> div
+> div:nth-child(2) {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  bottom: 16px;
+
+  z-index: 28;
+
+  width: min(330px, calc(100% - 32px));
+
+  gap: 12px !important;
+
+  padding: 14px !important;
+
+  overflow-y: auto;
+
+  background:
+    rgba(2, 6, 23, 0.9) !important;
+
+  border:
+    1px solid
+    rgba(148, 163, 184, 0.16) !important;
+
+  border-radius: 18px;
+
+  box-shadow:
+    0 22px 60px
+    rgba(2, 6, 23, 0.42);
+
+  backdrop-filter:
+    blur(18px);
+}
+
+
+/* Observation card */
+.harmonic-motion-runtime
+> div
+> div:nth-child(2)
+> div:first-child {
+  padding: 14px !important;
+
+  background:
+    rgba(99, 102, 241, 0.08) !important;
+
+  border:
+    1px solid
+    rgba(129, 140, 248, 0.16) !important;
+
+  border-radius: 14px !important;
+
+  box-shadow: none !important;
+}
+
+
+/* Main play button block */
+.harmonic-motion-runtime
+> div
+> div:nth-child(2)
+> div:nth-child(2) {
+  gap: 8px !important;
+}
+
+
+/* Controls card */
+.harmonic-motion-runtime
+> div
+> div:nth-child(2)
+> div:nth-child(3) {
+  gap: 18px !important;
+
+  padding: 15px !important;
+
+  background:
+    rgba(15, 23, 42, 0.72) !important;
+
+  border:
+    1px solid
+    rgba(148, 163, 184, 0.12) !important;
+
+  border-radius: 14px !important;
+
+  box-shadow: none !important;
+}
+
+
+/* Bottom navigation inside legacy practice stays functional,
+   but visually matches the compact TTKSA action style. */
+.harmonic-motion-runtime
+> div
+> div:nth-child(2)
+> div:last-child {
+  gap: 8px !important;
+
+  padding-top: 10px !important;
+}
+
+
+/* Hint pill */
+.harmonic-motion-runtime
+> div
+> div:first-child
+> div:last-child {
+  top: 16px !important;
+
+  padding:
+    8px
+    14px !important;
+
+  border:
+    1px solid
+    rgba(148, 163, 184, 0.14) !important;
+
+  background:
+    rgba(2, 6, 23, 0.76) !important;
+
+  box-shadow:
+    0 12px 32px
+    rgba(2, 6, 23, 0.28) !important;
+
+  font-size:
+    11px !important;
+
+  letter-spacing:
+    0.01em;
+
+  backdrop-filter:
+    blur(14px);
+}
+
+
+/* =========================================================
+   SHARED CONTENT PHASE
+   ========================================================= */
+
+.harmonic-motion-content-phase {
+  width: 100%;
+
+  color:
+    var(--lab-text);
+}
+
+
+.harmonic-motion-content-phase__inner {
+  width:
+    min(100%, 980px);
+
+  margin:
+    0 auto;
+}
+
+
+.harmonic-motion-section-badge {
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  min-height:
+    26px;
+
+  padding:
+    5px
+    10px;
+
+  color:
+    var(--lab-accent);
+
+  background:
+    color-mix(
+      in srgb,
+      var(--lab-accent) 9%,
+      transparent
+    );
+
+  border:
+    1px solid
+    color-mix(
+      in srgb,
+      var(--lab-accent) 24%,
+      transparent
+    );
+
+  border-radius:
+    999px;
+
+  font-size:
+    10px;
+
+  font-weight:
+    800;
+
+  letter-spacing:
+    0.07em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.harmonic-motion-content-phase__heading {
+  margin-top:
+    16px;
+}
+
+
+.harmonic-motion-content-phase__eyebrow {
+  display:
+    block;
+
+  margin-bottom:
+    7px;
+
+  color:
+    var(--lab-accent);
+
+  font-size:
+    10px;
+
+  font-weight:
+    800;
+
+  letter-spacing:
+    0.08em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.harmonic-motion-content-phase__heading h2,
+.harmonic-motion-report__heading h2 {
+  margin:
+    0;
+
+  color:
+    var(--lab-text);
+
+  font-size:
+    clamp(
+      30px,
+      4vw,
+      46px
+    );
+
+  line-height:
+    1.04;
+
+  letter-spacing:
+    -0.035em;
+}
+
+
+.harmonic-motion-content-phase__heading p,
+.harmonic-motion-report__heading p {
+  max-width:
+    760px;
+
+  margin:
+    10px
+    0
+    0;
+
+  color:
+    var(--lab-text-muted);
+
+  font-size:
+    13px;
+
+  line-height:
+    1.68;
+}
+
+
+.harmonic-motion-phase-actions {
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    space-between;
+
+  gap:
+    10px;
+
+  margin-top:
+    22px;
+}
+
+
+.harmonic-motion-phase-actions--end {
+  justify-content:
+    flex-end;
+}
+
+
+/* =========================================================
+   INTRO
+   ========================================================= */
+
+.harmonic-motion-intro__hero {
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(0, 1.35fr)
+    minmax(250px, 0.65fr);
+
+  gap:
+    14px;
+
+  margin-top:
+    2px;
+}
+
+
+.harmonic-motion-intro__goal {
+  display:
+    grid;
+
+  grid-template-columns:
+    44px
+    minmax(0, 1fr);
+
+  gap:
+    12px;
+
+  margin-top:
+    22px;
+
+  padding:
+    15px;
+
+  background:
+    rgba(255, 255, 255, 0.025);
+
+  border:
+    1px solid
+    var(--lab-border);
+
+  border-radius:
+    16px;
+}
+
+
+.harmonic-motion-intro__goal-icon,
+.harmonic-motion-intro__relation-icon {
+  display:
+    grid;
+
+  place-items:
+    center;
+
+  width:
+    44px;
+
+  height:
+    44px;
+
+  color:
+    var(--lab-accent);
+
+  background:
+    color-mix(
+      in srgb,
+      var(--lab-accent) 9%,
+      transparent
+    );
+
+  border:
+    1px solid
+    color-mix(
+      in srgb,
+      var(--lab-accent) 18%,
+      transparent
+    );
+
+  border-radius:
+    13px;
+}
+
+
+.harmonic-motion-intro__goal div > span,
+.harmonic-motion-intro__formula > span,
+.harmonic-motion-intro__relations article div > span,
+.harmonic-motion-intro__observation div > span {
+  color:
+    var(--lab-accent);
+
+  font-size:
+    9px;
+
+  font-weight:
+    800;
+
+  letter-spacing:
+    0.07em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.harmonic-motion-intro__goal strong {
+  display:
+    block;
+
+  margin-top:
+    4px;
+
+  color:
+    var(--lab-text);
+
+  font-size:
+    13px;
+}
+
+
+.harmonic-motion-intro__goal p {
+  margin:
+    5px
+    0
+    0;
+
+  color:
+    var(--lab-text-muted);
+
+  font-size:
+    11px;
+
+  line-height:
+    1.55;
+}
+
+
+.harmonic-motion-intro__formula {
+  align-self:
+    stretch;
+
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  justify-content:
+    center;
+
+  min-height:
+    220px;
+
+  padding:
+    20px;
+
+  background:
+    radial-gradient(
+      circle at 50% 35%,
+      color-mix(
+        in srgb,
+        var(--lab-accent) 13%,
+        transparent
+      ),
+      transparent 68%
+    ),
+    rgba(255, 255, 255, 0.025);
+
+  border:
+    1px solid
+    color-mix(
+      in srgb,
+      var(--lab-accent) 18%,
+      var(--lab-border)
+    );
+
+  border-radius:
+    18px;
+}
+
+
+.harmonic-motion-intro__formula > strong {
+  display:
+    block;
+
+  margin-top:
+    14px;
+
+  color:
+    var(--lab-text);
+
+  font-size:
+    clamp(
+      24px,
+      3vw,
+      34px
+    );
+
+  line-height:
+    1.2;
+}
+
+
+.harmonic-motion-intro__formula p {
+  margin:
+    12px
+    0
+    0;
+
+  color:
+    var(--lab-text-muted);
+
+  font-size:
+    11px;
+
+  line-height:
+    1.55;
+}
+
+
+.harmonic-motion-intro__relations {
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      3,
+      minmax(0, 1fr)
+    );
+
+  gap:
+    10px;
+
+  margin-top:
+    14px;
+}
+
+
+.harmonic-motion-intro__relations article {
+  display:
+    grid;
+
+  grid-template-columns:
+    44px
+    minmax(0, 1fr);
+
+  gap:
+    11px;
+
+  min-height:
+    136px;
+
+  padding:
+    14px;
+
+  background:
+    rgba(255, 255, 255, 0.025);
+
+  border:
+    1px solid
+    var(--lab-border);
+
+  border-radius:
+    15px;
+}
+
+
+.harmonic-motion-intro__relations strong {
+  display:
+    block;
+
+  margin-top:
+    8px;
+
+  color:
+    var(--lab-text);
+
+  font-size:
+    19px;
+}
+
+
+.harmonic-motion-intro__relations p {
+  margin:
+    7px
+    0
+    0;
+
+  color:
+    var(--lab-text-muted);
+
+  font-size:
+    10px;
+
+  line-height:
+    1.55;
+}
+
+
+.harmonic-motion-intro__observation {
+  display:
+    grid;
+
+  grid-template-columns:
+    minmax(220px, 0.8fr)
+    minmax(0, 1.2fr);
+
+  gap:
+    18px;
+
+  align-items:
+    center;
+
+  margin-top:
+    14px;
+
+  padding:
+    16px;
+
+  background:
+    color-mix(
+      in srgb,
+      var(--lab-accent) 6%,
+      transparent
+    );
+
+  border:
+    1px solid
+    color-mix(
+      in srgb,
+      var(--lab-accent) 18%,
+      transparent
+    );
+
+  border-radius:
+    16px;
+}
+
+
+.harmonic-motion-intro__observation strong {
+  display:
+    block;
+
+  margin-top:
+    4px;
+
+  color:
+    var(--lab-text);
+
+  font-size:
+    12px;
+}
+
+
+.harmonic-motion-intro__observation p {
+  margin:
+    0;
+
+  color:
+    var(--lab-text-soft);
+
+  font-size:
+    11px;
+
+  line-height:
+    1.55;
+}
+
+
+/* =========================================================
+   PREPARATION
+   ========================================================= */
+
+.harmonic-motion-preparation__grid {
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0, 1fr)
+    );
+
+  gap:
+    10px;
+
+  margin-top:
+    22px;
+}
+
+
+.harmonic-motion-equipment-card {
+  position:
+    relative;
+
+  display:
+    grid;
+
+  grid-template-columns:
+    44px
+    minmax(0, 1fr);
+
+  gap:
+    12px;
+
+  min-height:
+    106px;
+
+  padding:
+    15px;
+
+  overflow:
+    hidden;
+
+  background:
+    rgba(255, 255, 255, 0.025);
+
+  border:
+    1px solid
+    var(--lab-border);
+
+  border-radius:
+    15px;
+}
+
+
+.harmonic-motion-equipment-card:last-child {
+  grid-column:
+    1 /
+    -1;
+}
+
+
+.harmonic-motion-equipment-card__index {
+  position:
+    absolute;
+
+  top:
+    9px;
+
+  right:
+    11px;
+
+  color:
+    rgba(148, 163, 184, 0.32);
+
+  font-size:
+    10px;
+
+  font-weight:
+    800;
+
+  letter-spacing:
+    0.06em;
+}
+
+
+.harmonic-motion-equipment-card__icon {
+  display:
+    grid;
+
+  place-items:
+    center;
+
+  width:
+    44px;
+
+  height:
+    44px;
+
+  color:
+    var(--lab-accent);
+
+  background:
+    color-mix(
+      in srgb,
+      var(--lab-accent) 8%,
+      transparent
+    );
+
+  border:
+    1px solid
+    color-mix(
+      in srgb,
+      var(--lab-accent) 16%,
+      transparent
+    );
+
+  border-radius:
+    13px;
+}
+
+
+.harmonic-motion-equipment-card h3 {
+  margin:
+    1px
+    0
+    0;
+
+  color:
+    var(--lab-text);
+
+  font-size:
+    13px;
+}
+
+
+.harmonic-motion-equipment-card p {
+  margin:
+    6px
+    0
+    0;
+
+  color:
+    var(--lab-text-muted);
+
+  font-size:
+    10px;
+
+  line-height:
+    1.55;
+}
+
+
+.harmonic-motion-preparation__setup {
+  display:
+    grid;
+
+  grid-template-columns:
+    48px
+    minmax(0, 1fr);
+
+  gap:
+    13px;
+
+  margin-top:
+    14px;
+
+  padding:
+    17px;
+
+  background:
+    color-mix(
+      in srgb,
+      var(--lab-accent) 6%,
+      transparent
+    );
+
+  border:
+    1px solid
+    color-mix(
+      in srgb,
+      var(--lab-accent) 18%,
+      transparent
+    );
+
+  border-radius:
+    16px;
+}
+
+
+.harmonic-motion-preparation__setup-icon {
+  display:
+    grid;
+
+  place-items:
+    center;
+
+  width:
+    48px;
+
+  height:
+    48px;
+
+  color:
+    var(--lab-accent);
+
+  background:
+    rgba(255, 255, 255, 0.04);
+
+  border:
+    1px solid
+    rgba(255, 255, 255, 0.06);
+
+  border-radius:
+    14px;
+}
+
+
+.harmonic-motion-preparation__setup span {
+  color:
+    var(--lab-accent);
+
+  font-size:
+    9px;
+
+  font-weight:
+    800;
+
+  text-transform:
+    uppercase;
+}
+
+
+.harmonic-motion-preparation__setup strong {
+  display:
+    block;
+
+  margin-top:
+    4px;
+
+  color:
+    var(--lab-text);
+
+  font-size:
+    13px;
+}
+
+
+.harmonic-motion-preparation__setup p {
+  margin:
+    6px
+    0
+    0;
+
+  color:
+    var(--lab-text-soft);
+
+  font-size:
+    11px;
+
+  line-height:
+    1.6;
+}
+
+
+/* =========================================================
+   CONCLUSION
+   ========================================================= */
+
+.harmonic-motion-conclusion__inner {
+  max-width:
+    900px;
+}
+
+
+.harmonic-motion-conclusion__statement {
+  display:
+    grid;
+
+  grid-template-columns:
+    48px
+    minmax(0, 1fr);
+
+  gap:
+    14px;
+
+  align-items:
+    center;
+
+  margin-top:
+    22px;
+
+  padding:
+    18px;
+
+  background:
+    color-mix(
+      in srgb,
+      var(--lab-accent) 7%,
+      transparent
+    );
+
+  border:
+    1px solid
+    color-mix(
+      in srgb,
+      var(--lab-accent) 20%,
+      transparent
+    );
+
+  border-radius:
+    17px;
+}
+
+
+.harmonic-motion-conclusion__statement-icon {
+  display:
+    grid;
+
+  place-items:
+    center;
+
+  width:
+    48px;
+
+  height:
+    48px;
+
+  color:
+    var(--lab-accent);
+
+  background:
+    rgba(255, 255, 255, 0.04);
+
+  border-radius:
+    14px;
+}
+
+
+.harmonic-motion-conclusion__statement p {
+  margin:
+    0;
+
+  color:
+    var(--lab-text-soft);
+
+  font-size:
+    13px;
+
+  line-height:
+    1.65;
+}
+
+
+.harmonic-motion-conclusion__statement strong {
+  color:
+    var(--lab-text);
+}
+
+
+.harmonic-motion-conclusion__relations {
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      3,
+      minmax(0, 1fr)
+    );
+
+  gap:
+    10px;
+
+  margin-top:
+    12px;
+}
+
+
+.harmonic-motion-conclusion__relations article {
+  display:
+    grid;
+
+  grid-template-columns:
+    28px
+    minmax(0, 1fr);
+
+  gap:
+    10px;
+
+  padding:
+    15px;
+
+  background:
+    rgba(255, 255, 255, 0.025);
+
+  border:
+    1px solid
+    var(--lab-border);
+
+  border-radius:
+    15px;
+}
+
+
+.harmonic-motion-conclusion__relations article > span {
+  color:
+    rgba(148, 163, 184, 0.48);
+
+  font-size:
+    9px;
+
+  font-weight:
+    850;
+}
+
+
+.harmonic-motion-conclusion__relations small {
+  color:
+    var(--lab-accent);
+
+  font-size:
+    9px;
+
+  font-weight:
+    800;
+
+  text-transform:
+    uppercase;
+}
+
+
+.harmonic-motion-conclusion__relations strong {
+  display:
+    block;
+
+  margin-top:
+    7px;
+
+  color:
+    var(--lab-text);
+
+  font-size:
+    17px;
+}
+
+
+.harmonic-motion-conclusion__relations p {
+  margin:
+    7px
+    0
+    0;
+
+  color:
+    var(--lab-text-muted);
+
+  font-size:
+    10px;
+
+  line-height:
+    1.5;
+}
+
+
+.harmonic-motion-conclusion__formula {
+  margin-top:
+    12px;
+
+  padding:
+    16px;
+
+  text-align:
+    center;
+
+  background:
+    rgba(255, 255, 255, 0.025);
+
+  border:
+    1px solid
+    var(--lab-border);
+
+  border-radius:
+    15px;
+}
+
+
+.harmonic-motion-conclusion__formula span {
+  display:
+    block;
+
+  color:
+    var(--lab-text-muted);
+
+  font-size:
+    9px;
+
+  font-weight:
+    800;
+
+  text-transform:
+    uppercase;
+}
+
+
+.harmonic-motion-conclusion__formula strong {
+  display:
+    block;
+
+  margin-top:
+    8px;
+
+  color:
+    var(--lab-text);
+
+  font-size:
+    24px;
+}
+
+
+/* =========================================================
+   QUIZ
+   ========================================================= */
+
+.harmonic-motion-quiz__inner {
+  max-width:
+    900px;
+}
+
+
+.harmonic-motion-quiz__list {
+  display:
+    grid;
+
+  gap:
+    12px;
+
+  margin-top:
+    22px;
+}
+
+
+.harmonic-motion-quiz-card {
+  padding:
+    17px;
+
+  background:
+    rgba(255, 255, 255, 0.025);
+
+  border:
+    1px solid
+    var(--lab-border);
+
+  border-radius:
+    17px;
+}
+
+
+.harmonic-motion-quiz-card__header {
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    space-between;
+
+  gap:
+    10px;
+}
+
+
+.harmonic-motion-quiz-card__header > span {
+  color:
+    var(--lab-accent);
+
+  font-size:
+    9px;
+
+  font-weight:
+    850;
+
+  letter-spacing:
+    0.07em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.harmonic-motion-quiz-card__header strong {
+  font-size:
+    9px;
+
+  font-weight:
+    850;
+
+  text-transform:
+    uppercase;
+}
+
+
+.harmonic-motion-quiz-card__header .is-correct {
+  color:
+    #4ade80;
+}
+
+
+.harmonic-motion-quiz-card__header .is-wrong {
+  color:
+    #fb7185;
+}
+
+
+.harmonic-motion-quiz-card h3 {
+  margin:
+    10px
+    0
+    0;
+
+  color:
+    var(--lab-text);
+
+  font-size:
+    14px;
+
+  line-height:
+    1.55;
+}
+
+
+.harmonic-motion-quiz-card__options {
+  display:
+    grid;
+
+  gap:
+    8px;
+
+  margin-top:
+    14px;
+}
+
+
+.harmonic-motion-quiz-card__options button {
+  display:
+    grid;
+
+  grid-template-columns:
+    30px
+    minmax(0, 1fr);
+
+  align-items:
+    center;
+
+  gap:
+    10px;
+
+  min-height:
+    46px;
+
+  padding:
+    8px
+    10px;
+
+  color:
+    var(--lab-text-soft);
+
+  background:
+    rgba(2, 6, 23, 0.34);
+
+  border:
+    1px solid
+    rgba(148, 163, 184, 0.13);
+
+  border-radius:
+    12px;
+
+  text-align:
+    left;
+
+  cursor:
+    pointer;
+
+  transition:
+    border-color 140ms ease,
+    background 140ms ease,
+    opacity 140ms ease;
+}
+
+
+.harmonic-motion-quiz-card__options button:hover:not(:disabled) {
+  background:
+    rgba(30, 41, 59, 0.56);
+
+  border-color:
+    color-mix(
+      in srgb,
+      var(--lab-accent) 34%,
+      transparent
+    );
+}
+
+
+.harmonic-motion-quiz-card__options button > span {
+  display:
+    grid;
+
+  place-items:
+    center;
+
+  width:
+    30px;
+
+  height:
+    30px;
+
+  color:
+    var(--lab-accent);
+
+  background:
+    color-mix(
+      in srgb,
+      var(--lab-accent) 8%,
+      transparent
+    );
+
+  border-radius:
+    9px;
+
+  font-size:
+    10px;
+
+  font-weight:
+    850;
+}
+
+
+.harmonic-motion-quiz-card__options button > strong {
+  font-size:
+    11px;
+
+  line-height:
+    1.45;
+}
+
+
+.harmonic-motion-quiz-card__options button.is-selected {
+  background:
+    color-mix(
+      in srgb,
+      var(--lab-accent) 8%,
+      transparent
+    );
+
+  border-color:
+    color-mix(
+      in srgb,
+      var(--lab-accent) 40%,
+      transparent
+    );
+}
+
+
+.harmonic-motion-quiz-card__options button.is-correct {
+  background:
+    rgba(22, 101, 52, 0.12);
+
+  border-color:
+    rgba(74, 222, 128, 0.36);
+}
+
+
+.harmonic-motion-quiz-card__options button.is-wrong {
+  background:
+    rgba(159, 18, 57, 0.12);
+
+  border-color:
+    rgba(251, 113, 133, 0.38);
+}
+
+
+.harmonic-motion-quiz-card__options button.is-muted {
+  opacity:
+    0.45;
+}
+
+
+.harmonic-motion-quiz-card__explanation {
+  margin-top:
+    12px;
+
+  padding:
+    12px;
+
+  background:
+    color-mix(
+      in srgb,
+      var(--lab-accent) 5%,
+      transparent
+    );
+
+  border:
+    1px solid
+    color-mix(
+      in srgb,
+      var(--lab-accent) 14%,
+      transparent
+    );
+
+  border-radius:
+    12px;
+}
+
+
+.harmonic-motion-quiz-card__explanation span {
+  color:
+    var(--lab-accent);
+
+  font-size:
+    9px;
+
+  font-weight:
+    800;
+
+  text-transform:
+    uppercase;
+}
+
+
+.harmonic-motion-quiz-card__explanation p {
+  margin:
+    5px
+    0
+    0;
+
+  color:
+    var(--lab-text-soft);
+
+  font-size:
+    10px;
+
+  line-height:
+    1.55;
+}
+
+
+.harmonic-motion-quiz__result {
+  display:
+    grid;
+
+  grid-template-columns:
+    auto
+    minmax(0, 1fr);
+
+  gap:
+    16px;
+
+  align-items:
+    center;
+
+  margin-top:
+    12px;
+
+  padding:
+    14px;
+
+  background:
+    rgba(255, 255, 255, 0.025);
+
+  border:
+    1px solid
+    var(--lab-border);
+
+  border-radius:
+    14px;
+}
+
+
+.harmonic-motion-quiz__result div {
+  min-width:
+    82px;
+}
+
+
+.harmonic-motion-quiz__result span,
+.harmonic-motion-quiz__result strong {
+  display:
+    block;
+}
+
+
+.harmonic-motion-quiz__result span {
+  color:
+    var(--lab-accent);
+
+  font-size:
+    9px;
+
+  font-weight:
+    800;
+
+  text-transform:
+    uppercase;
+}
+
+
+.harmonic-motion-quiz__result strong {
+  margin-top:
+    3px;
+
+  color:
+    var(--lab-text);
+
+  font-size:
+    24px;
+}
+
+
+.harmonic-motion-quiz__result p {
+  margin:
+    0;
+
+  color:
+    var(--lab-text-muted);
+
+  font-size:
+    10px;
+}
+
+
+/* =========================================================
+   REPORT
+   ========================================================= */
+
+.harmonic-motion-report__inner {
+  max-width:
+    1000px;
+}
+
+
+.harmonic-motion-report__heading {
+  display:
+    flex;
+
+  align-items:
+    flex-start;
+
+  justify-content:
+    space-between;
+
+  gap:
+    20px;
+
+  margin-top:
+    16px;
+}
+
+
+.harmonic-motion-report__heading > div:first-child {
+  max-width:
+    680px;
+}
+
+
+.harmonic-motion-report__actions {
+  display:
+    flex;
+
+  gap:
+    8px;
+
+  flex:
+    0 0 auto;
+}
+
+
+.harmonic-motion-report__reference {
+  margin-top:
+    18px;
+
+  padding:
+    16px;
+
+  background:
+    rgba(255, 255, 255, 0.025);
+
+  border:
+    1px solid
+    var(--lab-border);
+
+  border-radius:
+    16px;
+}
+
+
+.harmonic-motion-report__reference > span,
+.harmonic-motion-report__preview-label {
+  color:
+    var(--lab-accent);
+
+  font-size:
+    9px;
+
+  font-weight:
+    850;
+
+  letter-spacing:
+    0.07em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.harmonic-motion-report__reference > div {
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      3,
+      minmax(0, 1fr)
+    );
+
+  gap:
+    9px;
+
+  margin-top:
+    11px;
+}
+
+
+.harmonic-motion-report__reference article {
+  padding:
+    11px;
+
+  background:
+    rgba(2, 6, 23, 0.34);
+
+  border-radius:
+    11px;
+}
+
+
+.harmonic-motion-report__reference small,
+.harmonic-motion-report__reference strong {
+  display:
+    block;
+}
+
+
+.harmonic-motion-report__reference small {
+  color:
+    var(--lab-text-muted);
+
+  font-size:
+    8px;
+
+  font-weight:
+    800;
+
+  text-transform:
+    uppercase;
+}
+
+
+.harmonic-motion-report__reference strong {
+  margin-top:
+    6px;
+
+  color:
+    var(--lab-text);
+
+  font-size:
+    14px;
+}
+
+
+.harmonic-motion-report__preview {
+  margin-top:
+    14px;
+
+  padding:
+    16px;
+
+  background:
+    rgba(255, 255, 255, 0.025);
+
+  border:
+    1px solid
+    var(--lab-border);
+
+  border-radius:
+    16px;
+}
+
+
+.harmonic-motion-report-sheet {
+  width:
+    min(100%, 210mm);
+
+  min-height:
+    297mm;
+
+  margin:
+    14px auto 0;
+
+  padding:
+    18mm 16mm;
+
+  color:
+    #111827;
+
+  background:
+    #ffffff;
+
+  box-shadow:
+    0 20px 60px
+    rgba(2, 6, 23, 0.28);
+
+  font-family:
+    'Times New Roman',
+    Times,
+    serif;
+
+  font-size:
+    12pt;
+
+  line-height:
+    1.45;
+}
+
+
+.harmonic-motion-report-sheet__header {
+  text-align:
+    center;
+}
+
+
+.harmonic-motion-report-sheet__header h1 {
+  margin:
+    0;
+
+  font-size:
+    14pt;
+}
+
+
+.harmonic-motion-report-sheet__header h2 {
+  margin:
+    7px
+    0
+    0;
+
+  font-size:
+    15pt;
+}
+
+
+.harmonic-motion-report-sheet__header p {
+  margin:
+    6px
+    0
+    0;
+}
+
+
+.harmonic-motion-report-sheet__identity {
+  display:
+    grid;
+
+  gap:
+    9px;
+
+  margin-top:
+    18px;
+}
+
+
+.harmonic-motion-report-sheet__identity > div,
+.harmonic-motion-report-sheet__identity-row > div {
+  display:
+    flex;
+
+  align-items:
+    flex-end;
+
+  gap:
+    8px;
+}
+
+
+.harmonic-motion-report-sheet__identity span {
+  flex:
+    1;
+
+  min-width:
+    80px;
+
+  border-bottom:
+    1px dotted #111827;
+}
+
+
+.harmonic-motion-report-sheet__identity-row {
+  display:
+    grid;
+
+  grid-template-columns:
+    1fr 1fr;
+
+  gap:
+    24px;
+}
+
+
+.harmonic-motion-report-sheet > section {
+  margin-top:
+    16px;
+}
+
+
+.harmonic-motion-report-sheet > section h3 {
+  margin:
+    0 0 8px;
+
+  font-size:
+    12.5pt;
+}
+
+
+.harmonic-motion-report-sheet__question {
+  margin-top:
+    13px;
+}
+
+
+.harmonic-motion-report-sheet__question p {
+  margin:
+    7px
+    0
+    0;
+}
+
+
+.harmonic-motion-report-sheet__blank-lines {
+  display:
+    grid;
+
+  gap:
+    13px;
+
+  margin:
+    8px
+    0
+    14px;
+}
+
+
+.harmonic-motion-report-sheet__blank-lines span {
+  height:
+    8px;
+
+  border-bottom:
+    1px dotted #111827;
+}
+
+
+.harmonic-motion-report-sheet__formula-box {
+  display:
+    grid;
+
+  min-height:
+    54px;
+
+  place-items:
+    center;
+
+  margin-top:
+    9px;
+
+  border:
+    1.5px dashed #6b7280;
+}
+
+
+.harmonic-motion-report-sheet__avoid-break {
+  break-inside:
+    avoid;
+}
+
+
+.harmonic-motion-report-sheet__signature {
+  display:
+    flex;
+
+  justify-content:
+    flex-end;
+
+  margin-top:
+    24px;
+
+  text-align:
+    center;
+}
+
+
+.harmonic-motion-report-sheet__signature > div {
+  width:
+    250px;
+}
+
+
+.harmonic-motion-report-sheet__signature p {
+  margin:
+    3px
+    0;
+}
+
+
+.harmonic-motion-report-sheet__signature div > div {
+  height:
+    56px;
+}
+
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media (
+  max-width: 900px
+) {
+  .harmonic-motion-intro__hero {
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .harmonic-motion-intro__formula {
+    min-height:
+      150px;
+  }
+
+
+  .harmonic-motion-intro__relations,
+  .harmonic-motion-conclusion__relations {
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .harmonic-motion-report__heading {
+    display:
+      grid;
+  }
+
+
+  .harmonic-motion-report__reference > div {
+    grid-template-columns:
+      1fr;
+  }
+}
+
+
+@media (
+  max-width: 767px
+) {
+  .harmonic-motion-runtime
+  > div
+  > div:nth-child(2) {
+    top:
+      auto;
+
+    right:
+      8px;
+
+    bottom:
+      8px;
+
+    left:
+      8px;
+
+    width:
+      auto;
+
+    max-height:
+      43%;
+
+    padding:
+      11px !important;
+
+    border-radius:
+      15px;
+  }
+
+
+  .harmonic-motion-runtime
+  > div
+  > div:first-child
+  > div:last-child {
+    top:
+      8px !important;
+
+    max-width:
+      calc(100% - 16px);
+
+    font-size:
+      10px !important;
+  }
+
+
+  .harmonic-motion-intro__observation {
+    grid-template-columns:
+      1fr;
+
+    gap:
+      8px;
+  }
+
+
+  .harmonic-motion-preparation__grid {
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .harmonic-motion-equipment-card:last-child {
+    grid-column:
+      auto;
+  }
+
+
+  .harmonic-motion-phase-actions,
+  .harmonic-motion-phase-actions--end,
+  .harmonic-motion-report__actions {
+    display:
+      grid;
+
+    grid-template-columns:
+      1fr;
+
+    width:
+      100%;
+  }
+
+
+  .harmonic-motion-phase-actions
+  .experiment-lab-button,
+  .harmonic-motion-report__actions
+  .experiment-lab-button {
+    width:
+      100%;
+  }
+
+
+  .harmonic-motion-quiz__result {
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .harmonic-motion-report-sheet {
+    padding:
+      12mm 10mm;
+  }
+}
+
+
+@media (
+  max-height: 560px
+) {
+  .harmonic-motion-runtime
+  > div
+  > div:nth-child(2) {
+    top:
+      8px;
+
+    right:
+      8px;
+
+    bottom:
+      8px;
+
+    width:
+      300px;
+
+    gap:
+      7px !important;
+
+    padding:
+      9px !important;
+  }
+
+
+  .harmonic-motion-runtime
+  > div
+  > div:nth-child(2)
+  > div:first-child,
+  .harmonic-motion-runtime
+  > div
+  > div:nth-child(2)
+  > div:nth-child(3) {
+    padding:
+      10px !important;
+  }
+}
+
+
+/* =========================================================
+   PRINT
+   ========================================================= */
+
+@media print {
+  .harmonic-motion-report__inner
+  > :not(.harmonic-motion-report__preview),
+  .harmonic-motion-report__preview
+  > .harmonic-motion-report__preview-label {
+    display:
+      none;
+  }
+
+
+  .harmonic-motion-report__preview {
+    margin:
+      0;
+
+    padding:
+      0;
+
+    background:
+      transparent;
+
+    border:
+      0;
+  }
+
+
+  .harmonic-motion-report-sheet {
+    width:
+      210mm;
+
+    min-height:
+      297mm;
+
+    margin:
+      0;
+
+    padding:
+      14mm;
+
+    box-shadow:
+      none;
+  }
+}
