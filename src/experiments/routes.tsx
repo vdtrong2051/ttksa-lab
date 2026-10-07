@@ -7,6 +7,7 @@ import type {
 } from 'react-router'
 
 import templateRoutes from './modules/_template/routes'
+import boyleRoutes from './modules/12_07_boyle/routes'
 
 
 /*
@@ -25,6 +26,7 @@ const moduleRoutes:
   RouteObject[] =
   [
     ...templateRoutes,
+    ...boyleRoutes,
   ]
 
 

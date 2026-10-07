@@ -1,0 +1,1738 @@
+/* =========================================================
+   BOYLE MODULE
+   Source content/model: lab-old
+   UX/decomposition reference: virtual-physics-lab-new
+   Architecture owner: ttksa-lab
+   ========================================================= */
+
+.boyle-content-phase {
+  width: 100%;
+  color: #e2e8f0;
+}
+
+.boyle-content-phase__inner,
+.boyle-report__screen {
+  width: min(100%, 980px);
+  margin: 0 auto;
+}
+
+.boyle-content-phase__badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  padding: 5px 11px;
+  border: 1px solid rgba(56, 189, 248, 0.28);
+  border-radius: 999px;
+  background: rgba(14, 165, 233, 0.09);
+  color: #7dd3fc;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.boyle-content-phase__heading {
+  margin-top: 18px;
+  max-width: 760px;
+}
+
+.boyle-content-phase__heading h2,
+.boyle-report__heading h2 {
+  margin: 0;
+  color: #f8fafc;
+  font-size: clamp(28px, 4vw, 42px);
+  line-height: 1.08;
+  letter-spacing: -0.035em;
+}
+
+.boyle-content-phase__heading p,
+.boyle-report__heading p {
+  margin: 12px 0 0;
+  color: #94a3b8;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.boyle-eyebrow {
+  display: block;
+  color: #38bdf8;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.boyle-phase-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 26px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(148, 163, 184, 0.13);
+}
+
+.boyle-phase-actions--end {
+  justify-content: flex-end;
+}
+
+/* INTRO */
+
+.boyle-intro__grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.boyle-info-card {
+  display: flex;
+  gap: 16px;
+  min-width: 0;
+  padding: 22px;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 20px;
+  background: rgba(15, 23, 42, 0.72);
+  box-shadow: 0 18px 40px rgba(2, 6, 23, 0.18);
+}
+
+.boyle-info-card__icon {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  flex: 0 0 48px;
+  border: 1px solid rgba(56, 189, 248, 0.22);
+  border-radius: 14px;
+  background: rgba(14, 165, 233, 0.09);
+  color: #38bdf8;
+}
+
+.boyle-info-card h3 {
+  margin: 0 0 8px;
+  color: #f8fafc;
+  font-size: 17px;
+}
+
+.boyle-info-card p {
+  margin: 0;
+  color: #94a3b8;
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.boyle-formula-card {
+  margin-top: 16px;
+  padding: 24px;
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at 85% 0%, rgba(56, 189, 248, 0.12), transparent 36%),
+    rgba(15, 23, 42, 0.76);
+}
+
+.boyle-formula-card__formula {
+  margin-top: 14px;
+  color: #f8fafc;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(34px, 6vw, 54px);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.boyle-formula-card__secondary {
+  margin-top: 8px;
+  color: #7dd3fc;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 20px;
+}
+
+.boyle-formula-card p {
+  max-width: 740px;
+  margin: 16px 0 0;
+  color: #94a3b8;
+  font-size: 13px;
+  line-height: 1.7;
+}
+
+/* PREPARATION */
+
+.boyle-preparation__feedback,
+.boyle-conclusion__warning {
+  margin-top: 18px;
+  padding: 13px 15px;
+  border: 1px solid rgba(251, 113, 133, 0.32);
+  border-radius: 14px;
+  background: rgba(159, 18, 57, 0.13);
+  color: #fda4af;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.boyle-tool-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 24px;
+}
+
+.boyle-tool-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 46px minmax(0, 1fr) 24px;
+  align-items: center;
+  gap: 12px;
+  min-height: 112px;
+  padding: 16px;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 18px;
+  background: rgba(15, 23, 42, 0.72);
+  color: #cbd5e1;
+  text-align: left;
+  cursor: pointer;
+  transition:
+    border-color 160ms ease,
+    background 160ms ease,
+    transform 160ms ease;
+}
+
+.boyle-tool-card:hover {
+  transform: translateY(-1px);
+  border-color: rgba(56, 189, 248, 0.42);
+}
+
+.boyle-tool-card--selected {
+  border-color: rgba(56, 189, 248, 0.68);
+  background: rgba(14, 165, 233, 0.11);
+}
+
+.boyle-tool-card__icon {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 13px;
+  background: #0b1121;
+  color: #7dd3fc;
+}
+
+.boyle-tool-card__copy {
+  min-width: 0;
+}
+
+.boyle-tool-card__copy strong,
+.boyle-tool-card__copy small {
+  display: block;
+}
+
+.boyle-tool-card__copy strong {
+  color: #f1f5f9;
+  font-size: 13px;
+}
+
+.boyle-tool-card__copy small {
+  margin-top: 5px;
+  color: #64748b;
+  font-size: 11px;
+  line-height: 1.45;
+}
+
+.boyle-tool-card__check {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  border-radius: 999px;
+  color: transparent;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.boyle-tool-card--selected .boyle-tool-card__check {
+  border-color: #38bdf8;
+  background: #38bdf8;
+  color: #082f49;
+}
+
+.boyle-preparation__status {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 18px;
+  padding: 12px 15px;
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  border-radius: 14px;
+  background: rgba(15, 23, 42, 0.48);
+  color: #64748b;
+  font-size: 12px;
+}
+
+.boyle-preparation__status strong {
+  color: #e2e8f0;
+}
+
+/* RUNTIME */
+
+.boyle-runtime,
+.boyle-simulation,
+.boyle-simulation > div,
+.boyle-simulation canvas {
+  width: 100%;
+  height: 100%;
+}
+
+.boyle-runtime {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #0b1121;
+}
+
+.boyle-simulation {
+  position: absolute;
+  inset: 0;
+  touch-action: none;
+}
+
+/* PRACTICE */
+
+.boyle-practice {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.boyle-practice > * {
+  pointer-events: auto;
+}
+
+.boyle-practice-loading {
+  position: absolute;
+  inset: 0;
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: #0b1121;
+  color: #94a3b8;
+  text-align: center;
+  pointer-events: auto;
+}
+
+.boyle-practice-loading strong {
+  color: #7dd3fc;
+}
+
+.boyle-practice-loading__spinner {
+  width: 38px;
+  height: 38px;
+  border: 4px solid #1e293b;
+  border-top-color: #38bdf8;
+  border-radius: 999px;
+  animation: boyle-spin 800ms linear infinite;
+}
+
+@keyframes boyle-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.boyle-practice__toast {
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  z-index: 70;
+  width: min(560px, calc(100% - 160px));
+  transform: translateX(-50%);
+}
+
+/* ---------------------------------------------------------
+   FLOATING PRACTICE PANELS
+   --------------------------------------------------------- */
+
+.boyle-practice-panel {
+  position: absolute;
+  z-index: 24;
+  width: min(310px, calc(100% - 96px));
+  max-height: calc(100% - 92px);
+  overflow-y: auto;
+  padding: 16px;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 18px;
+  background: rgba(2, 6, 23, 0.84);
+  box-shadow: 0 18px 46px rgba(2, 6, 23, 0.35);
+  backdrop-filter: blur(16px);
+  scrollbar-width: thin;
+  scrollbar-color: rgba(148, 163, 184, 0.34) transparent;
+}
+
+.boyle-practice-panel--instructions {
+  top: 16px;
+  left: 16px;
+}
+
+.boyle-practice-panel--measurements {
+  top: 16px;
+  right: 82px;
+  left: auto;
+  width: min(390px, calc(100% - 438px));
+  min-width: 330px;
+}
+
+.boyle-practice-panel__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.boyle-practice-panel__header h3 {
+  margin: 4px 0 0;
+  color: #f8fafc;
+  font-size: 15px;
+}
+
+.boyle-practice-panel__header > button {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  flex: 0 0 auto;
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  border-radius: 9px;
+  background: rgba(30, 41, 59, 0.72);
+  color: #94a3b8;
+  cursor: pointer;
+  transition:
+    border-color 160ms ease,
+    background 160ms ease,
+    color 160ms ease;
+}
+
+.boyle-practice-panel__header > button:hover {
+  border-color: rgba(125, 211, 252, 0.42);
+  background: rgba(30, 41, 59, 0.95);
+  color: #f8fafc;
+}
+
+.boyle-practice-instructions {
+  display: grid;
+  gap: 10px;
+  margin: 14px 0 0;
+  padding-left: 20px;
+  color: #cbd5e1;
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+/* ---------------------------------------------------------
+   MEASUREMENT PANEL
+   Record/Clear belong here, not in the runtime toolbar.
+   --------------------------------------------------------- */
+
+.boyle-measurement-table-wrap,
+.boyle-report-reference__table-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.boyle-measurement-table,
+.boyle-report-reference__table,
+.boyle-report-sheet__table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.boyle-measurement-table {
+  margin-top: 12px;
+  font-size: 10px;
+}
+
+.boyle-measurement-table th,
+.boyle-measurement-table td {
+  padding: 7px 5px;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+  text-align: right;
+}
+
+.boyle-measurement-table th:first-child,
+.boyle-measurement-table td:first-child {
+  text-align: center;
+}
+
+.boyle-measurement-table thead th {
+  color: #64748b;
+  font-size: 9px;
+  text-transform: uppercase;
+}
+
+.boyle-measurement-table tbody {
+  color: #cbd5e1;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.boyle-practice-measurement__actions {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 8px;
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+.boyle-practice-measurement__actions .experiment-lab-button {
+  width: 100%;
+  min-width: 0;
+  min-height: 38px;
+  justify-content: center;
+  gap: 7px;
+  padding: 8px 10px;
+  white-space: nowrap;
+}
+
+/* ---------------------------------------------------------
+   RIGHT VERTICAL TOOLBAR
+   collapsed = icon only
+   expanded  = icon + label
+   --------------------------------------------------------- */
+
+.boyle-practice-toolbar {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 34;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 50px;
+  padding: 6px;
+  overflow: hidden;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 16px;
+  background: rgba(2, 6, 23, 0.9);
+  box-shadow: 0 18px 42px rgba(2, 6, 23, 0.38);
+  backdrop-filter: blur(18px);
+  transition:
+    width 180ms ease,
+    background 180ms ease,
+    border-color 180ms ease;
+}
+
+.boyle-practice-toolbar--expanded {
+  width: 184px;
+}
+
+.boyle-practice-toolbar__toggle,
+.boyle-practice-toolbar__button {
+  display: flex;
+  align-items: center;
+  min-height: 38px;
+  width: 100%;
+  border: 1px solid transparent;
+  border-radius: 11px;
+  background: transparent;
+  color: #a8b3c7;
+  cursor: pointer;
+  transition:
+    background 150ms ease,
+    border-color 150ms ease,
+    color 150ms ease,
+    transform 150ms ease;
+}
+
+.boyle-practice-toolbar__toggle {
+  justify-content: center;
+  gap: 9px;
+  border-color: rgba(148, 163, 184, 0.12);
+  background: rgba(15, 23, 42, 0.72);
+  color: #cbd5e1;
+}
+
+.boyle-practice-toolbar--expanded .boyle-practice-toolbar__toggle {
+  justify-content: flex-start;
+  padding: 0 10px;
+}
+
+.boyle-practice-toolbar__items {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.boyle-practice-toolbar__button {
+  justify-content: center;
+}
+
+.boyle-practice-toolbar--expanded .boyle-practice-toolbar__button {
+  justify-content: flex-start;
+  gap: 10px;
+  padding: 0 10px;
+}
+
+.boyle-practice-toolbar__button:hover,
+.boyle-practice-toolbar__toggle:hover {
+  border-color: rgba(125, 211, 252, 0.2);
+  background: rgba(30, 41, 59, 0.84);
+  color: #f8fafc;
+}
+
+.boyle-practice-toolbar__button:active,
+.boyle-practice-toolbar__toggle:active {
+  transform: scale(0.97);
+}
+
+.boyle-practice-toolbar__button:focus-visible,
+.boyle-practice-toolbar__toggle:focus-visible,
+.boyle-practice-conclusion:focus-visible {
+  outline: 2px solid #38bdf8;
+  outline-offset: 2px;
+}
+
+.boyle-practice-toolbar__button--active {
+  border-color: rgba(56, 189, 248, 0.34);
+  background: rgba(14, 165, 233, 0.14);
+  color: #7dd3fc;
+}
+
+.boyle-practice-toolbar__icon {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  flex: 0 0 24px;
+}
+
+.boyle-practice-toolbar__label,
+.boyle-practice-toolbar__toggle span {
+  min-width: 0;
+  overflow: hidden;
+  color: inherit;
+  font-size: 11px;
+  font-weight: 750;
+  line-height: 1.15;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ---------------------------------------------------------
+   CONCLUSION CTA
+   Separate from toolbar, shown only by PracticePage when
+   target measurements are complete.
+   --------------------------------------------------------- */
+
+.boyle-practice-conclusion {
+  position: absolute;
+  right: 78px;
+  bottom: 20px;
+  z-index: 32;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 42px;
+  padding: 9px 14px;
+  border: 1px solid rgba(56, 189, 248, 0.46);
+  border-radius: 13px;
+  background: linear-gradient(135deg, #38bdf8, #0ea5e9);
+  color: #03111f;
+  box-shadow:
+    0 14px 34px rgba(2, 132, 199, 0.28),
+    0 0 0 1px rgba(255, 255, 255, 0.08) inset;
+  font-size: 12px;
+  font-weight: 850;
+  cursor: pointer;
+  transition:
+    transform 150ms ease,
+    box-shadow 150ms ease,
+    filter 150ms ease;
+}
+
+.boyle-practice-conclusion:hover {
+  transform: translateY(-1px);
+  filter: brightness(1.05);
+  box-shadow:
+    0 18px 38px rgba(2, 132, 199, 0.34),
+    0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+}
+
+.boyle-practice-conclusion:active {
+  transform: translateY(0);
+}
+
+/* ---------------------------------------------------------
+   BOTTOM STATUS PANEL
+   Last visual layer in the practice hierarchy.
+   --------------------------------------------------------- */
+
+.boyle-practice-status {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  z-index: 26;
+  display: flex;
+  max-width: calc(100% - 190px);
+  transform: translateX(-50%);
+  overflow: hidden;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 15px;
+  background: rgba(2, 6, 23, 0.86);
+  box-shadow: 0 14px 36px rgba(2, 6, 23, 0.28);
+  backdrop-filter: blur(16px);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.boyle-practice-status > div {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 9px 13px;
+  border-right: 1px solid rgba(148, 163, 184, 0.12);
+}
+
+.boyle-practice-status > div:last-child {
+  border-right: 0;
+}
+
+.boyle-practice-status span {
+  color: #64748b;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.boyle-practice-status strong {
+  color: #f8fafc;
+  font-size: 12px;
+}
+
+.boyle-practice-status .is-stable {
+  color: #4ade80;
+}
+
+.boyle-practice-status .is-transient {
+  color: #fb923c;
+}
+
+/* GRAPH */
+
+.boyle-graph {
+  margin-top: 16px;
+  padding: 14px;
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  border-radius: 15px;
+  background: rgba(15, 23, 42, 0.62);
+}
+
+.boyle-graph__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.boyle-graph__header h3 {
+  margin: 3px 0 0;
+  color: #f8fafc;
+  font-size: 13px;
+}
+
+.boyle-graph__count {
+  padding: 4px 7px;
+  border-radius: 999px;
+  background: rgba(56, 189, 248, 0.09);
+  color: #7dd3fc;
+  font-size: 9px;
+  font-weight: 800;
+}
+
+.boyle-graph__empty {
+  display: grid;
+  min-height: 120px;
+  place-items: center;
+  margin-top: 10px;
+  border: 1px dashed rgba(148, 163, 184, 0.18);
+  border-radius: 12px;
+  color: #64748b;
+  font-size: 11px;
+  text-align: center;
+}
+
+.boyle-graph__chart {
+  margin-top: 10px;
+  overflow: hidden;
+  border-radius: 12px;
+  background: rgba(2, 6, 23, 0.65);
+}
+
+.boyle-graph__chart svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.boyle-graph__grid {
+  stroke: rgba(148, 163, 184, 0.11);
+  stroke-width: 1;
+}
+
+.boyle-graph__axis {
+  stroke: rgba(203, 213, 225, 0.45);
+  stroke-width: 1.2;
+}
+
+.boyle-graph__ideal {
+  stroke: rgba(148, 163, 184, 0.42);
+  stroke-width: 1.5;
+  stroke-dasharray: 6 5;
+}
+
+.boyle-graph__line {
+  fill: none;
+  stroke: #38bdf8;
+  stroke-width: 2.2;
+}
+
+.boyle-graph__point {
+  fill: #38bdf8;
+  stroke: #e0f2fe;
+  stroke-width: 1.4;
+}
+
+.boyle-graph__label,
+.boyle-graph__axis-title {
+  fill: #64748b;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 9px;
+}
+
+.boyle-graph__axis-title {
+  fill: #94a3b8;
+  font-size: 9px;
+}
+
+.boyle-result-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 7px;
+  margin-top: 10px;
+}
+
+.boyle-result-card {
+  min-width: 0;
+  padding: 8px;
+  border-radius: 10px;
+  background: rgba(2, 6, 23, 0.52);
+}
+
+.boyle-result-card span,
+.boyle-result-card strong {
+  display: block;
+}
+
+.boyle-result-card span {
+  color: #64748b;
+  font-size: 8px;
+  text-transform: uppercase;
+}
+
+.boyle-result-card strong {
+  margin-top: 4px;
+  overflow: hidden;
+  color: #e2e8f0;
+  font-size: 9px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* CONCLUSION */
+
+.boyle-conclusion__section,
+.boyle-report-reference,
+.boyle-report-preview {
+  margin-top: 20px;
+  padding: 22px;
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  border-radius: 20px;
+  background: rgba(15, 23, 42, 0.64);
+}
+
+.boyle-section-heading {
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+}
+
+.boyle-section-heading > span {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  flex: 0 0 34px;
+  border: 1px solid rgba(56, 189, 248, 0.22);
+  border-radius: 11px;
+  background: rgba(56, 189, 248, 0.08);
+  color: #38bdf8;
+  font-size: 10px;
+  font-weight: 900;
+}
+
+.boyle-section-heading h3 {
+  margin: 0;
+  color: #f8fafc;
+  font-size: 17px;
+}
+
+.boyle-section-heading p {
+  margin: 6px 0 0;
+  color: #64748b;
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.boyle-conclusion__metrics,
+.boyle-report-reference__summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.boyle-conclusion__metrics > div,
+.boyle-report-reference__summary > div {
+  padding: 13px;
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  border-radius: 13px;
+  background: rgba(2, 6, 23, 0.4);
+}
+
+.boyle-conclusion__metrics span,
+.boyle-conclusion__metrics strong,
+.boyle-report-reference__summary span,
+.boyle-report-reference__summary strong {
+  display: block;
+}
+
+.boyle-conclusion__metrics span,
+.boyle-report-reference__summary span {
+  color: #64748b;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.boyle-conclusion__metrics strong,
+.boyle-report-reference__summary strong {
+  margin-top: 6px;
+  color: #f1f5f9;
+  font-size: 15px;
+}
+
+.boyle-observation-list {
+  display: grid;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.boyle-observation {
+  display: grid;
+  gap: 8px;
+}
+
+.boyle-observation > span {
+  color: #38bdf8;
+  font-size: 9px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.boyle-observation > strong {
+  color: #e2e8f0;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.boyle-observation textarea {
+  width: 100%;
+  resize: vertical;
+  min-height: 104px;
+  padding: 12px;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 13px;
+  outline: 0;
+  background: rgba(2, 6, 23, 0.56);
+  color: #e2e8f0;
+  font: inherit;
+  line-height: 1.55;
+}
+
+.boyle-observation textarea:focus {
+  border-color: rgba(56, 189, 248, 0.65);
+}
+
+.boyle-conclusion__reveal {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.boyle-conclusion__reveal span {
+  color: #64748b;
+  font-size: 11px;
+}
+
+.boyle-theory-result {
+  margin-top: 18px;
+  padding: 18px;
+  border: 1px solid rgba(74, 222, 128, 0.22);
+  border-radius: 16px;
+  background: rgba(22, 101, 52, 0.09);
+}
+
+.boyle-theory-result p {
+  margin: 10px 0 0;
+  color: #cbd5e1;
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.boyle-theory-result__formula {
+  margin-top: 14px;
+  color: #86efac;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+/* QUIZ */
+
+.boyle-quiz-page__inner {
+  max-width: 920px;
+}
+
+.boyle-quiz {
+  display: grid;
+  gap: 14px;
+  margin-top: 24px;
+}
+
+.boyle-quiz .experiment-quiz__question {
+  padding: 18px;
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  border-radius: 18px;
+  background: rgba(15, 23, 42, 0.64);
+}
+
+.boyle-quiz-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  color: #38bdf8;
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.boyle-quiz .experiment-quiz__question-header h3 {
+  margin: 9px 0 0;
+  color: #f8fafc;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.boyle-quiz-card__result,
+.boyle-quiz-option__result {
+  font-size: 9px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.boyle-quiz-card__result--correct,
+.boyle-quiz-option__result--correct {
+  color: #4ade80;
+}
+
+.boyle-quiz-card__result--wrong,
+.boyle-quiz-option__result--wrong {
+  color: #fb7185;
+}
+
+.boyle-quiz .experiment-quiz__options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+  margin-top: 14px;
+}
+
+.boyle-quiz .experiment-quiz__option {
+  display: grid;
+  grid-template-columns: 28px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 9px 11px;
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 13px;
+  background: rgba(2, 6, 23, 0.42);
+  color: #cbd5e1;
+  text-align: left;
+  cursor: pointer;
+}
+
+.boyle-quiz .experiment-quiz__option--selected {
+  border-color: rgba(56, 189, 248, 0.62);
+  background: rgba(14, 165, 233, 0.12);
+}
+
+.boyle-quiz .experiment-quiz__option--correct {
+  border-color: rgba(74, 222, 128, 0.48);
+  background: rgba(22, 101, 52, 0.13);
+}
+
+.boyle-quiz .experiment-quiz__option--wrong {
+  border-color: rgba(251, 113, 133, 0.48);
+  background: rgba(159, 18, 57, 0.12);
+}
+
+.boyle-quiz .experiment-quiz__option--muted {
+  opacity: 0.48;
+}
+
+.boyle-quiz-option__marker {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 9px;
+  background: rgba(148, 163, 184, 0.09);
+  color: #7dd3fc;
+  font-size: 10px;
+  font-weight: 900;
+}
+
+.boyle-quiz-page__submit {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.boyle-quiz-page__submit span {
+  color: #64748b;
+  font-size: 11px;
+}
+
+.boyle-quiz-score {
+  display: grid;
+  grid-template-columns: auto auto minmax(0, 1fr);
+  align-items: center;
+  gap: 14px;
+  margin-top: 16px;
+  padding: 16px;
+  border: 1px solid rgba(56, 189, 248, 0.18);
+  border-radius: 15px;
+  background: rgba(14, 165, 233, 0.08);
+}
+
+.boyle-quiz-score span {
+  color: #7dd3fc;
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.boyle-quiz-score strong {
+  color: #f8fafc;
+  font-size: 24px;
+}
+
+.boyle-quiz-score p {
+  margin: 0;
+  color: #94a3b8;
+  font-size: 11px;
+}
+
+/* REPORT */
+
+.boyle-report__heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 18px;
+}
+
+.boyle-report__heading > div:first-child {
+  max-width: 660px;
+}
+
+.boyle-report__actions {
+  display: flex;
+  gap: 8px;
+  flex: 0 0 auto;
+}
+
+.boyle-report-reference__summary {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.boyle-report-reference__table-wrap {
+  margin-top: 18px;
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  border-radius: 14px;
+}
+
+.boyle-report-reference__table {
+  min-width: 560px;
+  font-size: 12px;
+}
+
+.boyle-report-reference__table th,
+.boyle-report-reference__table td {
+  padding: 10px;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.1);
+  color: #cbd5e1;
+  text-align: right;
+}
+
+.boyle-report-reference__table thead th {
+  color: #64748b;
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+.boyle-report-reference__table th:first-child,
+.boyle-report-reference__table td:first-child {
+  text-align: center;
+}
+
+.boyle-report-reference__units {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 9px;
+}
+
+.boyle-report-reference__units span {
+  padding: 4px 7px;
+  border-radius: 999px;
+  background: rgba(148, 163, 184, 0.08);
+  color: #64748b;
+  font-size: 9px;
+}
+
+.boyle-report-observations {
+  display: grid;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.boyle-report-observations h4 {
+  margin: 0;
+  color: #f8fafc;
+  font-size: 14px;
+}
+
+.boyle-report-observation {
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr);
+  gap: 9px;
+  padding: 12px;
+  border-radius: 12px;
+  background: rgba(2, 6, 23, 0.4);
+}
+
+.boyle-report-observation > span {
+  color: #38bdf8;
+  font-weight: 800;
+}
+
+.boyle-report-observation strong {
+  color: #cbd5e1;
+  font-size: 11px;
+}
+
+.boyle-report-observation p {
+  margin: 5px 0 0;
+  color: #94a3b8;
+  font-size: 11px;
+  line-height: 1.5;
+}
+
+.boyle-report-sheet {
+  width: min(100%, 210mm);
+  min-height: 297mm;
+  margin: 18px auto 0;
+  padding: 18mm 16mm;
+  background: #fff;
+  color: #111827;
+  box-shadow: 0 20px 60px rgba(2, 6, 23, 0.25);
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 12pt;
+  line-height: 1.45;
+}
+
+.boyle-report-sheet__header {
+  text-align: center;
+}
+
+.boyle-report-sheet__header h1 {
+  margin: 0;
+  font-size: 14pt;
+}
+
+.boyle-report-sheet__header h2 {
+  margin: 7px 0 0;
+  font-size: 15pt;
+}
+
+.boyle-report-sheet__header p {
+  margin: 6px 0 0;
+}
+
+.boyle-report-sheet__identity {
+  display: grid;
+  gap: 9px;
+  margin-top: 18px;
+}
+
+.boyle-report-sheet__identity > div,
+.boyle-report-sheet__identity-row > div {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.boyle-report-sheet__identity span {
+  flex: 1;
+  min-width: 80px;
+  border-bottom: 1px dotted #111827;
+}
+
+.boyle-report-sheet__identity-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.boyle-report-sheet > section {
+  margin-top: 16px;
+}
+
+.boyle-report-sheet > section h3 {
+  margin: 0 0 8px;
+  font-size: 12.5pt;
+}
+
+.boyle-report-sheet ul {
+  margin: 0;
+  padding-left: 22px;
+}
+
+.boyle-report-sheet__table {
+  margin-top: 8px;
+  font-size: 10.5pt;
+}
+
+.boyle-report-sheet__table th,
+.boyle-report-sheet__table td {
+  height: 30px;
+  padding: 5px;
+  border: 1px solid #111827;
+  text-align: center;
+}
+
+.boyle-report-sheet__caption {
+  text-align: center;
+  font-style: italic;
+  font-weight: 700;
+}
+
+.boyle-report-sheet__blank-lines {
+  display: grid;
+  gap: 13px;
+  margin: 8px 0 14px;
+}
+
+.boyle-report-sheet__blank-lines span {
+  height: 8px;
+  border-bottom: 1px dotted #111827;
+}
+
+.boyle-report-sheet__graph-frame {
+  display: grid;
+  height: 180px;
+  place-items: center;
+  margin: 10px 0 16px;
+  border: 1.5px dashed #111827;
+  font-style: italic;
+}
+
+.boyle-report-sheet__formula {
+  margin: 10px 0;
+  padding: 8px;
+  border: 1px solid #d1d5db;
+  text-align: center;
+  font-size: 13pt;
+}
+
+.boyle-report-sheet__avoid-break {
+  break-inside: avoid;
+}
+
+.boyle-report-sheet__signature {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 22px;
+  text-align: center;
+}
+
+.boyle-report-sheet__signature > div {
+  width: 250px;
+}
+
+.boyle-report-sheet__signature p {
+  margin: 3px 0;
+}
+
+.boyle-report-sheet__signature div > div {
+  height: 56px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1180px) {
+  .boyle-practice-panel--instructions {
+    width: min(285px, calc(100% - 96px));
+  }
+
+  .boyle-practice-panel--measurements {
+    left: 317px;
+    width: min(350px, calc(100% - 413px));
+    min-width: 300px;
+  }
+}
+
+@media (max-width: 900px) {
+  .boyle-tool-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .boyle-practice-panel--instructions {
+    top: 12px;
+    left: 12px;
+    width: min(300px, calc(100% - 82px));
+    max-height: calc(48% - 12px);
+  }
+
+  .boyle-practice-panel--measurements {
+    top: auto;
+    bottom: 70px;
+    left: 12px;
+    width: min(390px, calc(100% - 82px));
+    min-width: 0;
+    max-height: calc(48% - 12px);
+  }
+
+  .boyle-practice-toolbar {
+    top: 12px;
+    right: 12px;
+  }
+
+  .boyle-practice-toolbar--expanded {
+    width: 174px;
+  }
+
+  .boyle-practice-status {
+    max-width: calc(100% - 96px);
+  }
+
+  .boyle-practice-conclusion {
+    right: 74px;
+    bottom: 20px;
+  }
+
+  .boyle-report__heading {
+    display: grid;
+  }
+
+  .boyle-report__actions {
+    justify-content: flex-start;
+  }
+
+  .boyle-report-reference__summary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  .boyle-intro__grid,
+  .boyle-tool-grid,
+  .boyle-conclusion__metrics,
+  .boyle-quiz .experiment-quiz__options {
+    grid-template-columns: 1fr;
+  }
+
+  .boyle-content-phase__heading h2,
+  .boyle-report__heading h2 {
+    font-size: 30px;
+  }
+
+  .boyle-practice__toast {
+    top: 8px;
+    left: 8px;
+    width: calc(100% - 76px);
+    transform: none;
+  }
+
+  .boyle-practice-toolbar {
+    top: 8px;
+    right: 8px;
+    width: 46px;
+    padding: 5px;
+    border-radius: 14px;
+  }
+
+  .boyle-practice-toolbar--expanded {
+    width: min(172px, calc(100% - 16px));
+  }
+
+  .boyle-practice-toolbar__toggle,
+  .boyle-practice-toolbar__button {
+    min-height: 36px;
+  }
+
+  .boyle-practice-panel--instructions,
+  .boyle-practice-panel--measurements {
+    left: 8px;
+    width: calc(100% - 70px);
+    min-width: 0;
+    padding: 13px;
+  }
+
+  .boyle-practice-panel--instructions {
+    top: 8px;
+    max-height: calc(43% - 8px);
+  }
+
+  .boyle-practice-panel--measurements {
+    top: auto;
+    bottom: 66px;
+    max-height: calc(50% - 44px);
+  }
+
+  .boyle-practice-measurement__actions {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .boyle-practice-measurement__actions .experiment-lab-button {
+    min-height: 36px;
+    padding-inline: 8px;
+    font-size: 10px;
+  }
+
+  .boyle-practice-status {
+    bottom: 8px;
+    left: 8px;
+    right: 62px;
+    max-width: none;
+    transform: none;
+    overflow-x: auto;
+    border-radius: 13px;
+  }
+
+  .boyle-practice-status > div {
+    flex: 0 0 auto;
+    padding: 7px 10px;
+  }
+
+  .boyle-practice-status strong {
+    font-size: 11px;
+  }
+
+  .boyle-practice-conclusion {
+    right: 62px;
+    bottom: 66px;
+    min-height: 38px;
+    padding: 8px 12px;
+    font-size: 11px;
+  }
+
+  .boyle-result-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .boyle-phase-actions,
+  .boyle-report__actions {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .boyle-phase-actions .experiment-lab-button,
+  .boyle-report__actions .experiment-lab-button {
+    width: 100%;
+  }
+
+  .boyle-conclusion__section,
+  .boyle-report-reference,
+  .boyle-report-preview {
+    padding: 15px;
+  }
+
+  .boyle-quiz-score {
+    grid-template-columns: 1fr;
+  }
+
+  .boyle-report-sheet {
+    padding: 12mm 10mm;
+  }
+}
+
+@media (max-width: 480px) {
+  .boyle-tool-card {
+    grid-template-columns: 42px minmax(0, 1fr) 22px;
+    min-height: 96px;
+    padding: 13px;
+  }
+
+  .boyle-info-card {
+    padding: 16px;
+  }
+
+  .boyle-formula-card {
+    padding: 18px;
+  }
+
+  .boyle-practice-panel--instructions,
+  .boyle-practice-panel--measurements {
+    width: calc(100% - 62px);
+  }
+
+  .boyle-practice-measurement__actions {
+    grid-template-columns: 1fr;
+  }
+
+  .boyle-practice-toolbar--expanded {
+    width: 164px;
+  }
+
+  .boyle-practice-status {
+    right: 56px;
+  }
+
+  .boyle-practice-status > div {
+    padding-inline: 8px;
+  }
+
+  .boyle-practice-conclusion {
+    right: 56px;
+  }
+
+  .boyle-report-reference__summary {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-height: 520px) {
+  .boyle-practice-toolbar {
+    top: 6px;
+    right: 6px;
+    gap: 3px;
+    padding: 4px;
+  }
+
+  .boyle-practice-toolbar__toggle,
+  .boyle-practice-toolbar__button {
+    min-height: 30px;
+  }
+
+  .boyle-practice-panel--instructions {
+    top: 6px;
+    max-height: calc(100% - 58px);
+  }
+
+  .boyle-practice-panel--measurements {
+    top: 6px;
+    bottom: auto;
+    left: min(310px, 36vw);
+    width: min(350px, calc(100% - min(310px, 36vw) - 70px));
+    max-height: calc(100% - 58px);
+  }
+
+  .boyle-practice-panel {
+    padding: 10px;
+  }
+
+  .boyle-practice-status {
+    bottom: 5px;
+  }
+
+  .boyle-practice-status > div {
+    padding-block: 5px;
+  }
+
+  .boyle-practice-conclusion {
+    bottom: 54px;
+  }
+}
+
+@media (max-width: 900px) and (max-height: 520px) {
+  .boyle-practice-panel--instructions,
+  .boyle-practice-panel--measurements {
+    top: 6px;
+    bottom: auto;
+    max-height: calc(100% - 56px);
+  }
+
+  .boyle-practice-panel--instructions {
+    left: 6px;
+    width: min(260px, calc(50% - 38px));
+  }
+
+  .boyle-practice-panel--measurements {
+    left: calc(50% - 24px);
+    width: calc(50% - 40px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .boyle-practice-loading__spinner {
+    animation-duration: 1.8s;
+  }
+
+  .boyle-tool-card {
+    transition: none;
+  }
+}
+
+@media print {
+  .boyle-report__screen > :not(.boyle-report-preview),
+  .boyle-report-preview > .boyle-section-heading {
+    display: none;
+  }
+
+  .boyle-report-preview {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: transparent;
+  }
+
+  .boyle-report-sheet {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 0;
+    padding: 14mm 14mm;
+    box-shadow: none;
+  }
+}

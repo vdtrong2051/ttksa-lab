@@ -315,6 +315,9 @@ export const curriculum: GradeCurriculum[] = [
 
             accent:
               'sky',
+
+            runtimePath:
+              '/lab/boyle/intro',
           },
 
           {

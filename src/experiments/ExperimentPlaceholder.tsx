@@ -1,5 +1,6 @@
 import {
   Link,
+  Navigate,
   useParams,
 } from 'react-router'
 
@@ -166,6 +167,17 @@ export default function ExperimentPlaceholder() {
   ) {
     return (
       <NotFoundState />
+    )
+  }
+
+  if (
+    experiment.runtimePath
+  ) {
+    return (
+      <Navigate
+        to={experiment.runtimePath}
+        replace
+      />
     )
   }
 

@@ -38,6 +38,7 @@ export default function ExperimentCard({
     'ready'
 
   const experimentUrl =
+    experiment.runtimePath ??
     `/experiments/${grade}/${chapterSlug}/${experiment.slug}`
 
 
