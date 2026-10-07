@@ -499,7 +499,7 @@ export default function Header() {
             DESKTOP AUTH
             =================================================== */}
 
-        <div className="hidden items-center gap-2 md:flex">
+        {/* <div className="hidden items-center gap-2 md:flex">
           <Link
             to="/login"
             onClick={
@@ -571,8 +571,46 @@ export default function Header() {
           >
             Đăng ký
           </Link>
-        </div>
+        </div> */}
+        <div className="hidden items-center md:flex">
+          <Link
+            to="/experiments/11"
+            onClick={closeDropdown}
+            style={{
+              background:
+                'var(--portal-gradient)',
+            }}
+            className={[
+              'inline-flex',
+              'min-h-10',
+              'items-center',
+              'justify-center',
+              'gap-2',
+              'px-4',
+              'text-sm',
+              'font-semibold',
+              'text-white',
+              'rounded-(--radius-button)',
+              'shadow-(--shadow-sm)',
+              'transition',
+              'duration-150',
+              'hover:-translate-y-px',
+              'hover:shadow-(--shadow-md)',
+              'focus-visible:outline-none',
+              'focus-visible:ring-2',
+              'focus-visible:ring-slate-400/30',
+              'focus-visible:ring-offset-2',
+            ].join(' ')}
+          >
+            Khám phá thí nghiệm
 
+            <AppIcon
+              name="chevron-right"
+              size={16}
+              strokeWidth={2}
+            />
+          </Link>
+        </div>
 
         {/* ===================================================
             MOBILE MENU BUTTON
@@ -782,7 +820,7 @@ export default function Header() {
                 MOBILE AUTH
                 =============================================== */}
 
-            <div className="mt-4 grid grid-cols-2 gap-3 border-t border-(--nav-border) pt-4">
+            {/* <div className="mt-4 grid grid-cols-2 gap-3 border-t border-(--nav-border) pt-4">
               <Link
                 to="/login"
                 onClick={
@@ -848,6 +886,42 @@ export default function Header() {
                 ].join(' ')}
               >
                 Đăng ký
+              </Link>
+            </div> */}
+
+            <div className="mt-4 border-t border-(--nav-border) pt-4">
+              <Link
+                to="/experiments/11"
+                onClick={closeMenus}
+                style={{
+                  background:
+                    'var(--portal-gradient)',
+                }}
+                className={[
+                  'inline-flex',
+                  'min-h-11',
+                  'w-full',
+                  'items-center',
+                  'justify-center',
+                  'gap-2',
+                  'px-4',
+                  'text-sm',
+                  'font-semibold',
+                  'text-white',
+                  'rounded-(--radius-button)',
+                  'shadow-(--shadow-sm)',
+                  'transition',
+                  'duration-150',
+                  'hover:shadow-(--shadow-md)',
+                ].join(' ')}
+              >
+                Khám phá thí nghiệm
+
+                <AppIcon
+                  name="chevron-right"
+                  size={16}
+                  strokeWidth={2}
+                />
               </Link>
             </div>
           </div>
