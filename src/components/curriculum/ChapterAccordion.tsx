@@ -17,12 +17,14 @@ import {
   chapterThemeClasses,
 } from './theme'
 
+
 interface ChapterAccordionProps {
   grade: GradeLevel
   chapter: Chapter
   expanded?: boolean
   children?: ReactNode
 }
+
 
 export default function ChapterAccordion({
   grade,
@@ -35,33 +37,32 @@ export default function ChapterAccordion({
       chapter.theme
     ]
 
-  const target = expanded
-    ? `/experiments/${grade}`
-    : `/experiments/${grade}/${chapter.slug}`
-
-  const chevronState =
+  const target =
     expanded
-      ? 'rotate-180 bg-brand-600 text-white'
-      : 'bg-white/80 text-soft'
+      ? `/experiments/${grade}`
+      : `/experiments/${grade}/${chapter.slug}`
+
 
   return (
     <section
       className={[
         'overflow-hidden',
+
         'border',
         theme.border,
 
         'bg-(--surface)',
 
         'rounded-(--radius-panel)',
-        '[box-shadow:var(--shadow-sm)]',
+
+        'shadow-(--shadow-sm)',
 
         'backdrop-blur-md',
 
         'transition',
         'duration-200',
 
-        'hover:[box-shadow:var(--shadow-md)]',
+        'hover:shadow-(--shadow-md)',
       ].join(' ')}
     >
       {/* =====================================================
@@ -70,28 +71,46 @@ export default function ChapterAccordion({
 
       <Link
         to={target}
+        aria-expanded={expanded}
         className={[
-          'flex w-full',
+          'group',
+
+          'flex',
+          'w-full',
           'items-center',
           'justify-between',
 
           'gap-4',
 
-          'px-5 py-4',
-          'md:px-6 md:py-5',
+          'px-5',
+          'py-5',
+
+          'md:px-7',
+          'md:py-6',
 
           'transition',
           'duration-150',
 
-          'hover:bg-white/40',
+          'hover:bg-white/35',
+
+          'focus-visible:outline-none',
+          'focus-visible:ring-2',
+          'focus-visible:ring-inset',
+          'focus-visible:ring-slate-400/25',
         ].join(' ')}
       >
-        {/* LEFT */}
+        {/* ===================================================
+            LEFT
+            =================================================== */}
+
         <div className="flex min-w-0 items-center gap-4">
           {/* ICON */}
+
           <div
             className={[
-              'flex h-11 w-11',
+              'flex',
+              'h-12',
+              'w-12',
               'shrink-0',
               'items-center',
               'justify-center',
@@ -102,25 +121,28 @@ export default function ChapterAccordion({
             ].join(' ')}
           >
             <AppIcon
-              name={chapter.icon}
-              size={23}
+              name={
+                chapter.icon
+              }
+              size={24}
               strokeWidth={1.9}
             />
           </div>
 
-          {/* TITLE */}
+
+          {/* TEXT */}
+
           <div className="min-w-0">
             <h2
               className={[
                 'm-0',
 
                 'text-left',
-                'text-lg',
+                'text-xl',
                 'font-bold',
+                'tracking-tight',
 
-                'tracking-[-0.015em]',
-
-                'md:text-xl',
+                'md:text-2xl',
 
                 theme.title,
               ].join(' ')}
@@ -140,10 +162,20 @@ export default function ChapterAccordion({
           </div>
         </div>
 
-        {/* CHEVRON */}
+
+        {/* ===================================================
+            CHEVRON
+
+            Không còn dùng brand purple.
+            Closed  -> neutral
+            Expanded -> màu đúng chuyên đề
+            =================================================== */}
+
         <div
           className={[
-            'flex h-9 w-9',
+            'flex',
+            'h-10',
+            'w-10',
             'shrink-0',
             'items-center',
             'justify-center',
@@ -153,17 +185,36 @@ export default function ChapterAccordion({
             'transition',
             'duration-200',
 
-            chevronState,
+            expanded
+              ? theme.icon
+              : [
+                  'bg-transparent',
+                  'text-muted',
+
+                  'group-hover:bg-(--nav-hover-background)',
+                  'group-hover:text-ink',
+                ].join(
+                  ' ',
+                ),
           ].join(' ')}
           aria-hidden="true"
         >
           <AppIcon
             name="chevron-down"
-            size={18}
+            size={19}
             strokeWidth={2}
+            className={[
+              'transition-transform',
+              'duration-200',
+
+              expanded
+                ? 'rotate-180'
+                : '',
+            ].join(' ')}
           />
         </div>
       </Link>
+
 
       {/* =====================================================
           EXPANDED CONTENT
@@ -175,10 +226,11 @@ export default function ChapterAccordion({
             'border-t',
             theme.border,
 
-            'bg-white/30',
+            'bg-white/28',
 
             'p-5',
-            'md:p-6',
+
+            'md:p-7',
           ].join(' ')}
         >
           {children}

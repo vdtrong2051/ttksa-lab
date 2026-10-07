@@ -1,57 +1,77 @@
 /* =========================================================
-   TTKSA LAB — VISUAL FOUNDATION
-   Reference:
-   - Palette / feeling: lab-old
-   - Flatness / semantic tokens: lab-new
+   TTKSA LAB — VISUAL TOKENS
+   GĐ1.5.1 Visual Correction
+
+   Direction:
+   - Structure: ttksa-lab
+   - Card character: lab-old
+   - Flatness / restraint: lab-new
+
+   Core rule:
+   BRAND COLOR != NAVIGATION COLOR
+
+   Purple / pink:
+   - brand
+   - register CTA
+   - landing accent
+
+   Navigation:
+   - neutral slate / navy
+
+   Curriculum:
+   - colors belong to topics / experiments
    ========================================================= */
 
 
 /* =========================================================
-   1. TAILWIND THEME
-   Các màu này sinh ra utility:
-   text-brand-600
-   bg-brand-100
-   text-ink
-   text-muted
-   ...
+   1. TAILWIND THEME TOKENS
    ========================================================= */
 
 @theme {
-  /* BRAND */
+  /* ---------------------------------------------------------
+     BRAND
+     --------------------------------------------------------- */
 
-  --color-brand-50: #faf5ff;
-  --color-brand-100: #f3e8ff;
-  --color-brand-200: #e9d5ff;
-  --color-brand-500: #a78bfa;
-  --color-brand-600: #8b5cf6;
-  --color-brand-700: #7c3aed;
-
-
-  /* TEXT */
-
-  --color-ink: #172033;
-  --color-soft: #52627a;
-  --color-muted: #718096;
+  --color-brand-50: #faf7ff;
+  --color-brand-100: #f3ecff;
+  --color-brand-200: #e5d7ff;
+  --color-brand-300: #d2b8ff;
+  --color-brand-400: #b88cff;
+  --color-brand-500: #9b67f2;
+  --color-brand-600: #8650dc;
+  --color-brand-700: #713cc2;
 
 
-  /* SURFACE */
+  /* ---------------------------------------------------------
+     TEXT
+     --------------------------------------------------------- */
+
+  --color-ink: #182033;
+  --color-soft: #526176;
+  --color-muted: #748196;
+
+
+  /* ---------------------------------------------------------
+     SURFACE
+     --------------------------------------------------------- */
 
   --color-surface: #ffffff;
 
 
-  /* TOPIC */
+  /* ---------------------------------------------------------
+     TOPIC
+     --------------------------------------------------------- */
 
-  --color-thermal: #e11d48;
-  --color-gas: #0284c7;
-  --color-magnetic: #7c3aed;
-  --color-nuclear: #0f9f8f;
-  --color-oscillation: #d97706;
+  --color-thermal: #df365c;
+  --color-gas: #2487b8;
+  --color-magnetic: #7355c7;
+  --color-nuclear: #188c82;
+  --color-oscillation: #cf7300;
 }
 
 
 /* =========================================================
-   2. SEMANTIC COLORS
-   Không gọi trực tiếp pink-300/purple-400... trong layout chung.
+   2. CORE SEMANTIC COLORS
    ========================================================= */
 
 :root {
@@ -61,200 +81,617 @@
 
   --color-white: #ffffff;
 
-  --color-text-main: #172033;
-  --color-text-soft: #52627a;
-  --color-text-muted: #718096;
+  --color-text-main:
+    #182033;
+
+  --color-text-soft:
+    #526176;
+
+  --color-text-muted:
+    #748196;
 
 
   /* ---------------------------------------------------------
      BORDER
+
+     Neutral.
+     Không còn border ám tím.
      --------------------------------------------------------- */
 
-  --color-border: #e7e5f0;
-  --color-border-soft: #f2eff8;
+  --color-border:
+    #e4e8ef;
+
+  --color-border-soft:
+    #eef1f5;
+
+  --color-border-strong:
+    #d7dce5;
 
 
   /* =========================================================
-     3. PORTAL PALETTE
+     3. BRAND
+
+     Purple chỉ dùng cho nhận diện thương hiệu.
+     Không dùng mặc định cho active navigation.
      ========================================================= */
 
-  --portal-bg: #fbf7ff;
+  --brand-purple:
+    #8650dc;
 
-  --portal-purple: #8b5cf6;
-  --portal-purple-hover: #7c3aed;
-  --portal-purple-soft: #f3e8ff;
+  --brand-purple-hover:
+    #713cc2;
 
-  --portal-pink: #ec4899;
-  --portal-pink-soft: #fce7f3;
+  --brand-purple-soft:
+    #f3ecff;
 
-  --portal-cyan: #06b6d4;
-  --portal-cyan-soft: #cffafe;
+  --brand-pink:
+    #e547a7;
 
-  --portal-blue: #0ea5e9;
-  --portal-blue-soft: #e0f2fe;
+  --brand-fuchsia:
+    #c946df;
+
+  --brand-cyan:
+    #2db8d0;
 
 
   /* ---------------------------------------------------------
      BRAND GRADIENT
 
      Chỉ dùng cho:
-     - logo text
+     - logo / brand wordmark
      - landing headline accent
-     - primary CTA đặc biệt
-     - Register
+     - Register CTA
+     - CTA đặc biệt
 
-     KHÔNG dùng làm background mọi card.
+     KHÔNG dùng cho navigation active.
+     KHÔNG dùng cho chapter controls.
      --------------------------------------------------------- */
 
   --portal-gradient:
     linear-gradient(
       135deg,
-      var(--portal-purple),
-      #d946ef,
-      var(--portal-pink)
+      #8b5cf6 0%,
+      #c946df 52%,
+      #e547a7 100%
     );
 
 
-  /* ---------------------------------------------------------
-     PAGE BACKGROUND
+  /* =========================================================
+     4. NAVIGATION — NEUTRAL SYSTEM
 
-     Đây là phiên bản "phẳng hóa" nền pastel của lab-old.
-     --------------------------------------------------------- */
+     Đây là thay đổi quan trọng nhất.
+     ========================================================= */
+
+  --nav-background:
+    rgba(255, 255, 255, 0.94);
+
+  --nav-border:
+    #eceff3;
+
+  --nav-text:
+    #59667a;
+
+  --nav-text-hover:
+    #182033;
+
+  --nav-text-active:
+    #182033;
+
+  --nav-hover-background:
+    #f6f7f9;
+
+  --nav-active-background:
+    #f3f4f6;
+
+  --nav-active-indicator:
+    #313b4d;
+
+  --nav-dropdown-background:
+    rgba(255, 255, 255, 0.98);
+
+  --nav-dropdown-hover:
+    #f6f7f9;
+
+  --nav-dropdown-active:
+    #eef1f5;
+
+
+  /* =========================================================
+     5. PORTAL BACKGROUND
+
+     Pastel vẫn giữ,
+     nhưng bỏ cảm giác tím phủ toàn màn hình.
+     ========================================================= */
+
+  --portal-bg:
+    #fbfbfd;
+
+  --portal-pink-soft:
+    #fdeff4;
+
+  --portal-blue-soft:
+    #edf6fb;
+
+  --portal-cyan-soft:
+    #edfafa;
+
+  --portal-lavender-soft:
+    #f6f2fb;
+
 
   --portal-page-background:
     radial-gradient(
-      circle at 8% 8%,
-      var(--portal-pink-soft),
-      transparent 34%
+      circle at 8% 5%,
+      rgba(253, 239, 244, 0.92),
+      transparent 30%
     ),
     radial-gradient(
-      circle at 92% 12%,
-      var(--portal-purple-soft),
-      transparent 36%
+      circle at 94% 12%,
+      rgba(246, 242, 251, 0.72),
+      transparent 30%
     ),
     radial-gradient(
       circle at 50% 100%,
-      var(--portal-cyan-soft),
-      transparent 42%
+      rgba(237, 250, 250, 0.92),
+      transparent 38%
     ),
     var(--portal-bg);
 
 
   /* =========================================================
-     4. SURFACES
+     6. SURFACES
      ========================================================= */
 
   --surface:
-    rgba(255, 255, 255, 0.88);
+    rgba(255, 255, 255, 0.9);
 
   --surface-soft:
-    rgba(255, 255, 255, 0.68);
+    rgba(255, 255, 255, 0.72);
 
   --surface-strong:
-    rgba(255, 255, 255, 0.95);
+    rgba(255, 255, 255, 0.98);
 
   --surface-solid:
     #ffffff;
 
+  --surface-muted:
+    #f8f9fb;
+
   --surface-border:
-    rgba(255, 255, 255, 0.82);
+    rgba(255, 255, 255, 0.9);
 
   --backdrop-blur:
     14px;
 
 
   /* =========================================================
-     5. TOPIC ACCENT
-     Chỉ topic mới được đổi màu.
+     7. TOPIC COLORS
+
+     Màu của chuyên đề.
+     Dùng cho:
+     - chapter title
+     - chapter icon
+     - chapter border
+     - chapter chevron active
+
+     Không ép màu topic lên mọi experiment card.
      ========================================================= */
 
-  /* DAO ĐỘNG CƠ */
+
+  /* ---------------------------------------------------------
+     DAO ĐỘNG CƠ
+     --------------------------------------------------------- */
 
   --topic-oscillation:
-    #d97706;
+    #cf7300;
 
   --topic-oscillation-soft:
-    #fffbeb;
+    #fff8e8;
 
   --topic-oscillation-accent:
-    #f59e0b;
+    #f2ad43;
 
 
-  /* NHIỆT HỌC */
+  /* ---------------------------------------------------------
+     NHIỆT HỌC
+     --------------------------------------------------------- */
 
   --topic-thermal:
-    #e11d48;
+    #df365c;
 
   --topic-thermal-soft:
-    #fff1f2;
+    #fff1f4;
 
   --topic-thermal-accent:
-    #fb7185;
+    #f38aa0;
 
 
-  /* KHÍ LÍ TƯỞNG */
+  /* ---------------------------------------------------------
+     KHÍ LÍ TƯỞNG
+     --------------------------------------------------------- */
 
   --topic-gas:
-    #0284c7;
+    #2487b8;
 
   --topic-gas-soft:
-    #e0f2fe;
+    #edf8fd;
 
   --topic-gas-accent:
-    #38bdf8;
+    #75c7e8;
 
 
-  /* TỪ TRƯỜNG */
+  /* ---------------------------------------------------------
+     TỪ TRƯỜNG
+     --------------------------------------------------------- */
 
   --topic-magnetic:
-    #7c3aed;
+    #7355c7;
 
   --topic-magnetic-soft:
-    #f3e8ff;
+    #f3effd;
 
   --topic-magnetic-accent:
-    #a78bfa;
+    #ad98e9;
 
 
-  /* VẬT LÝ HẠT NHÂN */
+  /* ---------------------------------------------------------
+     VẬT LÝ HẠT NHÂN
+     --------------------------------------------------------- */
 
   --topic-nuclear:
-    #0f9f8f;
+    #188c82;
 
   --topic-nuclear-soft:
-    #ccfbf1;
+    #edf9f6;
 
   --topic-nuclear-accent:
-    #2dd4bf;
+    #6acabb;
 
 
   /* =========================================================
-     6. STATUS
+     8. EXPERIMENT ACCENT PALETTE
+
+     Dùng để phục hồi tinh thần card của lab-old.
+
+     Mỗi experiment có thể có accent riêng:
+     - icon surface
+     - corner blob
+     - tag
+     - hover border
+     - hover shadow
+
+     Không nhúng Tailwind class vào registry.
+     ========================================================= */
+
+
+  /* ---------------------------------------------------------
+     ROSE
+     --------------------------------------------------------- */
+
+  --exp-rose:
+    #e84f70;
+
+  --exp-rose-soft:
+    #fff0f3;
+
+  --exp-rose-blob:
+    #ffdce4;
+
+  --exp-rose-border:
+    #f5adbd;
+
+  --exp-rose-shadow:
+    rgba(232, 79, 112, 0.14);
+
+
+  /* ---------------------------------------------------------
+     ORANGE
+     --------------------------------------------------------- */
+
+  --exp-orange:
+    #e97827;
+
+  --exp-orange-soft:
+    #fff4e9;
+
+  --exp-orange-blob:
+    #ffe2c3;
+
+  --exp-orange-border:
+    #f4b883;
+
+  --exp-orange-shadow:
+    rgba(233, 120, 39, 0.14);
+
+
+  /* ---------------------------------------------------------
+     AMBER
+     --------------------------------------------------------- */
+
+  --exp-amber:
+    #c97905;
+
+  --exp-amber-soft:
+    #fff8e5;
+
+  --exp-amber-blob:
+    #ffedb6;
+
+  --exp-amber-border:
+    #ecc568;
+
+  --exp-amber-shadow:
+    rgba(201, 121, 5, 0.14);
+
+
+  /* ---------------------------------------------------------
+     PINK
+     --------------------------------------------------------- */
+
+  --exp-pink:
+    #de4d96;
+
+  --exp-pink-soft:
+    #fff0f7;
+
+  --exp-pink-blob:
+    #ffdced;
+
+  --exp-pink-border:
+    #f0a7cc;
+
+  --exp-pink-shadow:
+    rgba(222, 77, 150, 0.14);
+
+
+  /* ---------------------------------------------------------
+     FUCHSIA
+     --------------------------------------------------------- */
+
+  --exp-fuchsia:
+    #c348d7;
+
+  --exp-fuchsia-soft:
+    #fdf0ff;
+
+  --exp-fuchsia-blob:
+    #f8d8ff;
+
+  --exp-fuchsia-border:
+    #dda0e9;
+
+  --exp-fuchsia-shadow:
+    rgba(195, 72, 215, 0.14);
+
+
+  /* ---------------------------------------------------------
+     RED
+     --------------------------------------------------------- */
+
+  --exp-red:
+    #dc4a4a;
+
+  --exp-red-soft:
+    #fff0f0;
+
+  --exp-red-blob:
+    #ffd9d9;
+
+  --exp-red-border:
+    #efa3a3;
+
+  --exp-red-shadow:
+    rgba(220, 74, 74, 0.14);
+
+
+  /* ---------------------------------------------------------
+     SKY
+     --------------------------------------------------------- */
+
+  --exp-sky:
+    #278bbb;
+
+  --exp-sky-soft:
+    #edf8fd;
+
+  --exp-sky-blob:
+    #d5f0fb;
+
+  --exp-sky-border:
+    #91d1ec;
+
+  --exp-sky-shadow:
+    rgba(39, 139, 187, 0.14);
+
+
+  /* ---------------------------------------------------------
+     CYAN
+     --------------------------------------------------------- */
+
+  --exp-cyan:
+    #168da6;
+
+  --exp-cyan-soft:
+    #ecfbfd;
+
+  --exp-cyan-blob:
+    #d1f4f8;
+
+  --exp-cyan-border:
+    #86dbe7;
+
+  --exp-cyan-shadow:
+    rgba(22, 141, 166, 0.14);
+
+
+  /* ---------------------------------------------------------
+     BLUE
+     --------------------------------------------------------- */
+
+  --exp-blue:
+    #3979c9;
+
+  --exp-blue-soft:
+    #eff6ff;
+
+  --exp-blue-blob:
+    #dbeafe;
+
+  --exp-blue-border:
+    #9fc5f3;
+
+  --exp-blue-shadow:
+    rgba(57, 121, 201, 0.14);
+
+
+  /* ---------------------------------------------------------
+     VIOLET
+     --------------------------------------------------------- */
+
+  --exp-violet:
+    #7557c8;
+
+  --exp-violet-soft:
+    #f3f0fd;
+
+  --exp-violet-blob:
+    #e8e0fb;
+
+  --exp-violet-border:
+    #b9a5e9;
+
+  --exp-violet-shadow:
+    rgba(117, 87, 200, 0.14);
+
+
+  /* ---------------------------------------------------------
+     PURPLE
+     --------------------------------------------------------- */
+
+  --exp-purple:
+    #8c55be;
+
+  --exp-purple-soft:
+    #f7effc;
+
+  --exp-purple-blob:
+    #eddcf7;
+
+  --exp-purple-border:
+    #c9a3df;
+
+  --exp-purple-shadow:
+    rgba(140, 85, 190, 0.14);
+
+
+  /* ---------------------------------------------------------
+     INDIGO
+     --------------------------------------------------------- */
+
+  --exp-indigo:
+    #586ac6;
+
+  --exp-indigo-soft:
+    #f0f2ff;
+
+  --exp-indigo-blob:
+    #dfe3ff;
+
+  --exp-indigo-border:
+    #a8b3ec;
+
+  --exp-indigo-shadow:
+    rgba(88, 106, 198, 0.14);
+
+
+  /* ---------------------------------------------------------
+     TEAL
+     --------------------------------------------------------- */
+
+  --exp-teal:
+    #168c81;
+
+  --exp-teal-soft:
+    #edf9f6;
+
+  --exp-teal-blob:
+    #d4f1eb;
+
+  --exp-teal-border:
+    #86cfc3;
+
+  --exp-teal-shadow:
+    rgba(22, 140, 129, 0.14);
+
+
+  /* ---------------------------------------------------------
+     EMERALD
+     --------------------------------------------------------- */
+
+  --exp-emerald:
+    #238a68;
+
+  --exp-emerald-soft:
+    #eef9f4;
+
+  --exp-emerald-blob:
+    #d6f1e6;
+
+  --exp-emerald-border:
+    #8bd0b7;
+
+  --exp-emerald-shadow:
+    rgba(35, 138, 104, 0.14);
+
+
+  /* ---------------------------------------------------------
+     GREEN
+     --------------------------------------------------------- */
+
+  --exp-green:
+    #398657;
+
+  --exp-green-soft:
+    #f0f8f2;
+
+  --exp-green-blob:
+    #ddefe2;
+
+  --exp-green-border:
+    #9ac8a8;
+
+  --exp-green-shadow:
+    rgba(57, 134, 87, 0.14);
+
+
+  /* =========================================================
+     9. STATUS
      ========================================================= */
 
   --color-success:
-    #16a34a;
+    #26845b;
 
   --color-success-soft:
-    #dcfce7;
+    #ebf8f1;
 
   --color-warning:
-    #d97706;
+    #b96c08;
 
   --color-warning-soft:
-    #fef3c7;
+    #fff7e5;
 
   --color-danger:
-    #dc2626;
+    #c84545;
 
   --color-danger-soft:
-    #fee2e2;
+    #fff0f0;
 
 
   /* =========================================================
-     7. RADIUS
+     10. RADIUS
 
-     Cố tình giảm mạnh so với UI GĐ1.
+     Card sẽ có character trở lại,
+     nhưng không quay về bo quá lớn của lab-old.
      ========================================================= */
 
   --radius-sm:
@@ -267,10 +704,10 @@
     10px;
 
   --radius-card:
-    14px;
+    16px;
 
   --radius-panel:
-    16px;
+    18px;
 
   --radius-dialog:
     18px;
@@ -280,27 +717,44 @@
 
 
   /* =========================================================
-     8. SHADOW
+     11. SHADOW
 
-     Không glow.
-     Không shadow màu theo từng card.
+     Neutral shadow.
+     Bỏ hoàn toàn purple cast của bản trước.
      ========================================================= */
 
   --shadow-xs:
-    0 1px 3px rgba(76, 29, 149, 0.04);
+    0 1px 3px
+    rgba(15, 23, 42, 0.035);
 
   --shadow-sm:
-    0 2px 8px rgba(76, 29, 149, 0.06);
+    0 3px 10px
+    rgba(15, 23, 42, 0.055);
 
   --shadow-md:
-    0 10px 28px rgba(76, 29, 149, 0.09);
+    0 10px 28px
+    rgba(15, 23, 42, 0.075);
 
   --shadow-lg:
-    0 20px 48px rgba(76, 29, 149, 0.12);
+    0 18px 46px
+    rgba(15, 23, 42, 0.1);
+
+
+  /* ---------------------------------------------------------
+     CARD-SPECIFIC SHADOW
+     --------------------------------------------------------- */
+
+  --shadow-card:
+    0 8px 22px
+    rgba(15, 23, 42, 0.045);
+
+  --shadow-card-hover:
+    0 14px 34px
+    rgba(15, 23, 42, 0.07);
 
 
   /* =========================================================
-     9. TYPOGRAPHY
+     12. TYPOGRAPHY
      ========================================================= */
 
   --font-main:
@@ -325,7 +779,7 @@
 
 
   /* =========================================================
-     10. LAYOUT
+     13. LAYOUT
      ========================================================= */
 
   --header-height:
@@ -342,12 +796,15 @@
 
 
   /* =========================================================
-     11. TRANSITION
+     14. MOTION
      ========================================================= */
 
   --transition-fast:
     150ms ease;
 
   --transition-normal:
-    250ms ease;
+    220ms ease;
+
+  --transition-slow:
+    320ms ease;
 }

@@ -3,7 +3,6 @@ import {
 } from 'react-router'
 
 import type {
-  ChapterTheme,
   Experiment,
   GradeLevel,
 } from '../../catalog/types'
@@ -11,115 +10,167 @@ import type {
 import AppIcon from '../ui/AppIcon'
 
 import {
-  chapterThemeClasses,
-} from './theme'
+  experimentThemeClasses,
+} from './experimentThemes'
+
 
 interface ExperimentCardProps {
   grade: GradeLevel
   chapterSlug: string
   experiment: Experiment
-  theme: ChapterTheme
-
-  /**
-   * Số thứ tự hiển thị trong chương.
-   * Ví dụ:
-   * 1. Chuyển động Brown
-   * 2. Sự biến đổi nội năng
-   */
   order: number
 }
+
 
 export default function ExperimentCard({
   grade,
   chapterSlug,
   experiment,
-  theme,
   order,
 }: ExperimentCardProps) {
-  const classes =
-    chapterThemeClasses[theme]
+  const theme =
+    experimentThemeClasses[
+      experiment.accent
+    ]
 
   const isReady =
-    experiment.status === 'ready'
+    experiment.status ===
+    'ready'
 
   const experimentUrl =
     `/experiments/${grade}/${chapterSlug}/${experiment.slug}`
+
 
   return (
     <article
       className={[
         'group',
 
-        'flex h-full flex-col',
+        'relative',
+        'isolate',
+
+        'flex',
+        'h-full',
+        'flex-col',
+
+        'overflow-hidden',
 
         'border',
-        'border-white/85',
+        'border-white/90',
 
-        'bg-(--surface)',
+        'bg-white/72',
 
-        'p-5',
-        'md:p-6',
+        'p-6',
+
+        'md:p-7',
 
         'rounded-(--radius-card)',
-        '[box-shadow:var(--shadow-xs)]',
 
-        'backdrop-blur-md',
+        'shadow-(--shadow-card)',
+
+        'backdrop-blur-xl',
 
         'transition',
         'duration-200',
 
         'hover:-translate-y-0.5',
-        'hover:border-white',
-        'hover:bg-(--surface-strong)',
-        'hover:[box-shadow:var(--shadow-md)]',
+        'hover:bg-white/92',
+
+        theme.hoverBorder,
+        theme.hoverShadow,
       ].join(' ')}
     >
+      {/* =====================================================
+          CORNER DECORATION
+          Phục hồi visual anchor của lab-old.
+          ===================================================== */}
+
+      <div
+        className={[
+          'pointer-events-none',
+
+          'absolute',
+          'top-0',
+          'right-0',
+
+          '-z-10',
+
+          'h-28',
+          'w-28',
+
+          'rounded-bl-[88px]',
+
+          'opacity-70',
+
+          'transition-transform',
+          'duration-500',
+
+          'group-hover:scale-110',
+
+          theme.blob,
+        ].join(' ')}
+        aria-hidden="true"
+      />
+
+
       {/* =====================================================
           ICON
           ===================================================== */}
 
       <div
         className={[
-          'flex h-12 w-12',
+          'flex',
+
+          'h-14',
+          'w-14',
+
           'shrink-0',
+
           'items-center',
           'justify-center',
 
-          'rounded-(--radius-control)',
+          'border',
+          'border-white/80',
 
-          classes.icon,
+          'rounded-(--radius-card)',
+
+          'shadow-(--shadow-xs)',
+
+          theme.icon,
         ].join(' ')}
       >
         <AppIcon
-          name={experiment.icon}
-          size={25}
+          name={
+            experiment.icon
+          }
+          size={27}
           strokeWidth={1.8}
         />
       </div>
+
 
       {/* =====================================================
           CONTENT
           ===================================================== */}
 
-      <div className="mt-5 flex flex-1 flex-col">
-        {/* TITLE */}
-
-        <h3 className="m-0 text-lg font-bold leading-snug tracking-[-0.015em] text-ink">
+      <div className="mt-6 flex flex-1 flex-col">
+        <h3 className="m-0 text-xl font-bold leading-snug tracking-tight text-ink">
           {order}.{' '}
           {experiment.title}
         </h3>
 
-        {/* DESCRIPTION */}
-
-        <p className="mt-3 flex-1 text-sm font-normal leading-6 text-soft">
-          {experiment.description}
+        <p className="mt-3 flex-1 text-sm leading-6 font-medium text-soft">
+          {
+            experiment.description
+          }
         </p>
+
 
         {/* ===================================================
             FOOTER
             =================================================== */}
 
-        <div className="mt-6 flex min-h-9 flex-wrap items-center justify-between gap-3">
+        <div className="mt-7 flex min-h-9 flex-wrap items-center justify-between gap-3">
           {/* TAG */}
 
           <span
@@ -127,51 +178,66 @@ export default function ExperimentCard({
               'inline-flex',
               'items-center',
 
-              'px-3 py-1.5',
+              'border',
+              'border-white/70',
+
+              'px-3',
+              'py-1.5',
 
               'text-xs',
               'font-semibold',
+              'tracking-wide',
 
               'rounded-(--radius-pill)',
 
-              classes.tag,
+              'shadow-(--shadow-xs)',
+
+              theme.tag,
             ].join(' ')}
           >
             {experiment.tag}
           </span>
 
-          {/* ACTION */}
+
+          {/* =================================================
+              READY ACTION
+              ================================================= */}
 
           {isReady ? (
             <Link
-              to={experimentUrl}
+              to={
+                experimentUrl
+              }
               aria-label={`Bắt đầu ${experiment.title}`}
               className={[
                 'inline-flex',
                 'items-center',
                 'gap-1.5',
 
-                'px-3 py-2',
+                'px-3',
+                'py-2',
 
                 'text-sm',
                 'font-semibold',
 
                 'rounded-(--radius-button)',
 
-                'transition',
-                'duration-150',
+                'shadow-(--shadow-xs)',
 
-                classes.action,
+                'transition',
+                'duration-200',
+
+                theme.action,
 
                 /*
-                 * Mobile:
-                 * luôn hiện vì không có hover.
-                 *
                  * Desktop:
-                 * giống lab-old — action chỉ nổi lên
-                 * khi hover/focus card.
+                 * phục hồi interaction của lab-old:
+                 * action xuất hiện khi hover card.
+                 *
+                 * Mobile:
+                 * luôn hiển thị.
                  */
-                'md:translate-x-1',
+                'md:translate-x-2',
                 'md:opacity-0',
 
                 'md:group-hover:translate-x-0',
@@ -192,15 +258,24 @@ export default function ExperimentCard({
               />
             </Link>
           ) : (
+            /* ===============================================
+               PLANNED
+
+               Không làm nút nổi bật.
+               =============================================== */
+
             <Link
-              to={experimentUrl}
+              to={
+                experimentUrl
+              }
               aria-label={`Xem thông tin ${experiment.title}`}
               className={[
                 'inline-flex',
                 'items-center',
                 'gap-1.5',
 
-                'px-2 py-1',
+                'px-2',
+                'py-1',
 
                 'text-xs',
                 'font-medium',
@@ -208,8 +283,9 @@ export default function ExperimentCard({
                 'text-muted',
 
                 'transition',
+                'duration-150',
 
-                'hover:text-soft',
+                'hover:text-ink',
               ].join(' ')}
             >
               <span>

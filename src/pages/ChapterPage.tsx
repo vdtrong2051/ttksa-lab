@@ -181,24 +181,11 @@ export default function ChapterPage() {
                 index,
               ) => (
                 <ExperimentCard
-                  key={
-                    experiment.slug
-                  }
-                  grade={
-                    gradeNumber
-                  }
-                  chapterSlug={
-                    chapter.slug
-                  }
-                  experiment={
-                    experiment
-                  }
-                  theme={
-                    chapter.theme
-                  }
-                  order={
-                    index + 1
-                  }
+                  key={experiment.slug}
+                  grade={gradeNumber}
+                  chapterSlug={chapter.slug}
+                  experiment={experiment}
+                  order={index + 1}
                 />
               ),
             )}

@@ -18,6 +18,23 @@ export type ChapterTheme =
   | 'teal'
   | 'amber'
 
+export type ExperimentAccent =
+  | 'rose'
+  | 'orange'
+  | 'amber'
+  | 'pink'
+  | 'fuchsia'
+  | 'red'
+  | 'sky'
+  | 'cyan'
+  | 'blue'
+  | 'violet'
+  | 'purple'
+  | 'indigo'
+  | 'teal'
+  | 'emerald'
+  | 'green'
+
 export interface Experiment {
   slug: string
   title: string
@@ -25,6 +42,7 @@ export interface Experiment {
   tag: string
   description: string
   status: ExperimentStatus
+  accent: ExperimentAccent
 }
 
 export interface Chapter {
