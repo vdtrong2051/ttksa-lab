@@ -3,23 +3,13 @@
    GĐ1.5.1 Visual Correction
 
    Direction:
-   - Structure: ttksa-lab
-   - Card character: lab-old
-   - Flatness / restraint: lab-new
+   - Neutral navigation
+   - Stronger pastel page atmosphere
+   - Colorful curriculum content
+   - Card character inspired by lab-old
 
    Core rule:
    BRAND COLOR != NAVIGATION COLOR
-
-   Purple / pink:
-   - brand
-   - register CTA
-   - landing accent
-
-   Navigation:
-   - neutral slate / navy
-
-   Curriculum:
-   - colors belong to topics / experiments
    ========================================================= */
 
 
@@ -93,9 +83,6 @@
 
   /* ---------------------------------------------------------
      BORDER
-
-     Neutral.
-     Không còn border ám tím.
      --------------------------------------------------------- */
 
   --color-border:
@@ -110,9 +97,6 @@
 
   /* =========================================================
      3. BRAND
-
-     Purple chỉ dùng cho nhận diện thương hiệu.
-     Không dùng mặc định cho active navigation.
      ========================================================= */
 
   --brand-purple:
@@ -136,15 +120,6 @@
 
   /* ---------------------------------------------------------
      BRAND GRADIENT
-
-     Chỉ dùng cho:
-     - logo / brand wordmark
-     - landing headline accent
-     - Register CTA
-     - CTA đặc biệt
-
-     KHÔNG dùng cho navigation active.
-     KHÔNG dùng cho chapter controls.
      --------------------------------------------------------- */
 
   --portal-gradient:
@@ -158,12 +133,10 @@
 
   /* =========================================================
      4. NAVIGATION — NEUTRAL SYSTEM
-
-     Đây là thay đổi quan trọng nhất.
      ========================================================= */
 
   --nav-background:
-    rgba(255, 255, 255, 0.94);
+    rgba(255, 255, 255, 0.95);
 
   --nav-border:
     #eceff3;
@@ -187,7 +160,7 @@
     #313b4d;
 
   --nav-dropdown-background:
-    rgba(255, 255, 255, 0.98);
+    rgba(255, 255, 255, 0.985);
 
   --nav-dropdown-hover:
     #f6f7f9;
@@ -199,66 +172,86 @@
   /* =========================================================
      5. PORTAL BACKGROUND
 
-     Pastel vẫn giữ,
-     nhưng bỏ cảm giác tím phủ toàn màn hình.
+     PHƯƠNG ÁN 2:
+     - pastel rõ hơn bản trước
+     - vẫn mềm hơn lab-old
+     - không phủ tím toàn trang
      ========================================================= */
 
   --portal-bg:
-    #fbfbfd;
+    #faf9fd;
+
+
+  /* ---------------------------------------------------------
+     BACKGROUND COLOR SOURCES
+     --------------------------------------------------------- */
 
   --portal-pink-soft:
-    #fdeff4;
-
-  --portal-blue-soft:
-    #edf6fb;
-
-  --portal-cyan-soft:
-    #edfafa;
+    #fbdde8;
 
   --portal-lavender-soft:
-    #f6f2fb;
+    #eee4fb;
 
+  --portal-cyan-soft:
+    #dcf6f6;
+
+  --portal-blue-soft:
+    #e5f3fa;
+
+
+  /* ---------------------------------------------------------
+     PAGE BACKGROUND
+
+     Tăng saturation và vùng phủ nhẹ so với bản trước.
+     --------------------------------------------------------- */
 
   --portal-page-background:
     radial-gradient(
-      circle at 8% 5%,
-      rgba(253, 239, 244, 0.92),
-      transparent 30%
+      circle at 6% 4%,
+      rgba(251, 221, 232, 0.96),
+      transparent 34%
     ),
     radial-gradient(
-      circle at 94% 12%,
-      rgba(246, 242, 251, 0.72),
-      transparent 30%
+      circle at 94% 8%,
+      rgba(238, 228, 251, 0.9),
+      transparent 34%
     ),
     radial-gradient(
-      circle at 50% 100%,
-      rgba(237, 250, 250, 0.92),
-      transparent 38%
+      circle at 52% 102%,
+      rgba(220, 246, 246, 0.96),
+      transparent 43%
+    ),
+    radial-gradient(
+      circle at 48% 44%,
+      rgba(255, 255, 255, 0.34),
+      transparent 48%
     ),
     var(--portal-bg);
 
 
   /* =========================================================
      6. SURFACES
+
+     Giảm opacity một chút để pastel background xuyên qua.
      ========================================================= */
 
   --surface:
-    rgba(255, 255, 255, 0.9);
+    rgba(255, 255, 255, 0.84);
 
   --surface-soft:
-    rgba(255, 255, 255, 0.72);
+    rgba(255, 255, 255, 0.66);
 
   --surface-strong:
-    rgba(255, 255, 255, 0.98);
+    rgba(255, 255, 255, 0.94);
 
   --surface-solid:
     #ffffff;
 
   --surface-muted:
-    #f8f9fb;
+    rgba(248, 249, 251, 0.9);
 
   --surface-border:
-    rgba(255, 255, 255, 0.9);
+    rgba(255, 255, 255, 0.88);
 
   --backdrop-blur:
     14px;
@@ -266,15 +259,6 @@
 
   /* =========================================================
      7. TOPIC COLORS
-
-     Màu của chuyên đề.
-     Dùng cho:
-     - chapter title
-     - chapter icon
-     - chapter border
-     - chapter chevron active
-
-     Không ép màu topic lên mọi experiment card.
      ========================================================= */
 
 
@@ -350,17 +334,6 @@
 
   /* =========================================================
      8. EXPERIMENT ACCENT PALETTE
-
-     Dùng để phục hồi tinh thần card của lab-old.
-
-     Mỗi experiment có thể có accent riêng:
-     - icon surface
-     - corner blob
-     - tag
-     - hover border
-     - hover shadow
-
-     Không nhúng Tailwind class vào registry.
      ========================================================= */
 
 
@@ -375,7 +348,7 @@
     #fff0f3;
 
   --exp-rose-blob:
-    #ffdce4;
+    #ffd6df;
 
   --exp-rose-border:
     #f5adbd;
@@ -395,7 +368,7 @@
     #fff4e9;
 
   --exp-orange-blob:
-    #ffe2c3;
+    #ffdfbc;
 
   --exp-orange-border:
     #f4b883;
@@ -415,7 +388,7 @@
     #fff8e5;
 
   --exp-amber-blob:
-    #ffedb6;
+    #ffebb0;
 
   --exp-amber-border:
     #ecc568;
@@ -435,7 +408,7 @@
     #fff0f7;
 
   --exp-pink-blob:
-    #ffdced;
+    #ffd7eb;
 
   --exp-pink-border:
     #f0a7cc;
@@ -455,7 +428,7 @@
     #fdf0ff;
 
   --exp-fuchsia-blob:
-    #f8d8ff;
+    #f5d2fc;
 
   --exp-fuchsia-border:
     #dda0e9;
@@ -475,7 +448,7 @@
     #fff0f0;
 
   --exp-red-blob:
-    #ffd9d9;
+    #ffd4d4;
 
   --exp-red-border:
     #efa3a3;
@@ -495,7 +468,7 @@
     #edf8fd;
 
   --exp-sky-blob:
-    #d5f0fb;
+    #cfeefa;
 
   --exp-sky-border:
     #91d1ec;
@@ -515,7 +488,7 @@
     #ecfbfd;
 
   --exp-cyan-blob:
-    #d1f4f8;
+    #caf1f6;
 
   --exp-cyan-border:
     #86dbe7;
@@ -535,7 +508,7 @@
     #eff6ff;
 
   --exp-blue-blob:
-    #dbeafe;
+    #d5e7fc;
 
   --exp-blue-border:
     #9fc5f3;
@@ -555,7 +528,7 @@
     #f3f0fd;
 
   --exp-violet-blob:
-    #e8e0fb;
+    #e4daf9;
 
   --exp-violet-border:
     #b9a5e9;
@@ -575,7 +548,7 @@
     #f7effc;
 
   --exp-purple-blob:
-    #eddcf7;
+    #ead7f5;
 
   --exp-purple-border:
     #c9a3df;
@@ -595,7 +568,7 @@
     #f0f2ff;
 
   --exp-indigo-blob:
-    #dfe3ff;
+    #d9defc;
 
   --exp-indigo-border:
     #a8b3ec;
@@ -615,7 +588,7 @@
     #edf9f6;
 
   --exp-teal-blob:
-    #d4f1eb;
+    #cef0e8;
 
   --exp-teal-border:
     #86cfc3;
@@ -635,7 +608,7 @@
     #eef9f4;
 
   --exp-emerald-blob:
-    #d6f1e6;
+    #d0efe1;
 
   --exp-emerald-border:
     #8bd0b7;
@@ -655,7 +628,7 @@
     #f0f8f2;
 
   --exp-green-blob:
-    #ddefe2;
+    #d8eddf;
 
   --exp-green-border:
     #9ac8a8;
@@ -689,9 +662,6 @@
 
   /* =========================================================
      10. RADIUS
-
-     Card sẽ có character trở lại,
-     nhưng không quay về bo quá lớn của lab-old.
      ========================================================= */
 
   --radius-sm:
@@ -719,8 +689,7 @@
   /* =========================================================
      11. SHADOW
 
-     Neutral shadow.
-     Bỏ hoàn toàn purple cast của bản trước.
+     Neutral, không ám tím.
      ========================================================= */
 
   --shadow-xs:
@@ -741,7 +710,7 @@
 
 
   /* ---------------------------------------------------------
-     CARD-SPECIFIC SHADOW
+     CARD
      --------------------------------------------------------- */
 
   --shadow-card:
