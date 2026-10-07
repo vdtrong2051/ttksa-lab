@@ -1,45 +1,45 @@
 import {
   Navigate,
-  createBrowserRouter,
 } from 'react-router'
 
-import experimentRoutes from '../experiments/routes'
+import type {
+  RouteObject,
+} from 'react-router'
 
-import RootLayout from './RootLayout'
+import {
+  getExperimentEntryPath,
+} from '../../core/routing'
 
 
-const router =
-  createBrowserRouter([
-    // =====================================================
-    // PORTAL
-    // =====================================================
-
+const templateRoutes:
+  RouteObject[] =
+  [
     {
-      Component:
-        RootLayout,
+      path:
+        'template',
+
+      lazy: {
+        Component:
+          async () =>
+            (
+              await import(
+                './SessionLayout'
+              )
+            ).default,
+      },
 
       children: [
         {
-          index: true,
-
-          lazy: {
-            Component:
-              async () =>
-                (
-                  await import(
-                    '../pages/LandingPage'
-                  )
-                ).default,
-          },
-        },
-
-        {
-          path:
-            'experiments',
+          index:
+            true,
 
           element: (
             <Navigate
-              to="/"
+              to={
+                getExperimentEntryPath(
+                  'template',
+                )
+              }
               replace
             />
           ),
@@ -47,14 +47,14 @@ const router =
 
         {
           path:
-            'experiments/:grade',
+            'intro',
 
           lazy: {
             Component:
               async () =>
                 (
                   await import(
-                    '../pages/GradePage'
+                    './view/IntroPage'
                   )
                 ).default,
           },
@@ -62,14 +62,14 @@ const router =
 
         {
           path:
-            'experiments/:grade/:chapterSlug',
+            'preparation',
 
           lazy: {
             Component:
               async () =>
                 (
                   await import(
-                    '../pages/ChapterPage'
+                    './view/PreparationPage'
                   )
                 ).default,
           },
@@ -77,14 +77,14 @@ const router =
 
         {
           path:
-            'experiments/:grade/:chapterSlug/:experimentSlug',
+            'practice',
 
           lazy: {
             Component:
               async () =>
                 (
                   await import(
-                    '../experiments/ExperimentPlaceholder'
+                    './view/PracticePage'
                   )
                 ).default,
           },
@@ -92,14 +92,14 @@ const router =
 
         {
           path:
-            'login',
+            'conclusion',
 
           lazy: {
             Component:
               async () =>
                 (
                   await import(
-                    '../pages/LoginPage'
+                    './view/ConclusionPage'
                   )
                 ).default,
           },
@@ -107,45 +107,52 @@ const router =
 
         {
           path:
-            'register',
+            'quiz',
 
           lazy: {
             Component:
               async () =>
                 (
                   await import(
-                    '../pages/RegisterPage'
+                    './view/QuizPage'
                   )
                 ).default,
           },
         },
 
         {
-          path: '*',
+          path:
+            'report',
 
           lazy: {
             Component:
               async () =>
                 (
                   await import(
-                    '../pages/NotFoundPage'
+                    './view/ReportPage'
                   )
                 ).default,
           },
+        },
+
+        {
+          path:
+            '*',
+
+          element: (
+            <Navigate
+              to={
+                getExperimentEntryPath(
+                  'template',
+                )
+              }
+              replace
+            />
+          ),
         },
       ],
     },
+  ]
 
 
-    // =====================================================
-    // EXPERIMENT RUNTIME
-    //
-    // Không nằm trong RootLayout.
-    // Vì vậy trang thí nghiệm sau này có shell/header riêng.
-    // =====================================================
-
-    ...experimentRoutes,
-  ])
-
-
-export default router
+export default templateRoutes

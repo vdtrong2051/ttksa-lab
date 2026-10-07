@@ -1,0 +1,9788 @@
+/* =========================================================
+   TTKSA LAB — _TEMPLATE MODULE STYLES
+
+   Ownership:
+   - Chỉ chứa selector thuộc module _template (.template-*).
+   - Shared experiment framework nằm ở src/styles/experiment.css.
+   - Import file này từ _template/SessionLayout.tsx bằng:
+     import './styles.css'
+   ========================================================= */
+
+.experiment-template__route--practice
+.template-demo-panel {
+  width:
+    min(
+      360px,
+      calc(100% - 32px)
+    );
+
+  max-height:
+    100%;
+
+  overflow-y:
+    auto;
+
+  pointer-events:
+    auto;
+}
+
+
+/* =========================================================
+   24. TEMPLATE MODULE
+   ========================================================= */
+
+.template-demo-panel {
+  width:
+    min(
+      100%,
+      920px
+    );
+
+  margin-inline:
+    auto;
+
+  padding:
+    24px;
+
+  color:
+    var(--lab-text);
+
+  background:
+    rgba(15, 26, 43, 0.92);
+
+  border:
+    1px solid
+    var(--lab-border);
+
+  border-radius:
+    var(--lab-radius-lg);
+
+  box-shadow:
+    var(--lab-shadow);
+}
+
+
+.template-demo-panel__eyebrow {
+  color:
+    var(--lab-accent);
+
+  font-size:
+    11px;
+
+  font-weight:
+    700;
+
+  letter-spacing:
+    0.07em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.template-demo-panel h2 {
+  margin:
+    8px
+    0
+    0;
+
+  color:
+    var(--lab-text);
+
+  font-size:
+    24px;
+}
+
+
+.template-demo-panel > p {
+  max-width:
+    720px;
+
+  margin:
+    10px
+    0
+    0;
+
+  color:
+    var(--lab-text-muted);
+
+  font-size:
+    14px;
+
+  line-height:
+    1.65;
+}
+
+
+.template-demo-panel__content {
+  margin-top:
+    22px;
+
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  gap:
+    14px;
+}
+
+
+.template-demo-panel__actions {
+  margin-top:
+    24px;
+
+  padding-top:
+    16px;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    space-between;
+
+  gap:
+    10px;
+
+  border-top:
+    1px solid
+    var(--lab-border);
+}
+
+
+/* =========================================================
+   TEMPLATE INFO
+   ========================================================= */
+
+.template-demo-info-grid {
+  display:
+    grid;
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(0, 1fr)
+    );
+
+  gap:
+    10px;
+}
+
+
+.template-demo-info-grid article {
+  padding:
+    16px;
+
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  gap:
+    5px;
+
+  background:
+    var(--lab-surface-soft);
+
+  border:
+    1px solid
+    var(--lab-border);
+
+  border-radius:
+    var(--lab-radius-md);
+}
+
+
+.template-demo-info-grid span {
+  color:
+    var(--lab-text-muted);
+
+  font-size:
+    12px;
+}
+
+
+.template-demo-info-grid strong {
+  color:
+    var(--lab-text);
+
+  font-size:
+    14px;
+}
+
+
+/* =========================================================
+   TEMPLATE MEASUREMENT
+   ========================================================= */
+
+.template-demo-measurement {
+  min-height:
+    74px;
+
+  padding:
+    14px;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    space-between;
+
+  gap:
+    16px;
+
+  background:
+    var(--lab-surface-soft);
+
+  border:
+    1px solid
+    var(--lab-border);
+
+  border-radius:
+    var(--lab-radius-md);
+}
+
+
+.template-demo-measurement span {
+  color:
+    var(--lab-text-muted);
+
+  font-size:
+    13px;
+}
+
+
+.template-demo-measurement strong {
+  color:
+    var(--lab-accent);
+
+  font-size:
+    28px;
+}
+
+
+/* =========================================================
+   TEMPLATE RUNTIME
+   ========================================================= */
+
+.template-runtime-demo {
+  width:
+    100%;
+
+  height:
+    100%;
+
+  position:
+    relative;
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+  overflow:
+    hidden;
+
+  background:
+    radial-gradient(
+      circle at 50% 45%,
+      var(--lab-accent-soft),
+      transparent 30%
+    ),
+    var(--lab-bg);
+}
+
+
+.template-runtime-demo__grid {
+  position:
+    absolute;
+
+  inset:
+    0;
+
+  opacity:
+    0.16;
+
+  background-image:
+    linear-gradient(
+      var(--lab-border)
+      1px,
+      transparent
+      1px
+    ),
+    linear-gradient(
+      90deg,
+      var(--lab-border)
+      1px,
+      transparent
+      1px
+    );
+
+  background-size:
+    34px
+    34px;
+}
+
+
+.template-runtime-demo__object {
+  position:
+    relative;
+
+  z-index:
+    2;
+
+  width:
+    min(
+      100%,
+      360px
+    );
+
+  padding:
+    24px;
+
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  align-items:
+    center;
+
+  color:
+    var(--lab-text);
+
+  background:
+    rgba(15, 26, 43, 0.9);
+
+  border:
+    1px solid
+    var(--lab-accent-border);
+
+  border-radius:
+    var(--lab-radius-lg);
+
+  box-shadow:
+    0 0 44px
+    var(--lab-accent-glow);
+
+  text-align:
+    center;
+}
+
+
+.template-runtime-demo__object > span {
+  color:
+    var(--lab-accent);
+
+  font-size:
+    11px;
+
+  font-weight:
+    700;
+
+  letter-spacing:
+    0.07em;
+
+  text-transform:
+    uppercase;
+}
+
+
+.template-runtime-demo__object > strong {
+  margin-top:
+    8px;
+
+  color:
+    var(--lab-text);
+
+  font-size:
+    52px;
+
+  line-height:
+    1;
+}
+
+
+.template-runtime-demo__object > p {
+  margin:
+    14px
+    0
+    18px;
+
+  color:
+    var(--lab-text-muted);
+
+  font-size:
+    12px;
+
+  line-height:
+    1.55;
+}
+
+
+/* =========================================================
+   TEMPLATE SCORE
+   ========================================================= */
+
+.template-demo-score {
+  padding:
+    12px
+    14px;
+
+  color:
+    var(--lab-text-soft);
+
+  background:
+    var(--lab-accent-soft);
+
+  border:
+    1px solid
+    var(--lab-accent-border);
+
+  border-radius:
+    var(--lab-radius-md);
+
+  font-size:
+    14px;
+}
+
+
+.template-demo-score strong {
+  color:
+    var(--lab-accent);
+}
+
+
+/* =========================================================
+   TEMPLATE MOBILE
+   ========================================================= */
+
+@media (
+  max-width: 767px
+) {
+
+  .template-demo-panel {
+    padding:
+      17px;
+  }
+
+
+  .template-demo-panel h2 {
+    font-size:
+      20px;
+  }
+
+
+  .template-demo-info-grid {
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .template-demo-panel__actions {
+    display:
+      grid;
+
+    grid-template-columns:
+      1fr
+      1fr;
+  }
+
+
+  .template-demo-panel__actions
+  .experiment-lab-button {
+    width:
+      100%;
+  }
+
+
+  .experiment-template__route--practice
+  .template-demo-panel {
+    width:
+      100%;
+
+    max-height:
+      48%;
+  }
+
+
+  .template-runtime-demo__object {
+    width:
+      min(
+        84%,
+        320px
+      );
+
+    transform:
+      translateY(
+        -18%
+      );
+  }
+
+}
+
+/* =========================================================
+   27. TEMPLATE CONTENT PHASE
+   GĐ2.1E — REMOVE GENERIC GIANT PANEL
+
+   TemplatePanel từ đây chỉ là structural wrapper.
+
+   Nó KHÔNG phải:
+   - Card
+   - Surface
+   - Dialog
+   - Dashboard panel
+
+   Pattern bám lab-new:
+   content phase
+      ↓
+   centered inner
+      ↓
+   badge
+   heading
+   experiment-specific blocks
+   actions
+   ========================================================= */
+
+
+/* =========================================================
+   27.1 PHASE ROOT
+   ========================================================= */
+
+.template-content-phase {
+  width:
+    100%;
+
+  min-width:
+    0;
+
+  min-height:
+    100%;
+
+
+  display:
+    flex;
+
+  justify-content:
+    center;
+
+
+  color:
+    var(--lab-text);
+}
+
+
+/* =========================================================
+   27.2 CONTENT WIDTH
+
+   Boyle lab-new dùng khoảng 980px.
+   Đây là vùng đọc chính của content phases.
+   ========================================================= */
+
+.template-content-phase__inner {
+  width:
+    min(
+      100%,
+      980px
+    );
+
+
+  min-width:
+    0;
+
+
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+
+  gap:
+    20px;
+}
+
+
+/* =========================================================
+   27.3 PHASE BADGE
+   ========================================================= */
+
+.template-content-phase__badge {
+  width:
+    fit-content;
+
+
+  align-self:
+    center;
+
+
+  padding:
+    5px
+    11px;
+
+
+  color:
+    var(--lab-accent);
+
+
+  background:
+    var(--lab-accent-soft);
+
+
+  border:
+    1px solid
+    var(--lab-accent-border);
+
+
+  border-radius:
+    var(--lab-radius-round);
+
+
+  font-size:
+    11px;
+
+  font-weight:
+    700;
+
+
+  letter-spacing:
+    0.07em;
+
+
+  text-transform:
+    uppercase;
+}
+
+
+/* =========================================================
+   27.4 HEADING
+   ========================================================= */
+
+.template-content-phase__heading {
+  width:
+    100%;
+
+
+  text-align:
+    center;
+}
+
+
+.template-content-phase__heading h2 {
+  margin:
+    0;
+
+
+  color:
+    var(--lab-text);
+
+
+  font-size:
+    clamp(
+      24px,
+      3vw,
+      30px
+    );
+
+
+  font-weight:
+    700;
+
+
+  line-height:
+    1.2;
+}
+
+
+.template-content-phase__heading p {
+  max-width:
+    720px;
+
+
+  margin:
+    8px
+    auto
+    0;
+
+
+  color:
+    var(--lab-text-muted);
+
+
+  font-size:
+    14px;
+
+
+  line-height:
+    1.65;
+}
+
+
+/* =========================================================
+   27.5 CONTENT
+
+   QUAN TRỌNG:
+   Không background.
+   Không border.
+   Không radius.
+   Không shadow.
+
+   Từng component con tự sở hữu visual.
+   ========================================================= */
+
+.template-content-phase__content {
+  width:
+    100%;
+
+
+  min-width:
+    0;
+
+
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+
+  gap:
+    16px;
+
+
+  background:
+    transparent;
+
+
+  border:
+    0;
+
+
+  border-radius:
+    0;
+
+
+  box-shadow:
+    none;
+}
+
+
+/* =========================================================
+   27.6 ACTIONS
+   ========================================================= */
+
+.template-content-phase__actions {
+  width:
+    100%;
+
+
+  margin-top:
+    auto;
+
+
+  padding-top:
+    16px;
+
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    space-between;
+
+
+  gap:
+    12px;
+
+
+  border-top:
+    1px solid
+    var(--lab-border);
+}
+
+
+/*
+ * Chỉ có một CTA:
+ * tự đẩy nó sang phải.
+ */
+
+.template-content-phase__actions
+  > :only-child {
+  margin-left:
+    auto;
+}
+
+
+/* =========================================================
+   27.7 REMOVE OLD TEMPLATE PANEL VISUAL
+
+   Giữ rule này để nếu còn class cũ nào sót lại,
+   nó cũng không tạo giant card.
+   ========================================================= */
+
+.template-demo-panel {
+  width:
+    100%;
+
+
+  max-width:
+    none;
+
+
+  margin:
+    0;
+
+
+  padding:
+    0;
+
+
+  color:
+    inherit;
+
+
+  background:
+    transparent;
+
+
+  border:
+    0;
+
+
+  border-radius:
+    0;
+
+
+  box-shadow:
+    none;
+}
+
+
+/*
+ * Disable visual cũ nếu DOM/cache dev
+ * vẫn còn class con cũ trong lúc migration.
+ */
+
+.template-demo-panel__eyebrow,
+.template-demo-panel__content,
+.template-demo-panel__actions {
+  background:
+    transparent;
+
+
+  box-shadow:
+    none;
+}
+
+
+/* =========================================================
+   27.8 MOBILE
+   ========================================================= */
+
+@media (
+  max-width: 767px
+) {
+
+  .template-content-phase__inner {
+    gap:
+      16px;
+  }
+
+
+  .template-content-phase__badge {
+    align-self:
+      flex-start;
+  }
+
+
+  .template-content-phase__heading {
+    text-align:
+      left;
+  }
+
+
+  .template-content-phase__heading h2 {
+    font-size:
+      22px;
+  }
+
+
+  .template-content-phase__heading p {
+    margin-left:
+      0;
+
+    margin-right:
+      0;
+  }
+
+
+  .template-content-phase__actions {
+    display:
+      grid;
+
+
+    grid-template-columns:
+      1fr
+      1fr;
+  }
+
+
+  .template-content-phase__actions
+  .experiment-lab-button {
+    width:
+      100%;
+  }
+
+
+  /*
+   * Một nút duy nhất trên mobile
+   * chiếm toàn chiều rộng.
+   */
+
+  .template-content-phase__actions
+    > :only-child {
+    grid-column:
+      1 / -1;
+
+
+    margin-left:
+      0;
+  }
+
+}
+
+
+/* =========================================================
+   27.9 SHORT VIEWPORT
+   ========================================================= */
+
+@media (
+  max-height: 520px
+) {
+
+  .template-content-phase__inner {
+    gap:
+      12px;
+  }
+
+
+  .template-content-phase__badge {
+    padding:
+      4px
+      9px;
+  }
+
+
+  .template-content-phase__heading h2 {
+    font-size:
+      20px;
+  }
+
+
+  .template-content-phase__heading p {
+    margin-top:
+      5px;
+
+
+    font-size:
+      12px;
+
+
+    line-height:
+      1.45;
+  }
+
+
+  .template-content-phase__actions {
+    padding-top:
+      10px;
+  }
+
+}
+
+
+/* =========================================================
+   27.10 PRINT
+   ========================================================= */
+
+@media print {
+
+  .template-content-phase,
+.template-content-phase__inner,
+.template-content-phase__content {
+    width:
+      100%;
+
+
+    min-height:
+      0;
+
+
+    display:
+      block;
+
+
+    color:
+      #000;
+
+
+    background:
+      transparent;
+
+
+    border:
+      0;
+
+
+    box-shadow:
+      none;
+  }
+
+
+  .template-content-phase__badge,
+.template-content-phase__heading,
+.template-content-phase__actions {
+    display:
+      none;
+  }
+
+}
+
+/* =========================================================
+   30. TEMPLATE — INTRO PHASE
+   GĐ2.1E — LAB-NEW UX CONFORMANCE
+
+   Pattern lấy từ Boyle/Joule:
+   - centered content
+   - phase badge
+   - 2 knowledge cards
+   - principle/formula card
+   - bottom CTA
+   ========================================================= */
+
+
+/* =========================================================
+   30.1 ROOT
+   ========================================================= */
+
+.template-intro {
+  width:
+    100%;
+
+  min-width:
+    0;
+
+  min-height:
+    100%;
+
+
+  display:
+    flex;
+
+  justify-content:
+    center;
+
+
+  color:
+    var(--lab-text);
+}
+
+
+/* =========================================================
+   30.2 INNER
+   ========================================================= */
+
+.template-intro__inner {
+  width:
+    min(
+      100%,
+      980px
+    );
+
+
+  min-width:
+    0;
+
+
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+
+  gap:
+    20px;
+}
+
+
+/* =========================================================
+   30.3 PHASE BADGE
+   ========================================================= */
+
+.template-intro__badge {
+  width:
+    fit-content;
+
+
+  align-self:
+    center;
+
+
+  padding:
+    5px
+    11px;
+
+
+  color:
+    var(--lab-accent);
+
+
+  background:
+    var(--lab-accent-soft);
+
+
+  border:
+    1px solid
+    var(--lab-accent-border);
+
+
+  border-radius:
+    var(--lab-radius-round);
+
+
+  font-size:
+    11px;
+
+
+  font-weight:
+    700;
+
+
+  letter-spacing:
+    0.07em;
+
+
+  text-transform:
+    uppercase;
+}
+
+
+/* =========================================================
+   30.4 KNOWLEDGE GRID
+   ========================================================= */
+
+.template-intro__grid {
+  display:
+    grid;
+
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(
+        0,
+        1fr
+      )
+    );
+
+
+  gap:
+    16px;
+}
+
+
+/* =========================================================
+   30.5 KNOWLEDGE CARD
+   ========================================================= */
+
+.template-intro-card {
+  min-width:
+    0;
+
+
+  padding:
+    20px;
+
+
+  display:
+    flex;
+
+  align-items:
+    flex-start;
+
+
+  gap:
+    16px;
+
+
+  color:
+    var(--lab-text);
+
+
+  background:
+    var(--lab-surface-soft);
+
+
+  border:
+    1px solid
+    var(--lab-border);
+
+
+  border-radius:
+    var(--lab-radius-lg);
+
+
+  box-shadow:
+    none;
+}
+
+
+/* =========================================================
+   CARD ICON
+   ========================================================= */
+
+.template-intro-card__icon {
+  width:
+    44px;
+
+  height:
+    44px;
+
+
+  flex:
+    0 0 44px;
+
+
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+
+  color:
+    var(--lab-accent);
+
+
+  background:
+    var(--lab-accent-soft);
+
+
+  border:
+    1px solid
+    var(--lab-accent-border);
+
+
+  border-radius:
+    var(--lab-radius-md);
+}
+
+
+.template-intro-card__icon svg {
+  width:
+    22px;
+
+  height:
+    22px;
+}
+
+
+/* =========================================================
+   CARD BODY
+   ========================================================= */
+
+.template-intro-card__body {
+  min-width:
+    0;
+}
+
+
+.template-intro-card__body h3 {
+  margin:
+    0;
+
+
+  color:
+    var(--lab-accent);
+
+
+  font-size:
+    17px;
+
+
+  font-weight:
+    700;
+
+
+  line-height:
+    1.3;
+}
+
+
+.template-intro-card__body p {
+  margin:
+    8px
+    0
+    0;
+
+
+  color:
+    var(--lab-text-muted);
+
+
+  font-size:
+    13px;
+
+
+  line-height:
+    1.65;
+}
+
+
+/* =========================================================
+   30.6 PRINCIPLE CARD
+
+   Vai trò tương đương formula card của Boyle/Joule.
+   ========================================================= */
+
+.template-principle-card {
+  padding:
+    24px
+    20px;
+
+
+  text-align:
+    center;
+
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.025
+    );
+
+
+  border:
+    1px solid
+    var(--lab-border);
+
+
+  border-radius:
+    var(--lab-radius-lg);
+}
+
+
+/* =========================================================
+   PRINCIPLE LABEL
+   ========================================================= */
+
+.template-principle-card__label {
+  display:
+    block;
+
+
+  color:
+    var(--lab-accent);
+
+
+  font-size:
+    11px;
+
+
+  font-weight:
+    700;
+
+
+  letter-spacing:
+    0.07em;
+
+
+  text-transform:
+    uppercase;
+}
+
+
+/* =========================================================
+   PRINCIPLE EXPRESSION
+   ========================================================= */
+
+.template-principle {
+  margin:
+    20px
+    0
+    16px;
+
+
+  color:
+    var(--lab-text);
+
+
+  font-family:
+    var(--font-main);
+
+
+  font-size:
+    clamp(
+      24px,
+      4vw,
+      38px
+    );
+
+
+  font-weight:
+    700;
+
+
+  line-height:
+    1.2;
+
+
+  letter-spacing:
+    0.015em;
+
+
+  text-wrap:
+    balance;
+
+
+  text-shadow:
+    0 0 22px
+    var(--lab-accent-glow);
+}
+
+
+/* =========================================================
+   PRINCIPLE DESCRIPTION
+   ========================================================= */
+
+.template-principle-card p {
+  max-width:
+    760px;
+
+
+  margin:
+    0
+    auto;
+
+
+  color:
+    var(--lab-text-muted);
+
+
+  font-size:
+    13px;
+
+
+  line-height:
+    1.65;
+}
+
+
+.template-principle-card strong {
+  color:
+    var(--lab-text-soft);
+
+
+  font-weight:
+    600;
+}
+
+
+/* =========================================================
+   30.7 PHASE ACTIONS
+
+   Tương đương:
+   boyle-phase-actions
+   joule-phase-actions
+   ========================================================= */
+
+.template-phase-actions {
+  margin-top:
+    auto;
+
+
+  padding-top:
+    16px;
+
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    space-between;
+
+
+  gap:
+    12px;
+
+
+  border-top:
+    1px solid
+    var(--lab-border);
+}
+
+
+.template-phase-actions--end {
+  justify-content:
+    flex-end;
+}
+
+
+/* =========================================================
+   PRIMARY PHASE CTA
+
+   CTA của phase nổi bật hơn utility actions.
+   ========================================================= */
+
+.template-phase-actions
+  .experiment-lab-button--primary {
+  min-height:
+    40px;
+
+
+  padding:
+    8px
+    16px;
+
+
+  color:
+    var(--lab-bg);
+
+
+  background:
+    var(--lab-accent);
+
+
+  border-color:
+    var(--lab-accent);
+
+
+  font-size:
+    13px;
+
+
+  font-weight:
+    700;
+}
+
+
+.template-phase-actions
+  .experiment-lab-button--primary:hover:not(
+    :disabled
+  ) {
+  color:
+    var(--lab-bg);
+
+
+  background:
+    color-mix(
+      in srgb,
+      var(--lab-accent) 90%,
+      white
+    );
+
+
+  border-color:
+    color-mix(
+      in srgb,
+      var(--lab-accent) 90%,
+      white
+    );
+}
+
+
+/* =========================================================
+   30.8 MOBILE
+   ========================================================= */
+
+@media (
+  max-width: 767px
+) {
+
+  .template-intro__inner {
+    gap:
+      16px;
+  }
+
+
+  .template-intro__badge {
+    align-self:
+      flex-start;
+  }
+
+
+  .template-intro__grid {
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .template-intro-card {
+    padding:
+      16px;
+  }
+
+
+  .template-principle-card {
+    padding:
+      20px
+      16px;
+  }
+
+
+  .template-principle {
+    margin:
+      16px
+      0
+      13px;
+
+
+    font-size:
+      clamp(
+        22px,
+        7vw,
+        30px
+      );
+  }
+
+
+  .template-phase-actions {
+    display:
+      grid;
+
+
+    grid-template-columns:
+      1fr
+      1fr;
+  }
+
+
+  .template-phase-actions--end {
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .template-phase-actions
+    .experiment-lab-button {
+    width:
+      100%;
+  }
+
+}
+
+
+/* =========================================================
+   30.9 SHORT VIEWPORT
+   ========================================================= */
+
+@media (
+  max-height: 520px
+) {
+
+  .template-intro__inner {
+    gap:
+      12px;
+  }
+
+
+  .template-intro-card {
+    padding:
+      12px;
+  }
+
+
+  .template-intro-card__icon {
+    width:
+      38px;
+
+    height:
+      38px;
+
+
+    flex-basis:
+      38px;
+  }
+
+
+  .template-intro-card__icon svg {
+    width:
+      19px;
+
+    height:
+      19px;
+  }
+
+
+  .template-intro-card__body h3 {
+    font-size:
+      15px;
+  }
+
+
+  .template-intro-card__body p {
+    margin-top:
+      5px;
+
+
+    font-size:
+      12px;
+
+
+    line-height:
+      1.5;
+  }
+
+
+  .template-principle-card {
+    padding:
+      16px;
+  }
+
+
+  .template-principle {
+    margin:
+      12px
+      0;
+
+
+    font-size:
+      24px;
+  }
+
+
+  .template-phase-actions {
+    padding-top:
+      10px;
+  }
+
+}
+
+/* =========================================================
+   31. TEMPLATE — PREPARATION PHASE
+   GĐ2.1E — LAB-NEW UX CONFORMANCE
+
+   Pattern:
+   badge
+   heading
+   progress
+   feedback
+   selectable tool grid
+   completion state
+   bottom actions
+
+   Đây là baseline kiểu Boyle.
+
+   Joule và các experiment đặc biệt vẫn có thể
+   thay bằng drag/drop hoặc 3D preparation workspace.
+   ========================================================= */
+
+
+/* =========================================================
+   31.1 ROOT
+   ========================================================= */
+
+.template-preparation {
+  width:
+    100%;
+
+  min-width:
+    0;
+
+  min-height:
+    100%;
+
+
+  display:
+    flex;
+
+  justify-content:
+    center;
+
+
+  color:
+    var(--lab-text);
+}
+
+
+/* =========================================================
+   31.2 INNER
+   ========================================================= */
+
+.template-preparation__inner {
+  width:
+    min(
+      100%,
+      980px
+    );
+
+
+  min-width:
+    0;
+
+
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+
+  gap:
+    18px;
+}
+
+
+/* =========================================================
+   31.3 BADGE
+   ========================================================= */
+
+.template-preparation__badge {
+  width:
+    fit-content;
+
+
+  align-self:
+    center;
+
+
+  padding:
+    5px
+    11px;
+
+
+  color:
+    var(--lab-accent);
+
+
+  background:
+    var(--lab-accent-soft);
+
+
+  border:
+    1px solid
+    var(--lab-accent-border);
+
+
+  border-radius:
+    var(--lab-radius-round);
+
+
+  font-size:
+    11px;
+
+
+  font-weight:
+    700;
+
+
+  letter-spacing:
+    0.07em;
+
+
+  text-transform:
+    uppercase;
+}
+
+
+/* =========================================================
+   31.4 HEADING
+   ========================================================= */
+
+.template-preparation__heading {
+  text-align:
+    center;
+}
+
+
+.template-preparation__heading h2 {
+  margin:
+    0;
+
+
+  color:
+    var(--lab-text);
+
+
+  font-size:
+    clamp(
+      23px,
+      3vw,
+      29px
+    );
+
+
+  font-weight:
+    700;
+
+
+  line-height:
+    1.2;
+}
+
+
+.template-preparation__heading p {
+  max-width:
+    680px;
+
+
+  margin:
+    8px
+    auto
+    0;
+
+
+  color:
+    var(--lab-text-muted);
+
+
+  font-size:
+    13px;
+
+
+  line-height:
+    1.6;
+}
+
+
+/* =========================================================
+   31.5 PROGRESS
+   ========================================================= */
+
+.template-preparation-progress {
+  width:
+    100%;
+
+
+  padding:
+    13px
+    15px;
+
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.025
+    );
+
+
+  border:
+    1px solid
+    var(--lab-border);
+
+
+  border-radius:
+    var(--lab-radius-md);
+}
+
+
+.template-preparation-progress__label {
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    space-between;
+
+
+  gap:
+    12px;
+
+
+  color:
+    var(--lab-text-muted);
+
+
+  font-size:
+    12px;
+}
+
+
+.template-preparation-progress__label strong {
+  color:
+    var(--lab-accent);
+
+
+  font-size:
+    12px;
+}
+
+
+.template-preparation-progress__track {
+  width:
+    100%;
+
+  height:
+    5px;
+
+
+  margin-top:
+    9px;
+
+
+  overflow:
+    hidden;
+
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.08
+    );
+
+
+  border-radius:
+    var(--lab-radius-round);
+}
+
+
+.template-preparation-progress__track
+  > span {
+  height:
+    100%;
+
+
+  display:
+    block;
+
+
+  background:
+    var(--lab-accent);
+
+
+  border-radius:
+    inherit;
+
+
+  box-shadow:
+    0 0 10px
+    var(--lab-accent-glow);
+
+
+  transition:
+    width
+    var(--transition-normal);
+}
+
+
+/* =========================================================
+   31.6 FEEDBACK
+   ========================================================= */
+
+.template-preparation__inner
+  > .experiment-toast {
+  width:
+    100%;
+}
+
+
+/* =========================================================
+   31.7 TOOL GRID
+   ========================================================= */
+
+.template-tool-grid {
+  width:
+    100%;
+
+
+  display:
+    grid;
+
+
+  grid-template-columns:
+    repeat(
+      2,
+      minmax(
+        0,
+        1fr
+      )
+    );
+
+
+  gap:
+    12px;
+}
+
+
+/* =========================================================
+   31.8 TOOL CARD
+   ========================================================= */
+
+.template-tool-card {
+  width:
+    100%;
+
+
+  min-width:
+    0;
+
+  min-height:
+    82px;
+
+
+  padding:
+    14px;
+
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+
+  gap:
+    12px;
+
+
+  color:
+    var(--lab-text-soft);
+
+
+  background:
+    var(--lab-surface-soft);
+
+
+  border:
+    1px solid
+    var(--lab-border);
+
+
+  border-radius:
+    var(--lab-radius-lg);
+
+
+  box-shadow:
+    none;
+
+
+  text-align:
+    left;
+
+
+  transition:
+    color var(--transition-fast),
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+
+/* =========================================================
+   TOOL HOVER
+   ========================================================= */
+
+.template-tool-card:hover {
+  color:
+    var(--lab-text);
+
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.075
+    );
+
+
+  border-color:
+    var(--lab-border-strong);
+}
+
+
+/* =========================================================
+   SELECTED TOOL
+   ========================================================= */
+
+.template-tool-card--selected {
+  color:
+    var(--lab-text);
+
+
+  background:
+    var(--lab-accent-soft);
+
+
+  border-color:
+    var(--lab-accent);
+
+
+  box-shadow:
+    0 0 16px
+    var(--lab-accent-glow);
+}
+
+
+/* =========================================================
+   TOOL ICON
+   ========================================================= */
+
+.template-tool-card__icon {
+  width:
+    44px;
+
+  height:
+    44px;
+
+
+  flex:
+    0 0 44px;
+
+
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+
+  color:
+    var(--lab-accent);
+
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.045
+    );
+
+
+  border:
+    1px solid
+    var(--lab-border);
+
+
+  border-radius:
+    var(--lab-radius-md);
+}
+
+
+.template-tool-card--selected
+  .template-tool-card__icon {
+  background:
+    color-mix(
+      in srgb,
+      var(--lab-accent) 14%,
+      transparent
+    );
+
+
+  border-color:
+    var(--lab-accent-border);
+}
+
+
+/* =========================================================
+   TOOL CONTENT
+   ========================================================= */
+
+.template-tool-card__content {
+  min-width:
+    0;
+
+
+  flex:
+    1;
+
+
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+
+  gap:
+    4px;
+}
+
+
+.template-tool-card__content strong {
+  color:
+    inherit;
+
+
+  font-size:
+    13px;
+
+
+  font-weight:
+    600;
+
+
+  line-height:
+    1.35;
+}
+
+
+.template-tool-card__content small {
+  color:
+    var(--lab-text-muted);
+
+
+  font-size:
+    11px;
+
+
+  line-height:
+    1.45;
+}
+
+
+/* =========================================================
+   CHECK INDICATOR
+   ========================================================= */
+
+.template-tool-card__check {
+  width:
+    22px;
+
+  height:
+    22px;
+
+
+  flex:
+    0 0 22px;
+
+
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+
+  color:
+    transparent;
+
+
+  background:
+    transparent;
+
+
+  border:
+    1px solid
+    var(--lab-border-strong);
+
+
+  border-radius:
+    50%;
+
+
+  font-size:
+    11px;
+
+
+  font-weight:
+    700;
+
+
+  transition:
+    color var(--transition-fast),
+    background var(--transition-fast),
+    border-color var(--transition-fast);
+}
+
+
+.template-tool-card--selected
+  .template-tool-card__check {
+  color:
+    var(--lab-bg);
+
+
+  background:
+    var(--lab-accent);
+
+
+  border-color:
+    var(--lab-accent);
+}
+
+
+/* =========================================================
+   31.9 COMPLETE STATE
+   ========================================================= */
+
+.template-preparation-ready {
+  padding:
+    14px
+    16px;
+
+
+  display:
+    flex;
+
+  align-items:
+    flex-start;
+
+
+  gap:
+    12px;
+
+
+  color:
+    var(--lab-text-soft);
+
+
+  background:
+    color-mix(
+      in srgb,
+      var(--lab-accent) 9%,
+      transparent
+    );
+
+
+  border:
+    1px solid
+    var(--lab-accent-border);
+
+
+  border-radius:
+    var(--lab-radius-md);
+}
+
+
+.template-preparation-ready__icon {
+  width:
+    38px;
+
+  height:
+    38px;
+
+
+  flex:
+    0 0 38px;
+
+
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+
+  color:
+    var(--lab-accent);
+
+
+  background:
+    var(--lab-accent-soft);
+
+
+  border:
+    1px solid
+    var(--lab-accent-border);
+
+
+  border-radius:
+    var(--lab-radius-md);
+}
+
+
+.template-preparation-ready strong {
+  display:
+    block;
+
+
+  color:
+    var(--lab-accent);
+
+
+  font-size:
+    13px;
+}
+
+
+.template-preparation-ready p {
+  margin:
+    4px
+    0
+    0;
+
+
+  color:
+    var(--lab-text-muted);
+
+
+  font-size:
+    12px;
+
+
+  line-height:
+    1.5;
+}
+
+
+/* =========================================================
+   31.10 MOBILE
+   ========================================================= */
+
+@media (
+  max-width: 767px
+) {
+
+  .template-preparation__inner {
+    gap:
+      15px;
+  }
+
+
+  .template-preparation__badge {
+    align-self:
+      flex-start;
+  }
+
+
+  .template-preparation__heading {
+    text-align:
+      left;
+  }
+
+
+  .template-preparation__heading p {
+    margin-left:
+      0;
+
+    margin-right:
+      0;
+  }
+
+
+  .template-tool-grid {
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .template-tool-card {
+    min-height:
+      76px;
+
+
+    padding:
+      12px;
+  }
+
+}
+
+
+/* =========================================================
+   31.11 SHORT VIEWPORT
+   ========================================================= */
+
+@media (
+  max-height: 520px
+) {
+
+  .template-preparation__inner {
+    gap:
+      11px;
+  }
+
+
+  .template-preparation__heading h2 {
+    font-size:
+      20px;
+  }
+
+
+  .template-preparation__heading p {
+    margin-top:
+      5px;
+
+
+    font-size:
+      12px;
+
+
+    line-height:
+      1.45;
+  }
+
+
+  .template-preparation-progress {
+    padding:
+      10px
+      12px;
+  }
+
+
+  .template-tool-card {
+    min-height:
+      62px;
+
+
+    padding:
+      10px;
+  }
+
+
+  .template-tool-card__icon {
+    width:
+      38px;
+
+    height:
+      38px;
+
+
+    flex-basis:
+      38px;
+  }
+
+
+  .template-tool-card__content small {
+    display:
+      none;
+  }
+
+}
+
+/* =========================================================
+   32. TEMPLATE — PRACTICE WORKSPACE
+   GĐ2.1E — LAB-NEW UX CONFORMANCE
+
+   Practice KHÔNG phải content phase.
+
+   Runtime:
+   - sở hữu toàn bộ stage
+   - nằm dưới routed overlay
+
+   Routed Practice view:
+   - status
+   - floating panels
+   - toolbar
+   - toast
+
+   Không:
+   - centered 980px content
+   - giant outer card
+   - page heading
+   ========================================================= */
+
+
+/* =========================================================
+   32.1 PRACTICE ROOT
+   ========================================================= */
+
+.template-practice {
+  position:
+    absolute;
+
+  inset:
+    0;
+
+
+  z-index:
+    20;
+
+
+  width:
+    100%;
+
+  height:
+    100%;
+
+
+  min-width:
+    0;
+
+  min-height:
+    0;
+
+
+  overflow:
+    hidden;
+
+
+  /*
+   * Route overlay không chặn interaction
+   * với simulation bên dưới.
+   *
+   * Từng panel/tool tự bật pointer-events.
+   */
+  pointer-events:
+    none;
+}
+
+
+/* =========================================================
+   32.2 FEEDBACK TOAST
+   ========================================================= */
+
+.template-practice__feedback {
+  position:
+    absolute;
+
+
+  z-index:
+    80;
+
+
+  top:
+    14px;
+
+  left:
+    50%;
+
+
+  width:
+    min(
+      calc(
+        100% -
+        32px
+      ),
+      520px
+    );
+
+
+  transform:
+    translateX(
+      -50%
+    );
+
+
+  pointer-events:
+    auto;
+}
+
+
+/* =========================================================
+   32.3 STATUS STRIP
+   ========================================================= */
+
+.template-practice-status {
+  position:
+    absolute;
+
+
+  z-index:
+    35;
+
+
+  top:
+    14px;
+
+  left:
+    50%;
+
+
+  transform:
+    translateX(
+      -50%
+    );
+
+
+  min-height:
+    34px;
+
+
+  padding:
+    7px
+    12px;
+
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+
+  gap:
+    8px;
+
+
+  color:
+    var(--lab-text-muted);
+
+
+  background:
+    rgba(
+      7,
+      15,
+      28,
+      0.88
+    );
+
+
+  border:
+    1px solid
+    var(--lab-border);
+
+
+  border-radius:
+    var(--lab-radius-round);
+
+
+  box-shadow:
+    var(--lab-shadow);
+
+
+  font-size:
+    11px;
+
+
+  white-space:
+    nowrap;
+
+
+  backdrop-filter:
+    blur(12px);
+
+  -webkit-backdrop-filter:
+    blur(12px);
+
+
+  pointer-events:
+    auto;
+}
+
+
+.template-practice-status strong {
+  color:
+    var(--lab-text-soft);
+}
+
+
+.template-practice-status__separator {
+  color:
+    var(--lab-border-strong);
+}
+
+
+.template-practice-status__state {
+  color:
+    var(--lab-accent);
+}
+
+
+.template-practice-status__state--complete {
+  color:
+    #6ee7b7;
+}
+
+
+/* =========================================================
+   32.4 FLOATING PANEL BASE
+   ========================================================= */
+
+.template-practice-panel {
+  position:
+    absolute;
+
+
+  z-index:
+    40;
+
+
+  padding:
+    16px;
+
+
+  color:
+    var(--lab-text);
+
+
+  background:
+    rgba(
+      7,
+      15,
+      28,
+      0.89
+    );
+
+
+  border:
+    1px solid
+    var(--lab-border-strong);
+
+
+  border-radius:
+    var(--lab-radius-lg);
+
+
+  box-shadow:
+    var(--lab-shadow);
+
+
+  backdrop-filter:
+    blur(14px);
+
+  -webkit-backdrop-filter:
+    blur(14px);
+
+
+  pointer-events:
+    auto;
+}
+
+
+/* =========================================================
+   LEFT — INSTRUCTIONS
+   ========================================================= */
+
+.template-practice-panel--instructions {
+  top:
+    14px;
+
+  left:
+    14px;
+
+
+  width:
+    min(
+      300px,
+      28vw
+    );
+
+
+  max-height:
+    calc(
+      100% -
+      92px
+    );
+
+
+  overflow-x:
+    hidden;
+
+  overflow-y:
+    auto;
+}
+
+
+/* =========================================================
+   RIGHT — MEASUREMENTS
+   ========================================================= */
+
+.template-practice-panel--measurements {
+  top:
+    14px;
+
+  right:
+    14px;
+
+
+  width:
+    min(
+      340px,
+      31vw
+    );
+
+
+  max-height:
+    calc(
+      100% -
+      92px
+    );
+
+
+  overflow-x:
+    hidden;
+
+  overflow-y:
+    auto;
+}
+
+
+/* =========================================================
+   32.5 PANEL HEADER
+   ========================================================= */
+
+.template-practice-panel__header {
+  display:
+    flex;
+
+  align-items:
+    flex-start;
+
+  justify-content:
+    space-between;
+
+
+  gap:
+    12px;
+}
+
+
+.template-practice-panel__eyebrow {
+  display:
+    block;
+
+
+  margin-bottom:
+    5px;
+
+
+  color:
+    var(--lab-accent);
+
+
+  font-size:
+    10px;
+
+
+  font-weight:
+    700;
+
+
+  letter-spacing:
+    0.07em;
+
+
+  text-transform:
+    uppercase;
+}
+
+
+.template-practice-panel h3 {
+  margin:
+    0;
+
+
+  color:
+    var(--lab-text);
+
+
+  font-size:
+    16px;
+
+
+  font-weight:
+    700;
+}
+
+
+/* =========================================================
+   CLOSE BUTTON
+   ========================================================= */
+
+.template-practice-panel__close {
+  width:
+    30px;
+
+  height:
+    30px;
+
+
+  flex:
+    0 0 30px;
+
+
+  padding:
+    0;
+
+
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+
+  color:
+    var(--lab-text-muted);
+
+
+  background:
+    transparent;
+
+
+  border:
+    1px solid
+    transparent;
+
+
+  border-radius:
+    7px;
+}
+
+
+.template-practice-panel__close:hover {
+  color:
+    var(--lab-text);
+
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.07
+    );
+
+
+  border-color:
+    var(--lab-border);
+}
+
+
+.template-practice-panel__header-actions {
+  display:
+    flex;
+
+  align-items:
+    center;
+
+
+  gap:
+    8px;
+}
+
+
+/* =========================================================
+   32.6 INSTRUCTIONS
+   ========================================================= */
+
+.template-practice__instructions {
+  margin:
+    14px
+    0
+    0;
+
+
+  padding:
+    0;
+
+
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+
+  gap:
+    9px;
+
+
+  list-style:
+    none;
+}
+
+
+.template-practice__instructions li {
+  display:
+    grid;
+
+
+  grid-template-columns:
+    auto
+    1fr;
+
+
+  gap:
+    8px;
+
+
+  color:
+    var(--lab-text-muted);
+
+
+  font-size:
+    12px;
+
+
+  line-height:
+    1.5;
+}
+
+
+.template-practice__instructions strong {
+  color:
+    var(--lab-accent);
+}
+
+
+/* =========================================================
+   32.7 MEASUREMENT COUNT
+   ========================================================= */
+
+.template-practice-measurement__count {
+  color:
+    var(--lab-accent);
+
+
+  font-size:
+    12px;
+
+
+  line-height:
+    30px;
+}
+
+
+/* =========================================================
+   32.8 MEASUREMENT PROGRESS
+   ========================================================= */
+
+.template-practice-measurement__progress {
+  width:
+    100%;
+
+  height:
+    4px;
+
+
+  margin-top:
+    13px;
+
+
+  overflow:
+    hidden;
+
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.08
+    );
+
+
+  border-radius:
+    var(--lab-radius-round);
+}
+
+
+.template-practice-measurement__progress
+  > span {
+  width:
+    100%;
+
+  height:
+    100%;
+
+
+  display:
+    block;
+
+
+  background:
+    var(--lab-accent);
+
+
+  transform-origin:
+    left;
+
+
+  border-radius:
+    inherit;
+
+
+  box-shadow:
+    0 0 9px
+    var(--lab-accent-glow);
+
+
+  transition:
+    transform
+    var(--transition-normal);
+}
+
+
+/* =========================================================
+   32.9 LIVE DATA
+   ========================================================= */
+
+.template-practice-live-data {
+  margin-top:
+    12px;
+
+
+  display:
+    flex;
+
+  flex-direction:
+    column;
+}
+
+
+.template-practice-live-data__item {
+  min-height:
+    36px;
+
+
+  padding:
+    8px
+    0;
+
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    space-between;
+
+
+  gap:
+    12px;
+
+
+  border-bottom:
+    1px solid
+    var(--lab-border);
+}
+
+
+.template-practice-live-data__item:last-child {
+  border-bottom:
+    0;
+}
+
+
+.template-practice-live-data__item
+  > span {
+  color:
+    var(--lab-text-muted);
+
+
+  font-size:
+    11px;
+}
+
+
+.template-practice-live-data__item
+  > strong {
+  color:
+    var(--lab-text-soft);
+
+
+  font-size:
+    12px;
+
+
+  text-align:
+    right;
+}
+
+
+.template-practice-live-data__ready {
+  color:
+    var(--lab-accent)
+    !important;
+}
+
+
+.template-practice-live-data__complete {
+  color:
+    #6ee7b7
+    !important;
+}
+
+
+/* =========================================================
+   32.10 MEASUREMENT ACTIONS
+   ========================================================= */
+
+.template-practice-measurement__actions {
+  margin-top:
+    12px;
+
+
+  display:
+    grid;
+
+
+  grid-template-columns:
+    1fr
+    1fr;
+
+
+  gap:
+    8px;
+}
+
+
+.template-practice-measurement__actions
+  .experiment-lab-button {
+  width:
+    100%;
+
+
+  min-height:
+    36px;
+
+
+  padding:
+    7px
+    10px;
+
+
+  font-size:
+    11px;
+}
+
+
+/* =========================================================
+   32.11 TABLE
+   ========================================================= */
+
+.template-practice-measurement__table-wrap {
+  margin-top:
+    12px;
+
+
+  overflow-x:
+    auto;
+
+
+  border:
+    1px solid
+    var(--lab-border);
+
+
+  border-radius:
+    var(--lab-radius-md);
+}
+
+
+.template-practice-measurement-table {
+  width:
+    100%;
+
+
+  border-collapse:
+    collapse;
+
+
+  color:
+    var(--lab-text-soft);
+
+
+  font-size:
+    11px;
+}
+
+
+.template-practice-measurement-table th,
+.template-practice-measurement-table td {
+  height:
+    34px;
+
+
+  padding:
+    6px
+    9px;
+
+
+  border-bottom:
+    1px solid
+    var(--lab-border);
+
+
+  text-align:
+    center;
+}
+
+
+.template-practice-measurement-table tr:last-child th,
+.template-practice-measurement-table tr:last-child td {
+  border-bottom:
+    0;
+}
+
+
+.template-practice-measurement-table thead th {
+  color:
+    var(--lab-text-muted);
+
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.025
+    );
+
+
+  font-size:
+    10px;
+
+
+  font-weight:
+    600;
+
+
+  text-transform:
+    uppercase;
+}
+
+
+.template-practice-measurement-table tbody th {
+  color:
+    var(--lab-accent);
+}
+
+
+/* =========================================================
+   32.12 COMPLETE STATE
+   ========================================================= */
+
+.template-practice-complete {
+  margin-top:
+    12px;
+
+
+  padding-top:
+    12px;
+
+
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+
+  gap:
+    10px;
+
+
+  border-top:
+    1px solid
+    var(--lab-border);
+}
+
+
+.template-practice-complete__status {
+  display:
+    flex;
+
+  align-items:
+    flex-start;
+
+
+  gap:
+    9px;
+}
+
+
+.template-practice-complete__icon {
+  width:
+    32px;
+
+  height:
+    32px;
+
+
+  flex:
+    0 0 32px;
+
+
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+
+  color:
+    #6ee7b7;
+
+
+  background:
+    rgba(
+      52,
+      211,
+      153,
+      0.1
+    );
+
+
+  border:
+    1px solid
+    rgba(
+      52,
+      211,
+      153,
+      0.24
+    );
+
+
+  border-radius:
+    8px;
+}
+
+
+.template-practice-complete__status
+  div {
+  min-width:
+    0;
+}
+
+
+.template-practice-complete__status
+  strong {
+  display:
+    block;
+
+
+  color:
+    #a7f3d0;
+
+
+  font-size:
+    12px;
+}
+
+
+.template-practice-complete__status
+  span {
+  display:
+    block;
+
+
+  margin-top:
+    3px;
+
+
+  color:
+    var(--lab-text-muted);
+
+
+  font-size:
+    10px;
+
+
+  line-height:
+    1.45;
+}
+
+
+/* =========================================================
+   32.13 BOTTOM TOOLBAR
+   ========================================================= */
+
+.template-practice-toolbar {
+  position:
+    absolute;
+
+
+  z-index:
+    60;
+
+
+  left:
+    50%;
+
+  bottom:
+    14px;
+
+
+  max-width:
+    calc(
+      100% -
+      28px
+    );
+
+
+  transform:
+    translateX(
+      -50%
+    );
+
+
+  padding:
+    6px;
+
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+
+  gap:
+    5px;
+
+
+  overflow-x:
+    auto;
+
+
+  background:
+    rgba(
+      7,
+      15,
+      28,
+      0.92
+    );
+
+
+  border:
+    1px solid
+    var(--lab-border-strong);
+
+
+  border-radius:
+    12px;
+
+
+  box-shadow:
+    var(--lab-shadow);
+
+
+  backdrop-filter:
+    blur(14px);
+
+  -webkit-backdrop-filter:
+    blur(14px);
+
+
+  scrollbar-width:
+    none;
+
+
+  pointer-events:
+    auto;
+}
+
+
+.template-practice-toolbar::-webkit-scrollbar {
+  display:
+    none;
+}
+
+
+/* =========================================================
+   TOOLBAR BUTTON
+   ========================================================= */
+
+.template-practice-tool {
+  min-height:
+    36px;
+
+
+  padding:
+    7px
+    10px;
+
+
+  flex-shrink:
+    0;
+
+
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+
+  gap:
+    7px;
+
+
+  color:
+    var(--lab-text-muted);
+
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.04
+    );
+
+
+  border:
+    1px solid
+    var(--lab-border);
+
+
+  border-radius:
+    8px;
+
+
+  font-size:
+    11px;
+
+
+  font-weight:
+    600;
+
+
+  white-space:
+    nowrap;
+}
+
+
+.template-practice-tool:hover {
+  color:
+    var(--lab-text);
+
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.08
+    );
+
+
+  border-color:
+    var(--lab-border-strong);
+}
+
+
+.template-practice-tool--active {
+  color:
+    var(--lab-accent);
+
+
+  background:
+    var(--lab-accent-soft);
+
+
+  border-color:
+    var(--lab-accent-border);
+}
+
+
+.template-practice-tool--continue {
+  color:
+    var(--lab-text-soft);
+}
+
+
+.template-practice-tool--ready {
+  color:
+    var(--lab-bg);
+
+
+  background:
+    var(--lab-accent);
+
+
+  border-color:
+    var(--lab-accent);
+}
+
+
+.template-practice-tool--ready:hover {
+  color:
+    var(--lab-bg);
+
+
+  background:
+    color-mix(
+      in srgb,
+      var(--lab-accent) 90%,
+      white
+    );
+
+
+  border-color:
+    var(--lab-accent);
+}
+
+
+.template-practice-toolbar__divider {
+  width:
+    1px;
+
+  height:
+    24px;
+
+
+  flex:
+    0 0 1px;
+
+
+  margin:
+    0
+    2px;
+
+
+  background:
+    var(--lab-border-strong);
+}
+
+
+/* =========================================================
+   32.14 PANEL SCROLLBAR
+   ========================================================= */
+
+.template-practice-panel,
+.template-practice-measurement__table-wrap {
+  scrollbar-width:
+    thin;
+
+
+  scrollbar-color:
+    rgba(
+      148,
+      163,
+      184,
+      0.3
+    )
+    transparent;
+}
+
+
+.template-practice-panel::-webkit-scrollbar,
+.template-practice-measurement__table-wrap::-webkit-scrollbar {
+  width:
+    6px;
+
+  height:
+    6px;
+}
+
+
+.template-practice-panel::-webkit-scrollbar-track,
+.template-practice-measurement__table-wrap::-webkit-scrollbar-track {
+  background:
+    transparent;
+}
+
+
+.template-practice-panel::-webkit-scrollbar-thumb,
+.template-practice-measurement__table-wrap::-webkit-scrollbar-thumb {
+  background:
+    rgba(
+      148,
+      163,
+      184,
+      0.3
+    );
+
+
+  border-radius:
+    999px;
+}
+
+
+/* =========================================================
+   32.15 TABLET
+   ========================================================= */
+
+@media (
+  max-width: 1024px
+) {
+
+  .template-practice-panel--instructions {
+    width:
+      min(
+        280px,
+        34vw
+      );
+  }
+
+
+  .template-practice-panel--measurements {
+    width:
+      min(
+        320px,
+        38vw
+      );
+  }
+
+}
+
+
+/* =========================================================
+   32.16 MOBILE
+   ========================================================= */
+
+@media (
+  max-width: 767px
+) {
+
+  /*
+   * Mobile không cố giữ 2 floating panel lớn
+   * cùng lúc trên hai bên.
+   */
+
+  .template-practice-status {
+    top:
+      9px;
+
+
+    max-width:
+      calc(
+        100% -
+        20px
+      );
+
+
+    overflow:
+      hidden;
+
+
+    font-size:
+      10px;
+  }
+
+
+  .template-practice-panel {
+    padding:
+      13px;
+  }
+
+
+  .template-practice-panel--instructions {
+    top:
+      52px;
+
+    left:
+      10px;
+
+
+    width:
+      min(
+        58vw,
+        260px
+      );
+
+
+    max-height:
+      calc(
+        100% -
+        124px
+      );
+  }
+
+
+  .template-practice-panel--measurements {
+    top:
+      52px;
+
+    right:
+      10px;
+
+
+    width:
+      min(
+        62vw,
+        290px
+      );
+
+
+    max-height:
+      calc(
+        100% -
+        124px
+      );
+  }
+
+
+  /*
+   * Khi cả hai cùng mở, Measurement ưu tiên
+   * nằm trên Instructions.
+   */
+
+  .template-practice-panel--measurements {
+    z-index:
+      45;
+  }
+
+
+  .template-practice__instructions
+    li:nth-child(n + 4) {
+    display:
+      none;
+  }
+
+
+  .template-practice-toolbar {
+    left:
+      10px;
+
+    right:
+      10px;
+
+    bottom:
+      10px;
+
+
+    max-width:
+      none;
+
+
+    transform:
+      none;
+  }
+
+
+  .template-practice-tool {
+    min-height:
+      34px;
+
+
+    padding:
+      6px
+      9px;
+
+
+    font-size:
+      10px;
+  }
+
+}
+
+
+/* =========================================================
+   32.17 SMALL MOBILE
+   ========================================================= */
+
+@media (
+  max-width: 480px
+) {
+
+  .template-practice-status
+    .template-practice-status__separator {
+    display:
+      none;
+  }
+
+
+  .template-practice-status
+    > span:nth-of-type(2) {
+    display:
+      none;
+  }
+
+
+  .template-practice-panel--instructions,
+.template-practice-panel--measurements {
+    width:
+      calc(
+        100% -
+        20px
+      );
+
+
+    left:
+      10px;
+
+    right:
+      auto;
+  }
+
+
+  /*
+   * Nếu Measurement đang mở, nó trở thành
+   * panel chính trên mobile nhỏ.
+   */
+
+  .template-practice-panel--measurements {
+    z-index:
+      50;
+  }
+
+
+  .template-practice-tool
+    > span {
+    display:
+      none;
+  }
+
+}
+
+
+/* =========================================================
+   32.18 SHORT VIEWPORT
+   ========================================================= */
+
+@media (
+  max-height: 520px
+) {
+
+  .template-practice-status {
+    top:
+      7px;
+
+
+    min-height:
+      30px;
+
+
+    padding:
+      5px
+      10px;
+  }
+
+
+  .template-practice-panel {
+    top:
+      7px;
+
+
+    padding:
+      11px;
+
+
+    max-height:
+      calc(
+        100% -
+        62px
+      );
+  }
+
+
+  .template-practice-panel--instructions {
+    left:
+      7px;
+  }
+
+
+  .template-practice-panel--measurements {
+    right:
+      7px;
+  }
+
+
+  .template-practice__instructions {
+    margin-top:
+      9px;
+
+
+    gap:
+      6px;
+  }
+
+
+  .template-practice__instructions li {
+    font-size:
+      10px;
+  }
+
+
+  .template-practice-toolbar {
+    bottom:
+      7px;
+
+
+    padding:
+      4px;
+  }
+
+
+  .template-practice-tool {
+    min-height:
+      30px;
+
+
+    padding:
+      5px
+      8px;
+  }
+
+}
+
+/* =========================================================
+   33. TEMPLATE — CONCLUSION PHASE
+   GĐ2.1E — LAB-NEW UX CONFORMANCE
+
+   Flow:
+   01 Evidence
+   02 Student observations
+   03 Theory comparison / conclusion
+
+   Không dùng generic outer card.
+   ========================================================= */
+
+
+/* =========================================================
+   33.1 ROOT
+   ========================================================= */
+
+.template-conclusion {
+  width:
+    100%;
+
+  min-width:
+    0;
+
+  min-height:
+    100%;
+
+
+  display:
+    flex;
+
+  justify-content:
+    center;
+
+
+  color:
+    var(--lab-text);
+}
+
+
+/* =========================================================
+   33.2 INNER
+   ========================================================= */
+
+.template-conclusion__inner {
+  width:
+    min(
+      100%,
+      980px
+    );
+
+
+  min-width:
+    0;
+
+
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+
+  gap:
+    20px;
+}
+
+
+/* =========================================================
+   33.3 BADGE
+   ========================================================= */
+
+.template-conclusion__badge {
+  width:
+    fit-content;
+
+
+  align-self:
+    center;
+
+
+  padding:
+    5px
+    11px;
+
+
+  color:
+    var(--lab-accent);
+
+
+  background:
+    var(--lab-accent-soft);
+
+
+  border:
+    1px solid
+    var(--lab-accent-border);
+
+
+  border-radius:
+    var(--lab-radius-round);
+
+
+  font-size:
+    11px;
+
+
+  font-weight:
+    700;
+
+
+  letter-spacing:
+    0.07em;
+
+
+  text-transform:
+    uppercase;
+}
+
+
+/* =========================================================
+   33.4 SECTION
+   ========================================================= */
+
+.template-conclusion__section {
+  width:
+    100%;
+
+
+  padding:
+    20px;
+
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.025
+    );
+
+
+  border:
+    1px solid
+    var(--lab-border);
+
+
+  border-radius:
+    var(--lab-radius-lg);
+}
+
+
+/* =========================================================
+   SECTION HEADING
+   ========================================================= */
+
+.template-conclusion__section-heading {
+  display:
+    flex;
+
+  align-items:
+    flex-start;
+
+
+  gap:
+    13px;
+}
+
+
+.template-conclusion__section-heading
+  > span {
+  width:
+    34px;
+
+  height:
+    34px;
+
+
+  flex:
+    0 0 34px;
+
+
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+
+  color:
+    var(--lab-accent);
+
+
+  background:
+    var(--lab-accent-soft);
+
+
+  border:
+    1px solid
+    var(--lab-accent-border);
+
+
+  border-radius:
+    9px;
+
+
+  font-size:
+    11px;
+
+
+  font-weight:
+    700;
+}
+
+
+.template-conclusion__section-heading
+  > div {
+  min-width:
+    0;
+}
+
+
+.template-conclusion__section-heading h2 {
+  margin:
+    0;
+
+
+  color:
+    var(--lab-text);
+
+
+  font-size:
+    17px;
+
+
+  font-weight:
+    700;
+}
+
+
+.template-conclusion__section-heading p {
+  margin:
+    5px
+    0
+    0;
+
+
+  color:
+    var(--lab-text-muted);
+
+
+  font-size:
+    12px;
+
+
+  line-height:
+    1.5;
+}
+
+
+/* =========================================================
+   33.5 WARNING
+   ========================================================= */
+
+.template-conclusion__warning {
+  margin-top:
+    16px;
+
+
+  padding:
+    11px
+    13px;
+
+
+  color:
+    #fde68a;
+
+
+  background:
+    rgba(
+      146,
+      64,
+      14,
+      0.24
+    );
+
+
+  border:
+    1px solid
+    rgba(
+      245,
+      158,
+      11,
+      0.3
+    );
+
+
+  border-radius:
+    var(--lab-radius-md);
+
+
+  font-size:
+    12px;
+
+
+  line-height:
+    1.5;
+}
+
+
+/* =========================================================
+   33.6 EVIDENCE METRICS
+   ========================================================= */
+
+.template-conclusion__evidence {
+  margin-top:
+    16px;
+
+
+  display:
+    grid;
+
+
+  grid-template-columns:
+    repeat(
+      3,
+      minmax(
+        0,
+        1fr
+      )
+    );
+
+
+  gap:
+    10px;
+}
+
+
+.template-conclusion__metric {
+  min-width:
+    0;
+
+
+  padding:
+    15px;
+
+
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+
+  gap:
+    6px;
+
+
+  background:
+    var(--lab-surface-soft);
+
+
+  border:
+    1px solid
+    var(--lab-border);
+
+
+  border-radius:
+    var(--lab-radius-md);
+}
+
+
+.template-conclusion__metric span {
+  color:
+    var(--lab-text-muted);
+
+
+  font-size:
+    11px;
+}
+
+
+.template-conclusion__metric strong {
+  color:
+    var(--lab-accent);
+
+
+  font-size:
+    15px;
+
+
+  line-height:
+    1.3;
+}
+
+
+/* =========================================================
+   33.7 DATA PROCESS
+   ========================================================= */
+
+.template-conclusion__process {
+  margin-top:
+    14px;
+
+
+  display:
+    grid;
+
+
+  grid-template-columns:
+    1fr
+    auto
+    1fr
+    auto
+    1fr;
+
+
+  align-items:
+    center;
+
+
+  gap:
+    9px;
+}
+
+
+.template-conclusion__process-step {
+  min-width:
+    0;
+
+
+  padding:
+    12px;
+
+
+  display:
+    grid;
+
+
+  grid-template-columns:
+    auto
+    1fr;
+
+
+  column-gap:
+    9px;
+
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.025
+    );
+
+
+  border:
+    1px solid
+    var(--lab-border);
+
+
+  border-radius:
+    var(--lab-radius-md);
+}
+
+
+.template-conclusion__process-step
+  > span {
+  grid-row:
+    1 /
+    3;
+
+
+  width:
+    26px;
+
+  height:
+    26px;
+
+
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+
+  color:
+    var(--lab-bg);
+
+
+  background:
+    var(--lab-accent);
+
+
+  border-radius:
+    50%;
+
+
+  font-size:
+    10px;
+
+
+  font-weight:
+    700;
+}
+
+
+.template-conclusion__process-step strong {
+  color:
+    var(--lab-text-soft);
+
+
+  font-size:
+    12px;
+}
+
+
+.template-conclusion__process-step small {
+  margin-top:
+    2px;
+
+
+  color:
+    var(--lab-text-muted);
+
+
+  font-size:
+    10px;
+}
+
+
+.template-conclusion__process-arrow {
+  color:
+    var(--lab-accent);
+
+
+  font-size:
+    17px;
+}
+
+
+/* =========================================================
+   33.8 OBSERVATIONS
+   ========================================================= */
+
+.template-observation-list {
+  margin-top:
+    16px;
+
+
+  display:
+    grid;
+
+
+  gap:
+    12px;
+}
+
+
+.template-observation {
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+
+  gap:
+    7px;
+}
+
+
+.template-observation__number {
+  color:
+    var(--lab-accent);
+
+
+  font-size:
+    10px;
+
+
+  font-weight:
+    700;
+
+
+  letter-spacing:
+    0.06em;
+
+
+  text-transform:
+    uppercase;
+}
+
+
+.template-observation strong {
+  color:
+    var(--lab-text-soft);
+
+
+  font-size:
+    13px;
+
+
+  line-height:
+    1.45;
+}
+
+
+.template-observation textarea {
+  width:
+    100%;
+
+
+  min-height:
+    96px;
+
+
+  resize:
+    vertical;
+
+
+  padding:
+    11px
+    12px;
+
+
+  color:
+    var(--lab-text);
+
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.035
+    );
+
+
+  border:
+    1px solid
+    var(--lab-border);
+
+
+  border-radius:
+    var(--lab-radius-md);
+
+
+  outline:
+    none;
+
+
+  font-size:
+    12px;
+
+
+  line-height:
+    1.55;
+
+
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+
+.template-observation textarea::placeholder {
+  color:
+    var(--lab-text-muted);
+}
+
+
+.template-observation textarea:hover {
+  border-color:
+    var(--lab-border-strong);
+}
+
+
+.template-observation textarea:focus {
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.05
+    );
+
+
+  border-color:
+    var(--lab-accent);
+
+
+  box-shadow:
+    0 0 0
+    3px
+    var(--lab-accent-soft);
+}
+
+
+/* =========================================================
+   33.9 REVEAL
+   ========================================================= */
+
+.template-conclusion__reveal {
+  margin-top:
+    16px;
+
+
+  min-height:
+    92px;
+
+
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+
+  gap:
+    9px;
+
+
+  text-align:
+    center;
+}
+
+
+.template-conclusion__reveal
+  > span {
+  color:
+    var(--lab-text-muted);
+
+
+  font-size:
+    11px;
+}
+
+
+/* =========================================================
+   33.10 CONCLUSION RESULT
+   ========================================================= */
+
+.template-conclusion-result {
+  margin-top:
+    16px;
+
+
+  padding:
+    20px;
+
+
+  text-align:
+    center;
+
+
+  background:
+    var(--lab-accent-soft);
+
+
+  border:
+    1px solid
+    var(--lab-accent-border);
+
+
+  border-radius:
+    var(--lab-radius-lg);
+
+
+  box-shadow:
+    0 0 24px
+    color-mix(
+      in srgb,
+      var(--lab-accent) 8%,
+      transparent
+    );
+}
+
+
+.template-conclusion-result__label {
+  color:
+    var(--lab-accent);
+
+
+  font-size:
+    10px;
+
+
+  font-weight:
+    700;
+
+
+  letter-spacing:
+    0.07em;
+
+
+  text-transform:
+    uppercase;
+}
+
+
+.template-conclusion-result p {
+  max-width:
+    740px;
+
+
+  margin:
+    13px
+    auto
+    0;
+
+
+  color:
+    var(--lab-text-soft);
+
+
+  font-size:
+    13px;
+
+
+  line-height:
+    1.65;
+}
+
+
+/* =========================================================
+   PRINCIPLE
+   ========================================================= */
+
+.template-conclusion-result__principle {
+  margin:
+    18px
+    0;
+
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+
+  gap:
+    16px;
+
+
+  color:
+    var(--lab-text);
+
+
+  font-size:
+    clamp(
+      24px,
+      4vw,
+      34px
+    );
+
+
+  font-weight:
+    700;
+
+
+  text-shadow:
+    0 0 20px
+    var(--lab-accent-glow);
+}
+
+
+.template-conclusion-result__principle
+  span {
+  color:
+    var(--lab-accent);
+}
+
+
+.template-conclusion-result
+  .template-conclusion-result__note {
+  color:
+    var(--lab-text-muted);
+
+
+  font-size:
+    12px;
+}
+
+
+/* =========================================================
+   33.11 MOBILE
+   ========================================================= */
+
+@media (
+  max-width: 767px
+) {
+
+  .template-conclusion__inner {
+    gap:
+      15px;
+  }
+
+
+  .template-conclusion__badge {
+    align-self:
+      flex-start;
+  }
+
+
+  .template-conclusion__section {
+    padding:
+      15px;
+  }
+
+
+  .template-conclusion__evidence {
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .template-conclusion__process {
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .template-conclusion__process-arrow {
+    transform:
+      rotate(90deg);
+
+
+    justify-self:
+      center;
+  }
+
+
+  .template-conclusion-result {
+    padding:
+      16px;
+  }
+
+}
+
+
+/* =========================================================
+   33.12 SHORT VIEWPORT
+   ========================================================= */
+
+@media (
+  max-height: 520px
+) {
+
+  .template-conclusion__inner {
+    gap:
+      11px;
+  }
+
+
+  .template-conclusion__section {
+    padding:
+      13px;
+  }
+
+
+  .template-conclusion__section-heading h2 {
+    font-size:
+      15px;
+  }
+
+
+  .template-conclusion__section-heading p {
+    font-size:
+      11px;
+  }
+
+
+  .template-observation textarea {
+    min-height:
+      70px;
+  }
+
+}
+
+/* =========================================================
+   34. TEMPLATE — QUIZ PHASE
+   GĐ2.1E — LAB-NEW UX CONFORMANCE
+
+   Flow:
+   badge
+   heading + progress
+   question cards
+   answer states
+   submit
+   score/result
+   phase navigation
+   ========================================================= */
+
+
+/* =========================================================
+   34.1 ROOT
+   ========================================================= */
+
+.template-quiz {
+  width:
+    100%;
+
+  min-width:
+    0;
+
+  min-height:
+    100%;
+
+
+  display:
+    flex;
+
+  justify-content:
+    center;
+
+
+  color:
+    var(--lab-text);
+}
+
+
+/* =========================================================
+   34.2 INNER
+   ========================================================= */
+
+.template-quiz__inner {
+  width:
+    min(
+      100%,
+      920px
+    );
+
+
+  min-width:
+    0;
+
+
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+
+  gap:
+    18px;
+}
+
+
+/* =========================================================
+   34.3 BADGE
+   ========================================================= */
+
+.template-quiz__badge {
+  width:
+    fit-content;
+
+
+  align-self:
+    center;
+
+
+  padding:
+    5px
+    11px;
+
+
+  color:
+    var(--lab-accent);
+
+
+  background:
+    var(--lab-accent-soft);
+
+
+  border:
+    1px solid
+    var(--lab-accent-border);
+
+
+  border-radius:
+    var(--lab-radius-round);
+
+
+  font-size:
+    11px;
+
+
+  font-weight:
+    700;
+
+
+  letter-spacing:
+    0.07em;
+
+
+  text-transform:
+    uppercase;
+}
+
+
+/* =========================================================
+   34.4 HEADING
+   ========================================================= */
+
+.template-quiz__heading {
+  display:
+    flex;
+
+  align-items:
+    flex-start;
+
+  justify-content:
+    space-between;
+
+
+  gap:
+    24px;
+}
+
+
+.template-quiz__heading
+  > div:first-child {
+  min-width:
+    0;
+}
+
+
+.template-quiz__heading h2 {
+  margin:
+    0;
+
+
+  color:
+    var(--lab-text);
+
+
+  font-size:
+    clamp(
+      23px,
+      3vw,
+      29px
+    );
+
+
+  font-weight:
+    700;
+
+
+  line-height:
+    1.2;
+}
+
+
+.template-quiz__heading p {
+  max-width:
+    650px;
+
+
+  margin:
+    7px
+    0
+    0;
+
+
+  color:
+    var(--lab-text-muted);
+
+
+  font-size:
+    13px;
+
+
+  line-height:
+    1.6;
+}
+
+
+/* =========================================================
+   34.5 ANSWER PROGRESS
+   ========================================================= */
+
+.template-quiz__progress {
+  min-width:
+    110px;
+
+
+  padding:
+    10px
+    13px;
+
+
+  flex-shrink:
+    0;
+
+
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  align-items:
+    flex-end;
+
+
+  gap:
+    3px;
+
+
+  background:
+    var(--lab-surface-soft);
+
+
+  border:
+    1px solid
+    var(--lab-border);
+
+
+  border-radius:
+    var(--lab-radius-md);
+}
+
+
+.template-quiz__progress span {
+  color:
+    var(--lab-text-muted);
+
+
+  font-size:
+    10px;
+
+
+  font-weight:
+    600;
+
+
+  text-transform:
+    uppercase;
+}
+
+
+.template-quiz__progress strong {
+  color:
+    var(--lab-accent);
+
+
+  font-size:
+    17px;
+
+
+  line-height:
+    1;
+}
+
+
+/* =========================================================
+   34.6 SHARED QUIZ CONTAINER
+
+   Override generic ExperimentQuiz visual only
+   inside Template Quiz.
+   ========================================================= */
+
+.template-quiz__questions.experiment-quiz {
+  width:
+    100%;
+
+
+  max-width:
+    none;
+
+
+  margin:
+    0;
+
+
+  gap:
+    14px;
+}
+
+
+/* =========================================================
+   QUESTION CARD
+   ========================================================= */
+
+.template-quiz
+  .experiment-quiz__question {
+  padding:
+    18px;
+
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.025
+    );
+
+
+  border:
+    1px solid
+    var(--lab-border);
+
+
+  border-radius:
+    var(--lab-radius-lg);
+
+
+  box-shadow:
+    none;
+}
+
+
+/* =========================================================
+   QUESTION HEADER
+   ========================================================= */
+
+.template-quiz-card__header {
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    space-between;
+
+
+  gap:
+    12px;
+}
+
+
+.template-quiz-card__header
+  > span {
+  color:
+    var(--lab-accent);
+
+
+  font-size:
+    10px;
+
+
+  font-weight:
+    700;
+
+
+  letter-spacing:
+    0.07em;
+
+
+  text-transform:
+    uppercase;
+}
+
+
+.template-quiz-card__prompt {
+  margin:
+    8px
+    0
+    0;
+
+
+  color:
+    var(--lab-text);
+
+
+  font-size:
+    15px;
+
+
+  font-weight:
+    600;
+
+
+  line-height:
+    1.5;
+}
+
+
+/* =========================================================
+   QUESTION RESULT
+   ========================================================= */
+
+.template-quiz-card__result {
+  min-height:
+    24px;
+
+
+  padding:
+    4px
+    8px;
+
+
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+
+  border-radius:
+    var(--lab-radius-round);
+
+
+  font-size:
+    10px;
+
+
+  font-weight:
+    700;
+}
+
+
+.template-quiz-card__result--correct {
+  color:
+    #a7f3d0;
+
+
+  background:
+    rgba(
+      6,
+      78,
+      59,
+      0.38
+    );
+
+
+  border:
+    1px solid
+    rgba(
+      52,
+      211,
+      153,
+      0.3
+    );
+}
+
+
+.template-quiz-card__result--wrong {
+  color:
+    #fecdd3;
+
+
+  background:
+    rgba(
+      136,
+      19,
+      55,
+      0.35
+    );
+
+
+  border:
+    1px solid
+    rgba(
+      251,
+      113,
+      133,
+      0.3
+    );
+}
+
+
+/* =========================================================
+   34.7 OPTIONS
+   ========================================================= */
+
+.template-quiz
+  .experiment-quiz__options {
+  margin-top:
+    14px;
+
+
+  gap:
+    8px;
+}
+
+
+.template-quiz
+  .experiment-quiz__option {
+  width:
+    100%;
+
+
+  min-height:
+    48px;
+
+
+  padding:
+    9px
+    12px;
+
+
+  display:
+    grid;
+
+
+  grid-template-columns:
+    30px
+    minmax(
+      0,
+      1fr
+    )
+    auto;
+
+
+  align-items:
+    center;
+
+
+  gap:
+    10px;
+
+
+  color:
+    var(--lab-text-soft);
+
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.035
+    );
+
+
+  border:
+    1px solid
+    var(--lab-border);
+
+
+  border-radius:
+    var(--lab-radius-md);
+
+
+  text-align:
+    left;
+
+
+  opacity:
+    1;
+
+
+  transition:
+    color var(--transition-fast),
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    opacity var(--transition-fast);
+}
+
+
+.template-quiz
+  .experiment-quiz__option:hover:not(
+    :disabled
+  ) {
+  color:
+    var(--lab-text);
+
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.065
+    );
+
+
+  border-color:
+    var(--lab-border-strong);
+}
+
+
+/* =========================================================
+   OPTION MARKER
+   ========================================================= */
+
+.template-quiz-option__marker {
+  width:
+    28px;
+
+  height:
+    28px;
+
+
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+
+  color:
+    var(--lab-text-muted);
+
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.045
+    );
+
+
+  border:
+    1px solid
+    var(--lab-border);
+
+
+  border-radius:
+    7px;
+
+
+  font-size:
+    11px;
+
+
+  font-weight:
+    700;
+}
+
+
+.template-quiz-option__text {
+  min-width:
+    0;
+
+
+  color:
+    inherit;
+
+
+  font-size:
+    12px;
+
+
+  line-height:
+    1.45;
+}
+
+
+/* =========================================================
+   SELECTED
+   ========================================================= */
+
+.template-quiz
+  .experiment-quiz__option--selected {
+  color:
+    var(--lab-text);
+
+
+  background:
+    var(--lab-accent-soft);
+
+
+  border-color:
+    var(--lab-accent);
+}
+
+
+.template-quiz
+  .experiment-quiz__option--selected
+  .template-quiz-option__marker {
+  color:
+    var(--lab-bg);
+
+
+  background:
+    var(--lab-accent);
+
+
+  border-color:
+    var(--lab-accent);
+}
+
+
+/* =========================================================
+   CORRECT
+   ========================================================= */
+
+.template-quiz
+  .experiment-quiz__option--correct {
+  color:
+    #d1fae5;
+
+
+  background:
+    rgba(
+      6,
+      78,
+      59,
+      0.34
+    );
+
+
+  border-color:
+    rgba(
+      52,
+      211,
+      153,
+      0.58
+    );
+}
+
+
+.template-quiz
+  .experiment-quiz__option--correct
+  .template-quiz-option__marker {
+  color:
+    #052e24;
+
+
+  background:
+    #6ee7b7;
+
+
+  border-color:
+    #6ee7b7;
+}
+
+
+/* =========================================================
+   WRONG SELECTED
+   ========================================================= */
+
+.template-quiz
+  .experiment-quiz__option--wrong {
+  color:
+    #ffe4e6;
+
+
+  background:
+    rgba(
+      136,
+      19,
+      55,
+      0.32
+    );
+
+
+  border-color:
+    rgba(
+      251,
+      113,
+      133,
+      0.56
+    );
+}
+
+
+.template-quiz
+  .experiment-quiz__option--wrong
+  .template-quiz-option__marker {
+  color:
+    #4c0519;
+
+
+  background:
+    #fda4af;
+
+
+  border-color:
+    #fda4af;
+}
+
+
+/* =========================================================
+   MUTED AFTER SUBMIT
+   ========================================================= */
+
+.template-quiz
+  .experiment-quiz__option--muted {
+  opacity:
+    0.42;
+}
+
+
+/*
+ * Disabled sau submit không dùng cursor disabled quá mạnh.
+ * Người học vẫn đang review đáp án.
+ */
+
+.template-quiz
+  .experiment-quiz__option:disabled {
+  cursor:
+    default;
+}
+
+
+/* =========================================================
+   OPTION RESULT LABEL
+   ========================================================= */
+
+.template-quiz-option__result {
+  flex-shrink:
+    0;
+
+
+  padding:
+    3px
+    7px;
+
+
+  border-radius:
+    var(--lab-radius-round);
+
+
+  font-size:
+    9px;
+
+
+  font-weight:
+    700;
+
+
+  text-transform:
+    uppercase;
+}
+
+
+.template-quiz-option__result--correct {
+  color:
+    #a7f3d0;
+
+
+  background:
+    rgba(
+      52,
+      211,
+      153,
+      0.11
+    );
+}
+
+
+.template-quiz-option__result--wrong {
+  color:
+    #fecdd3;
+
+
+  background:
+    rgba(
+      251,
+      113,
+      133,
+      0.11
+    );
+}
+
+
+/* =========================================================
+   34.8 SUBMIT AREA
+   ========================================================= */
+
+.template-quiz__submit {
+  min-height:
+    74px;
+
+
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+
+  gap:
+    8px;
+
+
+  text-align:
+    center;
+}
+
+
+.template-quiz__submit
+  > span {
+  color:
+    var(--lab-text-muted);
+
+
+  font-size:
+    11px;
+}
+
+
+/* =========================================================
+   34.9 RESULT CARD
+   ========================================================= */
+
+.template-quiz-result {
+  padding:
+    17px
+    18px;
+
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    space-between;
+
+
+  gap:
+    20px;
+
+
+  color:
+    var(--lab-text-soft);
+
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.025
+    );
+
+
+  border:
+    1px solid
+    var(--lab-border);
+
+
+  border-radius:
+    var(--lab-radius-lg);
+}
+
+
+.template-quiz-result__score {
+  flex-shrink:
+    0;
+
+
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+
+  gap:
+    4px;
+}
+
+
+.template-quiz-result__score
+  span {
+  color:
+    var(--lab-text-muted);
+
+
+  font-size:
+    10px;
+
+
+  font-weight:
+    700;
+
+
+  letter-spacing:
+    0.06em;
+
+
+  text-transform:
+    uppercase;
+}
+
+
+.template-quiz-result__score
+  strong {
+  color:
+    var(--lab-accent);
+
+
+  font-size:
+    28px;
+
+
+  line-height:
+    1;
+}
+
+
+.template-quiz-result p {
+  margin:
+    0;
+
+
+  color:
+    var(--lab-text-muted);
+
+
+  font-size:
+    12px;
+
+
+  line-height:
+    1.55;
+
+
+  text-align:
+    right;
+}
+
+
+/* =========================================================
+   PERFECT SCORE
+   ========================================================= */
+
+.template-quiz-result--perfect {
+  background:
+    rgba(
+      6,
+      78,
+      59,
+      0.2
+    );
+
+
+  border-color:
+    rgba(
+      52,
+      211,
+      153,
+      0.32
+    );
+}
+
+
+.template-quiz-result--perfect
+  .template-quiz-result__score
+  strong {
+  color:
+    #6ee7b7;
+}
+
+
+/* =========================================================
+   34.10 MOBILE
+   ========================================================= */
+
+@media (
+  max-width: 767px
+) {
+
+  .template-quiz__inner {
+    gap:
+      15px;
+  }
+
+
+  .template-quiz__badge {
+    align-self:
+      flex-start;
+  }
+
+
+  .template-quiz__heading {
+    flex-direction:
+      column;
+
+
+    gap:
+      12px;
+  }
+
+
+  .template-quiz__progress {
+    width:
+      100%;
+
+
+    min-width:
+      0;
+
+
+    flex-direction:
+      row;
+
+    align-items:
+      center;
+
+    justify-content:
+      space-between;
+  }
+
+
+  .template-quiz
+    .experiment-quiz__question {
+    padding:
+      15px;
+  }
+
+
+  .template-quiz
+    .experiment-quiz__option {
+    grid-template-columns:
+      28px
+      minmax(
+        0,
+        1fr
+      )
+      auto;
+
+
+    padding:
+      8px
+      10px;
+  }
+
+
+  .template-quiz-result {
+    flex-direction:
+      column;
+
+    align-items:
+      flex-start;
+
+
+    gap:
+      10px;
+  }
+
+
+  .template-quiz-result p {
+    text-align:
+      left;
+  }
+
+}
+
+
+/* =========================================================
+   34.11 SMALL MOBILE
+   ========================================================= */
+
+@media (
+  max-width: 480px
+) {
+
+  .template-quiz-option__result {
+    display:
+      none;
+  }
+
+
+  .template-quiz
+    .experiment-quiz__option {
+    grid-template-columns:
+      28px
+      minmax(
+        0,
+        1fr
+      );
+  }
+
+}
+
+
+/* =========================================================
+   34.12 SHORT VIEWPORT
+   ========================================================= */
+
+@media (
+  max-height: 520px
+) {
+
+  .template-quiz__inner {
+    gap:
+      11px;
+  }
+
+
+  .template-quiz__heading h2 {
+    font-size:
+      20px;
+  }
+
+
+  .template-quiz__heading p {
+    margin-top:
+      5px;
+
+
+    font-size:
+      11px;
+
+
+    line-height:
+      1.45;
+  }
+
+
+  .template-quiz
+    .experiment-quiz__question {
+    padding:
+      12px;
+  }
+
+
+  .template-quiz
+    .experiment-quiz__option {
+    min-height:
+      40px;
+  }
+
+
+  .template-quiz__submit {
+    min-height:
+      54px;
+  }
+
+}
+
+/* =========================================================
+   35. TEMPLATE — REPORT PHASE
+   GĐ2.1E — LAB-NEW UX CONFORMANCE
+
+   SCREEN:
+   01 session reference data
+   02 printable A4 preview
+
+   PRINT:
+   only printable A4 sheet
+   ========================================================= */
+
+
+/* =========================================================
+   35.1 ROOT
+   ========================================================= */
+
+.template-report {
+  width:
+    100%;
+
+  min-width:
+    0;
+
+  min-height:
+    100%;
+
+
+  display:
+    flex;
+
+  justify-content:
+    center;
+
+
+  color:
+    var(--lab-text);
+}
+
+
+.template-report__screen {
+  width:
+    min(
+      100%,
+      1040px
+    );
+
+
+  min-width:
+    0;
+
+
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+
+  gap:
+    20px;
+}
+
+
+/* =========================================================
+   35.2 BADGE
+   ========================================================= */
+
+.template-report__badge {
+  width:
+    fit-content;
+
+
+  align-self:
+    center;
+
+
+  padding:
+    5px
+    11px;
+
+
+  color:
+    var(--lab-accent);
+
+
+  background:
+    var(--lab-accent-soft);
+
+
+  border:
+    1px solid
+    var(--lab-accent-border);
+
+
+  border-radius:
+    var(--lab-radius-round);
+
+
+  font-size:
+    11px;
+
+
+  font-weight:
+    700;
+
+
+  letter-spacing:
+    0.07em;
+
+
+  text-transform:
+    uppercase;
+}
+
+
+/* =========================================================
+   35.3 HEADING
+   ========================================================= */
+
+.template-report__heading {
+  display:
+    flex;
+
+  align-items:
+    flex-start;
+
+  justify-content:
+    space-between;
+
+
+  gap:
+    24px;
+}
+
+
+.template-report__heading
+  > div:first-child {
+  min-width:
+    0;
+}
+
+
+.template-report__heading h2 {
+  margin:
+    0;
+
+
+  color:
+    var(--lab-text);
+
+
+  font-size:
+    clamp(
+      23px,
+      3vw,
+      29px
+    );
+
+
+  font-weight:
+    700;
+
+
+  line-height:
+    1.2;
+}
+
+
+.template-report__heading p {
+  max-width:
+    650px;
+
+
+  margin:
+    7px
+    0
+    0;
+
+
+  color:
+    var(--lab-text-muted);
+
+
+  font-size:
+    13px;
+
+
+  line-height:
+    1.6;
+}
+
+
+/* =========================================================
+   35.4 ACTIONS
+   ========================================================= */
+
+.template-report__actions {
+  flex-shrink:
+    0;
+
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+
+  gap:
+    8px;
+}
+
+
+/* =========================================================
+   35.5 SECTION HEADING
+   ========================================================= */
+
+.template-report-section-heading {
+  display:
+    flex;
+
+  align-items:
+    flex-start;
+
+
+  gap:
+    13px;
+}
+
+
+.template-report-section-heading
+  > span {
+  width:
+    34px;
+
+  height:
+    34px;
+
+
+  flex:
+    0 0 34px;
+
+
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+
+  color:
+    var(--lab-accent);
+
+
+  background:
+    var(--lab-accent-soft);
+
+
+  border:
+    1px solid
+    var(--lab-accent-border);
+
+
+  border-radius:
+    9px;
+
+
+  font-size:
+    11px;
+
+
+  font-weight:
+    700;
+}
+
+
+.template-report-section-heading h3 {
+  margin:
+    0;
+
+
+  color:
+    var(--lab-text);
+
+
+  font-size:
+    17px;
+
+
+  font-weight:
+    700;
+}
+
+
+.template-report-section-heading p {
+  max-width:
+    700px;
+
+
+  margin:
+    5px
+    0
+    0;
+
+
+  color:
+    var(--lab-text-muted);
+
+
+  font-size:
+    12px;
+
+
+  line-height:
+    1.5;
+}
+
+
+/* =========================================================
+   35.6 REFERENCE SECTION
+   ========================================================= */
+
+.template-report-reference {
+  padding:
+    20px;
+
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.025
+    );
+
+
+  border:
+    1px solid
+    var(--lab-border);
+
+
+  border-radius:
+    var(--lab-radius-lg);
+}
+
+
+/* =========================================================
+   SUMMARY
+   ========================================================= */
+
+.template-report-reference__summary {
+  margin-top:
+    16px;
+
+
+  display:
+    grid;
+
+
+  grid-template-columns:
+    repeat(
+      4,
+      minmax(
+        0,
+        1fr
+      )
+    );
+
+
+  gap:
+    10px;
+}
+
+
+.template-report-reference__summary
+  article {
+  min-width:
+    0;
+
+
+  padding:
+    13px;
+
+
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+
+  gap:
+    5px;
+
+
+  background:
+    var(--lab-surface-soft);
+
+
+  border:
+    1px solid
+    var(--lab-border);
+
+
+  border-radius:
+    var(--lab-radius-md);
+}
+
+
+.template-report-reference__summary
+  span {
+  color:
+    var(--lab-text-muted);
+
+
+  font-size:
+    10px;
+}
+
+
+.template-report-reference__summary
+  strong {
+  color:
+    var(--lab-accent);
+
+
+  font-size:
+    13px;
+
+
+  line-height:
+    1.35;
+}
+
+
+/* =========================================================
+   35.7 REFERENCE TABLE
+   ========================================================= */
+
+.template-report-reference__table-wrap {
+  margin-top:
+    16px;
+
+
+  overflow-x:
+    auto;
+
+
+  border:
+    1px solid
+    var(--lab-border);
+
+
+  border-radius:
+    var(--lab-radius-md);
+}
+
+
+.template-report-reference__table {
+  width:
+    100%;
+
+
+  border-collapse:
+    collapse;
+
+
+  color:
+    var(--lab-text-soft);
+
+
+  font-size:
+    11px;
+}
+
+
+.template-report-reference__table
+  th,
+.template-report-reference__table
+  td {
+  height:
+    38px;
+
+
+  padding:
+    8px
+    10px;
+
+
+  border-bottom:
+    1px solid
+    var(--lab-border);
+
+
+  text-align:
+    center;
+}
+
+
+.template-report-reference__table
+  tr:last-child
+  th,
+.template-report-reference__table
+  tr:last-child
+  td {
+  border-bottom:
+    0;
+}
+
+
+.template-report-reference__table
+  thead th {
+  color:
+    var(--lab-text-muted);
+
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.025
+    );
+
+
+  font-size:
+    10px;
+
+
+  font-weight:
+    700;
+
+
+  text-transform:
+    uppercase;
+}
+
+
+.template-report-reference__table
+  tbody th {
+  color:
+    var(--lab-accent);
+}
+
+
+.template-report-reference__empty {
+  color:
+    var(--lab-text-muted);
+
+
+  text-align:
+    center;
+}
+
+
+/* =========================================================
+   35.8 SAVED OBSERVATIONS
+   ========================================================= */
+
+.template-report-observations {
+  margin-top:
+    18px;
+}
+
+
+.template-report-observations
+  > h4 {
+  margin:
+    0
+    0
+    10px;
+
+
+  color:
+    var(--lab-text);
+
+
+  font-size:
+    13px;
+}
+
+
+.template-report-observation {
+  padding:
+    11px
+    0;
+
+
+  display:
+    grid;
+
+
+  grid-template-columns:
+    26px
+    minmax(
+      0,
+      1fr
+    );
+
+
+  gap:
+    9px;
+
+
+  border-bottom:
+    1px solid
+    var(--lab-border);
+}
+
+
+.template-report-observation:last-child {
+  border-bottom:
+    0;
+}
+
+
+.template-report-observation
+  > span {
+  width:
+    24px;
+
+  height:
+    24px;
+
+
+  display:
+    inline-flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+
+  color:
+    var(--lab-accent);
+
+
+  background:
+    var(--lab-accent-soft);
+
+
+  border-radius:
+    7px;
+
+
+  font-size:
+    10px;
+
+
+  font-weight:
+    700;
+}
+
+
+.template-report-observation
+  strong {
+  color:
+    var(--lab-text-soft);
+
+
+  font-size:
+    12px;
+
+
+  line-height:
+    1.45;
+}
+
+
+.template-report-observation
+  p {
+  margin:
+    5px
+    0
+    0;
+
+
+  color:
+    var(--lab-text-muted);
+
+
+  font-size:
+    11px;
+
+
+  line-height:
+    1.5;
+}
+
+
+/* =========================================================
+   35.9 ASSESSMENT REFERENCE
+   ========================================================= */
+
+.template-report-assessment {
+  margin-top:
+    16px;
+
+
+  padding:
+    13px
+    14px;
+
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    space-between;
+
+
+  gap:
+    20px;
+
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.025
+    );
+
+
+  border:
+    1px solid
+    var(--lab-border);
+
+
+  border-radius:
+    var(--lab-radius-md);
+}
+
+
+.template-report-assessment
+  > div {
+  flex-shrink:
+    0;
+
+
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+
+  gap:
+    3px;
+}
+
+
+.template-report-assessment
+  span {
+  color:
+    var(--lab-text-muted);
+
+
+  font-size:
+    10px;
+
+
+  text-transform:
+    uppercase;
+}
+
+
+.template-report-assessment
+  strong {
+  color:
+    var(--lab-accent);
+
+
+  font-size:
+    16px;
+}
+
+
+.template-report-assessment
+  p {
+  max-width:
+    530px;
+
+
+  margin:
+    0;
+
+
+  color:
+    var(--lab-text-muted);
+
+
+  font-size:
+    11px;
+
+
+  line-height:
+    1.5;
+
+
+  text-align:
+    right;
+}
+
+
+/* =========================================================
+   35.10 A4 PREVIEW
+   ========================================================= */
+
+.template-report-preview {
+  padding:
+    20px;
+
+
+  background:
+    rgba(
+      255,
+      255,
+      255,
+      0.025
+    );
+
+
+  border:
+    1px solid
+    var(--lab-border);
+
+
+  border-radius:
+    var(--lab-radius-lg);
+}
+
+
+/* =========================================================
+   35.11 A4 SHEET
+   ========================================================= */
+
+.template-report-sheet {
+  width:
+    min(
+      100%,
+      794px
+    );
+
+
+  min-height:
+    1123px;
+
+
+  margin:
+    20px
+    auto
+    0;
+
+
+  padding:
+    54px
+    58px;
+
+
+  color:
+    #111827;
+
+
+  background:
+    #ffffff;
+
+
+  border:
+    1px solid
+    #d1d5db;
+
+
+  box-shadow:
+    0 18px 50px
+    rgba(
+      0,
+      0,
+      0,
+      0.28
+    );
+
+
+  font-family:
+    Arial,
+    sans-serif;
+
+
+  font-size:
+    13px;
+
+
+  line-height:
+    1.5;
+}
+
+
+/* =========================================================
+   REPORT HEADER
+   ========================================================= */
+
+.template-report-sheet__header {
+  text-align:
+    center;
+}
+
+
+.template-report-sheet__header h1 {
+  margin:
+    0;
+
+
+  font-size:
+    17px;
+
+
+  font-weight:
+    700;
+}
+
+
+.template-report-sheet__header h2 {
+  margin:
+    8px
+    0
+    0;
+
+
+  font-size:
+    16px;
+
+
+  font-weight:
+    700;
+}
+
+
+.template-report-sheet__header p {
+  margin:
+    6px
+    0
+    0;
+
+
+  color:
+    #4b5563;
+
+
+  font-size:
+    12px;
+}
+
+
+/* =========================================================
+   IDENTITY
+   ========================================================= */
+
+.template-report-sheet__identity {
+  margin-top:
+    24px;
+
+
+  display:
+    grid;
+
+
+  gap:
+    10px;
+}
+
+
+.template-report-sheet__identity
+  > div,
+.template-report-sheet__identity-row
+  > div {
+  display:
+    flex;
+
+  align-items:
+    flex-end;
+
+
+  gap:
+    8px;
+}
+
+
+.template-report-sheet__identity
+  span {
+  min-width:
+    80px;
+
+  height:
+    20px;
+
+
+  flex:
+    1;
+
+
+  border-bottom:
+    1px dotted
+    #111827;
+}
+
+
+.template-report-sheet__identity-row {
+  display:
+    grid
+    !important;
+
+
+  grid-template-columns:
+    1fr
+    1fr;
+
+
+  gap:
+    32px
+    !important;
+}
+
+
+.template-report-sheet
+  > hr {
+  margin:
+    20px
+    0;
+
+
+  border:
+    0;
+
+  border-top:
+    1px solid
+    #9ca3af;
+}
+
+
+/* =========================================================
+   SHEET SECTIONS
+   ========================================================= */
+
+.template-report-sheet
+  > section {
+  margin-top:
+    20px;
+}
+
+
+.template-report-sheet
+  section h3 {
+  margin:
+    0
+    0
+    9px;
+
+
+  font-size:
+    14px;
+
+
+  font-weight:
+    700;
+}
+
+
+.template-report-sheet
+  p {
+  margin:
+    7px
+    0;
+}
+
+
+.template-report-sheet
+  ul {
+  margin:
+    7px
+    0;
+
+
+  padding-left:
+    22px;
+}
+
+
+/* =========================================================
+   A4 TABLE
+   ========================================================= */
+
+.template-report-sheet__caption {
+  font-style:
+    italic;
+
+
+  text-align:
+    center;
+}
+
+
+.template-report-sheet__table {
+  width:
+    100%;
+
+
+  margin-top:
+    10px;
+
+
+  border-collapse:
+    collapse;
+
+
+  table-layout:
+    fixed;
+}
+
+
+.template-report-sheet__table
+  th,
+.template-report-sheet__table
+  td {
+  height:
+    42px;
+
+
+  padding:
+    6px;
+
+
+  border:
+    1px solid
+    #374151;
+
+
+  text-align:
+    center;
+}
+
+
+.template-report-sheet__table
+  th {
+  background:
+    #f3f4f6;
+
+
+  font-size:
+    11px;
+
+
+  font-weight:
+    700;
+}
+
+
+/* =========================================================
+   BLANK LINES
+   ========================================================= */
+
+.template-report-sheet__blank-lines {
+  margin:
+    8px
+    0
+    14px;
+
+
+  display:
+    grid;
+
+
+  gap:
+    12px;
+}
+
+
+.template-report-sheet__blank-lines
+  span {
+  height:
+    17px;
+
+
+  display:
+    block;
+
+
+  border-bottom:
+    1px dotted
+    #6b7280;
+}
+
+
+/* =========================================================
+   SIGNATURE
+   ========================================================= */
+
+.template-report-sheet__signature {
+  margin-top:
+    36px;
+
+
+  display:
+    flex;
+
+  justify-content:
+    flex-end;
+
+
+  text-align:
+    center;
+}
+
+
+.template-report-sheet__signature
+  > div {
+  width:
+    250px;
+}
+
+
+.template-report-sheet__signature
+  p {
+  margin:
+    3px
+    0;
+}
+
+
+.template-report-sheet__signature
+  > div
+  > div {
+  height:
+    65px;
+}
+
+
+/* =========================================================
+   PAGE BREAK SAFETY
+   ========================================================= */
+
+.template-report-sheet__avoid-break {
+  break-inside:
+    avoid;
+
+  page-break-inside:
+    avoid;
+}
+
+
+/* =========================================================
+   35.12 TABLET
+   ========================================================= */
+
+@media (
+  max-width: 1024px
+) {
+
+  .template-report-reference__summary {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(
+          0,
+          1fr
+        )
+      );
+  }
+
+
+  .template-report-sheet {
+    padding:
+      44px
+      46px;
+  }
+
+}
+
+
+/* =========================================================
+   35.13 MOBILE
+   ========================================================= */
+
+@media (
+  max-width: 767px
+) {
+
+  .template-report__screen {
+    gap:
+      15px;
+  }
+
+
+  .template-report__badge {
+    align-self:
+      flex-start;
+  }
+
+
+  .template-report__heading {
+    flex-direction:
+      column;
+
+
+    gap:
+      12px;
+  }
+
+
+  .template-report__actions {
+    width:
+      100%;
+
+
+    display:
+      grid;
+
+
+    grid-template-columns:
+      1fr
+      1fr;
+  }
+
+
+  .template-report__actions
+    .experiment-lab-button {
+    width:
+      100%;
+  }
+
+
+  .template-report-reference,
+.template-report-preview {
+    padding:
+      15px;
+  }
+
+
+  .template-report-reference__summary {
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .template-report-assessment {
+    flex-direction:
+      column;
+
+    align-items:
+      flex-start;
+  }
+
+
+  .template-report-assessment
+    p {
+    text-align:
+      left;
+  }
+
+
+  /*
+   * A4 preview không co chữ nhỏ.
+   * Cho phép scroll ngang khi màn hình quá hẹp.
+   */
+
+  .template-report-preview {
+    overflow-x:
+      auto;
+  }
+
+
+  .template-report-sheet {
+    width:
+      720px;
+
+
+    min-width:
+      720px;
+
+
+    padding:
+      40px;
+  }
+
+}
+
+
+/* =========================================================
+   35.14 PRINT
+
+   Chỉ để lại printable report.
+   ========================================================= */
+
+@media print {
+
+
+
+  .template-report,
+.template-report__screen,
+.template-report-preview {
+    width:
+      auto !important;
+
+
+    height:
+      auto !important;
+
+
+    min-height:
+      0 !important;
+
+
+    margin:
+      0 !important;
+
+
+    padding:
+      0 !important;
+
+
+    display:
+      block !important;
+
+
+    position:
+      static !important;
+
+
+    overflow:
+      visible !important;
+
+
+    background:
+      transparent !important;
+
+
+    border:
+      0 !important;
+
+
+    box-shadow:
+      none !important;
+  }
+
+
+  /*
+   * Toàn bộ UI trên màn hình biến mất.
+   */
+
+  .template-report__badge,
+.template-report__heading,
+.template-report-reference,
+.template-report-section-heading {
+    display:
+      none !important;
+  }
+
+
+  /*
+   * Chỉ còn A4 sheet.
+   */
+
+  .template-report-sheet {
+    width:
+      100% !important;
+
+
+    min-width:
+      0 !important;
+
+    min-height:
+      0 !important;
+
+
+    margin:
+      0 !important;
+
+
+    padding:
+      0 !important;
+
+
+    color:
+      #000 !important;
+
+
+    background:
+      #fff !important;
+
+
+    border:
+      0 !important;
+
+
+    box-shadow:
+      none !important;
+
+
+    font-size:
+      11pt;
+  }
+
+
+  .template-report-sheet__table
+    th {
+    background:
+      #fff !important;
+  }
+
+}
+
+
+/* =========================================================
+   36.18 TEMPLATE RUNTIME DEMO
+   ========================================================= */
+
+/*
+ * _template dùng runtime demo để kiểm tra:
+ *
+ * - runtime có mount một lần hay không
+ * - local runtime state có sống qua route change không
+ *
+ * Không biến demo thành giant card.
+ */
+
+.template-runtime-demo {
+  position:
+    absolute;
+
+
+  inset:
+    0;
+
+
+  width:
+    100%;
+
+  height:
+    100%;
+
+
+  display:
+    flex;
+
+  align-items:
+    center;
+
+  justify-content:
+    center;
+
+
+  overflow:
+    hidden;
+
+
+  background:
+    radial-gradient(
+      circle at
+      50%
+      42%,
+
+      color-mix(
+        in srgb,
+        var(--lab-accent) 12%,
+        transparent
+      ),
+
+      transparent
+      42%
+    ),
+    var(--lab-bg);
+}
+
+
+/* =========================================================
+   TEMPLATE DEMO CENTER OBJECT
+   ========================================================= */
+
+.template-runtime-demo__content {
+  width:
+    min(
+      calc(
+        100% -
+        40px
+      ),
+      420px
+    );
+
+
+  padding:
+    22px;
+
+
+  display:
+    flex;
+
+  flex-direction:
+    column;
+
+  align-items:
+    center;
+
+
+  gap:
+    10px;
+
+
+  text-align:
+    center;
+
+
+  color:
+    var(--lab-text-soft);
+
+
+  background:
+    rgba(
+      7,
+      15,
+      28,
+      0.58
+    );
+
+
+  border:
+    1px solid
+    var(--lab-border);
+
+
+  border-radius:
+    var(--lab-radius-lg);
+
+
+  box-shadow:
+    0 18px
+    48px
+    rgba(
+      2,
+      6,
+      23,
+      0.3
+    );
+
+
+  backdrop-filter:
+    blur(10px);
+
+  -webkit-backdrop-filter:
+    blur(10px);
+}
+
+
+.template-runtime-demo__content
+  span {
+  color:
+    var(--lab-accent);
+
+
+  font-size:
+    10px;
+
+
+  font-weight:
+    700;
+
+
+  letter-spacing:
+    0.07em;
+
+
+  text-transform:
+    uppercase;
+}
+
+
+.template-runtime-demo__content
+  strong {
+  color:
+    var(--lab-text);
+
+
+  font-size:
+    clamp(
+      28px,
+      5vw,
+      42px
+    );
+
+
+  line-height:
+    1;
+}
+
+
+.template-runtime-demo__content
+  p {
+  margin:
+    0;
+
+
+  color:
+    var(--lab-text-muted);
+
+
+  font-size:
+    12px;
+
+
+  line-height:
+    1.55;
+}
+
+
+/* =========================================================
+   36.19 MOBILE
+   ========================================================= */
+
+@media (
+  max-width: 767px
+) {
+
+
+
+  .template-runtime-demo__content {
+    width:
+      min(
+        calc(
+          100% -
+          24px
+        ),
+        360px
+      );
+
+
+    padding:
+      18px;
+  }
+
+}
+
+
+/* =========================================================
+   36.20 SHORT VIEWPORT
+   ========================================================= */
+
+@media (
+  max-height: 520px
+) {
+
+  .template-runtime-demo__content {
+    padding:
+      14px;
+
+
+    gap:
+      7px;
+  }
+
+
+  .template-runtime-demo__content
+    strong {
+    font-size:
+      28px;
+  }
+
+
+  .template-runtime-demo__content
+    p {
+    font-size:
+      10px;
+  }
+
+}
+
+
+/*
+ * Shared floating surfaces hiện tại.
+ */
+
+.experiment-template__route--practice
+  .template-practice-panel,
+.experiment-template__route--practice
+  .template-practice-toolbar,
+.experiment-template__route--practice
+  .template-practice-status {
+  pointer-events:
+    auto;
+}
+
+
+/* =========================================================
+   37.11 FLOATING PANEL CONSTRAINT
+
+   Panel không được làm stage nở ra.
+   Nếu nội dung dài, panel tự scroll.
+   ========================================================= */
+
+.experiment-template__route--practice
+  .template-practice-panel {
+  max-height:
+    calc(
+      100% -
+      92px
+    );
+
+
+  overflow-x:
+    hidden;
+
+  overflow-y:
+    auto;
+
+
+  overscroll-behavior:
+    contain;
+}
+
+
+/* =========================================================
+   37.12 TOOLBAR CONSTRAINT
+   ========================================================= */
+
+.experiment-template__route--practice
+  .template-practice-toolbar {
+  max-width:
+    calc(
+      100% -
+      28px
+    );
+
+
+  overflow-x:
+    auto;
+
+  overflow-y:
+    hidden;
+
+
+  overscroll-behavior-x:
+    contain;
+
+
+  scrollbar-width:
+    none;
+}
+
+
+.experiment-template__route--practice
+  .template-practice-toolbar::-webkit-scrollbar {
+  display:
+    none;
+}
+
+
+/* =========================================================
+   37.22 EXPANDED FLOATING PANELS
+
+   Tăng vùng làm việc nhưng không làm panel
+   phình ra vô hạn.
+   ========================================================= */
+
+.experiment-template--expanded
+  .template-practice-panel {
+  max-height:
+    calc(
+      100% -
+      96px
+    );
+}
+
+
+/* =========================================================
+   37.23 EXPANDED TOOLBAR
+   ========================================================= */
+
+.experiment-template--expanded
+  .template-practice-toolbar {
+  bottom:
+    16px;
+}
+
+
+/* =========================================================
+   37.26 MOBILE PRACTICE WORKSPACE
+   ========================================================= */
+
+@media (
+  max-width: 767px
+) {
+
+
+
+  .experiment-template--expanded
+    .template-practice-toolbar {
+    bottom:
+      10px;
+  }
+
+}
+
+
+/* =========================================================
+   37.27 SHORT VIEWPORT / LANDSCAPE
+   ========================================================= */
+
+@media (
+  max-height: 520px
+) {
+
+
+
+  .experiment-template__route--practice
+    .template-practice-panel {
+    max-height:
+      calc(
+        100% -
+        58px
+      );
+  }
+
+
+  .experiment-template--expanded
+    .template-practice-toolbar {
+    bottom:
+      7px;
+  }
+
+}
+
+
+/* =========================================================
+   37.29 PRINT
+
+   Practice workspace không thuộc report print.
+   ========================================================= */
+
+@media print {
+
+  .template-practice {
+    display:
+      none
+      !important;
+  }
+
+}
+
+
+/* =========================================================
+   38.3 SHARED CONTENT WIDTH
+   ========================================================= */
+
+.template-intro__inner,
+.template-preparation__inner,
+.template-conclusion__inner {
+  width:
+    min(
+      100%,
+      var(
+        --experiment-content-max-width
+      )
+    );
+}
+
+
+.template-quiz__inner {
+  width:
+    min(
+      100%,
+      920px
+    );
+}
+
+
+.template-report__screen {
+  width:
+    min(
+      100%,
+      1040px
+    );
+}
+
+
+/* =========================================================
+   38.5 MEDIUM DESKTOP
+   <= 1200px
+   ========================================================= */
+
+@media (
+  max-width: 1200px
+) and (
+  min-width: 1025px
+) {
+
+
+
+  /*
+   * Practice panels co nhẹ trước khi sang tablet.
+   */
+
+  .template-practice-panel--instructions {
+    width:
+      min(
+        280px,
+        27vw
+      );
+  }
+
+
+  .template-practice-panel--measurements {
+    width:
+      min(
+        320px,
+        31vw
+      );
+  }
+
+}
+
+
+/* =========================================================
+   38.6 TABLET
+   768 — 1024
+   ========================================================= */
+
+@media (
+  max-width: 1024px
+) and (
+  min-width: 768px
+) {
+
+
+
+  /* -------------------------------------------------------
+     INTRO
+     ------------------------------------------------------- */
+
+  .template-intro__grid {
+    gap:
+      12px;
+  }
+
+
+  .template-intro-card {
+    padding:
+      16px;
+  }
+
+
+  /* -------------------------------------------------------
+     PREPARATION
+     ------------------------------------------------------- */
+
+  .template-tool-grid {
+    gap:
+      10px;
+  }
+
+
+  .template-tool-card {
+    min-height:
+      76px;
+  }
+
+
+  /* -------------------------------------------------------
+     CONCLUSION
+     ------------------------------------------------------- */
+
+  .template-conclusion__evidence {
+    gap:
+      8px;
+  }
+
+
+  .template-conclusion__process {
+    gap:
+      7px;
+  }
+
+
+  /* -------------------------------------------------------
+     QUIZ
+     ------------------------------------------------------- */
+
+  .template-quiz__heading {
+    gap:
+      18px;
+  }
+
+
+  /* -------------------------------------------------------
+     REPORT
+     ------------------------------------------------------- */
+
+  .template-report-reference__summary {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(
+          0,
+          1fr
+        )
+      );
+  }
+
+
+  /* -------------------------------------------------------
+     PRACTICE
+     ------------------------------------------------------- */
+
+  .template-practice-panel--instructions {
+    width:
+      min(
+        270px,
+        33vw
+      );
+  }
+
+
+  .template-practice-panel--measurements {
+    width:
+      min(
+        310px,
+        38vw
+      );
+  }
+
+
+  .template-practice-toolbar {
+    max-width:
+      calc(
+        100% -
+        24px
+      );
+  }
+
+}
+
+
+/* =========================================================
+   38.7 MOBILE
+   <= 767
+   ========================================================= */
+
+@media (
+  max-width: 767px
+) {
+
+
+
+  /*
+   * Không phase content nào được rộng hơn viewport.
+   */
+
+  .template-intro,
+.template-preparation,
+.template-conclusion,
+.template-quiz,
+.template-report {
+    min-width:
+      0;
+
+
+    max-width:
+      100%;
+  }
+
+
+  /* =======================================================
+     BADGES
+     ======================================================= */
+
+  .template-intro__badge,
+.template-preparation__badge,
+.template-conclusion__badge,
+.template-quiz__badge,
+.template-report__badge {
+    align-self:
+      flex-start;
+  }
+
+
+  /* =======================================================
+     INTRO
+     ======================================================= */
+
+  .template-intro__inner {
+    gap:
+      15px;
+  }
+
+
+  .template-intro__grid {
+    grid-template-columns:
+      1fr;
+
+
+    gap:
+      10px;
+  }
+
+
+  .template-intro-card {
+    padding:
+      14px;
+  }
+
+
+  .template-principle-card {
+    padding:
+      18px
+      14px;
+  }
+
+
+  /* =======================================================
+     PREPARATION
+     ======================================================= */
+
+  .template-preparation__heading {
+    text-align:
+      left;
+  }
+
+
+  .template-preparation__heading p {
+    margin-left:
+      0;
+
+    margin-right:
+      0;
+  }
+
+
+  .template-tool-grid {
+    grid-template-columns:
+      1fr;
+
+
+    gap:
+      9px;
+  }
+
+
+  .template-tool-card {
+    min-height:
+      72px;
+
+
+    padding:
+      11px;
+  }
+
+
+  /* =======================================================
+     SHARED PHASE ACTIONS
+     ======================================================= */
+
+  .template-phase-actions {
+    display:
+      grid;
+
+
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(
+          0,
+          1fr
+        )
+      );
+
+
+    gap:
+      8px;
+  }
+
+
+  .template-phase-actions--end {
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .template-phase-actions
+    .experiment-lab-button {
+    width:
+      100%;
+  }
+
+
+  /* =======================================================
+     CONCLUSION
+     ======================================================= */
+
+  .template-conclusion__section {
+    padding:
+      14px;
+  }
+
+
+  .template-conclusion__evidence {
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .template-conclusion__process {
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .template-conclusion__process-arrow {
+    justify-self:
+      center;
+
+
+    transform:
+      rotate(
+        90deg
+      );
+  }
+
+
+  .template-observation textarea {
+    min-height:
+      90px;
+  }
+
+
+  /* =======================================================
+     QUIZ
+     ======================================================= */
+
+  .template-quiz__heading {
+    flex-direction:
+      column;
+
+
+    gap:
+      10px;
+  }
+
+
+  .template-quiz__progress {
+    width:
+      100%;
+
+
+    min-width:
+      0;
+
+
+    flex-direction:
+      row;
+
+    align-items:
+      center;
+
+    justify-content:
+      space-between;
+  }
+
+
+  .template-quiz
+    .experiment-quiz__question {
+    padding:
+      14px;
+  }
+
+
+  .template-quiz
+    .experiment-quiz__option {
+    min-height:
+      46px;
+
+
+    padding:
+      8px
+      10px;
+  }
+
+
+  .template-quiz-result {
+    flex-direction:
+      column;
+
+    align-items:
+      flex-start;
+
+
+    gap:
+      8px;
+  }
+
+
+  .template-quiz-result p {
+    text-align:
+      left;
+  }
+
+
+  /* =======================================================
+     REPORT
+     ======================================================= */
+
+  .template-report__heading {
+    flex-direction:
+      column;
+
+
+    gap:
+      10px;
+  }
+
+
+  .template-report__actions {
+    width:
+      100%;
+
+
+    display:
+      grid;
+
+
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(
+          0,
+          1fr
+        )
+      );
+  }
+
+
+  .template-report__actions
+    .experiment-lab-button {
+    width:
+      100%;
+  }
+
+
+  .template-report-reference,
+.template-report-preview {
+    padding:
+      14px;
+  }
+
+
+  .template-report-reference__summary {
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .template-report-assessment {
+    flex-direction:
+      column;
+
+    align-items:
+      flex-start;
+
+
+    gap:
+      8px;
+  }
+
+
+  .template-report-assessment p {
+    text-align:
+      left;
+  }
+
+
+  /*
+   * A4 preview giữ kích thước giấy.
+   * Container chịu horizontal scroll.
+   */
+
+  .template-report-preview {
+    overflow-x:
+      auto;
+
+
+    overscroll-behavior-x:
+      contain;
+  }
+
+
+  .template-report-sheet {
+    width:
+      720px;
+
+
+    min-width:
+      720px;
+  }
+
+
+  /* =======================================================
+     PRACTICE STATUS
+     ======================================================= */
+
+  .template-practice-status {
+    top:
+      9px;
+
+
+    max-width:
+      calc(
+        100% -
+        20px
+      );
+
+
+    min-height:
+      32px;
+
+
+    padding:
+      6px
+      9px;
+
+
+    overflow:
+      hidden;
+
+
+    font-size:
+      10px;
+
+
+    text-overflow:
+      ellipsis;
+  }
+
+
+  /* =======================================================
+     PRACTICE PANELS
+     ======================================================= */
+
+  .template-practice-panel {
+    padding:
+      12px;
+  }
+
+
+  .template-practice-panel--instructions {
+    top:
+      50px;
+
+    left:
+      10px;
+
+
+    width:
+      min(
+        55vw,
+        250px
+      );
+
+
+    max-height:
+      calc(
+        100% -
+        116px
+      );
+  }
+
+
+  .template-practice-panel--measurements {
+    top:
+      50px;
+
+    right:
+      10px;
+
+
+    width:
+      min(
+        62vw,
+        285px
+      );
+
+
+    max-height:
+      calc(
+        100% -
+        116px
+      );
+  }
+
+
+  /*
+   * Measurement có ưu tiên visual cao hơn,
+   * vì dữ liệu quan trọng hơn hướng dẫn sau
+   * khi người học bắt đầu đo.
+   */
+
+  .template-practice-panel--measurements {
+    z-index:
+      45;
+  }
+
+
+  /* =======================================================
+     PRACTICE TOOLBAR
+     ======================================================= */
+
+  .template-practice-toolbar {
+    left:
+      10px;
+
+    right:
+      10px;
+
+    bottom:
+      10px;
+
+
+    max-width:
+      none;
+
+
+    transform:
+      none;
+
+
+    justify-content:
+      flex-start;
+  }
+
+
+  .template-practice-tool {
+    min-height:
+      34px;
+
+
+    padding:
+      6px
+      9px;
+
+
+    font-size:
+      10px;
+  }
+
+}
+
+
+/* =========================================================
+   38.8 SMALL MOBILE
+   <= 480
+   ========================================================= */
+
+@media (
+  max-width: 480px
+) {
+
+
+
+  /* =======================================================
+     INTRO
+     ======================================================= */
+
+  .template-intro-card {
+    gap:
+      11px;
+  }
+
+
+  .template-intro-card__icon {
+    width:
+      40px;
+
+    height:
+      40px;
+
+
+    flex-basis:
+      40px;
+  }
+
+
+  /* =======================================================
+     TOOL CARDS
+     ======================================================= */
+
+  .template-tool-card__icon {
+    width:
+      40px;
+
+    height:
+      40px;
+
+
+    flex-basis:
+      40px;
+  }
+
+
+  .template-tool-card__content small {
+    font-size:
+      10px;
+  }
+
+
+  /* =======================================================
+     ACTIONS
+
+     Trên mobile rất nhỏ,
+     navigation dọc dễ dùng hơn 2 cột.
+     ======================================================= */
+
+  .template-phase-actions {
+    grid-template-columns:
+      1fr;
+  }
+
+
+  /* =======================================================
+     QUIZ OPTION
+     ======================================================= */
+
+  .template-quiz-option__result {
+    display:
+      none;
+  }
+
+
+  .template-quiz
+    .experiment-quiz__option {
+    grid-template-columns:
+      28px
+      minmax(
+        0,
+        1fr
+      );
+  }
+
+
+  /* =======================================================
+     REPORT ACTIONS
+     ======================================================= */
+
+  .template-report__actions {
+    grid-template-columns:
+      1fr;
+  }
+
+
+  /* =======================================================
+     PRACTICE STATUS
+     ======================================================= */
+
+  .template-practice-status
+    .template-practice-status__separator {
+    display:
+      none;
+  }
+
+
+  /*
+   * Giảm thông tin phụ để status không thành
+   * thanh dài che simulation.
+   */
+
+  .template-practice-status
+    > span:nth-of-type(2) {
+    display:
+      none;
+  }
+
+
+  /* =======================================================
+     PRACTICE PANELS
+
+     Mobile nhỏ:
+     panel trở thành gần full width.
+     Không cố hiển thị 2 panel song song.
+     ======================================================= */
+
+  .template-practice-panel--instructions,
+.template-practice-panel--measurements {
+    top:
+      48px;
+
+
+    left:
+      10px;
+
+    right:
+      auto;
+
+
+    width:
+      calc(
+        100% -
+        20px
+      );
+
+
+    max-height:
+      calc(
+        100% -
+        112px
+      );
+  }
+
+
+  .template-practice-panel--measurements {
+    z-index:
+      50;
+  }
+
+
+  /* =======================================================
+     PRACTICE TOOLBAR ICON-FIRST
+     ======================================================= */
+
+  .template-practice-tool {
+    min-width:
+      34px;
+
+
+    padding:
+      6px
+      8px;
+  }
+
+
+  .template-practice-tool
+    > span {
+    display:
+      none;
+  }
+
+
+  .template-practice-toolbar__divider {
+    height:
+      20px;
+  }
+
+}
+
+
+/* =========================================================
+   38.9 SHORT VIEWPORT
+   <= 520px HEIGHT
+
+   Ví dụ:
+   - laptop split-screen
+   - mobile landscape
+   ========================================================= */
+
+@media (
+  max-height: 520px
+) {
+
+
+
+  .template-intro__inner,
+.template-preparation__inner,
+.template-conclusion__inner,
+.template-quiz__inner,
+.template-report__screen {
+    gap:
+      10px;
+  }
+
+
+  .template-practice-status {
+    top:
+      6px;
+
+
+    min-height:
+      28px;
+
+
+    padding:
+      4px
+      8px;
+  }
+
+
+  .template-practice-panel {
+    top:
+      6px;
+
+
+    padding:
+      10px;
+
+
+    max-height:
+      calc(
+        100% -
+        54px
+      );
+  }
+
+
+  .template-practice-panel--instructions {
+    left:
+      6px;
+  }
+
+
+  .template-practice-panel--measurements {
+    right:
+      6px;
+  }
+
+
+  .template-practice-panel__eyebrow {
+    margin-bottom:
+      3px;
+  }
+
+
+  .template-practice-panel h3 {
+    font-size:
+      14px;
+  }
+
+
+  .template-practice__instructions {
+    margin-top:
+      7px;
+
+
+    gap:
+      5px;
+  }
+
+
+  .template-practice__instructions li {
+    font-size:
+      10px;
+
+
+    line-height:
+      1.4;
+  }
+
+
+  .template-practice-toolbar {
+    bottom:
+      6px;
+
+
+    padding:
+      4px;
+  }
+
+
+  .template-practice-tool {
+    min-height:
+      30px;
+
+
+    padding:
+      4px
+      7px;
+  }
+
+}
+
+
+/* =========================================================
+   38.10 MOBILE LANDSCAPE
+   width <= 900 AND height <= 520
+
+   Đây là case nguy hiểm nhất:
+   viewport rộng nhưng rất thấp.
+   ========================================================= */
+
+@media (
+  max-width: 900px
+) and (
+  max-height: 520px
+) {
+
+
+
+  /*
+   * Practice panels thấp và rộng hơn
+   * thay vì cao dọc.
+   */
+
+  .template-practice-panel--instructions {
+    width:
+      min(
+        290px,
+        37vw
+      );
+  }
+
+
+  .template-practice-panel--measurements {
+    width:
+      min(
+        330px,
+        42vw
+      );
+  }
+
+
+  /*
+   * Chỉ giữ các instruction đầu tiên.
+   */
+
+  .template-practice__instructions
+    li:nth-child(n + 3) {
+    display:
+      none;
+  }
+
+
+  /*
+   * Measurement table compact.
+   */
+
+  .template-practice-measurement-table
+    th,
+.template-practice-measurement-table
+    td {
+    height:
+      28px;
+
+
+    padding:
+      4px
+      6px;
+  }
+
+}
+
+
+/* =========================================================
+   38.11 COARSE POINTER / TOUCH DEVICE
+   ========================================================= */
+
+@media (
+  pointer: coarse
+) {
+
+
+
+  .template-practice-panel__close {
+    min-width:
+      34px;
+
+    min-height:
+      34px;
+  }
+
+
+  .template-practice-tool {
+    min-width:
+      36px;
+
+    min-height:
+      36px;
+  }
+
+
+  /*
+   * Không phụ thuộc hover để truyền trạng thái.
+   */
+
+  .template-tool-card:hover,
+.template-practice-tool:hover {
+    transform:
+      none;
+  }
+
+}
+
+
+/* =========================================================
+   38.12 NO-HOVER DEVICES
+   ========================================================= */
+
+@media (
+  hover: none
+) {
+
+  /*
+   * Tránh visual hover bị "kẹt" sau tap.
+   */
+
+  .template-intro-card:hover,
+.template-tool-card:hover,
+.template-practice-tool:hover,
+.template-practice-panel__close:hover {
+    box-shadow:
+      none;
+  }
+
+}
+
+
+/* =========================================================
+   38.13 SAFE AREA — MOBILE BROWSERS
+   ========================================================= */
+
+@supports (
+  padding:
+    env(
+      safe-area-inset-bottom
+    )
+) {
+
+  .experiment-template--expanded
+    .template-practice-toolbar {
+    bottom:
+      max(
+        10px,
+        env(
+          safe-area-inset-bottom
+        )
+      );
+  }
+
+
+  @media (
+    max-width: 767px
+  ) {
+
+    .template-practice-toolbar {
+      bottom:
+        max(
+          10px,
+          env(
+            safe-area-inset-bottom
+          )
+        );
+    }
+  
+}
+
+}
+
+
+/* =========================================================
+   38.14 REDUCED MOTION
+   ========================================================= */
+
+@media (
+  prefers-reduced-motion:
+    reduce
+) {
+
+  .template-tool-card,
+.template-practice-tool,
+.template-practice-panel__close {
+    transition:
+      none;
+  }
+
+}
+
+
+/* =========================================================
+   38.15 PRINT RESPONSIVE RESET
+   ========================================================= */
+
+@media print {
+
+  /*
+   * Screen breakpoints không được ảnh hưởng
+   * printable report.
+   */
+
+  .template-report-sheet {
+    width:
+      100%
+      !important;
+
+
+    min-width:
+      0
+      !important;
+
+
+    max-width:
+      none
+      !important;
+  }
+
+}
