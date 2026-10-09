@@ -1,109 +1,44 @@
-/* =========================================================
-   TTKSA LAB — EXPERIMENT SYSTEM
-   GĐ2.1B
+/*
+ * TTKSA LAB — CANONICAL EXPERIMENT SHELL
+ *
+ * Single stylesheet for shared experiment shell and core UI.
+ * Consolidated from repository main's 8,123-line legacy cascade.
+ *
+ * Design contract:
+ *   - Base shell and colors first.
+ *   - Breakpoints separated by device class, no duplicated media blocks.
+ *   - Individual lab styles remain inside each experiment module.
+ *   - Do not append another revision at the bottom; edit the owner rule.
+ *   - WebGL physics, runtime lifecycle, and module-specific UI are untouched.
+ */
 
-   Principle:
-   - Portal và Lab là hai visual context khác nhau.
-   - Experiment dùng fullscreen dark workspace.
-   - Topic / experiment chỉ thay accent.
-   - Navigation phase dùng URL thật.
-   ========================================================= */
-
-
-/* =========================================================
-   1. LAB SHELL TOKENS
-   ========================================================= */
+/* ===== 01  BASE — SHELL / NAVIGATION / WORKSPACE / UI ELEMENTS ===== */
 
 .experiment-page {
-  --lab-bg:
-    #07101d;
-
-  --lab-bg-soft:
-    #0b1525;
-
-  --lab-header:
-    rgba(5, 11, 20, 0.96);
-
-  --lab-surface:
-    #0f1a2b;
-
-  --lab-surface-soft:
-    rgba(255, 255, 255, 0.045);
-
-  --lab-surface-hover:
-    rgba(255, 255, 255, 0.08);
-
-  --lab-border:
-    rgba(255, 255, 255, 0.09);
-
-  --lab-border-strong:
-    rgba(255, 255, 255, 0.16);
-
-  --lab-text:
-    #f8fafc;
-
-  --lab-text-soft:
-    #cbd5e1;
-
-  --lab-text-muted:
-    #8290a5;
-
-  --lab-primary:
-    #67d5e8;
-
-  --lab-primary-soft:
-    rgba(103, 213, 232, 0.13);
-
-  --lab-primary-border:
-    rgba(103, 213, 232, 0.3);
-
-  --lab-primary-glow:
-    rgba(103, 213, 232, 0.25);
-
-  --lab-accent:
-    var(--lab-primary);
-
-  --lab-accent-soft:
-    var(--lab-primary-soft);
-
-  --lab-accent-border:
-    var(--lab-primary-border);
-
-  --lab-accent-glow:
-    var(--lab-primary-glow);
-
-  --lab-radius-sm:
-    7px;
-
-  --lab-radius-md:
-    10px;
-
-  --lab-radius-lg:
-    16px;
-
-  --lab-radius-round:
-    999px;
-
-  --lab-shadow:
-    0 18px 48px
-    rgba(0, 0, 0, 0.24);
-
-
-  width: 100%;
-
-  height: 100dvh;
-  min-height: 100dvh;
-
-  display: flex;
-  flex-direction: column;
-
+  --lab-bg: #07101d;
+  --lab-bg-soft: #0b1525;
+  --lab-header: rgba(5, 11, 20, 0.96);
+  --lab-surface: #0f1a2b;
+  --lab-surface-soft: rgba(255, 255, 255, 0.045);
+  --lab-surface-hover: rgba(255, 255, 255, 0.08);
+  --lab-border: rgba(255, 255, 255, 0.09);
+  --lab-border-strong: rgba(255, 255, 255, 0.16);
+  --lab-text: #f8fafc;
+  --lab-text-soft: #cbd5e1;
+  --lab-text-muted: #8290a5;
+  --lab-primary: #67d5e8;
+  --lab-primary-soft: rgba(103, 213, 232, 0.13);
+  --lab-primary-border: rgba(103, 213, 232, 0.3);
+  --lab-primary-glow: rgba(103, 213, 232, 0.25);
+  --lab-accent: var(--lab-primary);
+  --lab-radius-sm: 7px;
+  --lab-radius-md: 10px;
+  --lab-radius-lg: 16px;
+  --lab-radius-round: 999px;
+  --lab-shadow: 0 18px 48px rgba(0, 0, 0, 0.24);
   overflow: hidden;
-
-  color:
-    var(--lab-text);
-
-  background:
-    radial-gradient(
+  color: var(--lab-text);
+  background: radial-gradient(
       circle at 50% -20%,
       color-mix(
         in srgb,
@@ -111,4716 +46,249 @@
         transparent
       ),
       transparent 36%
-    ),
-    var(--lab-bg);
-}
-
-
-/* =========================================================
-   2. EXPERIMENT ACCENTS
-   ========================================================= */
-
-.experiment-page[data-accent="rose"] {
-  --lab-accent:
-    #fb7185;
-}
-
-.experiment-page[data-accent="orange"] {
-  --lab-accent:
-    #fb923c;
-}
-
-.experiment-page[data-accent="amber"] {
-  --lab-accent:
-    #fbbf24;
-}
-
-.experiment-page[data-accent="pink"] {
-  --lab-accent:
-    #f472b6;
-}
-
-.experiment-page[data-accent="fuchsia"] {
-  --lab-accent:
-    #e879f9;
-}
-
-.experiment-page[data-accent="red"] {
-  --lab-accent:
-    #f87171;
-}
-
-.experiment-page[data-accent="sky"] {
-  --lab-accent:
-    #38bdf8;
-}
-
-.experiment-page[data-accent="cyan"] {
-  --lab-accent:
-    #22d3ee;
-}
-
-.experiment-page[data-accent="blue"] {
-  --lab-accent:
-    #60a5fa;
-}
-
-.experiment-page[data-accent="violet"] {
-  --lab-accent:
-    #a78bfa;
-}
-
-.experiment-page[data-accent="purple"] {
-  --lab-accent:
-    #c084fc;
-}
-
-.experiment-page[data-accent="indigo"] {
-  --lab-accent:
-    #818cf8;
-}
-
-.experiment-page[data-accent="teal"] {
-  --lab-accent:
-    #2dd4bf;
-}
-
-.experiment-page[data-accent="emerald"] {
-  --lab-accent:
-    #34d399;
-}
-
-.experiment-page[data-accent="green"] {
-  --lab-accent:
-    #4ade80;
-}
-
-
-.experiment-page {
-  --lab-accent-soft:
-    color-mix(
+    ), var(--lab-bg);
+  --lab-accent-soft: color-mix(
       in srgb,
       var(--lab-accent) 14%,
       transparent
     );
-
-  --lab-accent-border:
-    color-mix(
+  --lab-accent-border: color-mix(
       in srgb,
       var(--lab-accent) 30%,
       transparent
     );
-
-  --lab-accent-glow:
-    color-mix(
+  --lab-accent-glow: color-mix(
       in srgb,
       var(--lab-accent) 28%,
       transparent
     );
+  width: 100%;
+  height: 100dvh;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+  flex-direction: column;
+  --experiment-page-gutter: 20px;
+  --experiment-content-max-width: 980px;
+  --experiment-phase-nav-height: 60px;
+  --experiment-utility-height: 48px;
 }
 
+.experiment-page[data-accent="rose"] {
+  --lab-accent: #fb7185;
+}
 
-/* =========================================================
-   3. HEADER
-   ========================================================= */
+.experiment-page[data-accent="orange"] {
+  --lab-accent: #fb923c;
+}
+
+.experiment-page[data-accent="amber"] {
+  --lab-accent: #fbbf24;
+}
+
+.experiment-page[data-accent="pink"] {
+  --lab-accent: #f472b6;
+}
+
+.experiment-page[data-accent="fuchsia"] {
+  --lab-accent: #e879f9;
+}
+
+.experiment-page[data-accent="red"] {
+  --lab-accent: #f87171;
+}
+
+.experiment-page[data-accent="sky"] {
+  --lab-accent: #38bdf8;
+}
+
+.experiment-page[data-accent="cyan"] {
+  --lab-accent: #22d3ee;
+}
+
+.experiment-page[data-accent="blue"] {
+  --lab-accent: #60a5fa;
+}
+
+.experiment-page[data-accent="violet"] {
+  --lab-accent: #a78bfa;
+}
+
+.experiment-page[data-accent="purple"] {
+  --lab-accent: #c084fc;
+}
+
+.experiment-page[data-accent="indigo"] {
+  --lab-accent: #818cf8;
+}
+
+.experiment-page[data-accent="teal"] {
+  --lab-accent: #2dd4bf;
+}
+
+.experiment-page[data-accent="emerald"] {
+  --lab-accent: #34d399;
+}
+
+.experiment-page[data-accent="green"] {
+  --lab-accent: #4ade80;
+}
 
 .experiment-header {
+  top: auto;
+  flex-shrink: 0;
   position: relative;
-
   z-index: 30;
-
-  flex-shrink: 0;
-
-  min-height: 116px;
-
-  padding:
-    18px
-    calc(var(--page-padding) + 130px)
-    14px;
-
-  display: flex;
-  justify-content: center;
-
-  background:
-    var(--lab-header);
-
-  border-bottom:
-    1px solid
-    rgba(255, 255, 255, 0.055);
-
-  backdrop-filter:
-    blur(16px);
-
-  -webkit-backdrop-filter:
-    blur(16px);
-}
-
-
-/* =========================================================
-   BACK BUTTON
-   ========================================================= */
-
-.experiment-header__back {
-  position: absolute;
-
-  top: 20px;
-  left: var(--page-padding);
-
-  min-height: 40px;
-
-  padding:
-    8px
-    14px;
-
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  gap: 8px;
-
-  color:
-    var(--lab-text-muted);
-
-  background:
-    rgba(255, 255, 255, 0.05);
-
-  border:
-    1px solid
-    rgba(255, 255, 255, 0.1);
-
-  border-radius:
-    var(--lab-radius-md);
-
-  font-size:
-    14px;
-
-  font-weight:
-    600;
-
-  transition:
-    color var(--transition-fast),
-    background var(--transition-fast),
-    border-color var(--transition-fast),
-    transform var(--transition-fast);
-}
-
-
-.experiment-header__back:hover {
-  color:
-    var(--lab-text);
-
-  background:
-    rgba(255, 255, 255, 0.09);
-
-  border-color:
-    var(--lab-border-strong);
-
-  transform:
-    translateX(-2px);
-}
-
-
-.experiment-header__back:focus-visible {
-  outline:
-    2px solid
-    var(--lab-accent);
-
-  outline-offset:
-    3px;
-}
-
-
-/* =========================================================
-   HEADER IDENTITY
-   ========================================================= */
-
-.experiment-header__identity {
-  width: min(
-    100%,
-    900px
-  );
-
-  min-width: 0;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  text-align: center;
-}
-
-
-.experiment-header__meta {
-  min-height: 30px;
-
-  padding:
-    5px
-    12px;
-
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-
-  gap: 8px;
-
-  color:
-    var(--lab-text-soft);
-
-  background:
-    var(--lab-accent-soft);
-
-  border:
-    1px solid
-    var(--lab-accent-border);
-
-  border-radius:
-    var(--lab-radius-round);
-
-  box-shadow:
-    0 0 18px
-    var(--lab-accent-glow);
-}
-
-
-.experiment-header__subject,
-.experiment-header__lab-label {
-  font-size:
-    11px;
-
-  font-weight:
-    700;
-
-  letter-spacing:
-    0.07em;
-
-  text-transform:
-    uppercase;
-}
-
-
-.experiment-header__subject {
-  color:
-    var(--lab-text-soft);
-}
-
-
-.experiment-header__indicator {
-  width: 7px;
-  height: 7px;
-
-  flex-shrink: 0;
-
-  background:
-    var(--lab-accent);
-
-  border-radius:
-    50%;
-
-  box-shadow:
-    0 0 10px
-    var(--lab-accent-glow);
-}
-
-
-.experiment-header__lab-label {
-  color:
-    var(--lab-accent);
-}
-
-
-.experiment-header__identity h1 {
-  max-width: 900px;
-
-  margin:
-    10px
-    0
-    0;
-
-  color:
-    var(--lab-text);
-
-  font-size:
-    clamp(
-      24px,
-      3vw,
-      36px
-    );
-
-  font-weight:
-    800;
-
-  line-height:
-    1.08;
-
-  letter-spacing:
-    0.025em;
-
-  text-transform:
-    uppercase;
-
-  text-shadow:
-    0 0 18px
-    rgba(255, 255, 255, 0.07);
-}
-
-
-.experiment-header__description {
-  max-width: 720px;
-
-  margin:
-    7px
-    0
-    0;
-
-  color:
-    var(--lab-text-muted);
-
-  font-size:
-    13px;
-
-  line-height:
-    1.5;
-}
-
-
-.experiment-header__actions {
-  position: absolute;
-
-  top: 20px;
-  right: var(--page-padding);
-
-  display: flex;
-  align-items: center;
-
-  gap: 8px;
-}
-
-
-/* =========================================================
-   4. MAIN WORKSPACE
-   ========================================================= */
-
-.experiment-main {
+  width: 100%;
   min-width: 0;
   min-height: 0;
-
-  flex: 1;
-
-  display: flex;
-
-  overflow: hidden;
-}
-
-
-.experiment-workspace {
-  width: 100%;
-
-  min-width: 0;
-  min-height: 0;
-
-  position: relative;
-
-  flex: 1;
-
-  overflow: hidden;
-}
-
-
-/* =========================================================
-   5. PHASE NAVIGATION
-   ========================================================= */
-
-.experiment-phase-nav {
-  position: relative;
-
-  z-index: 20;
-
-  width: 100%;
-
-  flex-shrink: 0;
-
-  padding:
-    8px
-    16px;
-
-  overflow-x: auto;
-  overflow-y: hidden;
-
-  background:
-    rgba(5, 11, 20, 0.97);
-
-  border-bottom:
-    1px solid
-    rgba(255, 255, 255, 0.055);
-
-  scrollbar-width:
-    none;
-
-  overscroll-behavior-x:
-    contain;
-
-  -webkit-overflow-scrolling:
-    touch;
-}
-
-
-.experiment-phase-nav::-webkit-scrollbar {
-  display: none;
-}
-
-
-.experiment-phase-nav__track {
-  width: max-content;
-  min-width: 100%;
-
-  padding:
-    4px
-    0;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  gap: 8px;
-}
-
-
-.experiment-phase-nav__item {
-  min-height: 36px;
-
-  padding:
-    8px
-    15px;
-
-  flex-shrink: 0;
-
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  color:
-    var(--lab-text-muted);
-
-  background:
-    rgba(255, 255, 255, 0.055);
-
-  border:
-    1px solid
-    rgba(255, 255, 255, 0.11);
-
-  border-radius:
-    var(--lab-radius-round);
-
-  font-size:
-    13px;
-
-  font-weight:
-    600;
-
-  white-space:
-    nowrap;
-
-  transition:
-    color var(--transition-fast),
-    background var(--transition-fast),
-    border-color var(--transition-fast),
-    box-shadow var(--transition-fast),
-    transform var(--transition-fast);
-}
-
-
-.experiment-phase-nav__item:hover {
-  color:
-    var(--lab-text);
-
-  background:
-    rgba(255, 255, 255, 0.09);
-
-  border-color:
-    var(--lab-border-strong);
-}
-
-
-.experiment-phase-nav__item:focus-visible {
-  outline:
-    2px solid
-    var(--lab-accent);
-
-  outline-offset:
-    2px;
-}
-
-
-.experiment-phase-nav__item--active {
-  color:
-    var(--lab-bg);
-
-  background:
-    var(--lab-accent);
-
-  border-color:
-    var(--lab-accent);
-
-  box-shadow:
-    0 0 18px
-    var(--lab-accent-glow);
-
-  transform:
-    translateY(-1px);
-}
-
-
-.experiment-phase-nav__item--active:hover {
-  color:
-    var(--lab-bg);
-
-  background:
-    var(--lab-accent);
-
-  border-color:
-    var(--lab-accent);
-}
-
-
-.experiment-phase-nav__item--disabled {
-  opacity:
-    0.34;
-
-  cursor:
-    not-allowed;
-
-  pointer-events:
-    none;
-}
-
-
-/* =========================================================
-   6. VIEW TEMPLATE
-   ========================================================= */
-
-.experiment-template {
-  width: 100%;
-  height: 100%;
-
-  min-width: 0;
-  min-height: 0;
-
-  display: flex;
-  flex-direction: column;
-
-  color:
-    var(--lab-text);
-
-  background:
-    var(--lab-bg);
-}
-
-
-.experiment-template__body {
-  min-width: 0;
-  min-height: 0;
-
-  flex: 1;
-
-  padding:
-    12px;
-
-  display: flex;
-  flex-direction: column;
-
-  overflow: hidden;
-}
-
-
-/* =========================================================
-   UTILITY BAR
-   ========================================================= */
-
-.experiment-template__utility {
-  min-width: 0;
-
-  flex-shrink: 0;
-
-  min-height: 46px;
-
-  padding:
-    0
-    4px
-    10px;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  gap: 16px;
-}
-
-
-.experiment-template__phase-info {
-  min-width: 0;
-
-  display: flex;
-  align-items: center;
-
-  gap: 10px;
-}
-
-
-.experiment-template__phase-info > span {
-  flex-shrink: 0;
-
-  color:
-    var(--lab-accent);
-
-  font-size:
-    11px;
-
-  font-weight:
-    700;
-
-  letter-spacing:
-    0.065em;
-
-  text-transform:
-    uppercase;
-}
-
-
-.experiment-template__phase-info > strong {
-  min-width: 0;
-
-  overflow:
-    hidden;
-
-  color:
-    var(--lab-text-soft);
-
-  font-size:
-    13px;
-
-  text-overflow:
-    ellipsis;
-
-  white-space:
-    nowrap;
-}
-
-
-.experiment-template__utility-actions {
-  flex-shrink: 0;
-
-  display: flex;
-  align-items: center;
-
-  gap: 8px;
-}
-
-
-/* =========================================================
-   ACTIVE ROUTE STAGE
-   ========================================================= */
-
-.experiment-template__stage {
-  min-width: 0;
-  min-height: 0;
-
-  position: relative;
-
-  flex: 1;
-
-  overflow: hidden;
-
-  background:
-    var(--lab-surface);
-
-  border:
-    1px solid
-    var(--lab-border);
-
-  border-radius:
-    var(--lab-radius-lg);
-
-  box-shadow:
-    var(--lab-shadow);
-}
-
-
-.experiment-template__stage--content {
-  padding:
-    20px;
-
-  overflow-x:
-    hidden;
-
-  overflow-y:
-    auto;
-}
-
-
-.experiment-template__stage--practice {
-  padding:
-    0;
-
-  overflow:
-    hidden;
-
-  background:
-    var(--lab-bg);
-}
-
-
-/* =========================================================
-   EXPANDED WORKSPACE
-   ========================================================= */
-
-.experiment-template--expanded {
-  position: fixed;
-
-  inset: 0;
-
-  z-index: 200;
-
-  width: 100vw;
-  height: 100dvh;
-
-  background:
-    var(--lab-bg);
-}
-
-
-.experiment-template--expanded
-.experiment-phase-nav {
-  display: none;
-}
-
-
-.experiment-template--expanded
-.experiment-template__body {
-  padding: 0;
-}
-
-
-.experiment-template--expanded
-.experiment-template__utility {
-  display: none;
-}
-
-
-.experiment-template--expanded
-.experiment-template__stage {
-  border: 0;
-
-  border-radius: 0;
-
-  box-shadow: none;
-}
-
-
-/* =========================================================
-   7. LOADING
-   ========================================================= */
-
-.experiment-loading {
-  width: 100%;
-  min-height: 100dvh;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  padding:
-    24px;
-
-  color:
-    #f8fafc;
-
-  background:
-    radial-gradient(
-      circle at 50% 25%,
-      rgba(34, 211, 238, 0.08),
-      transparent 34%
-    ),
-    #07101d;
-}
-
-
-.experiment-loading__content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  text-align: center;
-}
-
-
-.experiment-loading__spinner {
-  width: 34px;
-  height: 34px;
-
-  border:
-    3px solid
-    rgba(255, 255, 255, 0.14);
-
-  border-top-color:
-    #67d5e8;
-
-  border-radius:
-    50%;
-
-  animation:
-    experiment-loading-spin
-    0.75s
-    linear
-    infinite;
-}
-
-
-.experiment-loading__content strong {
-  margin-top:
-    18px;
-
-  font-size:
-    14px;
-}
-
-
-.experiment-loading__content span {
-  margin-top:
-    5px;
-
-  color:
-    #8290a5;
-
-  font-size:
-    12px;
-}
-
-
-@keyframes experiment-loading-spin {
-  to {
-    transform:
-      rotate(360deg);
-  }
-}
-
-
-/* =========================================================
-   8. ROUTE ERROR
-   ========================================================= */
-
-.experiment-error {
-  width: 100%;
-  min-height: 100dvh;
-
-  padding:
-    24px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  color:
-    #f8fafc;
-
-  background:
-    #07101d;
-}
-
-
-.experiment-error__card {
-  width:
-    min(
-      100%,
-      480px
-    );
-
-  padding:
-    30px;
-
-  text-align:
-    center;
-
-  background:
-    #0f1a2b;
-
-  border:
-    1px solid
-    rgba(255, 255, 255, 0.1);
-
-  border-radius:
-    18px;
-
-  box-shadow:
-    0 18px 48px
-    rgba(0, 0, 0, 0.25);
-}
-
-
-.experiment-error__icon {
-  width: 52px;
-  height: 52px;
-
-  margin-inline:
-    auto;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  color:
-    #67d5e8;
-
-  background:
-    rgba(103, 213, 232, 0.1);
-
-  border:
-    1px solid
-    rgba(103, 213, 232, 0.22);
-
-  border-radius:
-    14px;
-}
-
-
-.experiment-error h1 {
-  margin:
-    20px
-    0
-    0;
-
-  font-size:
-    24px;
-}
-
-
-.experiment-error p {
-  margin:
-    10px
-    0
-    0;
-
-  color:
-    #8290a5;
-
-  font-size:
-    14px;
-
-  line-height:
-    1.6;
-}
-
-
-.experiment-error__back {
-  min-height:
-    40px;
-
-  margin-top:
-    24px;
-
-  padding:
-    8px
-    14px;
-
-  display:
-    inline-flex;
-
-  align-items:
-    center;
-
-  justify-content:
-    center;
-
-  gap:
-    8px;
-
-  color:
-    #67d5e8;
-
-  background:
-    rgba(103, 213, 232, 0.1);
-
-  border:
-    1px solid
-    rgba(103, 213, 232, 0.25);
-
-  border-radius:
-    10px;
-
-  font-size:
-    14px;
-
-  font-weight:
-    600;
-}
-
-
-/* =========================================================
-   9. TABLET
-   ========================================================= */
-
-@media (
-  max-width: 1024px
-) {
-
-  .experiment-header {
-    padding:
-      18px
-      140px
-      14px;
-  }
-
-}
-
-
-/* =========================================================
-   10. MOBILE
-   ========================================================= */
-
-@media (
-  max-width: 767px
-) {
-
-  .experiment-header {
-    min-height:
-      auto;
-
-    padding:
-      12px
-      14px;
-
-    flex-direction:
-      column;
-
-    gap:
-      12px;
-  }
-
-
-  .experiment-header__back {
-    position:
-      static;
-
-    width:
-      fit-content;
-
-    min-height:
-      36px;
-
-    padding:
-      7px
-      11px;
-  }
-
-
-  .experiment-header__identity {
-    align-items:
-      flex-start;
-
-    text-align:
-      left;
-  }
-
-
-  .experiment-header__meta {
-    justify-content:
-      flex-start;
-
-    padding:
-      4px
-      9px;
-  }
-
-
-  .experiment-header__identity h1 {
-    margin-top:
-      8px;
-
-    font-size:
-      clamp(
-        23px,
-        7vw,
-        31px
-      );
-  }
-
-
-  .experiment-header__description {
-    display:
-      none;
-  }
-
-
-  .experiment-header__actions {
-    position:
-      static;
-
-    width:
-      100%;
-
-    justify-content:
-      flex-end;
-  }
-
-
-  .experiment-phase-nav {
-    padding:
-      7px
-      10px;
-  }
-
-
-  .experiment-phase-nav__item {
-    min-height:
-      34px;
-
-    padding:
-      7px
-      12px;
-
-    font-size:
-      12px;
-  }
-
-
-  .experiment-template__body {
-    padding:
-      9px;
-  }
-
-
-  .experiment-template__utility {
-    min-height:
-      42px;
-
-    padding-bottom:
-      8px;
-  }
-
-
-  .experiment-template__phase-info > strong {
-    display:
-      none;
-  }
-
-
-  .experiment-template__stage--content {
-    padding:
-      14px;
-  }
-
-}
-
-
-/* =========================================================
-   11. SMALL MOBILE
-   ========================================================= */
-
-@media (
-  max-width: 480px
-) {
-
-  .experiment-header__subject {
-    display:
-      none;
-  }
-
-
-  .experiment-header__identity h1 {
-    font-size:
-      22px;
-  }
-
-
-  .experiment-header__meta {
-    gap:
-      5px;
-  }
-
-}
-
-
-/* =========================================================
-   12. SHORT VIEWPORT
-   ========================================================= */
-
-@media (
-  max-height: 520px
-) {
-
-  .experiment-header {
-    min-height:
-      auto;
-
-    padding-top:
-      10px;
-
-    padding-bottom:
-      9px;
-  }
-
-
-  .experiment-header__identity h1 {
-    margin-top:
-      7px;
-
-    font-size:
-      23px;
-  }
-
-
-  .experiment-header__description {
-    display:
-      none;
-  }
-
-
-  .experiment-phase-nav {
-    padding:
-      4px
-      10px;
-  }
-
-
-  .experiment-phase-nav__track {
-    padding:
-      0;
-  }
-
-
-  .experiment-phase-nav__item {
-    min-height:
-      30px;
-
-    padding:
-      5px
-      11px;
-  }
-
-
-  .experiment-template__body {
-    padding:
-      7px;
-  }
-
-
-  .experiment-template__utility {
-    min-height:
-      34px;
-
-    padding-bottom:
-      6px;
-  }
-
-}
-
-
-/* =========================================================
-   13. PRINT
-   ========================================================= */
-
-@media print {
-
-  .experiment-page {
-    height:
-      auto;
-
-    min-height:
-      0;
-
-    overflow:
-      visible;
-
-    color:
-      #000;
-
-    background:
-      #fff;
-  }
-
-
-  .experiment-header,
-.experiment-phase-nav,
-.experiment-template__utility {
-    display:
-      none !important;
-  }
-
-
-  .experiment-main,
-.experiment-workspace,
-.experiment-template,
-.experiment-template__body,
-.experiment-template__stage {
-    width:
-      100%;
-
-    height:
-      auto;
-
-    min-height:
-      0;
-
-    overflow:
-      visible;
-
-    display:
-      block;
-
-    padding:
-      0;
-
-    color:
-      #000;
-
-    background:
-      #fff;
-
-    border:
-      0;
-
-    box-shadow:
-      none;
-  }
-
-}
-
-/* =========================================================
-   14. PERSISTENT RUNTIME HOST
-   ========================================================= */
-
-.experiment-runtime-host {
-  position: absolute;
-  inset: 0;
-
-  z-index: 5;
-
-  width: 100%;
-  height: 100%;
-
-  min-width: 0;
-  min-height: 0;
-
-  background:
-    var(--lab-bg);
-}
-
-
-.experiment-runtime-host--active {
-  visibility:
-    visible;
-
-  opacity:
-    1;
-
-  pointer-events:
-    auto;
-}
-
-
-.experiment-runtime-host--inactive {
-  visibility:
-    hidden;
-
-  opacity:
-    0;
-
-  pointer-events:
-    none;
-}
-
-
-/* =========================================================
-   15. RUNTIME WORKSPACE
-   ========================================================= */
-
-.experiment-runtime-workspace {
-  width: 100%;
-  height: 100%;
-
-  min-width: 0;
-  min-height: 0;
-
-  position: relative;
-
-  overflow: hidden;
-
-  color:
-    var(--lab-text);
-
-  background:
-    var(--lab-bg);
-}
-
-
-.experiment-runtime-workspace__simulation {
-  position: absolute;
-  inset: 0;
-
-  z-index: 1;
-
-  width: 100%;
-  height: 100%;
-
-  min-width: 0;
-  min-height: 0;
-}
-
-
-.experiment-runtime-workspace--expanded {
-  position: fixed;
-
-  inset: 0;
-
-  z-index: 300;
-
-  width: 100vw;
-  height: 100dvh;
-}
-
-
-/* =========================================================
-   16. LAB BUTTON
-   ========================================================= */
-
-.experiment-lab-button {
-  min-height:
-    40px;
-
-  padding:
-    8px
-    14px;
-
-  display:
-    inline-flex;
-
-  align-items:
-    center;
-
-  justify-content:
-    center;
-
-  gap:
-    8px;
-
-  color:
-    var(--lab-text-soft);
-
-  background:
-    rgba(255, 255, 255, 0.06);
-
-  border:
-    1px solid
-    var(--lab-border-strong);
-
-  border-radius:
-    var(--lab-radius-md);
-
-  font-size:
-    13px;
-
-  font-weight:
-    600;
-
-  transition:
-    color var(--transition-fast),
-    background var(--transition-fast),
-    border-color var(--transition-fast);
-}
-
-
-.experiment-lab-button:hover:not(:disabled) {
-  color:
-    var(--lab-text);
-
-  background:
-    rgba(255, 255, 255, 0.1);
-
-  border-color:
-    var(--lab-accent);
-}
-
-
-.experiment-lab-button--primary {
-  color:
-    var(--lab-bg);
-
-  background:
-    var(--lab-accent);
-
-  border-color:
-    var(--lab-accent);
-}
-
-
-.experiment-lab-button--primary:hover:not(:disabled) {
-  color:
-    var(--lab-bg);
-
-  background:
-    color-mix(
-      in srgb,
-      var(--lab-accent) 90%,
-      white
-    );
-}
-
-
-.experiment-lab-button:disabled {
-  opacity:
-    0.35;
-
-  cursor:
-    not-allowed;
-}
-
-
-/* =========================================================
-   17. SIMULATION ERROR
-   ========================================================= */
-
-.simulation-error {
-  width: 100%;
-  height: 100%;
-
-  min-height:
-    240px;
-
-  padding:
-    24px;
-
-  display:
-    flex;
-
-  align-items:
-    center;
-
-  justify-content:
-    center;
-
-  background:
-    rgba(5, 11, 20, 0.96);
-}
-
-
-.simulation-error__content {
-  width:
-    min(
-      100%,
-      460px
-    );
-
-  padding:
-    24px;
-
-  text-align:
-    center;
-
-  background:
-    var(--lab-surface);
-
-  border:
-    1px solid
-    var(--lab-border);
-
-  border-radius:
-    var(--lab-radius-lg);
-}
-
-
-.simulation-error__title {
-  display:
-    block;
-
-  color:
-    var(--lab-text);
-
-  font-size:
-    17px;
-}
-
-
-.simulation-error__message {
-  margin:
-    10px
-    0
-    18px;
-
-  color:
-    var(--lab-text-muted);
-
-  font-size:
-    13px;
-
-  line-height:
-    1.6;
-}
-
-
-/* =========================================================
-   18. TOAST
-   ========================================================= */
-
-.experiment-toast {
-  padding:
-    10px
-    14px;
-
-  color:
-    var(--lab-text);
-
-  background:
-    rgba(15, 26, 43, 0.96);
-
-  border:
-    1px solid
-    var(--lab-border-strong);
-
-  border-radius:
-    var(--lab-radius-md);
-
-  box-shadow:
-    var(--lab-shadow);
-
-  font-size:
-    13px;
-
-  line-height:
-    1.45;
-
-  backdrop-filter:
-    blur(14px);
-
-  -webkit-backdrop-filter:
-    blur(14px);
-}
-
-
-.experiment-toast--success {
-  color:
-    #a7f3d0;
-
-  border-color:
-    rgba(52, 211, 153, 0.34);
-
-  background:
-    rgba(6, 78, 59, 0.92);
-}
-
-
-.experiment-toast--error {
-  color:
-    #fecdd3;
-
-  border-color:
-    rgba(251, 113, 133, 0.36);
-
-  background:
-    rgba(136, 19, 55, 0.92);
-}
-
-
-.experiment-toast--info {
-  color:
-    #bae6fd;
-
-  border-color:
-    rgba(56, 189, 248, 0.34);
-
-  background:
-    rgba(12, 74, 110, 0.92);
-}
-
-
-/* =========================================================
-   19. SHARED QUIZ
-   ========================================================= */
-
-.experiment-quiz {
-  width:
-    min(
-      100%,
-      920px
-    );
-
-  margin-inline:
-    auto;
-
-  display:
-    flex;
-
-  flex-direction:
-    column;
-
-  gap:
-    16px;
-}
-
-
-.experiment-quiz__question {
-  padding:
-    20px;
-
-  background:
-    var(--lab-surface-soft);
-
-  border:
-    1px solid
-    var(--lab-border);
-
-  border-radius:
-    var(--lab-radius-lg);
-}
-
-
-.experiment-quiz__question-header > span {
-  color:
-    var(--lab-accent);
-
-  font-size:
-    11px;
-
-  font-weight:
-    700;
-
-  letter-spacing:
-    0.06em;
-
-  text-transform:
-    uppercase;
-}
-
-
-.experiment-quiz__question-header h3 {
-  margin:
-    7px
-    0
-    0;
-
-  color:
-    var(--lab-text);
-
-  font-size:
-    16px;
-
-  line-height:
-    1.5;
-}
-
-
-.experiment-quiz__options {
-  margin-top:
-    16px;
-
-  display:
-    grid;
-
-  gap:
-    9px;
-}
-
-
-.experiment-quiz__option {
-  width:
-    100%;
-
-  min-height:
-    46px;
-
-  padding:
-    11px
-    14px;
-
-  color:
-    var(--lab-text-soft);
-
-  background:
-    rgba(255, 255, 255, 0.045);
-
-  border:
-    1px solid
-    var(--lab-border);
-
-  border-radius:
-    var(--lab-radius-md);
-
-  text-align:
-    left;
-
-  font-size:
-    13px;
-
-  line-height:
-    1.45;
-
-  transition:
-    color var(--transition-fast),
-    background var(--transition-fast),
-    border-color var(--transition-fast),
-    opacity var(--transition-fast);
-}
-
-
-.experiment-quiz__option:hover:not(:disabled) {
-  color:
-    var(--lab-text);
-
-  background:
-    rgba(255, 255, 255, 0.08);
-
-  border-color:
-    var(--lab-accent-border);
-}
-
-
-.experiment-quiz__option--selected {
-  color:
-    var(--lab-text);
-
-  background:
-    var(--lab-accent-soft);
-
-  border-color:
-    var(--lab-accent);
-}
-
-
-.experiment-quiz__option--correct {
-  color:
-    #a7f3d0;
-
-  background:
-    rgba(6, 78, 59, 0.42);
-
-  border-color:
-    rgba(52, 211, 153, 0.65);
-}
-
-
-.experiment-quiz__option--wrong {
-  color:
-    #fecdd3;
-
-  background:
-    rgba(136, 19, 55, 0.4);
-
-  border-color:
-    rgba(251, 113, 133, 0.62);
-}
-
-
-.experiment-quiz__option--muted {
-  opacity:
-    0.45;
-}
-
-
-/* =========================================================
-   20. PRINTABLE REPORT SHELL
-   ========================================================= */
-
-.experiment-report-sheet {
-  width:
-    min(
-      100%,
-      210mm
-    );
-
-  min-height:
-    297mm;
-
-  margin-inline:
-    auto;
-
-  padding:
-    18mm
-    16mm;
-
-  color:
-    #172033;
-
-  background:
-    #fff;
-
-  border-radius:
-    4px;
-
-  box-shadow:
-    0 18px 50px
-    rgba(0, 0, 0, 0.28);
-
-  font-family:
-    "Times New Roman",
-    Times,
-    serif;
-}
-
-
-.experiment-report-sheet__header {
-  text-align:
-    center;
-}
-
-
-.experiment-report-sheet__header h1 {
-  margin:
-    0;
-
-  font-size:
-    18px;
-
-  font-weight:
-    700;
-}
-
-
-.experiment-report-sheet__header h2 {
-  margin:
-    10px
-    0
-    0;
-
-  font-size:
-    16px;
-
-  text-transform:
-    uppercase;
-}
-
-
-.experiment-report-sheet__header p {
-  margin:
-    7px
-    0
-    0;
-
-  font-size:
-    13px;
-}
-
-
-.experiment-report-sheet__identity {
-  margin-top:
-    24px;
-
-  display:
-    grid;
-
-  gap:
-    12px;
-
-  font-size:
-    13px;
-}
-
-
-.experiment-report-sheet__identity > div,
-.experiment-report-sheet__identity-row > div {
-  display:
-    flex;
-
-  align-items:
-    flex-end;
-
-  gap:
-    8px;
-}
-
-
-.experiment-report-sheet__identity span {
-  min-width:
-    80px;
-
-  height:
-    20px;
-
-  flex:
-    1;
-
-  border-bottom:
-    1px dotted
-    #4b5563;
-}
-
-
-.experiment-report-sheet__identity-row {
-  display:
-    grid;
-
-  grid-template-columns:
-    1fr
-    1fr;
-
-  gap:
-    24px;
-}
-
-
-.experiment-report-sheet > hr {
-  margin:
-    22px
-    0;
-
-  border:
-    0;
-
-  border-top:
-    1px solid
-    #cbd5e1;
-}
-
-
-.experiment-report-sheet__signature {
-  margin-top:
-    32px;
-
-  display:
-    flex;
-
-  justify-content:
-    flex-end;
-
-  text-align:
-    center;
-
-  font-size:
-    13px;
-}
-
-
-.experiment-report-sheet__signature > div {
-  width:
-    260px;
-}
-
-
-.experiment-report-sheet__signature p {
-  margin:
-    4px
-    0;
-}
-
-
-.experiment-report-sheet__signature > div > div {
-  height:
-    70px;
-}
-
-
-/* =========================================================
-   21. MOBILE
-   ========================================================= */
-
-@media (
-  max-width: 767px
-) {
-
-  .experiment-quiz__question {
-    padding:
-      15px;
-  }
-
-
-  .experiment-report-sheet {
-    min-height:
-      0;
-
-    padding:
-      24px
-      18px;
-
-    border-radius:
-      0;
-  }
-
-
-  .experiment-report-sheet__identity-row {
-    grid-template-columns:
-      1fr;
-
-    gap:
-      12px;
-  }
-
-}
-
-
-/* =========================================================
-   22. PRINT REPORT
-   ========================================================= */
-
-@media print {
-
-  .experiment-runtime-host {
-    display:
-      none !important;
-  }
-
-
-  .experiment-report-sheet {
-    width:
-      100%;
-
-    min-height:
-      0;
-
-    margin:
-      0;
-
-    padding:
-      0;
-
-    color:
-      #000;
-
-    background:
-      #fff;
-
-    border-radius:
-      0;
-
-    box-shadow:
-      none;
-  }
-
-}
-
-/* =========================================================
-   23. ROUTED PHASE CONTENT
-   ========================================================= */
-
-.experiment-template__route {
-  position: relative;
-
-  z-index: 10;
-
-  width: 100%;
-  height: 100%;
-
-  min-width: 0;
-  min-height: 0;
-}
-
-
-.experiment-template__route--content {
-  overflow: visible;
-}
-
-
-.experiment-template__route--practice {
-  position: absolute;
-
-  inset: 0;
-
-  display: flex;
-  align-items: flex-start;
-  justify-content: flex-end;
-
-  padding: 16px;
-
-  pointer-events: none;
-}
-
-
-/* =========================================================
-   TEMPLATE MOBILE
-   ========================================================= */
-
-@media (
-  max-width: 767px
-) {
-
-
-
-  .experiment-template__route--practice {
-    align-items:
-      flex-end;
-
-    padding:
-      10px;
-  }
-
-}
-
-/* =========================================================
-   25. LAB-NEW SCROLL OWNERSHIP
-   GĐ2.1E — UX CONFORMANCE
-
-   CONTRACT
-   ---------------------------------------------------------
-   1. .experiment-page là vertical scroll owner duy nhất.
-   2. Header cuộn đi tự nhiên.
-   3. Phase navigation sticky ở top: 0.
-   4. Utility bar cuộn đi tự nhiên.
-   5. Content stage KHÔNG tạo scrollbar dọc riêng.
-   6. Practice stage vẫn clip workspace / Canvas.
-   7. Không thay đổi Router / Session / Runtime lifecycle.
-
-   Visual behavior:
-
-   Ban đầu:
-
-   ┌──────────────────────────────┐
-   │ Experiment Header            │
-   ├──────────────────────────────┤
-   │ Phase Navigation             │
-   ├──────────────────────────────┤
-   │ Utility Bar                  │
-   ├──────────────────────────────┤
-   │ Phase Content                │
-   │                              │
-   └──────────────────────────────┘
-
-
-   Sau khi scroll:
-
-   ┌──────────────────────────────┐
-   │ Phase Navigation  [sticky]   │
-   ├──────────────────────────────┤
-   │ Phase Content                │
-   │                              │
-   │                              │
-   └──────────────────────────────┘
-   ========================================================= */
-
-
-/* =========================================================
-   25.1 EXPERIMENT PAGE = SCROLL OWNER
-   ========================================================= */
-
-.experiment-page {
-  /*
-   * Phase nav hiện tại xấp xỉ 60px:
-   *
-   * nav padding
-   * + track padding
-   * + item 36px
-   */
-  --experiment-phase-nav-height:
-    60px;
-
-
-  /*
-   * Utility desktop theo contract lab-new.
-   */
-  --experiment-utility-height:
-    48px;
-
-
-  width:
-    100%;
-
-
-  /*
-   * Không dùng height cố định + overflow:hidden nữa.
-   *
-   * Page vẫn bắt đầu bằng đúng viewport,
-   * nhưng được phép dài hơn khi content cần scroll.
-   */
-  height:
-    100dvh;
-
-  min-height:
-    100dvh;
-
-
-  /*
-   * QUAN TRỌNG:
-   *
-   * Vertical scrollbar duy nhất của toàn Lab.
-   */
-  overflow-x:
-    hidden;
-
-  overflow-y:
-    auto;
-
-
-  /*
-   * Không để scroll truyền ra body/portal phía sau.
-   */
-  overscroll-behavior-y:
-    contain;
-
-
-  /*
-   * Giữ scrolling tự nhiên trên thiết bị cảm ứng.
-   */
-  -webkit-overflow-scrolling:
-    touch;
-
-
-  /*
-   * Vì page là flex-column từ ExperimentShell.
-   */
-  display:
-    flex;
-
-  flex-direction:
-    column;
-}
-
-
-/* =========================================================
-   25.2 HEADER SCROLLS AWAY NATURALLY
-   ========================================================= */
-
-.experiment-header {
-  /*
-   * Header KHÔNG sticky.
-   *
-   * Khi người dùng cuộn xuống,
-   * nó phải trôi khỏi viewport như lab-new.
-   */
-  position:
-    relative;
-
-  top:
-    auto;
-
-
-  /*
-   * Không cho header bị co bởi flex layout.
-   */
-  flex:
-    0 0 auto;
-
-  flex-shrink:
-    0;
-}
-
-
-/* =========================================================
-   25.3 MAIN / WORKSPACE MUST NOT CREATE SCROLL CONTAINERS
-   ========================================================= */
-
-.experiment-main {
-  /*
-   * Rule cũ dùng flex: 1 + overflow:hidden.
-   *
-   * Điều đó tạo một viewport con và ngăn
-   * phase-nav sticky theo experiment-page.
-   *
-   * Từ đây main tham gia natural page flow.
-   */
-  min-width:
-    0;
-
-  min-height:
-    0;
-
-
-  flex:
-    0 0 auto;
-
-
-  display:
-    block;
-
-
-  overflow:
-    visible;
-}
-
-
-.experiment-workspace {
-  width:
-    100%;
-
-  min-width:
-    0;
-
-  min-height:
-    0;
-
-
-  /*
-   * Không trở thành scroll container.
-   */
-  overflow:
-    visible;
-
-
-  /*
-   * Vẫn giữ containing block cho
-   * runtime absolute nếu module cần.
-   */
-  position:
-    relative;
-}
-
-
-/* =========================================================
-   25.4 PHASE NAVIGATION = STICKY
-   ========================================================= */
-
-.experiment-phase-nav {
-  /*
-   * Đây là thành phần duy nhất sticky.
-   */
-  position:
-    sticky;
-
-  top:
-    0;
-
-
-  /*
-   * Luôn nằm trên Utility / content / Canvas.
-   */
-  z-index:
-    100;
-
-
-  /*
-   * Không cho flex parent co nav.
-   */
-  flex:
-    0 0 auto;
-
-  flex-shrink:
-    0;
-
-
-  /*
-   * Khi content chạy bên dưới,
-   * background cần đủ đặc để chữ không rối.
-   */
-  background:
-    rgba(
-      5,
-      11,
-      20,
-      0.97
-    );
-
-
-  backdrop-filter:
-    blur(14px);
-
-  -webkit-backdrop-filter:
-    blur(14px);
-
-
-  /*
-   * Shadow rất nhẹ để khi sticky
-   * người dùng nhận biết nav đang nổi.
-   */
-  box-shadow:
-    0 8px 24px
-    rgba(
-      2,
-      6,
-      23,
-      0.18
-    );
-}
-
-
-/* =========================================================
-   25.5 TEMPLATE PARTICIPATES IN PAGE FLOW
-   ========================================================= */
-
-.experiment-template {
-  /*
-   * Không còn height:100% cố định.
-   *
-   * Template phải đủ cao để:
-   *
-   * PhaseNav
-   * + Utility
-   * + Stage viewport
-   *
-   * Utility có thêm chiều cao để có quãng
-   * scroll và cuối cùng cũng biến mất.
-   */
-  width:
-    100%;
-
-
-  height:
-    auto;
-
-
-  min-width:
-    0;
-
-  min-height:
-    calc(
-      100dvh +
-      var(--experiment-utility-height)
-    );
-
-
-  display:
-    flex;
-
-  flex-direction:
-    column;
-
-
-  overflow:
-    visible;
-}
-
-
-/* =========================================================
-   25.6 BODY MUST NOT OWN SCROLL
-   ========================================================= */
-
-.experiment-template__body {
-  min-width:
-    0;
-
-  min-height:
-    0;
-
-
-  /*
-   * Không flex:1 theo viewport con nữa.
-   */
-  flex:
-    0 0 auto;
-
-
-  display:
-    flex;
-
-  flex-direction:
-    column;
-
-
-  /*
-   * Utility và stage phải tham gia
-   * experiment-page scroll.
-   */
-  overflow:
-    visible;
-}
-
-
-/* =========================================================
-   25.7 UTILITY BAR SCROLLS AWAY
-   ========================================================= */
-
-.experiment-template__utility {
-  /*
-   * Utility KHÔNG sticky.
-   *
-   * Nó nằm dưới sticky nav và sẽ biến mất
-   * khi người dùng tiếp tục scroll.
-   */
-  position:
-    relative;
-
-
-  min-height:
-    var(--experiment-utility-height);
-
-
-  flex:
-    0 0 auto;
-
-  flex-shrink:
-    0;
-
-
-  /*
-   * Utility vẫn nằm trên nội dung
-   * nhưng thấp hơn sticky nav.
-   */
-  z-index:
-    20;
-
-
-  background:
-    rgba(
-      5,
-      11,
-      20,
-      0.92
-    );
-
-
-  border-bottom:
-    1px solid
-    var(--lab-border);
-}
-
-
-/* =========================================================
-   25.8 STAGE HEIGHT CONTRACT
-   ========================================================= */
-
-.experiment-template__stage {
-  width:
-    100%;
-
-
-  min-width:
-    0;
-
-
-  /*
-   * Sau khi header + utility đã scroll mất,
-   * Stage phải ít nhất chiếm toàn bộ viewport
-   * còn lại dưới PhaseNav.
-   */
-  min-height:
-    calc(
-      100dvh -
-      var(--experiment-phase-nav-height)
-    );
-
-
-  /*
-   * Không co stage xuống theo flex.
-   */
-  flex:
-    0 0 auto;
-
-
-  position:
-    relative;
-}
-
-
-/* =========================================================
-   25.9 CONTENT PHASE
-   NATURAL PAGE SCROLL
-   ========================================================= */
-
-.experiment-template__stage--content {
-  /*
-   * Không tạo scrollbar riêng trong stage.
-   *
-   * Toàn bộ vertical scrolling thuộc
-   * .experiment-page.
-   */
-  overflow-x:
-    hidden;
-
-  overflow-y:
-    visible;
-}
-
-
-/*
- * Route content cũng không được tự khóa height
- * hoặc tạo scrollbar riêng.
- */
-
-.experiment-template__route--content {
-  width:
-    100%;
-
-
-  height:
-    auto;
-
-
-  min-width:
-    0;
-
-  min-height:
-    0;
-
-
-  position:
-    relative;
-
-
-  overflow:
-    visible;
-}
-
-
-/* =========================================================
-   25.10 PRACTICE PHASE
-   FULL WORKSPACE CONTRACT
-   ========================================================= */
-
-.experiment-template__stage--practice {
-  /*
-   * Practice là ngoại lệ.
-   *
-   * Canvas + floating panel cần một vùng
-   * có chiều cao xác định.
-   */
-  width:
-    100%;
-
-
-  height:
-    calc(
-      100dvh -
-      var(--experiment-phase-nav-height)
-    );
-
-
-  min-height:
-    calc(
-      100dvh -
-      var(--experiment-phase-nav-height)
-    );
-
-
-  flex:
-    0 0 auto;
-
-
-  position:
-    relative;
-
-
-  /*
-   * Canvas/panel không được tràn ra ngoài workspace.
-   */
-  overflow:
-    hidden;
-}
-
-
-/*
- * Routed overlay của Practice không được
- * tạo scrollbar cho toàn stage.
- *
- * Từng floating panel nếu cần scroll
- * phải tự sở hữu scrollbar của chính panel đó.
- */
-
-.experiment-template__route--practice {
-  position:
-    absolute;
-
-  inset:
-    0;
-
-
-  width:
-    100%;
-
-  height:
-    100%;
-
-
-  min-width:
-    0;
-
-  min-height:
-    0;
-
-
-  overflow:
-    hidden;
-}
-
-
-/* =========================================================
-   25.11 PERSISTENT RUNTIME FILLS PRACTICE STAGE
-   ========================================================= */
-
-.experiment-template__stage--practice
-.experiment-runtime-host {
-  position:
-    absolute;
-
-  inset:
-    0;
-
-
-  width:
-    100%;
-
-  height:
-    100%;
-
-
-  min-width:
-    0;
-
-  min-height:
-    0;
-}
-
-
-/*
- * Runtime workspace phải nhận đúng
- * toàn bộ kích thước Practice stage.
- */
-
-.experiment-template__stage--practice
-.experiment-runtime-workspace {
-  width:
-    100%;
-
-  height:
-    100%;
-
-
-  min-width:
-    0;
-
-  min-height:
-    0;
-}
-
-
-/* =========================================================
-   25.12 ACTIVE / INACTIVE RUNTIME
-   KEEP-ALIVE SAFETY
-   ========================================================= */
-
-/*
- * Inactive runtime vẫn mount,
- * nhưng không được ảnh hưởng layout hoặc interaction.
- */
-
-.experiment-runtime-host--inactive {
-  visibility:
-    hidden;
-
-  opacity:
-    0;
-
-  pointer-events:
-    none;
-}
-
-
-/*
- * Active runtime trở thành workspace thật.
- */
-
-.experiment-runtime-host--active {
-  visibility:
-    visible;
-
-  opacity:
-    1;
-
-  pointer-events:
-    auto;
-}
-
-
-/* =========================================================
-   25.13 EXPANDED WORKSPACE
-   ========================================================= */
-
-/*
- * Khi experiment mở workspace overlay,
- * scroll của page phía dưới phải khóa lại.
- */
-
-.experiment-page:has(
-  .experiment-template--expanded
-) {
-  overflow:
-    hidden;
-}
-
-
-.experiment-template--expanded {
-  position:
-    fixed;
-
-  inset:
-    0;
-
-
-  z-index:
-    300;
-
-
-  width:
-    100vw;
-
-  height:
-    100dvh;
-
-  min-height:
-    100dvh;
-
-
-  overflow:
-    hidden;
-
-
-  background:
-    var(--lab-bg);
-}
-
-
-/*
- * Expanded mode là viewport riêng.
- *
- * Sticky không còn cần thiết trong overlay.
- */
-
-.experiment-template--expanded
-.experiment-phase-nav {
-  position:
-    relative;
-
-  top:
-    auto;
-
-
-  flex:
-    0 0 auto;
-}
-
-
-/*
- * Utility hiện tại đã được thiết kế ẩn
- * ở expanded mode.
- *
- * Giữ behavior đó.
- */
-
-.experiment-template--expanded
-.experiment-template__body {
-  min-height:
-    0;
-
-
-  flex:
-    1 1 auto;
-
-
-  overflow:
-    hidden;
-}
-
-
-.experiment-template--expanded
-.experiment-template__stage {
-  height:
-    auto;
-
-  min-height:
-    0;
-
-
-  flex:
-    1 1 auto;
-
-
-  overflow:
-    hidden;
-}
-
-
-.experiment-template--expanded
-.experiment-template__stage--practice {
-  height:
-    auto;
-
-  min-height:
-    0;
-
-
-  flex:
-    1 1 auto;
-}
-
-
-/* =========================================================
-   25.14 TABLET
-   ========================================================= */
-
-@media (
-  max-width: 1024px
-) {
-
-  /*
-   * Scroll architecture không thay đổi.
-   *
-   * Chỉ giữ viewport calculation ổn định.
-   */
-  .experiment-page {
-    --experiment-phase-nav-height:
-      60px;
-  }
-
-}
-
-
-/* =========================================================
-   25.15 MOBILE
-   ========================================================= */
-
-@media (
-  max-width: 767px
-) {
-
-  .experiment-page {
-    /*
-     * Mobile browser cần dynamic viewport.
-     */
-    height:
-      100dvh;
-
-    min-height:
-      100dvh;
-
-
-    /*
-     * Mobile phase nav compact hơn desktop.
-     */
-    --experiment-phase-nav-height:
-      56px;
-
-
-    /*
-     * Utility mobile theo lab-new.
-     */
-    --experiment-utility-height:
-      44px;
-  }
-
-
-  .experiment-template {
-    min-height:
-      calc(
-        100dvh +
-        var(--experiment-utility-height)
-      );
-  }
-
-
-  .experiment-template__stage {
-    min-height:
-      calc(
-        100dvh -
-        var(--experiment-phase-nav-height)
-      );
-  }
-
-
-  .experiment-template__stage--practice {
-    height:
-      calc(
-        100dvh -
-        var(--experiment-phase-nav-height)
-      );
-
-
-    min-height:
-      calc(
-        100dvh -
-        var(--experiment-phase-nav-height)
-      );
-  }
-
-}
-
-
-/* =========================================================
-   25.16 SHORT VIEWPORT / LANDSCAPE
-   ========================================================= */
-
-@media (
-  max-height: 520px
-) {
-
-  .experiment-page {
-    /*
-     * Phase nav rất compact ở landscape thấp.
-     */
-    --experiment-phase-nav-height:
-      40px;
-
-
-    /*
-     * Utility của lab-new short viewport.
-     */
-    --experiment-utility-height:
-      38px;
-  }
-
-
-  .experiment-template {
-    min-height:
-      calc(
-        100dvh +
-        var(--experiment-utility-height)
-      );
-  }
-
-
-  .experiment-template__stage {
-    min-height:
-      calc(
-        100dvh -
-        var(--experiment-phase-nav-height)
-      );
-  }
-
-
-  .experiment-template__stage--practice {
-    height:
-      calc(
-        100dvh -
-        var(--experiment-phase-nav-height)
-      );
-
-
-    min-height:
-      calc(
-        100dvh -
-        var(--experiment-phase-nav-height)
-      );
-  }
-
-}
-
-
-/* =========================================================
-   25.17 PRINT SAFETY
-   ========================================================= */
-
-@media print {
-
-  html,
-body,
-#root {
-    height:
-      auto !important;
-
-
-    overflow:
-      visible !important;
-
-
-    background:
-      #fff !important;
-  }
-
-
-  .experiment-page {
-    width:
-      100%;
-
-
-    height:
-      auto !important;
-
-    min-height:
-      0 !important;
-
-
-    overflow:
-      visible !important;
-
-
-    overscroll-behavior:
-      auto;
-
-
-    color:
-      #000;
-
-    background:
-      #fff;
-  }
-
-
-  .experiment-header {
-    position:
-      static !important;
-  }
-
-
-  .experiment-main,
-.experiment-workspace,
-.experiment-template,
-.experiment-template__body,
-.experiment-template__stage,
-.experiment-template__stage--content,
-.experiment-template__route,
-.experiment-template__route--content {
-    width:
-      100%;
-
-
-    height:
-      auto !important;
-
-    min-height:
-      0 !important;
-
-
-    overflow:
-      visible !important;
-
-
-    display:
-      block;
-
-
-    position:
-      static;
-
-
-    background:
-      transparent;
-  }
-
-
-  /*
-   * Phase navigation không cần xuất hiện
-   * trên báo cáo in.
-   */
-  .experiment-phase-nav {
-    display:
-      none !important;
-
-
-    position:
-      static !important;
-
-
-    box-shadow:
-      none !important;
-  }
-
-
-  .experiment-template__utility {
-    display:
-      none !important;
-  }
-
-
-  /*
-   * Simulation không tham gia report print.
-   */
-  .experiment-runtime-host {
-    display:
-      none !important;
-  }
-
-}
-
-/* =========================================================
-   26. STAGE VISUAL OWNERSHIP
-   GĐ2.1E — UX CONFORMANCE
-
-   CONTRACT
-   ---------------------------------------------------------
-   Shared stage chỉ quản lý:
-   - kích thước
-   - flow
-   - overflow
-   - practice/content mode
-
-   Shared stage KHÔNG được tự áp:
-   - card background
-   - border
-   - radius
-   - shadow
-
-   Presentation thuộc từng phase / experiment.
-   ========================================================= */
-
-
-/* =========================================================
-   26.1 REMOVE GENERIC CARD VISUAL
-   ========================================================= */
-
-.experiment-template__stage {
-  /*
-   * Stage không phải Card.
-   */
-  background:
-    transparent;
-
-
-  border:
-    0;
-
-
-  border-radius:
-    0;
-
-
-  box-shadow:
-    none;
-}
-
-
-/* =========================================================
-   26.2 CONTENT STAGE
-   ========================================================= */
-
-.experiment-template__stage--content {
-  /*
-   * Giữ khoảng thở giống lab-new.
-   *
-   * Từng phase tự căn max-width bên trong.
-   */
-  padding:
-    16px;
-
-
-  background:
-    transparent;
-
-
-  border:
-    0;
-
-
-  border-radius:
-    0;
-
-
-  box-shadow:
-    none;
-}
-
-
-/* =========================================================
-   26.3 CONTENT ROUTE
-   ========================================================= */
-
-.experiment-template__route--content {
-  /*
-   * Outlet chỉ là vùng chứa.
-   *
-   * Không được tự biến thành panel.
-   */
-  width:
-    100%;
-
-
-  min-width:
-    0;
-
-
-  background:
-    transparent;
-
-
-  border:
-    0;
-
-
-  border-radius:
-    0;
-
-
-  box-shadow:
-    none;
-}
-
-
-/* =========================================================
-   26.4 PRACTICE STAGE
-   ========================================================= */
-
-.experiment-template__stage--practice {
-  /*
-   * Practice phải là workspace trống hoàn toàn.
-   */
-  padding:
-    0;
-
-
-  background:
-    var(--lab-bg);
-
-
-  border:
-    0;
-
-
-  border-radius:
-    0;
-
-
-  box-shadow:
-    none;
-}
-
-
-/* =========================================================
-   26.5 PRACTICE ROUTE OVERLAY
-   ========================================================= */
-
-.experiment-template__route--practice {
-  /*
-   * Route Practice chỉ là overlay layer
-   * nằm trên persistent runtime.
-   */
-  background:
-    transparent;
-
-
-  border:
-    0;
-
-
-  border-radius:
-    0;
-
-
-  box-shadow:
-    none;
-}
-
-
-/* =========================================================
-   26.6 PERSISTENT RUNTIME
-   ========================================================= */
-
-.experiment-runtime-host {
-  /*
-   * Runtime không bị cắt bởi radius/card ngoài.
-   */
-  border:
-    0;
-
-
-  border-radius:
-    0;
-
-
-  box-shadow:
-    none;
-
-
-  overflow:
-    hidden;
-}
-
-
-/* =========================================================
-   26.7 RUNTIME WORKSPACE
-   ========================================================= */
-
-.experiment-runtime-workspace {
-  border:
-    0;
-
-
-  border-radius:
-    0;
-
-
-  box-shadow:
-    none;
-}
-
-
-/* =========================================================
-   26.8 EXPANDED MODE
-   ========================================================= */
-
-.experiment-template--expanded
-.experiment-template__stage,
-.experiment-template--expanded
-.experiment-template__stage--practice,
-.experiment-template--expanded
-.experiment-template__route--practice,
-.experiment-template--expanded
-.experiment-runtime-host,
-.experiment-template--expanded
-.experiment-runtime-workspace {
-  border:
-    0;
-
-
-  border-radius:
-    0;
-
-
-  box-shadow:
-    none;
-}
-
-
-/* =========================================================
-   26.9 TABLET
-   ========================================================= */
-
-@media (
-  max-width: 1024px
-) {
-
-  .experiment-template__stage--content {
-    padding:
-      14px;
-  }
-
-}
-
-
-/* =========================================================
-   26.10 MOBILE
-   ========================================================= */
-
-@media (
-  max-width: 767px
-) {
-
-  .experiment-template__stage--content {
-    padding:
-      12px;
-  }
-
-}
-
-
-/* =========================================================
-   26.11 SHORT VIEWPORT
-   ========================================================= */
-
-@media (
-  max-height: 520px
-) {
-
-  .experiment-template__stage--content {
-    padding:
-      8px;
-  }
-
-}
-
-
-/* =========================================================
-   26.12 PRINT
-   ========================================================= */
-
-@media print {
-
-  .experiment-template__stage,
-.experiment-template__stage--content,
-.experiment-template__stage--practice,
-.experiment-template__route,
-.experiment-runtime-host,
-.experiment-runtime-workspace {
-    padding:
-      0 !important;
-
-
-    background:
-      transparent !important;
-
-
-    border:
-      0 !important;
-
-
-    border-radius:
-      0 !important;
-
-
-    box-shadow:
-      none !important;
-  }
-
-}
-
-/* =========================================================
-   28. EXPERIMENT UTILITY BAR
-   GĐ2.1E — LAB-NEW UX CONFORMANCE
-
-   Contract:
-   ---------------------------------------------------------
-   - Utility là thanh thông tin phụ.
-   - Không phải toolbar chính.
-   - Không phải card.
-   - Không sticky.
-   - Cuộn mất cùng content.
-   - PhaseNav mới là thành phần sticky.
-   - Action bên phải phải nhỏ, nhẹ.
-   ========================================================= */
-
-
-/* =========================================================
-   28.1 UTILITY ROOT
-   ========================================================= */
-
-.experiment-template__utility {
-  position:
-    relative;
-
-  z-index:
-    20;
-
-
-  width:
-    100%;
-
-
-  min-width:
-    0;
-
-  min-height:
-    var(
-      --experiment-utility-height,
-      48px
-    );
-
-
-  flex:
-    0 0 auto;
-
-
-  padding:
-    8px
-    16px;
-
-
-  display:
-    flex;
-
-  align-items:
-    center;
-
-  justify-content:
-    space-between;
-
-
-  gap:
-    16px;
-
-
-  /*
-   * Lab-new:
-   * utility gần như hòa vào nền Lab.
-   *
-   * Không gradient.
-   * Không glass card.
-   * Không radius.
-   */
-  background:
-    rgba(
-      5,
-      11,
-      20,
-      0.92
-    );
-
-
-  border:
-    0;
-
-  border-bottom:
-    1px solid
-    var(--lab-border);
-
-
-  border-radius:
-    0;
-
-
-  box-shadow:
-    none;
-
-
-  backdrop-filter:
-    none;
-
-  -webkit-backdrop-filter:
-    none;
-}
-
-
-/* =========================================================
-   28.2 PHASE INFO
-   ========================================================= */
-
-.experiment-template__phase-info {
-  min-width:
-    0;
-
-
-  display:
-    flex;
-
-  align-items:
-    center;
-
-
-  gap:
-    10px;
-}
-
-
-/* =========================================================
-   STEP INDICATOR
-   ========================================================= */
-
-.experiment-template__phase-info
-  > span {
-  flex-shrink:
-    0;
-
-
-  color:
-    var(--lab-accent);
-
-
-  font-size:
-    11px;
-
-
-  font-weight:
-    700;
-
-
-  line-height:
-    1;
-
-
-  letter-spacing:
-    0.065em;
-
-
-  text-transform:
-    uppercase;
-}
-
-
-/* =========================================================
-   CURRENT PHASE NAME
-   ========================================================= */
-
-.experiment-template__phase-info
-  > strong {
-  min-width:
-    0;
-
-
-  overflow:
-    hidden;
-
-
-  color:
-    var(--lab-text-soft);
-
-
-  font-size:
-    13px;
-
-
-  font-weight:
-    600;
-
-
-  line-height:
-    1.2;
-
-
-  text-overflow:
-    ellipsis;
-
-
-  white-space:
-    nowrap;
-}
-
-
-/* =========================================================
-   PHASE INFO SEPARATOR
-
-   Visual:
-
-   BƯỚC 2 / 6   •   Chuẩn bị
-   ========================================================= */
-
-.experiment-template__phase-info
-  > strong::before {
-  content:
-    "";
-
-
-  width:
-    4px;
-
-  height:
-    4px;
-
-
-  margin-right:
-    10px;
-
-
-  display:
-    inline-block;
-
-
-  vertical-align:
-    middle;
-
-
-  background:
-    var(--lab-border-strong);
-
-
-  border-radius:
-    50%;
-}
-
-
-/* =========================================================
-   28.3 UTILITY ACTIONS
-   ========================================================= */
-
-.experiment-template__utility-actions {
-  min-width:
-    0;
-
-
-  flex-shrink:
-    0;
-
-
-  display:
-    flex;
-
-  align-items:
-    center;
-
-
-  gap:
-    6px;
-}
-
-
-/* =========================================================
-   28.4 COMPACT UTILITY BUTTON
-
-   Action trong Utility KHÔNG dùng visual CTA lớn.
-
-   Ví dụ:
-   - Đặt lại
-   - Mở rộng
-   - Trợ giúp
-   ========================================================= */
-
-.experiment-template__utility-actions
-  .experiment-lab-button {
-  min-height:
-    32px;
-
-
-  padding:
-    5px
-    10px;
-
-
-  gap:
-    6px;
-
-
-  color:
-    var(--lab-text-muted);
-
-
-  background:
-    transparent;
-
-
-  border:
-    1px solid
-    transparent;
-
-
-  border-radius:
-    8px;
-
-
-  box-shadow:
-    none;
-
-
-  font-size:
-    11px;
-
-
-  font-weight:
-    600;
-
-
-  line-height:
-    1;
-
-
-  white-space:
-    nowrap;
-}
-
-
-/* =========================================================
-   UTILITY BUTTON HOVER
-   ========================================================= */
-
-.experiment-template__utility-actions
-  .experiment-lab-button:hover:not(
-    :disabled
-  ) {
-  color:
-    var(--lab-text);
-
-
-  background:
-    rgba(
-      255,
-      255,
-      255,
-      0.055
-    );
-
-
-  border-color:
-    var(--lab-border);
-
-
-  box-shadow:
-    none;
-}
-
-
-/* =========================================================
-   UTILITY PRIMARY BUTTON
-
-   Nếu module vô tình truyền primary button
-   vào utility, vẫn hạ visual xuống.
-
-   Utility không phải nơi đặt CTA chính.
-   ========================================================= */
-
-.experiment-template__utility-actions
-  .experiment-lab-button--primary {
-  color:
-    var(--lab-accent);
-
-
-  background:
-    var(--lab-accent-soft);
-
-
-  border-color:
-    var(--lab-accent-border);
-}
-
-
-.experiment-template__utility-actions
-  .experiment-lab-button--primary:hover:not(
-    :disabled
-  ) {
-  color:
-    var(--lab-text);
-
-
-  background:
-    color-mix(
-      in srgb,
-      var(--lab-accent) 18%,
-      transparent
-    );
-
-
-  border-color:
-    var(--lab-accent);
-}
-
-
-/* =========================================================
-   DISABLED UTILITY ACTION
-   ========================================================= */
-
-.experiment-template__utility-actions
-  .experiment-lab-button:disabled {
-  opacity:
-    0.3;
-
-
-  cursor:
-    not-allowed;
-}
-
-
-/* =========================================================
-   28.5 TEMPLATE RESET
-
-   Template hiện dùng:
-   "Đặt lại dữ liệu phiên"
-
-   Không để button này chiếm attention ngang CTA phase.
-   ========================================================= */
-
-.experiment-template__utility-actions
-  .experiment-lab-button::first-letter {
-  text-transform:
-    uppercase;
-}
-
-
-/* =========================================================
-   28.6 CONTENT RELATION
-
-   Utility và Stage chạm nhau trực tiếp.
-   Không tạo khoảng gap lớn.
-   ========================================================= */
-
-.experiment-template__utility
-  + .experiment-template__stage {
-  margin-top:
-    0;
-}
-
-
-/* =========================================================
-   28.7 MOBILE
-   ========================================================= */
-
-@media (
-  max-width: 767px
-) {
-
-  .experiment-template__utility {
-    min-height:
-      44px;
-
-
-    padding:
-      6px
-      12px;
-
-
-    gap:
-      10px;
-  }
-
-
-  .experiment-template__phase-info {
-    gap:
-      7px;
-  }
-
-
-  .experiment-template__phase-info
-    > span {
-    font-size:
-      10px;
-  }
-
-
-  /*
-   * Lab-new mobile:
-   * ưu tiên Step indicator.
-   *
-   * Tên phase đã có trên PhaseNav nên có thể ẩn
-   * để dành chỗ cho utility actions.
-   */
-  .experiment-template__phase-info
-    > strong {
-    display:
-      none;
-  }
-
-
-  .experiment-template__utility-actions {
-    gap:
-      4px;
-  }
-
-
-  .experiment-template__utility-actions
-    .experiment-lab-button {
-    min-height:
-      30px;
-
-
-    padding:
-      5px
-      9px;
-
-
-    font-size:
-      10px;
-  }
-
-}
-
-
-/* =========================================================
-   28.8 SMALL MOBILE
-   ========================================================= */
-
-@media (
-  max-width: 480px
-) {
-
-  .experiment-template__utility {
-    padding-left:
-      10px;
-
-    padding-right:
-      10px;
-  }
-
-
-  /*
-   * Không cho text utility action kéo layout quá rộng.
-   */
-  .experiment-template__utility-actions
-    .experiment-lab-button {
-    max-width:
-      150px;
-
-
-    overflow:
-      hidden;
-
-
-    text-overflow:
-      ellipsis;
-
-
-    white-space:
-      nowrap;
-  }
-
-}
-
-
-/* =========================================================
-   28.9 SHORT VIEWPORT
-   ========================================================= */
-
-@media (
-  max-height: 520px
-) {
-
-  .experiment-template__utility {
-    min-height:
-      38px;
-
-
-    padding:
-      4px
-      12px;
-  }
-
-
-  .experiment-template__phase-info
-    > span {
-    font-size:
-      10px;
-  }
-
-
-  .experiment-template__phase-info
-    > strong {
-    font-size:
-      11px;
-  }
-
-
-  .experiment-template__utility-actions
-    .experiment-lab-button {
-    min-height:
-      28px;
-
-
-    padding:
-      4px
-      8px;
-
-
-    font-size:
-      10px;
-  }
-
-}
-
-
-/* =========================================================
-   28.10 EXPANDED WORKSPACE
-
-   Expanded Practice không cần Utility.
-   ========================================================= */
-
-.experiment-template--expanded
-  .experiment-template__utility {
-  display:
-    none;
-}
-
-
-/* =========================================================
-   28.11 PRINT
-   ========================================================= */
-
-@media print {
-
-  .experiment-template__utility {
-    display:
-      none !important;
-  }
-
-}
-
-/* =========================================================
-   29. EXPERIMENT HEADER
-   GĐ2.1E — LAB-NEW UX CONFORMANCE
-
-   Contract:
-   ---------------------------------------------------------
-   - Dark Lab identity.
-   - Header compact.
-   - Không sticky.
-   - Cuộn mất tự nhiên.
-   - Back action nhỏ bên trái.
-   - Experiment identity ở giữa.
-   - Optional utility actions bên phải.
-   - Không dùng Portal glass/card system.
-   ========================================================= */
-
-
-/* =========================================================
-   29.1 HEADER ROOT
-   ========================================================= */
-
-.experiment-header {
-  position:
-    relative;
-
-
-  z-index:
-    30;
-
-
-  width:
-    100%;
-
-
-  min-width:
-    0;
-
-
-  /*
-   * Không ép header cao quá.
-   *
-   * Chiều cao được quyết định bởi content.
-   */
-  min-height:
-    0;
-
-
-  flex:
-    0 0 auto;
-
-
-  padding:
-    16px
-    calc(
+  flex: 0 0 auto;
+  padding: 16px calc(
       var(--page-padding) +
       120px
-    )
-    12px;
-
-
-  display:
-    flex;
-
-  align-items:
-    flex-start;
-
-  justify-content:
-    center;
-
-
-  /*
-   * Header Lab phải gần solid.
-   * Không dùng Portal pastel/glass.
-   */
-  background:
-    rgba(
+    ) 12px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  background: rgba(
       5,
       11,
       20,
       0.95
     );
-
-
-  border:
-    0;
-
-
-  border-bottom:
-    1px solid
-    rgba(
+  border: 0;
+  border-bottom: 1px solid rgba(
       255,
       255,
       255,
       0.055
     );
-
-
-  border-radius:
-    0;
-
-
-  box-shadow:
-    none;
-
-
-  backdrop-filter:
-    blur(14px);
-
-  -webkit-backdrop-filter:
-    blur(14px);
+  border-radius: 0;
+  box-shadow: none;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 }
 
-
-/* =========================================================
-   29.2 BACK BUTTON
-   ========================================================= */
-
 .experiment-header__back {
-  position:
-    absolute;
-
-
-  top:
-    16px;
-
-  left:
-    var(--page-padding);
-
-
-  min-height:
-    36px;
-
-
-  padding:
-    7px
-    11px;
-
-
-  display:
-    inline-flex;
-
-  align-items:
-    center;
-
-  justify-content:
-    center;
-
-
-  gap:
-    7px;
-
-
-  color:
-    var(--lab-text-muted);
-
-
-  background:
-    rgba(
+  position: absolute;
+  top: 16px;
+  left: var(--page-padding);
+  min-height: 36px;
+  padding: 7px 11px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  color: var(--lab-text-muted);
+  background: rgba(
       255,
       255,
       255,
       0.045
     );
-
-
-  border:
-    1px solid
-    rgba(
+  border: 1px solid rgba(
       255,
       255,
       255,
       0.09
     );
-
-
-  border-radius:
-    8px;
-
-
-  box-shadow:
-    none;
-
-
-  font-size:
-    12px;
-
-
-  font-weight:
-    600;
-
-
-  line-height:
-    1;
-
-
-  white-space:
-    nowrap;
-
-
-  transition:
-    color var(--transition-fast),
-    background var(--transition-fast),
-    border-color var(--transition-fast),
-    transform var(--transition-fast);
+  border-radius: 8px;
+  box-shadow: none;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  transition: color var(--transition-fast), background var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
 }
 
-
-/* =========================================================
-   BACK HOVER
-   ========================================================= */
-
 .experiment-header__back:hover {
-  color:
-    var(--lab-text);
-
-
-  background:
-    rgba(
+  color: var(--lab-text);
+  background: rgba(
       255,
       255,
       255,
       0.075
     );
-
-
-  border-color:
-    var(--lab-border-strong);
-
-
-  transform:
-    translateX(-2px);
+  border-color: var(--lab-border-strong);
+  transform: translateX(-2px);
 }
-
 
 .experiment-header__back:focus-visible {
-  outline:
-    2px solid
-    var(--lab-accent);
-
-
-  outline-offset:
-    3px;
+  outline: 2px solid var(--lab-accent);
+  outline-offset: 3px;
 }
 
-
-/* =========================================================
-   29.3 IDENTITY
-   ========================================================= */
-
 .experiment-header__identity {
-  width:
-    min(
+  width: min(
       100%,
       900px
     );
-
-
-  min-width:
-    0;
-
-
-  display:
-    flex;
-
-  flex-direction:
-    column;
-
-  align-items:
-    center;
-
-
-  text-align:
-    center;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
-
-
-/* =========================================================
-   29.4 META PILL
-   ========================================================= */
 
 .experiment-header__meta {
-  width:
-    fit-content;
-
-
-  min-height:
-    28px;
-
-
-  padding:
-    4px
-    10px;
-
-
-  display:
-    inline-flex;
-
-  align-items:
-    center;
-
-  justify-content:
-    center;
-
-
-  flex-wrap:
-    wrap;
-
-
-  gap:
-    7px;
-
-
-  color:
-    var(--lab-text-soft);
-
-
-  background:
-    var(--lab-accent-soft);
-
-
-  border:
-    1px solid
-    var(--lab-accent-border);
-
-
-  border-radius:
-    var(--lab-radius-round);
-
-
-  box-shadow:
-    0 0 16px
-    var(--lab-accent-glow);
+  width: fit-content;
+  min-height: 28px;
+  padding: 4px 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 7px;
+  color: var(--lab-text-soft);
+  background: var(--lab-accent-soft);
+  border: 1px solid var(--lab-accent-border);
+  border-radius: var(--lab-radius-round);
+  box-shadow: 0 0 16px var(--lab-accent-glow);
 }
 
-
-/* =========================================================
-   META TYPOGRAPHY
-   ========================================================= */
-
-.experiment-header__subject,
-.experiment-header__lab-label {
-  font-size:
-    10px;
-
-
-  font-weight:
-    700;
-
-
-  line-height:
-    1;
-
-
-  letter-spacing:
-    0.065em;
-
-
-  text-transform:
-    uppercase;
+.experiment-header__subject, .experiment-header__lab-label {
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.065em;
+  text-transform: uppercase;
 }
-
 
 .experiment-header__subject {
-  color:
-    var(--lab-text-soft);
+  color: var(--lab-text-soft);
 }
-
-
-.experiment-header__lab-label {
-  color:
-    var(--lab-accent);
-}
-
-
-/* =========================================================
-   META INDICATOR
-   ========================================================= */
 
 .experiment-header__indicator {
-  width:
-    6px;
-
-  height:
-    6px;
-
-
-  flex-shrink:
-    0;
-
-
-  background:
-    var(--lab-accent);
-
-
-  border-radius:
-    50%;
-
-
-  box-shadow:
-    0 0 9px
-    var(--lab-accent-glow);
+  width: 6px;
+  height: 6px;
+  flex-shrink: 0;
+  background: var(--lab-accent);
+  border-radius: 50%;
+  box-shadow: 0 0 9px var(--lab-accent-glow);
 }
 
-
-/* =========================================================
-   29.5 EXPERIMENT TITLE
-   ========================================================= */
+.experiment-header__lab-label {
+  color: var(--lab-accent);
+}
 
 .experiment-header__identity h1 {
-  max-width:
-    900px;
-
-
-  margin:
-    9px
-    0
-    0;
-
-
-  color:
-    var(--lab-text);
-
-
-  font-size:
-    clamp(
+  max-width: 900px;
+  margin: 9px 0 0;
+  color: var(--lab-text);
+  font-size: clamp(
       23px,
       2.7vw,
       34px
     );
-
-
-  font-weight:
-    700;
-
-
-  line-height:
-    1.08;
-
-
-  letter-spacing:
-    0.025em;
-
-
-  text-transform:
-    uppercase;
-
-
-  text-wrap:
-    balance;
-
-
-  text-shadow:
-    0 0 18px
-    rgba(
+  font-weight: 700;
+  line-height: 1.08;
+  letter-spacing: 0.025em;
+  text-transform: uppercase;
+  text-wrap: balance;
+  text-shadow: 0 0 18px rgba(
       255,
       255,
       255,
@@ -4828,3296 +296,1883 @@ body,
     );
 }
 
-
-/* =========================================================
-   29.6 DESCRIPTION
-   ========================================================= */
-
 .experiment-header__description {
-  max-width:
-    720px;
-
-
-  margin:
-    6px
-    0
-    0;
-
-
-  color:
-    var(--lab-text-muted);
-
-
-  font-size:
-    12px;
-
-
-  line-height:
-    1.5;
-
-
-  text-wrap:
-    balance;
+  max-width: 720px;
+  margin: 6px 0 0;
+  color: var(--lab-text-muted);
+  font-size: 12px;
+  line-height: 1.5;
+  text-wrap: balance;
 }
-
-
-/* =========================================================
-   29.7 OPTIONAL ACTIONS
-   ========================================================= */
 
 .experiment-header__actions {
-  position:
-    absolute;
-
-
-  top:
-    16px;
-
-  right:
-    var(--page-padding);
-
-
-  display:
-    flex;
-
-  align-items:
-    center;
-
-
-  gap:
-    6px;
+  position: absolute;
+  top: 16px;
+  right: var(--page-padding);
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
+.experiment-main {
+  min-width: 0;
+  min-height: 0;
+  flex: 0 0 auto;
+  display: block;
+  overflow: visible;
+}
 
-/*
- * Header actions cũng là secondary actions.
- * Không cho CTA visual lớn xuất hiện ở đây.
- */
+.experiment-workspace {
+  flex: 1;
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  overflow: visible;
+}
 
-.experiment-header__actions
-  .experiment-lab-button {
-  min-height:
-    36px;
+.experiment-phase-nav {
+  padding: 8px 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.055);
+  -webkit-overflow-scrolling: touch;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  flex: 0 0 auto;
+  flex-shrink: 0;
+  background: rgba(
+      5,
+      11,
+      20,
+      0.97
+    );
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 8px 24px rgba(
+      2,
+      6,
+      23,
+      0.18
+    );
+  width: 100%;
+  min-width: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+}
 
+.experiment-phase-nav::-webkit-scrollbar {
+  display: none;
+}
 
-  padding:
-    7px
-    10px;
+.experiment-phase-nav__track {
+  width: max-content;
+  min-width: 100%;
+  margin: 0 auto;
+  padding: 10px var(--experiment-page-gutter);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
 
+.experiment-phase-nav__item {
+  flex-shrink: 0;
+  color: var(--lab-text-muted);
+  background: rgba(255, 255, 255, 0.055);
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  font-size: 13px;
+  font-weight: 600;
+  transition: color var(--transition-fast), background var(--transition-fast), border-color var(--transition-fast), box-shadow var(--transition-fast), transform var(--transition-fast);
+  min-height: 36px;
+  padding: 7px 12px;
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--lab-radius-round);
+  white-space: nowrap;
+}
 
-  color:
-    var(--lab-text-muted);
+.experiment-phase-nav__item:hover {
+  color: var(--lab-text);
+  background: rgba(255, 255, 255, 0.09);
+  border-color: var(--lab-border-strong);
+}
 
+.experiment-phase-nav__item:focus-visible {
+  outline: 2px solid var(--lab-accent);
+  outline-offset: 2px;
+}
 
-  background:
-    rgba(
+.experiment-phase-nav__item--active {
+  color: var(--lab-bg);
+  background: var(--lab-accent);
+  border-color: var(--lab-accent);
+  box-shadow: 0 0 18px var(--lab-accent-glow);
+  transform: translateY(-1px);
+}
+
+.experiment-phase-nav__item--active:hover {
+  color: var(--lab-bg);
+  background: var(--lab-accent);
+  border-color: var(--lab-accent);
+}
+
+.experiment-phase-nav__item--disabled {
+  opacity: 0.34;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.experiment-template {
+  color: var(--lab-text);
+  background: var(--lab-bg);
+  width: 100%;
+  height: auto;
+  min-width: 0;
+  min-height: calc(
+      100dvh +
+      var(--experiment-utility-height)
+    );
+  display: flex;
+  flex-direction: column;
+  overflow: visible;
+}
+
+.experiment-template__body {
+  padding: 12px;
+  min-width: 0;
+  min-height: 0;
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  overflow: visible;
+}
+
+.experiment-template__utility {
+  flex-shrink: 0;
+  position: relative;
+  z-index: 20;
+  width: 100%;
+  min-width: 0;
+  min-height: var(
+      --experiment-utility-height,
+      48px
+    );
+  flex: 0 0 auto;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  background: rgba(
+      5,
+      11,
+      20,
+      0.92
+    );
+  border: 0;
+  border-bottom: 1px solid var(--lab-border);
+  border-radius: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
+
+.experiment-template__phase-info {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.experiment-template__phase-info > span {
+  flex-shrink: 0;
+  color: var(--lab-accent);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.065em;
+  text-transform: uppercase;
+}
+
+.experiment-template__phase-info > strong {
+  min-width: 0;
+  overflow: hidden;
+  color: var(--lab-text-soft);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.2;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.experiment-template__utility-actions {
+  min-width: 0;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.experiment-template__stage {
+  overflow: hidden;
+  width: 100%;
+  min-width: 0;
+  min-height: calc(
+      100dvh -
+      var(--experiment-phase-nav-height)
+    );
+  flex: 0 0 auto;
+  position: relative;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.experiment-template__stage--content {
+  overflow-x: hidden;
+  overflow-y: visible;
+  padding: 16px;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.experiment-template__stage--practice {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  height: calc(
+      100dvh -
+      var(--experiment-phase-nav-height)
+    );
+  min-width: 0;
+  min-height: calc(
+      100dvh -
+      var(--experiment-phase-nav-height)
+    );
+  max-height: calc(
+      100dvh -
+      var(--experiment-phase-nav-height)
+    );
+  flex: 0 0 auto;
+  padding: 0;
+  overflow: hidden;
+  background: var(--lab-bg);
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.experiment-template--expanded {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  width: 100vw;
+  height: 100dvh;
+  min-width: 0;
+  min-height: 100dvh;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: var(--lab-bg);
+}
+
+.experiment-template--expanded .experiment-phase-nav {
+  display: none;
+  position: relative;
+  top: auto;
+  z-index: 100;
+  flex: 0 0 auto;
+}
+
+.experiment-template--expanded .experiment-template__body {
+  padding: 0;
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  flex: 1 1 auto;
+  overflow: hidden;
+}
+
+.experiment-template--expanded .experiment-template__utility {
+  display: none;
+}
+
+.experiment-template--expanded .experiment-template__stage {
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  height: auto;
+  min-height: 0;
+  flex: 1 1 auto;
+  overflow: hidden;
+}
+
+.experiment-loading {
+  width: 100%;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  color: #f8fafc;
+  background: radial-gradient(
+      circle at 50% 25%,
+      rgba(34, 211, 238, 0.08),
+      transparent 34%
+    ), #07101d;
+}
+
+.experiment-loading__content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.experiment-loading__spinner {
+  width: 34px;
+  height: 34px;
+  border: 3px solid rgba(255, 255, 255, 0.14);
+  border-top-color: #67d5e8;
+  border-radius: 50%;
+  animation: experiment-loading-spin 0.75s linear infinite;
+}
+
+.experiment-loading__content strong {
+  margin-top: 18px;
+  font-size: 14px;
+}
+
+.experiment-loading__content span {
+  margin-top: 5px;
+  color: #8290a5;
+  font-size: 12px;
+}
+
+.experiment-error {
+  width: 100%;
+  min-height: 100dvh;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f8fafc;
+  background: #07101d;
+}
+
+.experiment-error__card {
+  width: min(
+      100%,
+      480px
+    );
+  padding: 30px;
+  text-align: center;
+  background: #0f1a2b;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.25);
+}
+
+.experiment-error__icon {
+  width: 52px;
+  height: 52px;
+  margin-inline: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #67d5e8;
+  background: rgba(103, 213, 232, 0.1);
+  border: 1px solid rgba(103, 213, 232, 0.22);
+  border-radius: 14px;
+}
+
+.experiment-error h1 {
+  margin: 20px 0 0;
+  font-size: 24px;
+}
+
+.experiment-error p {
+  margin: 10px 0 0;
+  color: #8290a5;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.experiment-error__back {
+  min-height: 40px;
+  margin-top: 24px;
+  padding: 8px 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: #67d5e8;
+  background: rgba(103, 213, 232, 0.1);
+  border: 1px solid rgba(103, 213, 232, 0.25);
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.experiment-runtime-host {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  transition: opacity 120ms ease;
+  contain: layout paint;
+}
+
+.experiment-runtime-host--active {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: auto;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  transition: opacity 120ms ease;
+}
+
+.experiment-runtime-host--inactive {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  display: block;
+  width: 100%;
+  height: 100%;
+  transition: opacity 80ms ease;
+}
+
+.experiment-runtime-workspace {
+  color: var(--lab-text);
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  background: var(--lab-bg);
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.experiment-runtime-workspace__simulation {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+}
+
+.experiment-runtime-workspace--expanded {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  width: 100vw;
+  height: 100dvh;
+}
+
+.experiment-lab-button {
+  min-height: 40px;
+  padding: 8px 14px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: var(--lab-text-soft);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--lab-border-strong);
+  border-radius: var(--lab-radius-md);
+  font-size: 13px;
+  font-weight: 600;
+  transition: color var(--transition-fast), background var(--transition-fast), border-color var(--transition-fast);
+}
+
+.experiment-lab-button:hover:not(:disabled) {
+  color: var(--lab-text);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--lab-accent);
+}
+
+.experiment-lab-button--primary {
+  color: var(--lab-bg);
+  background: var(--lab-accent);
+  border-color: var(--lab-accent);
+}
+
+.experiment-lab-button--primary:hover:not(:disabled) {
+  color: var(--lab-bg);
+  background: color-mix(
+      in srgb,
+      var(--lab-accent) 90%,
+      white
+    );
+}
+
+.experiment-lab-button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.simulation-error {
+  width: 100%;
+  height: 100%;
+  min-height: 240px;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(5, 11, 20, 0.96);
+}
+
+.simulation-error__content {
+  width: min(
+      100%,
+      460px
+    );
+  padding: 24px;
+  text-align: center;
+  background: var(--lab-surface);
+  border: 1px solid var(--lab-border);
+  border-radius: var(--lab-radius-lg);
+}
+
+.simulation-error__title {
+  display: block;
+  color: var(--lab-text);
+  font-size: 17px;
+}
+
+.simulation-error__message {
+  margin: 10px 0 18px;
+  color: var(--lab-text-muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.experiment-toast {
+  padding: 10px 14px;
+  color: var(--lab-text);
+  background: rgba(15, 26, 43, 0.96);
+  border: 1px solid var(--lab-border-strong);
+  border-radius: var(--lab-radius-md);
+  box-shadow: var(--lab-shadow);
+  font-size: 13px;
+  line-height: 1.45;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.experiment-toast--success {
+  color: #a7f3d0;
+  border-color: rgba(52, 211, 153, 0.34);
+  background: rgba(6, 78, 59, 0.92);
+}
+
+.experiment-toast--error {
+  color: #fecdd3;
+  border-color: rgba(251, 113, 133, 0.36);
+  background: rgba(136, 19, 55, 0.92);
+}
+
+.experiment-toast--info {
+  color: #bae6fd;
+  border-color: rgba(56, 189, 248, 0.34);
+  background: rgba(12, 74, 110, 0.92);
+}
+
+.experiment-quiz {
+  width: min(
+      100%,
+      920px
+    );
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.experiment-quiz__question {
+  padding: 20px;
+  background: var(--lab-surface-soft);
+  border: 1px solid var(--lab-border);
+  border-radius: var(--lab-radius-lg);
+}
+
+.experiment-quiz__question-header > span {
+  color: var(--lab-accent);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.experiment-quiz__question-header h3 {
+  margin: 7px 0 0;
+  color: var(--lab-text);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.experiment-quiz__options {
+  margin-top: 16px;
+  display: grid;
+  gap: 9px;
+}
+
+.experiment-quiz__option {
+  width: 100%;
+  min-height: 46px;
+  padding: 11px 14px;
+  color: var(--lab-text-soft);
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid var(--lab-border);
+  border-radius: var(--lab-radius-md);
+  text-align: left;
+  font-size: 13px;
+  line-height: 1.45;
+  transition: color var(--transition-fast), background var(--transition-fast), border-color var(--transition-fast), opacity var(--transition-fast);
+}
+
+.experiment-quiz__option:hover:not(:disabled) {
+  color: var(--lab-text);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--lab-accent-border);
+}
+
+.experiment-quiz__option--selected {
+  color: var(--lab-text);
+  background: var(--lab-accent-soft);
+  border-color: var(--lab-accent);
+}
+
+.experiment-quiz__option--correct {
+  color: #a7f3d0;
+  background: rgba(6, 78, 59, 0.42);
+  border-color: rgba(52, 211, 153, 0.65);
+}
+
+.experiment-quiz__option--wrong {
+  color: #fecdd3;
+  background: rgba(136, 19, 55, 0.4);
+  border-color: rgba(251, 113, 133, 0.62);
+}
+
+.experiment-quiz__option--muted {
+  opacity: 0.45;
+}
+
+.experiment-report-sheet {
+  width: min(
+      100%,
+      210mm
+    );
+  min-height: 297mm;
+  margin-inline: auto;
+  padding: 18mm 16mm;
+  color: #172033;
+  background: #fff;
+  border-radius: 4px;
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.28);
+  font-family: "Times New Roman", Times, serif;
+}
+
+.experiment-report-sheet__header {
+  text-align: center;
+}
+
+.experiment-report-sheet__header h1 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.experiment-report-sheet__header h2 {
+  margin: 10px 0 0;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+.experiment-report-sheet__header p {
+  margin: 7px 0 0;
+  font-size: 13px;
+}
+
+.experiment-report-sheet__identity {
+  margin-top: 24px;
+  display: grid;
+  gap: 12px;
+  font-size: 13px;
+}
+
+.experiment-report-sheet__identity > div, .experiment-report-sheet__identity-row > div {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.experiment-report-sheet__identity span {
+  min-width: 80px;
+  height: 20px;
+  flex: 1;
+  border-bottom: 1px dotted #4b5563;
+}
+
+.experiment-report-sheet__identity-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.experiment-report-sheet > hr {
+  margin: 22px 0;
+  border: 0;
+  border-top: 1px solid #cbd5e1;
+}
+
+.experiment-report-sheet__signature {
+  margin-top: 32px;
+  display: flex;
+  justify-content: flex-end;
+  text-align: center;
+  font-size: 13px;
+}
+
+.experiment-report-sheet__signature > div {
+  width: 260px;
+}
+
+.experiment-report-sheet__signature p {
+  margin: 4px 0;
+}
+
+.experiment-report-sheet__signature > div > div {
+  height: 70px;
+}
+
+.experiment-template__route {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+}
+
+.experiment-template__route--content {
+  height: auto;
+  min-height: 0;
+  position: relative;
+  overflow: visible;
+  width: 100%;
+  min-width: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.experiment-template__route--practice {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 16px;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.experiment-template__stage--practice .experiment-runtime-host {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+}
+
+.experiment-template__stage--practice .experiment-runtime-workspace {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  background: var(--lab-bg);
+}
+
+.experiment-page:has( .experiment-template--expanded ) {
+  overflow: hidden;
+}
+
+.experiment-template--expanded .experiment-template__stage--practice {
+  width: 100%;
+  height: auto;
+  min-width: 0;
+  min-height: 0;
+  max-height: none;
+  flex: 1 1 auto;
+  overflow: hidden;
+}
+
+.experiment-template--expanded .experiment-template__stage, .experiment-template--expanded .experiment-template__stage--practice, .experiment-template--expanded .experiment-template__route--practice, .experiment-template--expanded .experiment-runtime-host, .experiment-template--expanded .experiment-runtime-workspace {
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.experiment-template__phase-info > strong::before {
+  content: "";
+  width: 4px;
+  height: 4px;
+  margin-right: 10px;
+  display: inline-block;
+  vertical-align: middle;
+  background: var(--lab-border-strong);
+  border-radius: 50%;
+}
+
+.experiment-template__utility-actions .experiment-lab-button {
+  min-height: 32px;
+  padding: 5px 10px;
+  gap: 6px;
+  color: var(--lab-text-muted);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  box-shadow: none;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.experiment-template__utility-actions .experiment-lab-button:hover:not( :disabled ) {
+  color: var(--lab-text);
+  background: rgba(
+      255,
+      255,
+      255,
+      0.055
+    );
+  border-color: var(--lab-border);
+  box-shadow: none;
+}
+
+.experiment-template__utility-actions .experiment-lab-button--primary {
+  color: var(--lab-accent);
+  background: var(--lab-accent-soft);
+  border-color: var(--lab-accent-border);
+}
+
+.experiment-template__utility-actions .experiment-lab-button--primary:hover:not( :disabled ) {
+  color: var(--lab-text);
+  background: color-mix(
+      in srgb,
+      var(--lab-accent) 18%,
+      transparent
+    );
+  border-color: var(--lab-accent);
+}
+
+.experiment-template__utility-actions .experiment-lab-button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.experiment-template__utility-actions .experiment-lab-button::first-letter {
+  text-transform: uppercase;
+}
+
+.experiment-template__utility + .experiment-template__stage {
+  margin-top: 0;
+}
+
+.experiment-header__actions .experiment-lab-button {
+  min-height: 36px;
+  padding: 7px 10px;
+  color: var(--lab-text-muted);
+  background: rgba(
       255,
       255,
       255,
       0.045
     );
-
-
-  border:
-    1px solid
-    rgba(
+  border: 1px solid rgba(
       255,
       255,
       255,
       0.09
     );
-
-
-  border-radius:
-    8px;
-
-
-  box-shadow:
-    none;
-
-
-  font-size:
-    11px;
+  border-radius: 8px;
+  box-shadow: none;
+  font-size: 11px;
 }
 
-
-.experiment-header__actions
-  .experiment-lab-button:hover:not(
-    :disabled
-  ) {
-  color:
-    var(--lab-text);
-
-
-  background:
-    rgba(
+.experiment-header__actions .experiment-lab-button:hover:not( :disabled ) {
+  color: var(--lab-text);
+  background: rgba(
       255,
       255,
       255,
       0.075
     );
-
-
-  border-color:
-    var(--lab-border-strong);
+  border-color: var(--lab-border-strong);
 }
 
-
-/* =========================================================
-   29.8 RELATION TO PHASE NAV
-   ========================================================= */
-
-/*
- * Header và PhaseNav phải nối trực tiếp.
- *
- * Không margin/gap/card giữa hai vùng.
- */
-
-.experiment-header
-  + .experiment-main {
-  margin-top:
-    0;
+.experiment-header + .experiment-main {
+  margin-top: 0;
 }
 
-
-.experiment-workspace
-  > .experiment-template {
-  margin-top:
-    0;
+.experiment-workspace > .experiment-template {
+  margin-top: 0;
 }
 
-
-/* =========================================================
-   29.9 TABLET
-   ========================================================= */
-
-@media (
-  max-width: 1024px
-) {
-
-  .experiment-header {
-    padding:
-      15px
-      132px
-      11px;
-  }
-
-
-  .experiment-header__back {
-    left:
-      16px;
-  }
-
-
-  .experiment-header__actions {
-    right:
-      16px;
-  }
-
-
-  .experiment-header__identity h1 {
-    font-size:
-      clamp(
-        22px,
-        3.4vw,
-        32px
-      );
-  }
-
+.experiment-template__stage--practice .experiment-template__route--practice {
+  z-index: 20;
 }
 
-
-/* =========================================================
-   29.10 MOBILE
-   ========================================================= */
-
-@media (
-  max-width: 767px
-) {
-
-  .experiment-header {
-    padding:
-      11px
-      12px;
-
-
-    display:
-      flex;
-
-    flex-direction:
-      column;
-
-    align-items:
-      stretch;
-
-
-    gap:
-      9px;
-  }
-
-
-  /*
-   * Mobile:
-   * Back trở lại natural flow,
-   * tránh chiếm không gian title.
-   */
-
-  .experiment-header__back {
-    position:
-      static;
-
-
-    width:
-      fit-content;
-
-
-    min-height:
-      32px;
-
-
-    padding:
-      6px
-      9px;
-
-
-    font-size:
-      11px;
-  }
-
-
-  .experiment-header__identity {
-    width:
-      100%;
-
-
-    align-items:
-      flex-start;
-
-
-    text-align:
-      left;
-  }
-
-
-  .experiment-header__meta {
-    justify-content:
-      flex-start;
-
-
-    min-height:
-      25px;
-
-
-    padding:
-      4px
-      8px;
-
-
-    gap:
-      6px;
-  }
-
-
-  .experiment-header__identity h1 {
-    margin-top:
-      7px;
-
-
-    font-size:
-      clamp(
-        21px,
-        6.5vw,
-        29px
-      );
-
-
-    letter-spacing:
-      0.015em;
-
-
-    text-align:
-      left;
-  }
-
-
-  /*
-   * Mobile Lab ưu tiên workspace.
-   * Description không cần chiếm viewport.
-   */
-
-  .experiment-header__description {
-    display:
-      none;
-  }
-
-
-  /*
-   * Nếu experiment có header action,
-   * action chuyển về natural flow.
-   */
-
-  .experiment-header__actions {
-    position:
-      static;
-
-
-    width:
-      100%;
-
-
-    justify-content:
-      flex-end;
-
-
-    margin-top:
-      -2px;
-  }
-
-
-  .experiment-header__actions
-    .experiment-lab-button {
-    min-height:
-      32px;
-
-
-    padding:
-      6px
-      9px;
-  }
-
+.experiment-template__stage--content .experiment-runtime-host {
+  z-index: 0;
 }
 
-
-/* =========================================================
-   29.11 SMALL MOBILE
-   ========================================================= */
-
-@media (
-  max-width: 480px
-) {
-
-  /*
-   * Grade / Topic có thể dài.
-   * Lab label quan trọng hơn trong viewport nhỏ.
-   */
-
-  .experiment-header__subject {
-    display:
-      none;
-  }
-
-
-  .experiment-header__identity h1 {
-    font-size:
-      21px;
-  }
-
-
-  .experiment-header__meta {
-    gap:
-      5px;
-  }
-
+.experiment-template__stage--content .experiment-template__route--content {
+  position: relative;
+  z-index: 10;
 }
 
-
-/* =========================================================
-   29.12 SHORT VIEWPORT / LANDSCAPE
-   ========================================================= */
-
-@media (
-  max-height: 520px
-) {
-
-  .experiment-header {
-    padding-top:
-      9px;
-
-    padding-bottom:
-      8px;
-  }
-
-
-  .experiment-header__back {
-    top:
-      10px;
-
-
-    min-height:
-      30px;
-
-
-    padding:
-      5px
-      9px;
-  }
-
-
-  .experiment-header__actions {
-    top:
-      10px;
-  }
-
-
-  .experiment-header__meta {
-    min-height:
-      24px;
-  }
-
-
-  .experiment-header__identity h1 {
-    margin-top:
-      6px;
-
-
-    font-size:
-      clamp(
-        20px,
-        2.5vw,
-        26px
-      );
-  }
-
-
-  .experiment-header__description {
-    display:
-      none;
-  }
-
+.experiment-runtime-host > * {
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
 }
 
-
-/* =========================================================
-   29.13 PRINT
-   ========================================================= */
-
-@media print {
-
-  .experiment-header {
-    display:
-      none !important;
-  }
-
+.experiment-runtime-host > .experiment-runtime-workspace {
+  position: absolute;
+  inset: 0;
 }
-
-
-/* =========================================================
-   35.14 PRINT
-
-   Chỉ để lại printable report.
-   ========================================================= */
-
-@media print {
-
-  @page {
-    size:
-      A4;
-
-    margin:
-      12mm;
-  }
-
-
-  html,
-body,
-#root {
-    width:
-      auto !important;
-
-
-    height:
-      auto !important;
-
-
-    margin:
-      0 !important;
-
-
-    padding:
-      0 !important;
-
-
-    overflow:
-      visible !important;
-
-
-    background:
-      #fff !important;
-  }
-
-
-  .experiment-page {
-    display:
-      block !important;
-
-
-    width:
-      auto !important;
-
-
-    height:
-      auto !important;
-
-
-    min-height:
-      0 !important;
-
-
-    overflow:
-      visible !important;
-
-
-    background:
-      #fff !important;
-  }
-
-
-  .experiment-header,
-.experiment-phase-nav,
-.experiment-template__utility,
-.experiment-runtime-host {
-    display:
-      none !important;
-  }
-
-
-  .experiment-main,
-.experiment-workspace,
-.experiment-template,
-.experiment-template__body,
-.experiment-template__stage,
-.experiment-template__route {
-    width:
-      auto !important;
-
-
-    height:
-      auto !important;
-
-
-    min-height:
-      0 !important;
-
-
-    margin:
-      0 !important;
-
-
-    padding:
-      0 !important;
-
-
-    display:
-      block !important;
-
-
-    position:
-      static !important;
-
-
-    overflow:
-      visible !important;
-
-
-    background:
-      transparent !important;
-
-
-    border:
-      0 !important;
-
-
-    box-shadow:
-      none !important;
-  }
-
-}
-
-/* =========================================================
-   36. EXPERIMENT PERSISTENT RUNTIME HOST
-   GĐ2.1E — LAB-NEW UX CONFORMANCE
-
-   PURPOSE
-   ---------------------------------------------------------
-   Runtime nặng như:
-   - Three.js
-   - React Three Fiber
-   - WebGL Canvas
-   - simulation scene
-   - expensive visualization
-
-   được mount ở SessionLayout và nằm NGOÀI Outlet.
-
-   Khi phase thay đổi:
-   - React route page được thay
-   - Runtime KHÔNG unmount
-
-   Inactive runtime:
-   - vẫn mounted
-   - không nhìn thấy
-   - không nhận pointer event
-   - không chiếm flow
-
-   Active runtime:
-   - fill toàn bộ Practice stage
-   - nằm dưới routed overlay
-   ========================================================= */
-
-
-/* =========================================================
-   36.1 HOST BASE
-   ========================================================= */
-
-.experiment-runtime-host {
-  /*
-   * Runtime không tham gia document flow.
-   *
-   * Điều này đặc biệt quan trọng ở:
-   * Intro
-   * Preparation
-   * Conclusion
-   * Quiz
-   * Report
-   *
-   * Runtime vẫn mount nhưng không làm content page
-   * cao thêm hoặc tạo khoảng trống.
-   */
-  position:
-    absolute;
-
-
-  inset:
-    0;
-
-
-  z-index:
-    0;
-
-
-  width:
-    100%;
-
-  height:
-    100%;
-
-
-  min-width:
-    0;
-
-  min-height:
-    0;
-
-
-  /*
-   * Simulation không được tràn khỏi workspace.
-   */
-  overflow:
-    hidden;
-
-
-  /*
-   * Runtime host bản thân không phải card.
-   */
-  background:
-    transparent;
-
-
-  border:
-    0;
-
-
-  border-radius:
-    0;
-
-
-  box-shadow:
-    none;
-
-
-  /*
-   * Chuyển phase không cần animation mạnh.
-   * Chỉ fade rất ngắn để tránh flash frame.
-   */
-  transition:
-    opacity
-    120ms
-    ease;
-
-
-  /*
-   * Giúp browser giới hạn repaint
-   * của scene trong vùng runtime.
-   */
-  contain:
-    layout
-    paint;
-}
-
-
-/* =========================================================
-   36.2 ACTIVE RUNTIME
-   ========================================================= */
-
-.experiment-runtime-host--active {
-  /*
-   * Practice đang active.
-   */
-  visibility:
-    visible;
-
-
-  opacity:
-    1;
-
-
-  pointer-events:
-    auto;
-}
-
-
-/* =========================================================
-   36.3 INACTIVE RUNTIME
-
-   QUAN TRỌNG:
-   KHÔNG display:none.
-   ========================================================= */
-
-.experiment-runtime-host--inactive {
-  /*
-   * Runtime vẫn tồn tại trong DOM.
-   *
-   * WebGL context / scene state /
-   * internal component state vẫn được giữ.
-   */
-  visibility:
-    hidden;
-
-
-  opacity:
-    0;
-
-
-  /*
-   * Không được chặn interaction của
-   * content phase nằm phía trên.
-   */
-  pointer-events:
-    none;
-}
-
-
-/* =========================================================
-   36.4 NEVER COLLAPSE INACTIVE RUNTIME
-
-   Defensive overrides nếu CSS cũ còn sót lại.
-   ========================================================= */
-
-.experiment-runtime-host--inactive {
-  display:
-    block;
-
-
-  width:
-    100%;
-
-  height:
-    100%;
-}
-
-
-/* =========================================================
-   36.5 PRACTICE STAGE RELATION
-   ========================================================= */
-
-.experiment-template__stage--practice {
-  /*
-   * Containing block của RuntimeHost.
-   */
-  position:
-    relative;
-
-
-  isolation:
-    isolate;
-}
-
-
-/*
- * Layer order:
- *
- * 0  = persistent simulation
- * 20 = PracticePage routed overlay
- * 35+ = status/panels
- * 60 = toolbar
- * 80 = toast
- */
-
-.experiment-template__stage--practice
-  .experiment-runtime-host {
-  z-index:
-    0;
-}
-
-
-.experiment-template__stage--practice
-  .experiment-template__route--practice {
-  z-index:
-    20;
-}
-
-
-/* =========================================================
-   36.6 CONTENT PHASE SAFETY
-   ========================================================= */
-
-/*
- * Khi runtime inactive trong Intro / Preparation /
- * Conclusion / Quiz / Report:
- *
- * - vẫn absolute
- * - không tham gia layout
- * - route content vẫn nằm bình thường phía trên
- */
-
-.experiment-template__stage--content
-  .experiment-runtime-host {
-  z-index:
-    0;
-}
-
-
-.experiment-template__stage--content
-  .experiment-template__route--content {
-  position:
-    relative;
-
-
-  z-index:
-    10;
-}
-
-
-/* =========================================================
-   36.7 RUNTIME WORKSPACE
-   ========================================================= */
-
-.experiment-runtime-workspace {
-  position:
-    relative;
-
-
-  width:
-    100%;
-
-  height:
-    100%;
-
-
-  min-width:
-    0;
-
-  min-height:
-    0;
-
-
-  overflow:
-    hidden;
-
-
-  background:
-    var(--lab-bg);
-
-
-  border:
-    0;
-
-
-  border-radius:
-    0;
-
-
-  box-shadow:
-    none;
-}
-
-
-/* =========================================================
-   36.8 DIRECT CHILD SIZE CONTRACT
-   ========================================================= */
-
-.experiment-runtime-host
-  > * {
-  width:
-    100%;
-
-  height:
-    100%;
-
-
-  min-width:
-    0;
-
-  min-height:
-    0;
-}
-
-
-/*
- * Workspace nested trong RuntimeHost.
- */
-
-.experiment-runtime-host
-  > .experiment-runtime-workspace {
-  position:
-    absolute;
-
-
-  inset:
-    0;
-}
-
-
-/* =========================================================
-   36.9 CANVAS CONTRACT
-   ========================================================= */
-
-/*
- * Three.js / R3F Canvas thường sinh:
- *
- * <div>
- *   <canvas />
- * </div>
- *
- * Canvas phải fill runtime chính xác.
- */
 
 .experiment-runtime-host canvas {
-  display:
-    block;
-
-
-  width:
-    100%
-    !important;
-
-  height:
-    100%
-    !important;
-
-
-  max-width:
-    none;
-
-
-  outline:
-    none;
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none;
+  outline: none;
 }
 
-
-/* =========================================================
-   36.10 R3F / WEBGL WRAPPER SAFETY
-   ========================================================= */
-
-.experiment-runtime-host
-  > div,
-.experiment-runtime-workspace
-  > div {
-  min-width:
-    0;
-
-  min-height:
-    0;
+.experiment-runtime-host > div, .experiment-runtime-workspace > div {
+  min-width: 0;
+  min-height: 0;
 }
 
-
-/*
- * Nếu simulation root dùng height:100%,
- * chain parent đã có chiều cao cụ thể.
- */
-
-.experiment-runtime-workspace
-  > :first-child {
-  width:
-    100%;
-
-  height:
-    100%;
+.experiment-runtime-workspace > :first-child {
+  width: 100%;
+  height: 100%;
 }
-
-
-/* =========================================================
-   36.11 ACTIVE RUNTIME INTERACTION
-   ========================================================= */
-
-/*
- * Runtime active nhận pointer.
- *
- * Tuy nhiên routed Practice overlay đã dùng:
- *
- * pointer-events:none
- *
- * còn floating panel/tool bật:
- *
- * pointer-events:auto
- *
- * nên vùng trống của overlay vẫn cho phép
- * mouse/touch đi xuống Canvas.
- */
 
 .experiment-runtime-host--active canvas {
-  pointer-events:
-    auto;
+  pointer-events: auto;
 }
-
 
 .experiment-runtime-host--inactive canvas {
-  pointer-events:
-    none;
+  pointer-events: none;
 }
 
-
-/* =========================================================
-   36.12 PREVENT TEXT / IMAGE SELECTION
-   INSIDE INTERACTIVE SIMULATION
-   ========================================================= */
-
-.experiment-runtime-host--active {
-  user-select:
-    none;
-
-  -webkit-user-select:
-    none;
+.experiment-runtime-host .experiment-loading {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--lab-bg);
 }
 
-
-/* =========================================================
-   36.13 TOUCH INTERACTION
-   ========================================================= */
-
-.experiment-runtime-host--active {
-  /*
-   * Không globally dùng touch-action:none.
-   *
-   * Module simulation cụ thể tự quyết định
-   * có cần khóa pinch/pan hay không.
-   */
-  touch-action:
-    manipulation;
+.experiment-runtime-host .experiment-error-state {
+  position: absolute;
+  inset: 0;
+  z-index: 15;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  overflow: auto;
 }
 
-
-/* =========================================================
-   36.14 RUNTIME LOADING LAYER
-   ========================================================= */
-
-/*
- * Nếu ExperimentRuntimeHost hoặc simulation
- * hiển thị loading state bên trong runtime,
- * loading phải cover workspace chứ không làm layout shift.
- */
-
-.experiment-runtime-host
-  .experiment-loading {
-  position:
-    absolute;
-
-
-  inset:
-    0;
-
-
-  z-index:
-    10;
-
-
-  width:
-    100%;
-
-  height:
-    100%;
-
-
-  display:
-    flex;
-
-  align-items:
-    center;
-
-  justify-content:
-    center;
-
-
-  background:
-    var(--lab-bg);
+.experiment-template--expanded .experiment-runtime-host {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  border: 0;
+  border-radius: 0;
 }
 
-
-/* =========================================================
-   36.15 RUNTIME ERROR STATE
-   ========================================================= */
-
-/*
- * SimulationErrorBoundary phải nằm trong workspace,
- * không biến Practice thành content page.
- */
-
-.experiment-runtime-host
-  .experiment-error-state {
-  position:
-    absolute;
-
-
-  inset:
-    0;
-
-
-  z-index:
-    15;
-
-
-  width:
-    100%;
-
-  height:
-    100%;
-
-
-  display:
-    flex;
-
-  align-items:
-    center;
-
-  justify-content:
-    center;
-
-
-  padding:
-    24px;
-
-
-  overflow:
-    auto;
+.experiment-template--expanded .experiment-template__route--practice {
+  z-index: 20;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
-
-
-/* =========================================================
-   36.16 KEEP-ALIVE VISIBILITY
-
-   Không animation visibility.
-   visibility đổi ngay, opacity fade ngắn.
-   ========================================================= */
-
-.experiment-runtime-host--active {
-  transition:
-    opacity
-    120ms
-    ease;
-}
-
-
-.experiment-runtime-host--inactive {
-  transition:
-    opacity
-    80ms
-    ease;
-}
-
-
-/* =========================================================
-   36.17 EXPANDED WORKSPACE
-   ========================================================= */
-
-.experiment-template--expanded
-  .experiment-runtime-host {
-  position:
-    absolute;
-
-
-  inset:
-    0;
-
-
-  width:
-    100%;
-
-  height:
-    100%;
-
-
-  z-index:
-    0;
-
-
-  border:
-    0;
-
-  border-radius:
-    0;
-}
-
-
-/*
- * Expanded Practice route vẫn nằm trên runtime.
- */
-
-.experiment-template--expanded
-  .experiment-template__route--practice {
-  position:
-    absolute;
-
-
-  inset:
-    0;
-
-
-  z-index:
-    20;
-
-
-  width:
-    100%;
-
-  height:
-    100%;
-}
-
-
-/* =========================================================
-   36.19 MOBILE
-   ========================================================= */
-
-@media (
-  max-width: 767px
-) {
-
-  .experiment-runtime-host {
-    /*
-     * Không thay lifecycle trên mobile.
-     */
-    inset:
-      0;
-  }
-
-}
-
-
-/* =========================================================
-   36.21 REDUCED MOTION
-   ========================================================= */
-
-@media (
-  prefers-reduced-motion:
-    reduce
-) {
-
-  .experiment-runtime-host {
-    transition:
-      none;
-  }
-
-}
-
-
-/* =========================================================
-   36.22 PRINT
-   ========================================================= */
-
-@media print {
-
-  /*
-   * Runtime không bao giờ xuất hiện trong báo cáo in.
-   */
-  .experiment-runtime-host {
-    display:
-      none
-      !important;
-  }
-
-}
-
-/* =========================================================
-   37. PRACTICE WORKSPACE
-   GĐ2.1E — LAB-NEW UX CONFORMANCE
-
-   RESPONSIBILITY
-   ---------------------------------------------------------
-   Content phase:
-   experiment-page owns vertical scrolling.
-
-   Practice phase:
-   stage becomes a fixed-size interactive workspace.
-
-   Layer contract:
-
-   practice stage
-   │
-   ├─ runtime              z 0
-   │  └─ Canvas / WebGL
-   │
-   └─ routed overlay       z 20
-      ├─ status
-      ├─ floating panels
-      ├─ toolbar
-      └─ toast
-
-   Expanded mode:
-   experiment-template becomes viewport overlay.
-
-   IMPORTANT:
-   .experiment-workspace itself remains structural.
-   Do NOT globally give it overflow:hidden.
-   ========================================================= */
-
-
-/* =========================================================
-   37.1 STRUCTURAL WORKSPACE
-
-   Đây là wrapper nằm trong ExperimentShell.
-
-   CONTENT PHASE cần natural document flow,
-   vì vậy class này KHÔNG được trở thành
-   viewport khóa chiều cao.
-   ========================================================= */
-
-.experiment-workspace {
-  position:
-    relative;
-
-
-  width:
-    100%;
-
-
-  min-width:
-    0;
-
-  min-height:
-    0;
-
-
-  /*
-   * Content phases phải được phép làm page dài ra.
-   */
-  overflow:
-    visible;
-}
-
-
-/* =========================================================
-   37.2 PRACTICE TEMPLATE
-
-   Khi route hiện tại là practice,
-   ExperimentViewShell đã thêm:
-   experiment-template--practice
-   ========================================================= */
 
 .experiment-template--practice {
-  width:
-    100%;
-
-
-  min-width:
-    0;
-
-
-  /*
-   * Không tạo scroll container thứ hai.
-   */
-  overflow:
-    visible;
+  width: 100%;
+  min-width: 0;
+  overflow: visible;
 }
 
-
-/* =========================================================
-   37.3 PRACTICE BODY
-   ========================================================= */
-
-.experiment-template--practice
-  .experiment-template__body {
-  width:
-    100%;
-
-
-  min-width:
-    0;
-
-  min-height:
-    0;
-
-
-  flex:
-    0 0 auto;
-
-
-  overflow:
-    visible;
+.experiment-template--practice .experiment-template__body {
+  width: 100%;
+  min-width: 0;
+  min-height: 0;
+  flex: 0 0 auto;
+  overflow: visible;
 }
 
-
-/* =========================================================
-   37.4 PRACTICE STAGE = VIEWPORT
-
-   Header + utility có thể scroll khỏi màn hình.
-   PhaseNav vẫn sticky.
-
-   Khi workspace đạt vị trí xem chính:
-   stage chiếm phần viewport còn lại dưới PhaseNav.
-   ========================================================= */
-
-.experiment-template__stage--practice {
-  position:
-    relative;
-
-
-  isolation:
-    isolate;
-
-
-  width:
-    100%;
-
-
-  height:
-    calc(
-      100dvh -
-      var(--experiment-phase-nav-height)
-    );
-
-
-  min-width:
-    0;
-
-  min-height:
-    calc(
-      100dvh -
-      var(--experiment-phase-nav-height)
-    );
-
-
-  max-height:
-    calc(
-      100dvh -
-      var(--experiment-phase-nav-height)
-    );
-
-
-  flex:
-    0 0 auto;
-
-
-  padding:
-    0;
-
-
-  overflow:
-    hidden;
-
-
-  background:
-    var(--lab-bg);
-
-
-  border:
-    0;
-
-  border-radius:
-    0;
-
-  box-shadow:
-    none;
+.experiment-runtime-workspace > * {
+  min-width: 0;
+  min-height: 0;
 }
 
-
-/* =========================================================
-   37.5 RUNTIME LAYER
-   ========================================================= */
-
-.experiment-template__stage--practice
-  .experiment-runtime-host {
-  position:
-    absolute;
-
-
-  inset:
-    0;
-
-
-  z-index:
-    0;
-
-
-  width:
-    100%;
-
-  height:
-    100%;
-
-
-  min-width:
-    0;
-
-  min-height:
-    0;
+.experiment-runtime-workspace canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  outline: 0;
 }
 
-
-/* =========================================================
-   37.6 RUNTIME WORKSPACE
-   ========================================================= */
-
-.experiment-template__stage--practice
-  .experiment-runtime-workspace {
-  position:
-    absolute;
-
-
-  inset:
-    0;
-
-
-  width:
-    100%;
-
-  height:
-    100%;
-
-
-  min-width:
-    0;
-
-  min-height:
-    0;
-
-
-  overflow:
-    hidden;
-
-
-  background:
-    var(--lab-bg);
+.experiment-template__route--practice button, .experiment-template__route--practice input, .experiment-template__route--practice select, .experiment-template__route--practice textarea, .experiment-template__route--practice a {
+  pointer-events: auto;
 }
 
-
-/* =========================================================
-   37.7 RUNTIME CHILDREN
-   ========================================================= */
-
-.experiment-runtime-workspace
-  > * {
-  min-width:
-    0;
-
-  min-height:
-    0;
+.experiment-template__route--practice .experiment-toast, .experiment-template__route--practice .experiment-error-state {
+  pointer-events: auto;
 }
 
-
-/*
- * Simulation root thông thường.
- */
-
-.experiment-runtime-workspace
-  > :first-child {
-  width:
-    100%;
-
-  height:
-    100%;
+.experiment-template__route--practice textarea, .experiment-template__route--practice input {
+  user-select: text;
+  -webkit-user-select: text;
 }
 
-
-/* =========================================================
-   37.8 CANVAS
-   ========================================================= */
-
-.experiment-runtime-workspace
-  canvas {
-  display:
-    block;
-
-
-  width:
-    100%
-    !important;
-
-  height:
-    100%
-    !important;
-
-
-  max-width:
-    none;
-
-  max-height:
-    none;
-
-
-  margin:
-    0;
-
-
-  outline:
-    0;
+.experiment-template--expanded .experiment-runtime-host, .experiment-template--expanded .experiment-runtime-workspace {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
 }
 
-
-/* =========================================================
-   37.9 ROUTED PRACTICE OVERLAY
-
-   PracticePage nằm ở layer trên simulation.
-
-   ROOT overlay:
-   pointer-events:none
-
-   Nhờ đó vùng trống không chặn Canvas.
-   ========================================================= */
-
-.experiment-template__route--practice {
-  position:
-    absolute;
-
-
-  inset:
-    0;
-
-
-  z-index:
-    20;
-
-
-  width:
-    100%;
-
-  height:
-    100%;
-
-
-  min-width:
-    0;
-
-  min-height:
-    0;
-
-
-  overflow:
-    hidden;
-
-
-  pointer-events:
-    none;
+.experiment-template--expanded canvas {
+  width: 100% !important;
+  height: 100% !important;
 }
-
-
-/* =========================================================
-   37.10 INTERACTIVE OVERLAY CHILDREN
-
-   Không bật pointer-events:auto cho tất cả children.
-
-   Chỉ interactive surfaces mới nhận chuột.
-   ========================================================= */
-
-.experiment-template__route--practice
-  button,
-.experiment-template__route--practice
-  input,
-.experiment-template__route--practice
-  select,
-.experiment-template__route--practice
-  textarea,
-.experiment-template__route--practice
-  a {
-  pointer-events:
-    auto;
-}
-
-
-/*
- * Shared floating surfaces hiện tại.
- */
-
-.experiment-template__route--practice
-  .experiment-toast,
-.experiment-template__route--practice
-  .experiment-error-state {
-  pointer-events:
-    auto;
-}
-
-
-/* =========================================================
-   37.13 DO NOT LET FLOATING UI SELECT SIMULATION
-
-   Panels vẫn cho phép text input/textarea,
-   nên không khóa user-select ở route root.
-   ========================================================= */
-
-.experiment-runtime-workspace {
-  user-select:
-    none;
-
-  -webkit-user-select:
-    none;
-}
-
-
-.experiment-template__route--practice
-  textarea,
-.experiment-template__route--practice
-  input {
-  user-select:
-    text;
-
-  -webkit-user-select:
-    text;
-}
-
-
-/* =========================================================
-   37.14 EXPANDED MODE — ROOT
-
-   workspaceExpanded là UI state,
-   KHÔNG phải routing state.
-
-   experiment-template lúc này phủ viewport.
-   ========================================================= */
-
-.experiment-template--expanded {
-  position:
-    fixed;
-
-
-  inset:
-    0;
-
-
-  z-index:
-    500;
-
-
-  width:
-    100vw;
-
-  height:
-    100dvh;
-
-
-  min-width:
-    0;
-
-  min-height:
-    100dvh;
-
-
-  max-width:
-    none;
-
-  max-height:
-    none;
-
-
-  margin:
-    0;
-
-  padding:
-    0;
-
-
-  overflow:
-    hidden;
-
-
-  background:
-    var(--lab-bg);
-}
-
-
-/* =========================================================
-   37.15 EXPANDED MODE — PAGE SCROLL LOCK
-
-   :has được dùng để khóa scroll của Lab page
-   khi workspace đang phủ viewport.
-   ========================================================= */
-
-.experiment-page:has(
-  .experiment-template--expanded
-) {
-  overflow:
-    hidden;
-}
-
-
-/* =========================================================
-   37.16 EXPANDED PHASE NAV
-
-   PhaseNav vẫn được giữ để người học biết
-   mình đang ở Practice.
-
-   Nhưng nó không cần sticky vì cả template
-   đã là fixed viewport.
-   ========================================================= */
-
-.experiment-template--expanded
-  .experiment-phase-nav {
-  position:
-    relative;
-
-
-  top:
-    auto;
-
-
-  z-index:
-    100;
-
-
-  flex:
-    0 0 auto;
-}
-
-
-/* =========================================================
-   37.17 EXPANDED UTILITY
-
-   Utility bar không cần xuất hiện trong
-   full workspace.
-
-   Mục 5 đã có rule này;
-   giữ override ở đây để contract rõ ràng.
-   ========================================================= */
-
-.experiment-template--expanded
-  .experiment-template__utility {
-  display:
-    none;
-}
-
-
-/* =========================================================
-   37.18 EXPANDED BODY
-   ========================================================= */
-
-.experiment-template--expanded
-  .experiment-template__body {
-  width:
-    100%;
-
-
-  min-width:
-    0;
-
-  min-height:
-    0;
-
-
-  flex:
-    1 1 auto;
-
-
-  overflow:
-    hidden;
-}
-
-
-/* =========================================================
-   37.19 EXPANDED PRACTICE STAGE
-
-   Viewport còn lại sau PhaseNav.
-   ========================================================= */
-
-.experiment-template--expanded
-  .experiment-template__stage--practice {
-  width:
-    100%;
-
-
-  height:
-    auto;
-
-
-  min-width:
-    0;
-
-  min-height:
-    0;
-
-
-  max-height:
-    none;
-
-
-  flex:
-    1 1 auto;
-
-
-  overflow:
-    hidden;
-}
-
-
-/* =========================================================
-   37.20 EXPANDED RUNTIME
-   ========================================================= */
-
-.experiment-template--expanded
-  .experiment-runtime-host,
-.experiment-template--expanded
-  .experiment-runtime-workspace {
-  position:
-    absolute;
-
-
-  inset:
-    0;
-
-
-  width:
-    100%;
-
-  height:
-    100%;
-
-
-  min-width:
-    0;
-
-  min-height:
-    0;
-}
-
-
-/* =========================================================
-   37.21 EXPANDED ROUTE OVERLAY
-   ========================================================= */
-
-.experiment-template--expanded
-  .experiment-template__route--practice {
-  position:
-    absolute;
-
-
-  inset:
-    0;
-
-
-  width:
-    100%;
-
-  height:
-    100%;
-
-
-  overflow:
-    hidden;
-}
-
-
-/* =========================================================
-   37.24 EXPANDED CANVAS
-
-   Bảo đảm canvas nhận kích thước mới ngay từ CSS.
-   Renderer riêng có thể vẫn cần ResizeObserver,
-   nhưng layout không được giới hạn kích thước.
-   ========================================================= */
-
-.experiment-template--expanded
-  canvas {
-  width:
-    100%
-    !important;
-
-  height:
-    100%
-    !important;
-}
-
-
-/* =========================================================
-   37.25 EXPANDED ESCAPE HINT
-
-   Nếu module có element:
-   .experiment-workspace__escape-hint
-
-   thì shared style sẵn sàng dùng.
-
-   Không bắt buộc module phải render nó.
-   ========================================================= */
 
 .experiment-workspace__escape-hint {
-  position:
-    absolute;
-
-
-  z-index:
-    90;
-
-
-  top:
-    12px;
-
-  right:
-    12px;
-
-
-  min-height:
-    28px;
-
-
-  padding:
-    5px
-    9px;
-
-
-  display:
-    inline-flex;
-
-  align-items:
-    center;
-
-
-  gap:
-    6px;
-
-
-  color:
-    var(--lab-text-muted);
-
-
-  background:
-    rgba(
+  position: absolute;
+  z-index: 90;
+  top: 12px;
+  right: 12px;
+  min-height: 28px;
+  padding: 5px 9px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--lab-text-muted);
+  background: rgba(
       7,
       15,
       28,
       0.82
     );
-
-
-  border:
-    1px solid
-    var(--lab-border);
-
-
-  border-radius:
-    7px;
-
-
-  font-size:
-    10px;
-
-
-  backdrop-filter:
-    blur(10px);
-
-  -webkit-backdrop-filter:
-    blur(10px);
-
-
-  pointer-events:
-    none;
+  border: 1px solid var(--lab-border);
+  border-radius: 7px;
+  font-size: 10px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  pointer-events: none;
 }
 
-
-.experiment-workspace__escape-hint
-  kbd {
-  padding:
-    2px
-    5px;
-
-
-  color:
-    var(--lab-text-soft);
-
-
-  background:
-    rgba(
+.experiment-workspace__escape-hint kbd {
+  padding: 2px 5px;
+  color: var(--lab-text-soft);
+  background: rgba(
       255,
       255,
       255,
       0.06
     );
-
-
-  border:
-    1px solid
-    var(--lab-border-strong);
-
-
-  border-radius:
-    4px;
-
-
+  border: 1px solid var(--lab-border-strong);
+  border-radius: 4px;
   font: inherit;
-
-
-  font-weight:
-    700;
+  font-weight: 700;
 }
 
+/* ===== 02  DESKTOP — ≥ 1025 PX ===== */
 
-/* =========================================================
-   37.26 MOBILE PRACTICE WORKSPACE
-   ========================================================= */
-
-@media (
-  max-width: 767px
-) {
-
-  .experiment-template__stage--practice {
-    height:
-      calc(
-        100dvh -
-        var(--experiment-phase-nav-height)
-      );
-
-
-    min-height:
-      calc(
-        100dvh -
-        var(--experiment-phase-nav-height)
-      );
-
-
-    max-height:
-      calc(
-        100dvh -
-        var(--experiment-phase-nav-height)
-      );
-  }
-
-
-  /*
-   * Touch device:
-   * Canvas interaction cần do experiment cụ thể quyết định.
-   */
-  .experiment-runtime-workspace {
-    touch-action:
-      manipulation;
-  }
-
-
-  .experiment-template--expanded {
-    width:
-      100%;
-
-    height:
-      100dvh;
-  }
-
-
-  .experiment-workspace__escape-hint {
-    display:
-      none;
-  }
-
-}
-
-
-/* =========================================================
-   37.27 SHORT VIEWPORT / LANDSCAPE
-   ========================================================= */
-
-@media (
-  max-height: 520px
-) {
-
-  .experiment-template__stage--practice {
-    height:
-      calc(
-        100dvh -
-        var(--experiment-phase-nav-height)
-      );
-
-
-    min-height:
-      calc(
-        100dvh -
-        var(--experiment-phase-nav-height)
-      );
-
-
-    max-height:
-      calc(
-        100dvh -
-        var(--experiment-phase-nav-height)
-      );
-  }
-
-}
-
-
-/* =========================================================
-   37.28 REDUCED MOTION
-   ========================================================= */
-
-@media (
-  prefers-reduced-motion:
-    reduce
-) {
-
-  .experiment-template--expanded,
-.experiment-runtime-workspace {
-    scroll-behavior:
-      auto;
-  }
-
-}
-
-
-/* =========================================================
-   37.29 PRINT
-
-   Practice workspace không thuộc report print.
-   ========================================================= */
-
-@media print {
-
-  .experiment-runtime-workspace,
-.experiment-workspace__escape-hint {
-    display:
-      none
-      !important;
-  }
-
-}
-
-/* =========================================================
-   38. GLOBAL LAB RESPONSIVE CONTRACT
-   GĐ2.1E — UX CONFORMANCE
-
-   BREAKPOINT CONTRACT
-   ---------------------------------------------------------
-   Desktop:
-   > 1024px
-
-   Tablet:
-   768px — 1024px
-
-   Mobile:
-   <= 767px
-
-   Small mobile:
-   <= 480px
-
-   Short viewport / landscape:
-   height <= 520px
-
-   PRINCIPLES
-   ---------------------------------------------------------
-   1. Header giảm trước, không bóp Practice.
-   2. PhaseNav luôn usable bằng horizontal scroll.
-   3. Utility luôn compact.
-   4. Content phases có padding phù hợp viewport.
-   5. Practice giữ full interactive workspace.
-   6. Floating panels không được làm Canvas mất diện tích.
-   7. Không tạo vertical scrollbar thứ hai cho content.
-   ========================================================= */
-
-
-/* =========================================================
-   38.1 BASE RESPONSIVE VARIABLES
-   ========================================================= */
-
-.experiment-page {
-  --experiment-page-gutter:
-    20px;
-
-  --experiment-content-max-width:
-    980px;
-
-  --experiment-phase-nav-height:
-    60px;
-
-  --experiment-utility-height:
-    48px;
-}
-
-
-/* =========================================================
-   38.2 PHASE NAV — GLOBAL SAFETY
-   ========================================================= */
-
-.experiment-phase-nav {
-  width:
-    100%;
-
-
-  min-width:
-    0;
-
-
-  overflow-x:
-    auto;
-
-  overflow-y:
-    hidden;
-
-
-  overscroll-behavior-x:
-    contain;
-
-
-  scrollbar-width:
-    none;
-}
-
-
-.experiment-phase-nav::-webkit-scrollbar {
-  display:
-    none;
-}
-
-
-.experiment-phase-nav__track {
-  width:
-    max-content;
-
-
-  min-width:
-    min(
-      100%,
-      max-content
-    );
-
-
-  margin:
-    0
-    auto;
-
-
-  padding:
-    10px
-    var(--experiment-page-gutter);
-
-
-  display:
-    flex;
-
-  align-items:
-    center;
-
-  justify-content:
-    center;
-
-
-  gap:
-    6px;
-}
-
-
-/* =========================================================
-   PHASE ITEM
-   ========================================================= */
-
-.experiment-phase-nav__item {
-  min-height:
-    36px;
-
-
-  padding:
-    7px
-    12px;
-
-
-  flex:
-    0
-    0
-    auto;
-
-
-  display:
-    inline-flex;
-
-  align-items:
-    center;
-
-  justify-content:
-    center;
-
-
-  border-radius:
-    var(--lab-radius-round);
-
-
-  white-space:
-    nowrap;
-}
-
-
-/* =========================================================
-   38.4 DESKTOP
-   > 1024px
-   ========================================================= */
-
-@media (
-  min-width: 1025px
-) {
-
+@media (min-width: 1025px) {
   .experiment-page {
-    --experiment-page-gutter:
-      24px;
-
-    --experiment-phase-nav-height:
-      60px;
-
-    --experiment-utility-height:
-      48px;
+    --experiment-page-gutter: 24px;
+    --experiment-phase-nav-height: 60px;
+    --experiment-utility-height: 48px;
   }
-
-
-  /*
-   * Header identity giữ centered.
-   */
 
   .experiment-header {
-    padding-left:
-      calc(
+    padding-left: calc(
         var(--experiment-page-gutter) +
         120px
       );
-
-    padding-right:
-      calc(
+    padding-right: calc(
         var(--experiment-page-gutter) +
         120px
       );
   }
-
 
   .experiment-header__back {
-    left:
-      var(--experiment-page-gutter);
+    left: var(--experiment-page-gutter);
   }
-
 
   .experiment-header__actions {
-    right:
-      var(--experiment-page-gutter);
+    right: var(--experiment-page-gutter);
   }
-
-
-  /*
-   * Content stage có khoảng thở đủ rộng,
-   * nhưng không tạo giant frame.
-   */
 
   .experiment-template__stage--content {
-    padding:
-      18px
-      var(--experiment-page-gutter)
-      24px;
+    padding: 18px var(--experiment-page-gutter) 24px;
   }
-
 }
 
+/* ===== 03  MEDIUM DESKTOP — 1025–1200 PX ===== */
 
-/* =========================================================
-   38.5 MEDIUM DESKTOP
-   <= 1200px
-   ========================================================= */
-
-@media (
-  max-width: 1200px
-) and (
-  min-width: 1025px
-) {
-
+@media (max-width: 1200px) and (min-width: 1025px) {
   .experiment-header__identity {
-    max-width:
-      760px;
+    max-width: 760px;
   }
-
 
   .experiment-header__description {
-    max-width:
-      620px;
+    max-width: 620px;
   }
-
 }
 
+/* ===== 04  SHARED TABLET + MOBILE — ≤ 1024 PX ===== */
 
-/* =========================================================
-   38.6 TABLET
-   768 — 1024
-   ========================================================= */
-
-@media (
-  max-width: 1024px
-) and (
-  min-width: 768px
-) {
+@media (max-width: 1024px) {
+  .experiment-header {
+    padding: 15px 132px 11px;
+  }
 
   .experiment-page {
-    --experiment-page-gutter:
-      16px;
-
-    --experiment-phase-nav-height:
-      58px;
-
-    --experiment-utility-height:
-      46px;
+    --experiment-phase-nav-height: 60px;
   }
 
-
-  /* -------------------------------------------------------
-     HEADER
-     ------------------------------------------------------- */
-
-  .experiment-header {
-    padding:
-      14px
-      118px
-      11px;
+  .experiment-template__stage--content {
+    padding: 14px;
   }
-
 
   .experiment-header__back {
-    top:
-      14px;
-
-    left:
-      14px;
+    left: 16px;
   }
-
 
   .experiment-header__actions {
-    top:
-      14px;
-
-    right:
-      14px;
+    right: 16px;
   }
 
+  .experiment-header__identity h1 {
+    font-size: clamp(
+        22px,
+        3.4vw,
+        32px
+      );
+  }
+}
+
+/* ===== 05  TABLET — 768–1024 PX ===== */
+
+@media (max-width: 1024px) and (min-width: 768px) {
+  .experiment-page {
+    --experiment-page-gutter: 16px;
+    --experiment-phase-nav-height: 58px;
+    --experiment-utility-height: 46px;
+  }
+
+  .experiment-header {
+    padding: 14px 118px 11px;
+  }
+
+  .experiment-header__back {
+    top: 14px;
+    left: 14px;
+  }
+
+  .experiment-header__actions {
+    top: 14px;
+    right: 14px;
+  }
 
   .experiment-header__identity h1 {
-    font-size:
-      clamp(
+    font-size: clamp(
         22px,
         3.4vw,
         30px
       );
   }
 
-
   .experiment-header__description {
-    max-width:
-      580px;
-
-
-    font-size:
-      11px;
+    max-width: 580px;
+    font-size: 11px;
   }
-
-
-  /* -------------------------------------------------------
-     PHASE NAV
-     ------------------------------------------------------- */
 
   .experiment-phase-nav__track {
-    justify-content:
-      flex-start;
-
-
-    margin:
-      0;
-
-
-    padding:
-      10px
-      var(--experiment-page-gutter);
+    justify-content: flex-start;
+    margin: 0;
+    padding: 10px var(--experiment-page-gutter);
   }
-
 
   .experiment-phase-nav__item {
-    min-height:
-      34px;
-
-
-    padding:
-      7px
-      11px;
-
-
-    font-size:
-      11px;
+    min-height: 34px;
+    padding: 7px 11px;
+    font-size: 11px;
   }
-
-
-  /* -------------------------------------------------------
-     UTILITY
-     ------------------------------------------------------- */
 
   .experiment-template__utility {
-    min-height:
-      var(--experiment-utility-height);
-
-
-    padding:
-      7px
-      var(--experiment-page-gutter);
+    min-height: var(--experiment-utility-height);
+    padding: 7px var(--experiment-page-gutter);
   }
-
-
-  /* -------------------------------------------------------
-     CONTENT STAGE
-     ------------------------------------------------------- */
 
   .experiment-template__stage--content {
-    padding:
-      14px
-      var(--experiment-page-gutter)
-      20px;
+    padding: 14px var(--experiment-page-gutter) 20px;
   }
-
 }
 
+/* ===== 06  MOBILE — ≤ 767 PX ===== */
 
-/* =========================================================
-   38.7 MOBILE
-   <= 767
-   ========================================================= */
-
-@media (
-  max-width: 767px
-) {
-
-  .experiment-page {
-    --experiment-page-gutter:
-      12px;
-
-    --experiment-phase-nav-height:
-      54px;
-
-    --experiment-utility-height:
-      44px;
-  }
-
-
-  /* =======================================================
-     HEADER
-     ======================================================= */
-
+@media (max-width: 767px) {
   .experiment-header {
-    padding:
-      10px
-      var(--experiment-page-gutter);
-
-
-    display:
-      grid;
-
-
-    grid-template-columns:
-      1fr;
-
-
-    gap:
-      8px;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 10px var(--experiment-page-gutter);
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 8px;
+    min-height: 0;
   }
-
 
   .experiment-header__back {
-    position:
-      static;
-
-
-    width:
-      fit-content;
-
-
-    min-height:
-      30px;
-
-
-    padding:
-      5px
-      8px;
+    font-size: 11px;
+    position: static;
+    width: fit-content;
+    min-height: 30px;
+    padding: 5px 8px;
   }
-
 
   .experiment-header__identity {
-    width:
-      100%;
-
-
-    align-items:
-      flex-start;
-
-
-    text-align:
-      left;
+    width: 100%;
+    align-items: flex-start;
+    text-align: left;
   }
-
 
   .experiment-header__meta {
-    justify-content:
-      flex-start;
+    min-height: 25px;
+    padding: 4px 8px;
+    gap: 6px;
+    justify-content: flex-start;
   }
 
-
   .experiment-header__identity h1 {
-    margin-top:
-      6px;
-
-
-    font-size:
-      clamp(
+    letter-spacing: 0.015em;
+    margin-top: 6px;
+    font-size: clamp(
         20px,
         6vw,
         27px
       );
-
-
-    text-align:
-      left;
+    text-align: left;
   }
-
 
   .experiment-header__description {
-    display:
-      none;
+    display: none;
   }
-
 
   .experiment-header__actions {
-    position:
-      static;
-
-
-    width:
-      100%;
-
-
-    justify-content:
-      flex-end;
+    margin-top: -2px;
+    position: static;
+    width: 100%;
+    justify-content: flex-end;
   }
 
-
-  /* =======================================================
-     PHASE NAV
-     ======================================================= */
-
-  .experiment-phase-nav__track {
-    justify-content:
-      flex-start;
-
-
-    margin:
-      0;
-
-
-    padding:
-      8px
-      var(--experiment-page-gutter);
-
-
-    gap:
-      5px;
+  .experiment-phase-nav {
+    padding: 7px 10px;
   }
-
 
   .experiment-phase-nav__item {
-    min-height:
-      34px;
-
-
-    padding:
-      6px
-      10px;
-
-
-    font-size:
-      10px;
+    min-height: 34px;
+    padding: 6px 10px;
+    font-size: 10px;
   }
 
-
-  /* =======================================================
-     UTILITY
-     ======================================================= */
+  .experiment-template__body {
+    padding: 9px;
+  }
 
   .experiment-template__utility {
-    min-height:
-      var(--experiment-utility-height);
-
-
-    padding:
-      6px
-      var(--experiment-page-gutter);
-
-
-    gap:
-      8px;
+    padding-bottom: 8px;
+    min-height: var(--experiment-utility-height);
+    padding: 6px var(--experiment-page-gutter);
+    gap: 8px;
   }
 
-
-  .experiment-template__phase-info
-    > strong {
-    display:
-      none;
+  .experiment-template__phase-info > strong {
+    display: none;
   }
-
-
-  .experiment-template__phase-info
-    > span {
-    font-size:
-      10px;
-  }
-
-
-  .experiment-template__utility-actions
-    .experiment-lab-button {
-    min-height:
-      30px;
-
-
-    max-width:
-      150px;
-
-
-    padding:
-      5px
-      8px;
-
-
-    overflow:
-      hidden;
-
-
-    font-size:
-      10px;
-
-
-    text-overflow:
-      ellipsis;
-
-
-    white-space:
-      nowrap;
-  }
-
-
-  /* =======================================================
-     CONTENT STAGE
-     ======================================================= */
 
   .experiment-template__stage--content {
-    padding:
-      12px
-      var(--experiment-page-gutter)
-      18px;
+    padding: 12px var(--experiment-page-gutter) 18px;
   }
 
+  .experiment-quiz__question {
+    padding: 15px;
+  }
 
-  /* =======================================================
-     PRACTICE STAGE
-     ======================================================= */
+  .experiment-report-sheet {
+    min-height: 0;
+    padding: 24px 18px;
+    border-radius: 0;
+  }
+
+  .experiment-report-sheet__identity-row {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .experiment-template__route--practice {
+    align-items: flex-end;
+    padding: 10px;
+  }
+
+  .experiment-page {
+    height: 100dvh;
+    min-height: 100dvh;
+    --experiment-page-gutter: 12px;
+    --experiment-phase-nav-height: 54px;
+    --experiment-utility-height: 44px;
+  }
+
+  .experiment-template {
+    min-height: calc(
+        100dvh +
+        var(--experiment-utility-height)
+      );
+  }
+
+  .experiment-template__stage {
+    min-height: calc(
+        100dvh -
+        var(--experiment-phase-nav-height)
+      );
+  }
 
   .experiment-template__stage--practice {
-    height:
-      calc(
+    height: calc(
         100dvh -
         var(--experiment-phase-nav-height)
       );
-
-
-    min-height:
-      calc(
+    min-height: calc(
         100dvh -
         var(--experiment-phase-nav-height)
       );
-
-
-    max-height:
-      calc(
+    max-height: calc(
         100dvh -
         var(--experiment-phase-nav-height)
       );
   }
 
+  .experiment-template__phase-info {
+    gap: 7px;
+  }
 
-  /* =======================================================
-     EXPANDED MOBILE
-     ======================================================= */
+  .experiment-template__phase-info > span {
+    font-size: 10px;
+  }
+
+  .experiment-template__utility-actions {
+    gap: 4px;
+  }
+
+  .experiment-template__utility-actions .experiment-lab-button {
+    min-height: 30px;
+    max-width: 150px;
+    padding: 5px 8px;
+    overflow: hidden;
+    font-size: 10px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .experiment-header__actions .experiment-lab-button {
+    min-height: 32px;
+    padding: 6px 9px;
+  }
+
+  .experiment-runtime-host {
+    inset: 0;
+  }
+
+  .experiment-runtime-workspace {
+    touch-action: manipulation;
+  }
 
   .experiment-template--expanded {
-    width:
-      100%;
-
-    height:
-      100dvh;
+    width: 100%;
+    height: 100dvh;
   }
 
-
-  .experiment-template--expanded
-    .experiment-phase-nav__track {
-    padding-left:
-      10px;
-
-    padding-right:
-      10px;
+  .experiment-workspace__escape-hint {
+    display: none;
   }
-
-}
-
-
-/* =========================================================
-   38.8 SMALL MOBILE
-   <= 480
-   ========================================================= */
-
-@media (
-  max-width: 480px
-) {
-
-  .experiment-page {
-    --experiment-page-gutter:
-      10px;
-
-    --experiment-phase-nav-height:
-      52px;
-
-    --experiment-utility-height:
-      42px;
-  }
-
-
-  /* =======================================================
-     HEADER
-     ======================================================= */
-
-  .experiment-header {
-    padding:
-      9px
-      10px;
-  }
-
-
-  .experiment-header__subject,
-.experiment-header__indicator {
-    display:
-      none;
-  }
-
-
-  .experiment-header__meta {
-    min-height:
-      23px;
-
-
-    padding:
-      3px
-      7px;
-  }
-
-
-  .experiment-header__identity h1 {
-    font-size:
-      20px;
-  }
-
-
-  /* =======================================================
-     PHASE NAV
-     ======================================================= */
 
   .experiment-phase-nav__track {
-    padding:
-      7px
-      10px;
+    justify-content: flex-start;
+    margin: 0;
+    padding: 8px var(--experiment-page-gutter);
+    gap: 5px;
   }
 
-
-  .experiment-phase-nav__item {
-    min-height:
-      32px;
-
-
-    padding:
-      5px
-      9px;
-
-
-    font-size:
-      10px;
+  .experiment-template--expanded .experiment-phase-nav__track {
+    padding-left: 10px;
+    padding-right: 10px;
   }
-
-
-  /* =======================================================
-     CONTENT
-     ======================================================= */
-
-  .experiment-template__stage--content {
-    padding:
-      10px
-      10px
-      16px;
-  }
-
 }
 
+/* ===== 07  SMALL MOBILE — ≤ 480 PX ===== */
 
-/* =========================================================
-   38.9 SHORT VIEWPORT
-   <= 520px HEIGHT
-
-   Ví dụ:
-   - laptop split-screen
-   - mobile landscape
-   ========================================================= */
-
-@media (
-  max-height: 520px
-) {
-
-  .experiment-page {
-    --experiment-phase-nav-height:
-      40px;
-
-    --experiment-utility-height:
-      38px;
+@media (max-width: 480px) {
+  .experiment-header__subject {
+    display: none;
   }
-
-
-  /* =======================================================
-     HEADER
-     ======================================================= */
-
-  .experiment-header {
-    padding-top:
-      7px;
-
-    padding-bottom:
-      7px;
-  }
-
-
-  .experiment-header__meta {
-    min-height:
-      22px;
-  }
-
 
   .experiment-header__identity h1 {
-    margin-top:
-      4px;
+    font-size: 20px;
+  }
 
+  .experiment-header__meta {
+    gap: 5px;
+    min-height: 23px;
+    padding: 3px 7px;
+  }
 
-    font-size:
-      clamp(
+  .experiment-template__utility {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .experiment-template__utility-actions .experiment-lab-button {
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .experiment-page {
+    --experiment-page-gutter: 10px;
+    --experiment-phase-nav-height: 52px;
+    --experiment-utility-height: 42px;
+  }
+
+  .experiment-header {
+    padding: 9px 10px;
+  }
+
+  .experiment-header__subject, .experiment-header__indicator {
+    display: none;
+  }
+
+  .experiment-phase-nav__track {
+    padding: 7px 10px;
+  }
+
+  .experiment-phase-nav__item {
+    min-height: 32px;
+    padding: 5px 9px;
+    font-size: 10px;
+  }
+
+  .experiment-template__stage--content {
+    padding: 10px 10px 16px;
+  }
+}
+
+/* ===== 08  SHORT VIEWPORT — ≤ 520 PX HIGH ===== */
+
+@media (max-height: 520px) {
+  .experiment-header {
+    padding-top: 7px;
+    padding-bottom: 7px;
+    min-height: 0;
+  }
+
+  .experiment-header__identity h1 {
+    margin-top: 4px;
+    font-size: clamp(
         18px,
         2.5vw,
         24px
       );
   }
 
-
   .experiment-header__description {
-    display:
-      none;
+    display: none;
   }
-
-
-  /* =======================================================
-     PHASE NAV
-     ======================================================= */
-
-  .experiment-phase-nav__track {
-    padding-top:
-      4px;
-
-    padding-bottom:
-      4px;
-  }
-
-
-  .experiment-phase-nav__item {
-    min-height:
-      30px;
-
-
-    padding-top:
-      4px;
-
-    padding-bottom:
-      4px;
-  }
-
-
-  /* =======================================================
-     UTILITY
-     ======================================================= */
-
-  .experiment-template__utility {
-    min-height:
-      38px;
-
-
-    padding-top:
-      4px;
-
-    padding-bottom:
-      4px;
-  }
-
-
-  .experiment-template__utility-actions
-    .experiment-lab-button {
-    min-height:
-      28px;
-  }
-
-
-  /* =======================================================
-     CONTENT
-     ======================================================= */
-
-  .experiment-template__stage--content {
-    padding-top:
-      8px;
-
-    padding-bottom:
-      12px;
-  }
-
-
-  /* =======================================================
-     PRACTICE
-     ======================================================= */
-
-  .experiment-template__stage--practice {
-    height:
-      calc(
-        100dvh -
-        var(--experiment-phase-nav-height)
-      );
-
-
-    min-height:
-      calc(
-        100dvh -
-        var(--experiment-phase-nav-height)
-      );
-
-
-    max-height:
-      calc(
-        100dvh -
-        var(--experiment-phase-nav-height)
-      );
-  }
-
-}
-
-
-/* =========================================================
-   38.10 MOBILE LANDSCAPE
-   width <= 900 AND height <= 520
-
-   Đây là case nguy hiểm nhất:
-   viewport rộng nhưng rất thấp.
-   ========================================================= */
-
-@media (
-  max-width: 900px
-) and (
-  max-height: 520px
-) {
-
-  /*
-   * Header phải cực compact để nhanh cuộn khỏi viewport.
-   */
-
-  .experiment-header {
-    padding:
-      6px
-      10px;
-  }
-
-
-  .experiment-header__back {
-    min-height:
-      28px;
-
-
-    padding:
-      4px
-      7px;
-  }
-
-
-  .experiment-header__meta {
-    display:
-      none;
-  }
-
-
-  .experiment-header__identity h1 {
-    margin:
-      0;
-
-
-    font-size:
-      18px;
-  }
-
-}
-
-
-/* =========================================================
-   38.11 COARSE POINTER / TOUCH DEVICE
-   ========================================================= */
-
-@media (
-  pointer: coarse
-) {
-
-  /*
-   * Touch target tối thiểu.
-   */
-
-  .experiment-phase-nav__item {
-    min-height:
-      36px;
-  }
-
-
-  .experiment-lab-button {
-    min-height:
-      36px;
-  }
-
-
-  /*
-   * Không phụ thuộc hover để truyền trạng thái.
-   */
-
-  .experiment-lab-button:hover {
-    transform:
-      none;
-  }
-
-}
-
-
-/* =========================================================
-   38.14 REDUCED MOTION
-   ========================================================= */
-
-@media (
-  prefers-reduced-motion:
-    reduce
-) {
-
-  .experiment-phase-nav__item,
-.experiment-lab-button,
-.experiment-runtime-host {
-    transition:
-      none;
-  }
-
 
   .experiment-phase-nav {
-    scroll-behavior:
-      auto;
+    padding: 4px 10px;
   }
 
+  .experiment-phase-nav__track {
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
+
+  .experiment-phase-nav__item {
+    min-height: 30px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
+
+  .experiment-template__body {
+    padding: 7px;
+  }
+
+  .experiment-template__utility {
+    padding: 4px 12px;
+    min-height: 38px;
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
+
+  .experiment-page {
+    --experiment-phase-nav-height: 40px;
+    --experiment-utility-height: 38px;
+  }
+
+  .experiment-template {
+    min-height: calc(
+        100dvh +
+        var(--experiment-utility-height)
+      );
+  }
+
+  .experiment-template__stage {
+    min-height: calc(
+        100dvh -
+        var(--experiment-phase-nav-height)
+      );
+  }
+
+  .experiment-template__stage--practice {
+    height: calc(
+        100dvh -
+        var(--experiment-phase-nav-height)
+      );
+    min-height: calc(
+        100dvh -
+        var(--experiment-phase-nav-height)
+      );
+    max-height: calc(
+        100dvh -
+        var(--experiment-phase-nav-height)
+      );
+  }
+
+  .experiment-template__stage--content {
+    padding-top: 8px;
+    padding-bottom: 12px;
+  }
+
+  .experiment-template__phase-info > span {
+    font-size: 10px;
+  }
+
+  .experiment-template__phase-info > strong {
+    font-size: 11px;
+  }
+
+  .experiment-template__utility-actions .experiment-lab-button {
+    padding: 4px 8px;
+    font-size: 10px;
+    min-height: 28px;
+  }
+
+  .experiment-header__back {
+    top: 10px;
+    min-height: 30px;
+    padding: 5px 9px;
+  }
+
+  .experiment-header__actions {
+    top: 10px;
+  }
+
+  .experiment-header__meta {
+    min-height: 22px;
+  }
+}
+
+/* ===== 09  MOBILE LANDSCAPE ===== */
+
+@media (max-width: 900px) and (max-height: 520px) {
+  .experiment-header {
+    padding: 6px 10px;
+    min-height: 0;
+  }
+
+  .experiment-header__back {
+    min-height: 28px;
+    padding: 4px 7px;
+  }
+
+  .experiment-header__meta {
+    display: none;
+  }
+
+  .experiment-header__identity h1 {
+    margin: 0;
+    font-size: 18px;
+  }
+
+  .experiment-phase-nav__track {
+    padding-left: var(--experiment-page-gutter);
+    padding-right: var(--experiment-page-gutter);
+  }
+
+  .experiment-template__utility {
+    padding-left: var(--experiment-page-gutter);
+    padding-right: var(--experiment-page-gutter);
+  }
+
+  .experiment-template__stage--content {
+    padding-left: var(--experiment-page-gutter);
+    padding-right: var(--experiment-page-gutter);
+  }
+}
+
+/* ===== 10  SHORT TABLET LANDSCAPE ===== */
+
+@media (max-width: 1024px) and (min-width: 901px) and (max-height: 520px) {
+  .experiment-template__utility {
+    padding-left: var(--experiment-page-gutter);
+    padding-right: var(--experiment-page-gutter);
+  }
+}
+
+/* ===== 11  SHORT MOBILE ===== */
+
+@media (max-width: 767px) and (max-height: 520px) {
+  .experiment-template__utility-actions .experiment-lab-button {
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+}
+
+/* ===== 12  TOUCH / COARSE POINTER ===== */
+
+@media (pointer: coarse) {
+  .experiment-phase-nav__item {
+    min-height: 36px;
+  }
+
+  .experiment-lab-button {
+    min-height: 36px;
+  }
+
+  .experiment-lab-button:hover {
+    transform: none;
+  }
+}
+
+/* ===== 13  REDUCED MOTION ===== */
+
+@media (prefers-reduced-motion: reduce) {
+  .experiment-runtime-host {
+    transition: none;
+  }
+
+  .experiment-template--expanded, .experiment-runtime-workspace {
+    scroll-behavior: auto;
+  }
+
+  .experiment-phase-nav__item, .experiment-lab-button, .experiment-runtime-host {
+    transition: none;
+  }
+
+  .experiment-phase-nav {
+    scroll-behavior: auto;
+  }
+}
+
+/* ===== 14  PRINT ===== */
+
+@media print {
+  .experiment-page {
+    overscroll-behavior: auto;
+    color: #000;
+    display: block !important;
+    width: auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    background: #fff !important;
+  }
+
+  .experiment-header, .experiment-phase-nav, .experiment-template__utility {
+    display: none !important;
+  }
+
+  .experiment-main, .experiment-workspace, .experiment-template, .experiment-template__body, .experiment-template__stage {
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    overflow: visible;
+    display: block;
+    padding: 0;
+    color: #000;
+    background: #fff;
+    border: 0;
+    box-shadow: none;
+  }
+
+  .experiment-runtime-host {
+    display: none !important;
+  }
+
+  .experiment-report-sheet {
+    width: 100%;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    color: #000;
+    background: #fff;
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  html, body, #root {
+    width: auto !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    background: #fff !important;
+  }
+
+  .experiment-header {
+    position: static !important;
+    display: none !important;
+  }
+
+  .experiment-main, .experiment-workspace, .experiment-template, .experiment-template__body, .experiment-template__stage, .experiment-template__stage--content, .experiment-template__route, .experiment-template__route--content {
+    width: 100%;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: visible !important;
+    display: block;
+    position: static;
+    background: transparent;
+  }
+
+  .experiment-phase-nav {
+    display: none !important;
+    position: static !important;
+    box-shadow: none !important;
+  }
+
+  .experiment-template__utility {
+    display: none !important;
+  }
+
+  .experiment-template__stage, .experiment-template__stage--content, .experiment-template__stage--practice, .experiment-template__route, .experiment-runtime-host, .experiment-runtime-workspace {
+    padding: 0 !important;
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .experiment-header, .experiment-phase-nav, .experiment-template__utility, .experiment-runtime-host {
+    display: none !important;
+  }
+
+  .experiment-main, .experiment-workspace, .experiment-template, .experiment-template__body, .experiment-template__stage, .experiment-template__route {
+    width: auto !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: block !important;
+    position: static !important;
+    overflow: visible !important;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .experiment-runtime-workspace, .experiment-workspace__escape-hint {
+    display: none !important;
+  }
+
+  @page {
+    size: A4;
+    margin: 12mm;
+  }
+}
+
+/* ===== 15  KEYFRAMES ===== */
+
+@keyframes experiment-loading-spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
