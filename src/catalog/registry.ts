@@ -103,6 +103,27 @@ export const curriculum: GradeCurriculum[] = [
             runtimePath:
               '/lab/forced-resonance/intro',
           },
+ 
+          {
+            slug: 'seismograph',
+
+            title: 'Máy đo địa chấn',
+
+            icon: 'activity',
+
+            tag: 'Đồ thị Địa chấn',
+
+            description:
+              'Mô phỏng máy đo địa chấn, khảo sát dao động và phân tích tín hiệu để tìm hiểu hiện tượng cộng hưởng cơ học.',
+
+            status: 'ready',
+
+            accent: 'rose',
+
+            // Chỉ bật khi cả sáu phase đã hoàn chỉnh.
+            runtimePath: '/lab/seismograph/intro',
+          },
+
         ],
       },
     ],

@@ -13,6 +13,7 @@ import boyleRoutes from './modules/12_07_boyle/routes'
 import harmonicMotionRoutes from './modules/11_01_harmonic-motion/routes'
 import dampedOscillationRoutes from './modules/11_02_damped-oscillation/routes'
 import forcedResonanceRoutes from './modules/11_03_forced-resonance/routes'
+import seismographRoutes from './modules/11_04_seismograph/routes'
 
 /*
  * =========================================================
@@ -36,6 +37,7 @@ const moduleRoutes:
     ...harmonicMotionRoutes,
     ...dampedOscillationRoutes,
     ...forcedResonanceRoutes,
+    ...seismographRoutes,
   ]
 
 
