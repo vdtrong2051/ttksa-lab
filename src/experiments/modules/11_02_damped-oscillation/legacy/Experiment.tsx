@@ -25,7 +25,6 @@ import {
 
 import AppIcon from '../../../../components/ui/AppIcon'
 
-
 interface Snapshot {
   url:
     string
@@ -34,13 +33,11 @@ interface Snapshot {
     number
 }
 
-
 type PracticePanel =
   | 'controls'
   | 'data'
   | 'observation'
   | null
-
 
 // ==========================================
 // ĐỒ THỊ 2D — GIỮ NGUYÊN MÔ HÌNH TOÁN CŨ
@@ -81,7 +78,6 @@ function MathGraph({
 
   const steps =
     300
-
 
   for (
     let i = 0;
@@ -157,7 +153,6 @@ function MathGraph({
       `${svgX},${mapY(-env)}`,
     )
   }
-
 
   return (
     <div className="relative w-full overflow-hidden rounded-xl border border-slate-200 bg-white shadow-inner">
@@ -243,14 +238,12 @@ function MathGraph({
   )
 }
 
-
 // ==========================================
 // THUẬT TOÁN 3D — GIỮ NGUYÊN THÔNG SỐ CŨ
 // ==========================================
 
 const MAX_POINTS =
   10000
-
 
 function SimulationScene({
   isPlaying,
@@ -309,6 +302,13 @@ function SimulationScene({
       0,
     )
 
+  // Dùng đối tượng Three.js thật thay cho thẻ SVG <line>.
+  // Geometry và material con được R3F gắn vào Line này.
+  const traceLine = useMemo(
+    () => new THREE.Line(),
+    [],
+  )
+
   const materials =
     useMemo(
       () => ({
@@ -363,7 +363,6 @@ function SimulationScene({
       [],
     )
 
-
   useEffect(
     () => {
       const geometry =
@@ -392,7 +391,6 @@ function SimulationScene({
     [],
   )
 
-
   useFrame(
     (
       _state,
@@ -412,7 +410,6 @@ function SimulationScene({
         delta *
         paperSpeed
 
-
       if (
         rollerRef.current
       ) {
@@ -424,7 +421,6 @@ function SimulationScene({
             ) /
             0.2
       }
-
 
       const omega =
         5
@@ -452,7 +448,6 @@ function SimulationScene({
           L,
         )
 
-
       if (
         pendulumRef.current
       ) {
@@ -468,7 +463,6 @@ function SimulationScene({
             )
       }
 
-
       if (
         paperGroupRef.current
       ) {
@@ -476,7 +470,6 @@ function SimulationScene({
           .position.z =
             paperZRef.current
       }
-
 
       const geometry =
         lineGeoRef.current
@@ -538,7 +531,6 @@ function SimulationScene({
     },
   )
 
-
   return (
     <group
       position={[
@@ -571,7 +563,6 @@ function SimulationScene({
       <Environment
         preset="apartment"
       />
-
 
       <group
         position={[
@@ -659,7 +650,6 @@ function SimulationScene({
         </mesh>
       </group>
 
-
       <group
         position={[
           0,
@@ -739,7 +729,6 @@ function SimulationScene({
           />
         </mesh>
       </group>
-
 
       <group>
         <mesh
@@ -824,25 +813,19 @@ function SimulationScene({
             fadeDistance={40}
           />
 
-          <line
-            frustumCulled={
-              false
-            }
+          <primitive
+            object={traceLine}
+            frustumCulled={false}
           >
-            <bufferGeometry
-              ref={
-                lineGeoRef
-              }
-            />
+            <bufferGeometry ref={lineGeoRef} />
 
             <lineBasicMaterial
               color="#1d4ed8"
               linewidth={3}
             />
-          </line>
+          </primitive>
         </group>
       </group>
-
 
       <ContactShadows
         position={[
@@ -858,7 +841,6 @@ function SimulationScene({
     </group>
   )
 }
-
 
 // ==========================================
 // PRACTICE WORKSPACE
@@ -951,7 +933,6 @@ export default function Experiment({
       'controls',
     )
 
-
   function handlePlayPause() {
     setIsPlaying(
       (
@@ -966,7 +947,6 @@ export default function Experiment({
       )
     }
   }
-
 
   function handleReset() {
     setIsPlaying(
@@ -985,7 +965,6 @@ export default function Experiment({
         1,
     )
   }
-
 
   function captureSnapshot() {
     const canvas =
@@ -1023,13 +1002,11 @@ export default function Experiment({
     )
   }
 
-
   function clearSnapshots() {
     setSnapshots(
       [],
     )
   }
-
 
   function togglePanel(
     panel:
@@ -1048,7 +1025,6 @@ export default function Experiment({
           : panel,
     )
   }
-
 
   return (
     <section className="relative h-full w-full overflow-hidden bg-slate-100 text-slate-100">
@@ -1144,7 +1120,6 @@ export default function Experiment({
         </Canvas>
       </div>
 
-
       {/* ===============================================
           TOP HINT
           =============================================== */}
@@ -1160,7 +1135,6 @@ export default function Experiment({
           </span>
         </div>
       </div>
-
 
       {/* ===============================================
           CONTROL PANEL
@@ -1215,7 +1189,6 @@ export default function Experiment({
             </button>
           </div>
 
-
           <ControlSlider
             id="damped-beta"
             label="Hệ số lực cản"
@@ -1241,7 +1214,6 @@ export default function Experiment({
             }
           />
 
-
           <ControlSlider
             id="damped-paper-speed"
             label="Tốc độ cuộn giấy"
@@ -1262,7 +1234,6 @@ export default function Experiment({
               setPaperSpeed
             }
           />
-
 
           <div className="mt-5 flex items-center justify-between gap-4 border-t border-slate-800 pt-4">
             <div className="min-w-0">
@@ -1306,7 +1277,6 @@ export default function Experiment({
             </button>
           </div>
 
-
           {hasStarted && (
             <p className="mt-4 rounded-xl border border-amber-400/15 bg-amber-400/[0.06] p-3 text-[9px] leading-5 text-amber-200/80">
               Hệ số lực cản và tốc độ cuộn giấy được khóa trong lúc chạy.
@@ -1315,7 +1285,6 @@ export default function Experiment({
           )}
         </aside>
       )}
-
 
       {/* ===============================================
           DATA PANEL
@@ -1369,7 +1338,6 @@ export default function Experiment({
             </p>
           </div>
 
-
           <button
             type="button"
             className="mt-3 min-h-10 w-full rounded-xl border border-rose-400/25 bg-rose-400/10 px-4 text-[10px] font-extrabold text-rose-300 transition hover:bg-rose-400/15"
@@ -1379,7 +1347,6 @@ export default function Experiment({
           >
             Chụp đồ thị hiện tại
           </button>
-
 
           <button
             type="button"
@@ -1396,7 +1363,6 @@ export default function Experiment({
           >
             Mở bảng đối chiếu
           </button>
-
 
           {snapshots.length >
             0 && (
@@ -1432,7 +1398,6 @@ export default function Experiment({
         </aside>
       )}
 
-
       {/* ===============================================
           OBSERVATION PANEL
           =============================================== */}
@@ -1462,7 +1427,6 @@ export default function Experiment({
             </p>
           </div>
 
-
           <div className="mt-3 grid gap-2">
             <ObservationItem
               label="Phương trình"
@@ -1481,7 +1445,6 @@ export default function Experiment({
           </div>
         </aside>
       )}
-
 
       {/* ===============================================
           RIGHT TOOLBAR
@@ -1530,7 +1493,6 @@ export default function Experiment({
           }
         />
       </aside>
-
 
       {/* ===============================================
           BOTTOM LAB DOCK
@@ -1596,7 +1558,6 @@ export default function Experiment({
           />
         </button>
       </div>
-
 
       {/* ===============================================
           COMPARISON MODAL
@@ -1706,7 +1667,6 @@ export default function Experiment({
   )
 }
 
-
 function PanelHeader({
   eyebrow,
   title,
@@ -1753,7 +1713,6 @@ function PanelHeader({
     </header>
   )
 }
-
 
 function ControlSlider({
   id,
@@ -1891,7 +1850,6 @@ function ControlSlider({
   )
 }
 
-
 function ObservationItem({
   label,
   formula,
@@ -1920,7 +1878,6 @@ function ObservationItem({
     </div>
   )
 }
-
 
 function ToolbarButton({
   label,
@@ -1977,7 +1934,6 @@ function ToolbarButton({
     </button>
   )
 }
-
 
 function StatusItem({
   label,
