@@ -1,11 +1,15 @@
+
 import {
   Outlet,
   useLocation,
 } from 'react-router'
 
+import 'katex/dist/katex.min.css'
+
 import ExperimentRuntimeHost from '../../core/ExperimentRuntimeHost'
 import ExperimentShell from '../../core/ExperimentShell'
 import ExperimentViewShell from '../../core/ExperimentViewShell'
+import SimulationErrorBoundary from '../../core/SimulationErrorBoundary'
 
 import {
   useExperimentNavigation,
@@ -20,26 +24,24 @@ import {
   ForcedResonanceSessionContext,
 } from './context'
 
-import Experiment from './legacy/Experiment'
-
 import {
   forcedResonanceMeta,
   forcedResonancePhases,
 } from './model/data'
 
-import 'katex/dist/katex.min.css'
+import LegacyExperimentBridge from './simulation/LegacyExperimentBridge'
+
 import './styles.css'
 
 
 export default function ForcedResonanceSessionLayout() {
-  const location =
-    useLocation()
+  const location = useLocation()
 
+  // URL là nguồn xác định phase hiện tại.
   const activePhase =
     getExperimentPhaseFromPathname(
       location.pathname,
-    ) ??
-    initialExperimentPhase
+    ) ?? initialExperimentPhase
 
   const navigation =
     useExperimentNavigation(
@@ -48,9 +50,7 @@ export default function ForcedResonanceSessionLayout() {
     )
 
   const isPractice =
-    activePhase ===
-    'practice'
-
+    activePhase === 'practice'
 
   return (
     <ForcedResonanceSessionContext.Provider
@@ -59,9 +59,7 @@ export default function ForcedResonanceSessionLayout() {
       }}
     >
       <ExperimentShell
-        meta={
-          forcedResonanceMeta
-        }
+        meta={forcedResonanceMeta}
       >
         <ExperimentViewShell
           experimentSlug={
@@ -70,30 +68,26 @@ export default function ForcedResonanceSessionLayout() {
           phases={
             forcedResonancePhases
           }
-          activePhase={
-            activePhase
-          }
+          activePhase={activePhase}
           ariaLabel="Điều hướng thí nghiệm dao động cưỡng bức và cộng hưởng"
-          isPractice={
-            isPractice
-          }
+          isPractice={isPractice}
           persistentRuntime={
-            <ExperimentRuntimeHost
-              active={
-                isPractice
-              }
-            >
-              <div className="forced-resonance-runtime">
-                <Experiment
-                  onPrev={
-                    navigation.previous
-                  }
-                  onNext={
-                    navigation.next
-                  }
-                />
-              </div>
-            </ExperimentRuntimeHost>
+            <SimulationErrorBoundary>
+              <ExperimentRuntimeHost
+                active={isPractice}
+              >
+                <div className="forced-resonance-runtime">
+                  <LegacyExperimentBridge
+                    onPrev={
+                      navigation.previous
+                    }
+                    onNext={
+                      navigation.next
+                    }
+                  />
+                </div>
+              </ExperimentRuntimeHost>
+            </SimulationErrorBoundary>
           }
         >
           <Outlet />
