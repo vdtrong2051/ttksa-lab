@@ -13,6 +13,9 @@ import {
   experimentThemeClasses,
 } from './experimentThemes'
 
+import {
+  getExperimentAvailability,
+} from '../../catalog/registry'
 
 interface ExperimentCardProps {
   grade: GradeLevel
@@ -33,9 +36,11 @@ export default function ExperimentCard({
       experiment.accent
     ]
 
-  const isReady =
-    experiment.status ===
-    'ready'
+  const availability =
+  getExperimentAvailability(experiment)
+
+  const isLive =
+    availability === 'live'
 
   const experimentUrl =
     experiment.runtimePath ??
@@ -204,7 +209,7 @@ export default function ExperimentCard({
               READY ACTION
               ================================================= */}
 
-          {isReady ? (
+          {isLive ? (
             <Link
               to={
                 experimentUrl
@@ -283,7 +288,9 @@ export default function ExperimentCard({
               ].join(' ')}
             >
               <span>
-                Sắp ra mắt
+                {availability === 'integrating'
+                  ? 'Đang tích hợp'
+                  : 'Sắp ra mắt'}
               </span>
 
               <AppIcon

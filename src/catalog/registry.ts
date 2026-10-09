@@ -1,4 +1,5 @@
 import type {
+  Experiment,
   GradeCurriculum,
   GradeLevel,
 } from './types'
@@ -577,6 +578,20 @@ export const curriculum: GradeCurriculum[] = [
 // QUERY HELPERS
 // =========================================================
 
+export function getExperimentAvailability(
+  experiment: Experiment,
+): 'live' | 'integrating' | 'planned' {
+  if (experiment.runtimePath?.trim()) {
+    return 'live'
+  }
+
+  if (experiment.status === 'ready') {
+    return 'integrating'
+  }
+
+  return 'planned'
+}
+
 export function getGradeCurriculum(
   grade: GradeLevel,
 ) {
@@ -679,8 +694,8 @@ export function getReadyExperimentCount() {
             (
               experiment,
             ) =>
-              experiment.status ===
-              'ready',
+              getExperimentAvailability(experiment) ===
+              'live',
           ).length,
         0,
       ),

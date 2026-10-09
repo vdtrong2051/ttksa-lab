@@ -1,3 +1,4 @@
+
 import {
   Link,
   Navigate,
@@ -11,6 +12,7 @@ import type {
 import {
   getChapter,
   getExperiment,
+  getExperimentAvailability,
 } from '../catalog/registry'
 
 import {
@@ -170,8 +172,16 @@ export default function ExperimentPlaceholder() {
     )
   }
 
+
+  const availability =
+    getExperimentAvailability(experiment)
+
+  const isIntegrating =
+    availability === 'integrating'
+
+
   if (
-    experiment.runtimePath
+    experiment.runtimePath?.trim()
   ) {
     return (
       <Navigate
@@ -186,10 +196,6 @@ export default function ExperimentPlaceholder() {
     chapterThemeClasses[
       chapter.theme
     ]
-
-  const isReady =
-    experiment.status ===
-    'ready'
 
 
   return (
@@ -238,12 +244,12 @@ export default function ExperimentPlaceholder() {
                 'text-xs',
                 'font-semibold',
 
-                isReady
+                isIntegrating
                   ? 'text-brand-600'
                   : 'text-muted',
               ].join(' ')}
             >
-              {isReady
+              {isIntegrating
                 ? 'Đang tích hợp'
                 : 'Sắp ra mắt'}
             </span>
@@ -292,7 +298,7 @@ export default function ExperimentPlaceholder() {
               =============================================== */}
 
           <div className="mt-8 border-t border-(--color-border-soft) pt-6">
-            {isReady ? (
+            {isIntegrating ? (
               <>
                 <p className="m-0 font-semibold text-ink">
                   Thí nghiệm đang được tích hợp
