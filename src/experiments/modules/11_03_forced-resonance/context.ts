@@ -1,3 +1,4 @@
+
 import {
   createExperimentSessionContext,
   useExperimentSession,
@@ -7,10 +8,14 @@ import type {
   ExperimentNavigation,
 } from '../../core/types'
 
+import type {
+  ResonanceController,
+} from './simulation/types'
+
 
 export interface ForcedResonanceSession {
-  navigation:
-    ExperimentNavigation
+  navigation: ExperimentNavigation
+  controller: ResonanceController
 }
 
 

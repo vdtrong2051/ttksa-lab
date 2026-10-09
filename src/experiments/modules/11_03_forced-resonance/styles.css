@@ -2023,3 +2023,659 @@
   min-height: 32px;
 }
 
+
+/* =====================================================
+   FORCED RESONANCE V2 — PRACTICE WORKSPACE
+   ===================================================== */
+
+.forced-v2-workspace {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  pointer-events: none;
+}
+
+.forced-v2-workspace__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 0;
+}
+
+.forced-v2-status,
+.forced-v2-panel {
+  color: #f8fafc;
+  background: rgba(2, 6, 23, 0.94);
+  border: 1px solid rgba(148, 163, 184, 0.3);
+  box-shadow: 0 12px 38px rgba(2, 6, 23, 0.25);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.forced-v2-status {
+  display: grid;
+  gap: 5px;
+  flex: 0 1 245px;
+  min-width: 0;
+  padding: 13px 15px;
+  border-radius: 14px;
+}
+
+.forced-v2-status__label {
+  color: #94a3b8;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+}
+
+.forced-v2-status > strong {
+  font-size: 15px;
+}
+
+.forced-v2-status__detail {
+  color: #fbbf24;
+  font-size: 12px;
+}
+
+.forced-v2-panel {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 auto;
+  width: min(365px, 100%);
+  max-height: 100%;
+  overflow: hidden;
+  border-radius: 16px;
+  pointer-events: auto;
+}
+
+.forced-v2-panel__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px 9px;
+}
+
+.forced-v2-panel__header > div {
+  display: grid;
+  gap: 3px;
+}
+
+.forced-v2-panel__header small,
+.forced-v2-panel__section-title small {
+  color: #94a3b8;
+  font-size: 11px;
+}
+
+.forced-v2-panel__header strong {
+  font-size: 15px;
+}
+
+.forced-v2-panel__toggle {
+  min-height: 36px;
+  padding: 6px 11px;
+  color: #fbbf24;
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  border-radius: 9px;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.forced-v2-panel__primary {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px;
+  padding: 0 14px 14px;
+}
+
+.forced-v2-btn {
+  min-height: 42px;
+  padding: 9px 12px;
+  border: 1px solid transparent;
+  border-radius: 9px;
+  cursor: pointer;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.forced-v2-btn--primary {
+  color: #111827;
+  background: #fbbf24;
+}
+
+.forced-v2-btn--primary:hover {
+  background: #f59e0b;
+}
+
+.forced-v2-btn--secondary {
+  color: #e2e8f0;
+  background: rgba(148, 163, 184, 0.1);
+  border-color: rgba(148, 163, 184, 0.3);
+}
+
+.forced-v2-btn--secondary:hover {
+  background: rgba(148, 163, 184, 0.2);
+}
+
+.forced-v2-btn--wide {
+  width: 100%;
+}
+
+.forced-v2-btn:focus-visible,
+.forced-v2-panel__toggle:focus-visible {
+  outline: 2px solid #fbbf24;
+  outline-offset: 2px;
+}
+
+.forced-v2-panel__settings {
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border-top: 1px solid rgba(148, 163, 184, 0.2);
+}
+
+.forced-v2-panel__section {
+  padding: 15px;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+}
+
+.forced-v2-panel__section-title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.forced-v2-panel__section-title strong {
+  font-size: 13px;
+}
+
+.forced-v2-panel__notice {
+  margin: 0 0 12px;
+  padding: 10px;
+  color: #fde68a;
+  background: rgba(245, 158, 11, 0.09);
+  border-radius: 8px;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+.forced-v2-help {
+  margin: 0 0 9px;
+  color: #cbd5e1;
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.forced-v2-pendulum {
+  padding: 13px 0;
+  border-top: 1px solid rgba(148, 163, 184, 0.15);
+}
+
+.forced-v2-pendulum__heading {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 13px;
+}
+
+.forced-v2-pendulum__heading > div {
+  display: grid;
+  gap: 2px;
+}
+
+.forced-v2-pendulum__heading strong {
+  font-size: 13px;
+}
+
+.forced-v2-pendulum__heading small {
+  color: #94a3b8;
+  font-size: 11px;
+}
+
+.forced-v2-pendulum__dot {
+  width: 11px;
+  height: 11px;
+  flex: 0 0 auto;
+  border-radius: 50%;
+}
+
+.forced-v2-setting {
+  display: grid;
+  gap: 6px;
+  margin: 12px 0;
+}
+
+.forced-v2-setting > span {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  color: #cbd5e1;
+  font-size: 12px;
+}
+
+.forced-v2-setting > span strong {
+  color: #f8fafc;
+  font-variant-numeric: tabular-nums;
+}
+
+.forced-v2-setting input {
+  width: 100%;
+  min-height: 24px;
+  accent-color: #fbbf24;
+  cursor: pointer;
+  touch-action: pan-y;
+}
+
+.forced-v2-setting input:disabled {
+  cursor: not-allowed;
+  opacity: 0.35;
+}
+
+.forced-v2-panel__navigation {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  padding: 14px;
+}
+
+.forced-v2-workspace__hint {
+  display: flex;
+  align-self: flex-start;
+  flex-wrap: wrap;
+  gap: 7px;
+  max-width: calc(100% - 16px);
+  pointer-events: none;
+}
+
+.forced-v2-workspace__hint span {
+  padding: 6px 10px;
+  color: #e2e8f0;
+  background: rgba(2, 6, 23, 0.85);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 999px;
+  font-size: 11px;
+}
+
+
+/* =====================================================
+   FORCED RESONANCE V2 — QUIZ
+   ===================================================== */
+
+.forced-v2-quiz-progress {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 8px;
+  margin: 18px 0 24px;
+  color: var(--lab-text-muted);
+  font-size: 12px;
+}
+
+.forced-v2-quiz-progress strong {
+  color: var(--lab-text);
+}
+
+.forced-v2-quiz-progress [role="progressbar"] {
+  grid-column: 1 / -1;
+  height: 6px;
+  overflow: hidden;
+  background: var(--lab-border);
+  border-radius: 999px;
+}
+
+.forced-v2-quiz-progress [role="progressbar"] > span {
+  display: block;
+  height: 100%;
+  background: var(--lab-accent);
+  border-radius: inherit;
+  transition: width 150ms ease;
+}
+
+.forced-quiz .experiment-lab-button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
+.forced-quiz-card__options button {
+  min-height: 48px;
+}
+
+
+/* =====================================================
+   FORCED RESONANCE V2 — REPORT
+   ===================================================== */
+
+.forced-report-sheet__answer-box {
+  min-height: 43px;
+  margin: 9px 0;
+  padding: 9px 12px;
+  border: 1px dashed #9ca3af;
+}
+
+.forced-report-sheet__tf-table {
+  width: 100%;
+  margin: 12px 0 16px;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: 10pt;
+}
+
+.forced-report-sheet__tf-table th,
+.forced-report-sheet__tf-table td {
+  padding: 7px 8px;
+  border: 1px solid #9ca3af;
+  vertical-align: middle;
+}
+
+.forced-report-sheet__tf-table thead {
+  background: #f1f5f9;
+}
+
+.forced-report-sheet__tf-table th:first-child {
+  width: 34px;
+  text-align: center;
+}
+
+.forced-report-sheet__tf-table th:nth-child(3),
+.forced-report-sheet__tf-table th:nth-child(4) {
+  width: 36px;
+  text-align: center;
+}
+
+.forced-report-sheet__tf-table td:nth-child(3),
+.forced-report-sheet__tf-table td:nth-child(4) {
+  text-align: center;
+}
+
+.forced-report-sheet__tf-table tr {
+  break-inside: avoid;
+}
+
+.forced-report-sheet__checkbox {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 1px solid #475569;
+}
+
+.forced-report-sheet__formula-answer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 85px;
+  margin-top: 12px;
+  color: #94a3b8;
+  border: 1px dashed #64748b;
+  border-radius: 6px;
+  font-size: 10pt;
+}
+
+
+/* =====================================================
+   TABLET / MOBILE
+   ===================================================== */
+
+@media (max-width: 900px) {
+  .forced-v2-workspace__top {
+    justify-content: flex-end;
+  }
+
+  .forced-v2-status {
+    display: none;
+  }
+
+  .forced-v2-panel {
+    width: min(365px, 100%);
+  }
+}
+
+@media (max-width: 600px) {
+  .forced-v2-workspace {
+    gap: 8px;
+  }
+
+  .forced-v2-panel {
+    width: 100%;
+    max-height: min(65dvh, 490px);
+    border-radius: 12px;
+  }
+
+  .forced-v2-panel__header {
+    padding: 9px 11px 7px;
+  }
+
+  .forced-v2-panel__primary {
+    padding: 0 11px 11px;
+  }
+
+  .forced-v2-panel__section {
+    padding: 12px;
+  }
+
+  .forced-v2-workspace__hint {
+    gap: 5px;
+  }
+
+  .forced-v2-workspace__hint span {
+    padding: 5px 7px;
+    font-size: 10px;
+  }
+
+  .forced-report-sheet__tf-table {
+    font-size: 9pt;
+  }
+
+  .forced-report-sheet__tf-table th,
+  .forced-report-sheet__tf-table td {
+    padding: 5px;
+  }
+}
+
+
+/* =====================================================
+   PRINT — A4, CHỈ ÁP DỤNG KHI IN
+   ===================================================== */
+
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 12mm;
+  }
+
+  .forced-report-sheet {
+    width: 100%;
+    max-width: none;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    color: #111827;
+    background: white;
+    box-shadow: none;
+    font-size: 10.5pt;
+    line-height: 1.45;
+  }
+
+  .forced-report-sheet > section {
+    break-inside: auto;
+    page-break-inside: auto;
+  }
+
+  .forced-report-sheet__avoid-break {
+    break-inside: avoid;
+  }
+
+  .forced-report-sheet__tf-table {
+    font-size: 9pt;
+  }
+
+  .forced-report-sheet__tf-table tr {
+    break-inside: avoid;
+  }
+
+  .forced-report-sheet__blank-lines {
+    gap: 10px;
+  }
+
+  .forced-report-sheet__blank-lines span {
+    height: 7px;
+  }
+
+  .forced-report-sheet__problem {
+    color: #111827;
+    border-color: #cbd5e1;
+    background: #f8fafc;
+  }
+}
+
+
+/* ================================================
+   FORCED RESONANCE V2 — INTEGRATION FIX
+   ================================================ */
+
+/*
+ * Practice overlay:
+ * Giữ bảng điều khiển bên trong viewport 3D.
+ * Không sửa các lớp experiment-template chung.
+ */
+
+.forced-v2-workspace {
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.forced-v2-workspace__top {
+  flex: 1 1 auto;
+  min-height: 0;
+  max-height: 100%;
+}
+
+.forced-v2-panel {
+  min-height: 0;
+  max-height: 100%;
+}
+
+.forced-v2-panel__header,
+.forced-v2-panel__primary {
+  flex: 0 0 auto;
+}
+
+.forced-v2-panel__settings {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.forced-v2-workspace__hint {
+  flex: 0 0 auto;
+}
+
+/*
+ * Không cho các thành phần overlay
+ * vô tình nuốt thao tác kéo camera.
+ */
+.forced-v2-workspace {
+  pointer-events: none;
+}
+
+.forced-v2-panel {
+  pointer-events: auto;
+}
+
+/*
+ * Màn hình nhỏ:
+ * Ưu tiên Canvas, panel không che cả khung.
+ */
+@media (max-width: 600px) {
+  .forced-v2-panel {
+    width: min(100%, 355px);
+    max-height: min(62dvh, 480px);
+  }
+
+  .forced-v2-workspace__hint {
+    max-width: 100%;
+  }
+}
+
+/*
+ * Tablet nằm ngang hoặc màn hình thấp.
+ */
+@media (max-height: 520px) {
+  .forced-v2-status {
+    display: none;
+  }
+
+  .forced-v2-panel {
+    max-height: 100%;
+  }
+
+  .forced-v2-panel__settings {
+    max-height: 100%;
+  }
+}
+
+/* ================================================
+   REPORT — A4 PRINT FIX
+   ================================================ */
+
+@media print {
+  .forced-report,
+  .forced-report__inner,
+  .forced-report__preview {
+    width: 100% !important;
+    max-width: none !important;
+    height: auto !important;
+    min-height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    background: transparent !important;
+    border: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .forced-report-sheet {
+    box-sizing: border-box;
+    width: 100% !important;
+    max-width: none !important;
+    min-height: 0 !important;
+    height: auto !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    background: #ffffff !important;
+    color: #111827 !important;
+    box-shadow: none !important;
+  }
+
+  .forced-report-sheet > section {
+    break-inside: auto;
+    page-break-inside: auto;
+  }
+
+  .forced-report-sheet__avoid-break,
+  .forced-report-sheet__tf-table tr {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .forced-report-sheet__signature {
+    break-inside: avoid;
+  }
+}

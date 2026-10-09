@@ -1,8 +1,5 @@
 
-import {
-  useMemo,
-  useState,
-} from 'react'
+import { useState } from 'react'
 
 import {
   useForcedResonanceSession,
@@ -30,16 +27,18 @@ export default function QuizPage() {
     setSubmitted,
   ] = useState(false)
 
-  const score = useMemo(
-    () =>
-      questions.reduce(
-        (total, question, index) =>
-          answers[index] === question.answer
-            ? total + 1
-            : total,
-        0,
-      ),
-    [answers, questions],
+  const answeredCount =
+    Object.keys(answers).length
+
+  const allAnswered =
+    answeredCount === questions.length
+
+  const score = questions.reduce(
+    (total, question, index) =>
+      answers[index] === question.answer
+        ? total + 1
+        : total,
+    0,
   )
 
   return (
@@ -57,124 +56,161 @@ export default function QuizPage() {
           <h2>Luyện tập</h2>
 
           <p>
-            Giữ nguyên hai câu hỏi, đáp án và
-            phần giải thích của pack nguồn.
+            Hoàn thành hai câu hỏi về
+            điều kiện cộng hưởng và chu kì
+            của con lắc đơn.
           </p>
         </header>
 
+        <div className="forced-v2-quiz-progress">
+          <span>Tiến độ làm bài</span>
+
+          <strong>
+            {answeredCount} / {questions.length} câu
+          </strong>
+
+          <div
+            role="progressbar"
+            aria-label="Tiến độ trả lời"
+            aria-valuemin={0}
+            aria-valuemax={questions.length}
+            aria-valuenow={answeredCount}
+          >
+            <span
+              style={{
+                width: `${
+                  (answeredCount / questions.length) *
+                  100
+                }%`,
+              }}
+            />
+          </div>
+        </div>
+
         <div className="forced-quiz__list">
-          {questions.map((question, questionIndex) => (
-            <article
-              key={question.prompt}
-              className="forced-quiz-card"
-            >
-              <div className="forced-quiz-card__header">
-                <span>
-                  Câu {questionIndex + 1}
-                </span>
+          {questions.map(
+            (question, questionIndex) => {
+              const answer =
+                answers[questionIndex]
 
-                {submitted && (
-                  <strong
-                    className={
-                      answers[questionIndex] ===
-                      question.answer
-                        ? 'is-correct'
-                        : 'is-wrong'
-                    }
-                  >
-                    {answers[questionIndex] ===
-                    question.answer
-                      ? 'Đúng'
-                      : 'Sai'}
-                  </strong>
-                )}
-              </div>
+              const isCorrect =
+                answer === question.answer
 
-              <h3>
-                {question.prompt}
-              </h3>
+              return (
+                <article
+                  key={question.prompt}
+                  className="forced-quiz-card"
+                >
+                  <div className="forced-quiz-card__header">
+                    <span>
+                      Câu {questionIndex + 1}
+                    </span>
 
-              <div className="forced-quiz-card__options">
-                {question.options.map(
-                  (option, optionIndex) => {
-                    const selected =
-                      answers[questionIndex] ===
-                      optionIndex
-
-                    const correct =
-                      submitted &&
-                      optionIndex ===
-                        question.answer
-
-                    const wrong =
-                      submitted &&
-                      selected &&
-                      !correct
-
-                    return (
-                      <button
-                        key={option}
-                        type="button"
-                        disabled={submitted}
-                        className={[
-                          selected
-                            ? 'is-selected'
-                            : '',
-                          correct
+                    {submitted && (
+                      <strong
+                        className={
+                          isCorrect
                             ? 'is-correct'
-                            : '',
-                          wrong
-                            ? 'is-wrong'
-                            : '',
-                          submitted &&
-                          !correct &&
-                          !wrong
-                            ? 'is-muted'
-                            : '',
-                        ]
-                          .filter(Boolean)
-                          .join(' ')}
-                        onClick={() => {
-                          setAnswers((current) => ({
-                            ...current,
-                            [questionIndex]:
-                              optionIndex,
-                          }))
-                        }}
+                            : 'is-wrong'
+                        }
                       >
-                        <span>
-                          {String.fromCharCode(
-                            65 + optionIndex,
-                          )}
-                        </span>
+                        {isCorrect
+                          ? 'Chính xác'
+                          : 'Chưa chính xác'}
+                      </strong>
+                    )}
+                  </div>
 
-                        <strong>
-                          {option.replace(
-                            /^[A-D]\.\s*/,
-                            '',
-                          )}
-                        </strong>
-                      </button>
-                    )
-                  },
-                )}
-              </div>
+                  <h3>{question.prompt}</h3>
 
-              {submitted && (
-                <div className="forced-quiz-card__explanation">
-                  <span>Giải thích</span>
+                  <div className="forced-quiz-card__options">
+                    {question.options.map(
+                      (option, optionIndex) => {
+                        const selected =
+                          answer === optionIndex
 
-                  <p>
-                    {question.explanation}
-                  </p>
-                </div>
-              )}
-            </article>
-          ))}
+                        const correct =
+                          submitted &&
+                          optionIndex ===
+                            question.answer
+
+                        const wrong =
+                          submitted &&
+                          selected &&
+                          !correct
+
+                        return (
+                          <button
+                            key={option}
+                            type="button"
+                            disabled={submitted}
+                            aria-pressed={selected}
+                            className={[
+                              selected
+                                ? 'is-selected'
+                                : '',
+                              correct
+                                ? 'is-correct'
+                                : '',
+                              wrong
+                                ? 'is-wrong'
+                                : '',
+                              submitted &&
+                              !correct &&
+                              !wrong
+                                ? 'is-muted'
+                                : '',
+                            ]
+                              .filter(Boolean)
+                              .join(' ')}
+                            onClick={() => {
+                              setAnswers(
+                                (current) => ({
+                                  ...current,
+                                  [questionIndex]:
+                                    optionIndex,
+                                }),
+                              )
+                            }}
+                          >
+                            <span>
+                              {String.fromCharCode(
+                                65 + optionIndex,
+                              )}
+                            </span>
+
+                            <strong>
+                              {option.replace(
+                                /^[A-D]\.\s*/,
+                                '',
+                              )}
+                            </strong>
+                          </button>
+                        )
+                      },
+                    )}
+                  </div>
+
+                  {submitted && (
+                    <div className="forced-quiz-card__explanation">
+                      <span>Giải thích</span>
+
+                      <p>
+                        {question.explanation}
+                      </p>
+                    </div>
+                  )}
+                </article>
+              )
+            },
+          )}
         </div>
 
         {submitted && (
-          <section className="forced-quiz__result">
+          <section
+            className="forced-quiz__result"
+            aria-live="polite"
+          >
             <div>
               <span>Kết quả</span>
 
@@ -184,9 +220,9 @@ export default function QuizPage() {
             </div>
 
             <p>
-              Đối chiếu lại điều kiện cộng hưởng
-              và chu kì riêng của con lắc đơn
-              nếu câu trả lời chưa chính xác.
+              {score === questions.length
+                ? 'Bạn đã trả lời chính xác cả hai câu hỏi.'
+                : 'Hãy đối chiếu phần giải thích để củng cố kiến thức về cộng hưởng.'}
             </p>
           </section>
         )}
@@ -203,6 +239,7 @@ export default function QuizPage() {
           {!submitted ? (
             <button
               type="button"
+              disabled={!allAnswered}
               className="experiment-lab-button experiment-lab-button--primary"
               onClick={() => {
                 setSubmitted(true)

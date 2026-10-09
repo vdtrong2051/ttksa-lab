@@ -1,5 +1,12 @@
 
 import {
+  lazy,
+  Suspense,
+  useEffect,
+  useState,
+} from 'react'
+
+import {
   Outlet,
   useLocation,
 } from 'react-router'
@@ -29,15 +36,26 @@ import {
   forcedResonancePhases,
 } from './model/data'
 
-import LegacyExperimentBridge from './simulation/LegacyExperimentBridge'
+import {
+  useResonanceController,
+} from './simulation/useResonanceController'
 
 import './styles.css'
+
+
+// Không tải module WebGL cho tới lúc runtime
+// thực sự được React mount.
+const ForcedResonanceRuntime = lazy(
+  () =>
+    import(
+      './simulation/ForcedResonanceRuntime'
+    ),
+)
 
 
 export default function ForcedResonanceSessionLayout() {
   const location = useLocation()
 
-  // URL là nguồn xác định phase hiện tại.
   const activePhase =
     getExperimentPhaseFromPathname(
       location.pathname,
@@ -52,10 +70,65 @@ export default function ForcedResonanceSessionLayout() {
   const isPractice =
     activePhase === 'practice'
 
+  /*
+   * Controller sống trong SessionLayout.
+   * Đổi phase không tạo lại controller.
+   */
+  const controller =
+    useResonanceController(isPractice)
+
+  /*
+   * LAZY MOUNT
+   *
+   * Intro: không khởi tạo runtime.
+   * Preparation: warm-up sau 180ms.
+   * Practice: mount ngay nếu mở trực tiếp.
+   *
+   * KEEP-ALIVE
+   *
+   * Khi đã mount, không trả lại false.
+   */
+  const [
+    runtimeMounted,
+    setRuntimeMounted,
+  ] = useState(
+    () => activePhase === 'practice',
+  )
+
+  useEffect(() => {
+    if (runtimeMounted) {
+      return
+    }
+
+    if (
+      activePhase !== 'preparation' &&
+      activePhase !== 'practice'
+    ) {
+      return
+    }
+
+    const delay =
+      activePhase === 'preparation'
+        ? 180
+        : 0
+
+    const timer = window.setTimeout(
+      () => {
+        setRuntimeMounted(true)
+      },
+      delay,
+    )
+
+    return () => {
+      window.clearTimeout(timer)
+    }
+  }, [activePhase, runtimeMounted])
+
   return (
     <ForcedResonanceSessionContext.Provider
       value={{
         navigation,
+        controller,
       }}
     >
       <ExperimentShell
@@ -65,29 +138,34 @@ export default function ForcedResonanceSessionLayout() {
           experimentSlug={
             forcedResonanceMeta.slug
           }
-          phases={
-            forcedResonancePhases
-          }
+          phases={forcedResonancePhases}
           activePhase={activePhase}
           ariaLabel="Điều hướng thí nghiệm dao động cưỡng bức và cộng hưởng"
           isPractice={isPractice}
           persistentRuntime={
-            <SimulationErrorBoundary>
-              <ExperimentRuntimeHost
-                active={isPractice}
-              >
+            <ExperimentRuntimeHost
+              mounted={runtimeMounted}
+              active={isPractice}
+            >
+              <SimulationErrorBoundary>
                 <div className="forced-resonance-runtime">
-                  <LegacyExperimentBridge
-                    onPrev={
-                      navigation.previous
+                  <Suspense
+                    fallback={
+                      <div
+                        className="experiment-loading"
+                        role="status"
+                      >
+                        Đang chuẩn bị mô phỏng 3D...
+                      </div>
                     }
-                    onNext={
-                      navigation.next
-                    }
-                  />
+                  >
+                    <ForcedResonanceRuntime
+                      controller={controller}
+                    />
+                  </Suspense>
                 </div>
-              </ExperimentRuntimeHost>
-            </SimulationErrorBoundary>
+              </SimulationErrorBoundary>
+            </ExperimentRuntimeHost>
           }
         >
           <Outlet />
