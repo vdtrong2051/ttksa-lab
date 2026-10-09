@@ -261,7 +261,7 @@ export default function Header() {
             =================================================== */}
 
         <nav
-          className="hidden items-center gap-1 md:flex"
+          className="hidden items-center gap-1 lg:flex"
           aria-label="Điều hướng chính"
         >
           <NavLink
@@ -572,7 +572,7 @@ export default function Header() {
             Đăng ký
           </Link>
         </div> */}
-        <div className="hidden items-center md:flex">
+        <div className="hidden items-center lg:flex">
           <Link
             to="/experiments/11"
             onClick={closeDropdown}
@@ -656,7 +656,7 @@ export default function Header() {
             'focus-visible:ring-2',
             'focus-visible:ring-slate-400/30',
 
-            'md:hidden',
+            'lg:hidden',
           ].join(' ')}
         >
           <AppIcon
@@ -687,7 +687,7 @@ export default function Header() {
 
             'backdrop-blur-xl',
 
-            'md:hidden',
+            'lg:hidden',
           ].join(' ')}
         >
           <div className="page-container py-4">

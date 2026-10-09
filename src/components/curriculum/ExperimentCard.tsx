@@ -238,14 +238,7 @@ export default function ExperimentCard({
                  * Mobile:
                  * luôn hiển thị.
                  */
-                'md:translate-x-2',
-                'md:opacity-0',
-
-                'md:group-hover:translate-x-0',
-                'md:group-hover:opacity-100',
-
-                'md:group-focus-within:translate-x-0',
-                'md:group-focus-within:opacity-100',
+                
               ].join(' ')}
             >
               <span>
