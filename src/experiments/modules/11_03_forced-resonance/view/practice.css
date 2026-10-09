@@ -1,0 +1,778 @@
+
+/* =====================================================
+   TN3 — PRACTICE UI
+   Layout reference: TN1 / TN2
+   Scope: PracticePage only
+   ===================================================== */
+
+.forced-practice {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+
+  overflow: hidden;
+
+  color: var(--lab-text);
+  pointer-events: none;
+}
+
+/* =====================================================
+   TOP HINT
+   ===================================================== */
+
+.forced-practice__hint {
+  position: absolute;
+  z-index: 20;
+  top: 12px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: max-content;
+  max-width: min(460px, calc(100% - 440px));
+
+  padding: 9px 14px;
+
+  color: #cbd5e1;
+  background: rgba(7, 15, 28, 0.88);
+
+  border: 1px solid var(--lab-border);
+  border-radius: 999px;
+
+  box-shadow: var(--lab-shadow);
+
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.5;
+  text-align: center;
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* =====================================================
+   RIGHT TOOLBAR
+   ===================================================== */
+
+.forced-practice__toolbar {
+  position: absolute;
+  z-index: 40;
+  top: 16px;
+  right: 16px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  width: 48px;
+  padding: 6px;
+
+  color: var(--lab-text);
+
+  background: rgba(7, 15, 28, 0.94);
+  border: 1px solid var(--lab-border-strong);
+  border-radius: 16px;
+
+  box-shadow: 0 16px 42px rgba(2, 6, 23, 0.32);
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  pointer-events: auto;
+}
+
+.forced-practice-tool {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+
+  width: 34px;
+  height: 36px;
+  padding: 0;
+
+  color: var(--lab-text-muted);
+  background: transparent;
+
+  border: 1px solid transparent;
+  border-radius: 9px;
+
+  cursor: pointer;
+  transition:
+    color 150ms ease,
+    background 150ms ease,
+    border-color 150ms ease;
+}
+
+.forced-practice-tool:hover {
+  color: var(--lab-text);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.forced-practice-tool--active {
+  color: var(--lab-accent);
+  background: var(--lab-accent-soft);
+  border-color: var(--lab-accent-border);
+}
+
+.forced-practice-tool--active:hover {
+  color: var(--lab-accent);
+  background: var(--lab-accent-soft);
+}
+
+.forced-practice-tool:focus-visible {
+  outline: 2px solid var(--lab-accent);
+  outline-offset: 2px;
+}
+
+.forced-practice__toolbar-divider {
+  height: 1px;
+  margin: 3px 2px;
+
+  background: var(--lab-border-strong);
+}
+
+/* =====================================================
+   FLOATING PANEL
+   ===================================================== */
+
+.forced-practice__panel {
+  position: absolute;
+  z-index: 30;
+  top: 16px;
+  right: 76px;
+
+  width: 310px;
+  max-width: calc(100% - 100px);
+  max-height: calc(100% - 92px);
+
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  padding: 16px;
+
+  color: var(--lab-text);
+  background: rgba(7, 15, 28, 0.94);
+
+  border: 1px solid var(--lab-border-strong);
+  border-radius: 18px;
+
+  box-shadow: 0 18px 50px rgba(2, 6, 23, 0.38);
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color:
+    rgba(148, 163, 184, 0.35)
+    transparent;
+
+  pointer-events: auto;
+}
+
+.forced-practice__panel-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.forced-practice__panel-header > div {
+  min-width: 0;
+}
+
+.forced-practice__panel-header span {
+  color: var(--lab-accent);
+
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.forced-practice__panel-header h3 {
+  margin: 5px 0 0;
+
+  color: var(--lab-text);
+  font-size: 15px;
+  font-weight: 750;
+  line-height: 1.4;
+}
+
+.forced-practice__close {
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+
+  width: 32px;
+  height: 32px;
+
+  color: var(--lab-text-muted);
+  background: rgba(255, 255, 255, 0.045);
+
+  border: 1px solid var(--lab-border);
+  border-radius: 9px;
+
+  cursor: pointer;
+}
+
+.forced-practice__close:hover {
+  color: var(--lab-text);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.forced-practice__close:focus-visible {
+  outline: 2px solid var(--lab-accent);
+  outline-offset: 2px;
+}
+
+/* =====================================================
+   PLAY / PAUSE / RESET
+   ===================================================== */
+
+.forced-practice__run-actions {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 8px;
+
+  margin: 18px 0 22px;
+}
+
+.forced-practice__run-button,
+.forced-practice__reset-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+
+  min-height: 44px;
+  padding: 9px 11px;
+
+  border-radius: 10px;
+
+  font: inherit;
+  font-size: 12px;
+  font-weight: 750;
+
+  cursor: pointer;
+  transition:
+    background 150ms ease,
+    border-color 150ms ease;
+}
+
+.forced-practice__run-button {
+  color: var(--lab-bg);
+  background: var(--lab-accent);
+  border: 1px solid var(--lab-accent);
+}
+
+.forced-practice__run-button:hover {
+  background:
+    color-mix(
+      in srgb,
+      var(--lab-accent) 88%,
+      white
+    );
+}
+
+.forced-practice__reset-button {
+  color: var(--lab-text-soft);
+  background: rgba(255, 255, 255, 0.05);
+
+  border: 1px solid var(--lab-border-strong);
+}
+
+.forced-practice__reset-button:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.forced-practice__run-button:focus-visible,
+.forced-practice__reset-button:focus-visible {
+  outline: 2px solid var(--lab-accent);
+  outline-offset: 2px;
+}
+
+/* =====================================================
+   PENDULUM SETTINGS
+   ===================================================== */
+
+.forced-practice__section-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+
+  padding-top: 15px;
+  border-top: 1px solid var(--lab-border);
+}
+
+.forced-practice__section-title strong {
+  font-size: 12px;
+  color: var(--lab-text);
+}
+
+.forced-practice__section-title small {
+  font-size: 10px;
+  color: var(--lab-text-muted);
+}
+
+.forced-practice__notice {
+  margin: 12px 0 0;
+  padding: 10px;
+
+  color: #fdba74;
+  background: rgba(251, 146, 60, 0.08);
+
+  border: 1px solid rgba(251, 146, 60, 0.14);
+  border-radius: 9px;
+
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.forced-practice__pendulum-list {
+  display: grid;
+  gap: 0;
+  margin-top: 12px;
+}
+
+.forced-practice-pendulum {
+  padding: 14px 0;
+
+  border-bottom: 1px solid var(--lab-border);
+}
+
+.forced-practice-pendulum:last-child {
+  border-bottom: 0;
+}
+
+.forced-practice-pendulum__header {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  margin-bottom: 13px;
+}
+
+.forced-practice-pendulum__color {
+  display: inline-block;
+  flex: 0 0 auto;
+
+  width: 11px;
+  height: 11px;
+
+  border-radius: 50%;
+}
+
+.forced-practice-pendulum__header > div {
+  display: grid;
+  gap: 2px;
+}
+
+.forced-practice-pendulum__header strong {
+  color: var(--lab-text);
+  font-size: 12px;
+}
+
+.forced-practice-pendulum__header small {
+  color: var(--lab-text-muted);
+  font-size: 10px;
+}
+
+.forced-practice-setting {
+  display: grid;
+  gap: 7px;
+
+  margin: 11px 0;
+}
+
+.forced-practice-setting__label {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+
+  color: var(--lab-text-muted);
+  font-size: 11px;
+}
+
+.forced-practice-setting__label strong {
+  color: var(--lab-text);
+  font-variant-numeric: tabular-nums;
+}
+
+.forced-practice-setting input[type="range"] {
+  display: block;
+
+  width: 100%;
+  min-height: 24px;
+
+  accent-color: var(--lab-accent);
+
+  cursor: pointer;
+  touch-action: pan-y;
+}
+
+.forced-practice-setting input:disabled {
+  opacity: 0.38;
+  cursor: not-allowed;
+}
+
+/* =====================================================
+   OBSERVATION PANEL
+   ===================================================== */
+
+.forced-practice__observation {
+  display: grid;
+  gap: 12px;
+
+  margin-top: 17px;
+}
+
+.forced-practice__observation-card {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+
+  padding: 13px;
+
+  background: rgba(255, 255, 255, 0.035);
+  border: 1px solid var(--lab-border);
+  border-radius: 10px;
+}
+
+.forced-practice__observation-card > span {
+  color: var(--lab-text-muted);
+  font-size: 11px;
+}
+
+.forced-practice__observation-card > strong {
+  color: var(--lab-text);
+  font-size: 17px;
+  font-variant-numeric: tabular-nums;
+}
+
+.forced-practice__accent {
+  color: var(--lab-accent) !important;
+}
+
+.forced-practice__observation h4 {
+  margin: 8px 0 0;
+
+  color: var(--lab-text-soft);
+  font-size: 12px;
+}
+
+.forced-practice__legend {
+  display: grid;
+  gap: 9px;
+}
+
+.forced-practice__legend > div {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  color: var(--lab-text-soft);
+  font-size: 12px;
+}
+
+.forced-practice__legend strong {
+  min-width: 28px;
+}
+
+.forced-practice__legend small {
+  margin-left: auto;
+
+  color: var(--lab-text-muted);
+  font-size: 11px;
+}
+
+.forced-practice__steps {
+  display: grid;
+  gap: 10px;
+
+  margin: 0;
+  padding-left: 19px;
+
+  color: var(--lab-text-soft);
+
+  font-size: 11px;
+  line-height: 1.65;
+}
+
+.forced-practice__note {
+  margin: 3px 0 0;
+  padding: 12px;
+
+  color: var(--lab-text-muted);
+  background: var(--lab-accent-soft);
+  border: 1px solid var(--lab-accent-border);
+  border-radius: 10px;
+
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+/* =====================================================
+   BOTTOM LAB DOCK
+   ===================================================== */
+
+.forced-practice__dock {
+  position: absolute;
+  z-index: 50;
+  bottom: 14px;
+  left: 50%;
+
+  display: flex;
+  align-items: stretch;
+
+  width: max-content;
+  max-width: calc(100% - 96px);
+
+  transform: translateX(-50%);
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  color: var(--lab-text);
+
+  background: rgba(7, 15, 28, 0.94);
+  border: 1px solid var(--lab-border-strong);
+  border-radius: 15px;
+
+  box-shadow: 0 16px 42px rgba(2, 6, 23, 0.35);
+
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  scrollbar-width: none;
+  pointer-events: auto;
+}
+
+.forced-practice__dock::-webkit-scrollbar {
+  display: none;
+}
+
+.forced-practice-dock__back,
+.forced-practice-dock__next {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  flex: 0 0 auto;
+  min-height: 49px;
+  min-width: 95px;
+
+  padding: 9px 14px;
+
+  border: 0;
+
+  font: inherit;
+  font-size: 11px;
+  font-weight: 750;
+
+  cursor: pointer;
+}
+
+.forced-practice-dock__back {
+  color: var(--lab-text-muted);
+  background: transparent;
+  border-right: 1px solid var(--lab-border);
+}
+
+.forced-practice-dock__back:hover {
+  color: var(--lab-text);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.forced-practice-dock__next {
+  color: var(--lab-accent);
+  background: var(--lab-accent-soft);
+  border-left: 1px solid var(--lab-accent-border);
+}
+
+.forced-practice-dock__next:hover {
+  color: var(--lab-bg);
+  background: var(--lab-accent);
+}
+
+.forced-practice-dock__metric {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 3px;
+
+  flex: 0 0 auto;
+  min-width: 100px;
+
+  padding: 7px 14px;
+  border-right: 1px solid var(--lab-border);
+}
+
+.forced-practice-dock__metric > span {
+  color: var(--lab-text-muted);
+  font-size: 10px;
+}
+
+.forced-practice-dock__metric > strong {
+  color: var(--lab-text);
+  font-size: 12px;
+  font-weight: 750;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+
+.forced-practice-dock__value--active {
+  color: var(--lab-accent) !important;
+}
+
+.forced-practice-dock__back:focus-visible,
+.forced-practice-dock__next:focus-visible {
+  outline: 2px solid var(--lab-accent);
+  outline-offset: -3px;
+}
+
+/* =====================================================
+   RESPONSIVE — TABLET
+   ===================================================== */
+
+@media (max-width: 1100px) {
+  .forced-practice__hint {
+    left: 12px;
+    transform: none;
+
+    max-width: calc(100% - 430px);
+  }
+
+  .forced-practice--panel-open
+  .forced-practice__hint {
+    display: none;
+  }
+}
+
+/* =====================================================
+   RESPONSIVE — MOBILE
+   ===================================================== */
+
+@media (max-width: 767px) {
+  .forced-practice__toolbar {
+    top: 9px;
+    right: 9px;
+  }
+
+  .forced-practice__panel {
+    top: 9px;
+    left: 10px;
+    right: 65px;
+
+    width: auto;
+    max-width: none;
+    max-height: calc(100% - 85px);
+
+    padding: 13px;
+    border-radius: 13px;
+  }
+
+  .forced-practice__hint {
+    top: 12px;
+    left: 10px;
+    right: 65px;
+
+    width: auto;
+    max-width: none;
+    transform: none;
+
+    padding: 8px 10px;
+    font-size: 10px;
+  }
+
+  .forced-practice__dock {
+    left: 9px;
+    right: 65px;
+    bottom: 9px;
+
+    width: auto;
+    max-width: none;
+
+    transform: none;
+  }
+
+  .forced-practice-dock__back,
+  .forced-practice-dock__next {
+    min-width: 82px;
+    min-height: 43px;
+
+    padding: 7px 11px;
+    font-size: 10px;
+  }
+
+  .forced-practice-dock__metric {
+    min-width: 85px;
+    padding: 6px 10px;
+  }
+
+  .forced-practice-dock__metric > span {
+    font-size: 9px;
+  }
+
+  .forced-practice-dock__metric > strong {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .forced-practice-dock__metric--optional {
+    display: none;
+  }
+
+  .forced-practice__run-actions {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  .forced-practice__reset-button {
+    padding-inline: 9px;
+  }
+
+  .forced-practice__reset-button span {
+    display: none;
+  }
+}
+
+/* =====================================================
+   SHORT VIEWPORT
+   ===================================================== */
+
+@media (max-height: 520px) {
+  .forced-practice__toolbar {
+    top: 7px;
+  }
+
+  .forced-practice__panel {
+    top: 7px;
+    max-height: calc(100% - 67px);
+  }
+
+  .forced-practice__hint {
+    top: 7px;
+  }
+
+  .forced-practice__dock {
+    bottom: 7px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .forced-practice button {
+    transition: none;
+  }
+}
