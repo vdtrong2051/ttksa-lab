@@ -1,3 +1,5 @@
+import type { RouteObject } from 'react-router'
+
 import type {
   ExperimentAccent,
   GradeLevel,
@@ -111,4 +113,34 @@ export interface ExperimentNavigation {
    */
   legacy:
     LegacyExperimentNavigationCallbacks
+}
+
+
+/**
+ * Cách module được triển khai.
+ *
+ * native: module viết theo kiến trúc hiện tại
+ * legacy: module tích hợp từ code cũ
+ */
+export type ExperimentImplementation =
+  | 'native'
+  | 'legacy'
+
+/**
+ * Chuẩn đăng ký module thí nghiệm.
+ *
+ * Mỗi module phải cung cấp metadata,
+ * danh sách phase, routes và loại triển khai.
+ */
+export interface ExperimentModuleRegistration {
+  readonly meta: ExperimentModuleMeta
+
+  readonly phases:
+    readonly ExperimentPhaseDefinition[]
+
+  readonly routes:
+    readonly RouteObject[]
+
+  readonly implementation:
+    ExperimentImplementation
 }
