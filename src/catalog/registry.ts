@@ -4,6 +4,9 @@ import type {
   GradeLevel,
 } from './types'
 
+import {
+  getExperimentRuntimePath,
+} from '../experiments/registry'
 
 export const curriculum: GradeCurriculum[] = [
   // =========================================================
@@ -55,9 +58,6 @@ export const curriculum: GradeCurriculum[] = [
             status: 'ready',
 
             accent: 'amber',
-
-            runtimePath:
-              '/lab/harmonic-motion/intro',
           },
 
           {
@@ -77,9 +77,6 @@ export const curriculum: GradeCurriculum[] = [
             status: 'ready',
 
             accent: 'rose',
-
-            runtimePath:
-              '/lab/damped-oscillation/intro',
           },
 
           {
@@ -99,9 +96,6 @@ export const curriculum: GradeCurriculum[] = [
             status: 'ready',
 
             accent: 'orange',
-
-            runtimePath:
-              '/lab/forced-resonance/intro',
           },
  
           {
@@ -119,9 +113,6 @@ export const curriculum: GradeCurriculum[] = [
             status: 'ready',
 
             accent: 'rose',
-
-            // Chỉ bật khi cả sáu phase đã hoàn chỉnh.
-            runtimePath: '/lab/seismograph/intro',
           },
 
         ],
@@ -352,9 +343,6 @@ export const curriculum: GradeCurriculum[] = [
 
             accent:
               'sky',
-
-            runtimePath:
-              '/lab/boyle/intro',
           },
 
           {
@@ -602,7 +590,10 @@ export const curriculum: GradeCurriculum[] = [
 export function getExperimentAvailability(
   experiment: Experiment,
 ): 'live' | 'integrating' | 'planned' {
-  if (experiment.runtimePath?.trim()) {
+  const runtimePath =
+    getExperimentRuntimePath(experiment.slug)
+
+  if (runtimePath) {
     return 'live'
   }
 
@@ -612,6 +603,7 @@ export function getExperimentAvailability(
 
   return 'planned'
 }
+
 
 export function getGradeCurriculum(
   grade: GradeLevel,

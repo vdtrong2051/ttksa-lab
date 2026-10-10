@@ -17,6 +17,10 @@ import {
   getExperimentAvailability,
 } from '../../catalog/registry'
 
+import {
+  getExperimentRuntimePath,
+} from '../../experiments/registry'
+
 interface ExperimentCardProps {
   grade: GradeLevel
   chapterSlug: string
@@ -42,10 +46,10 @@ export default function ExperimentCard({
   const isLive =
     availability === 'live'
 
+  
   const experimentUrl =
-    experiment.runtimePath ??
+    getExperimentRuntimePath(experiment.slug) ??
     `/experiments/${grade}/${chapterSlug}/${experiment.slug}`
-
 
   return (
     <article

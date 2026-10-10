@@ -43,8 +43,6 @@ export interface Experiment {
   description: string
   status: ExperimentStatus
   accent: ExperimentAccent
-
-  runtimePath?: string
 }
 
 export interface Chapter {

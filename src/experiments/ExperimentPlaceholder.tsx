@@ -19,6 +19,10 @@ import {
   chapterThemeClasses,
 } from '../components/curriculum/theme'
 
+import {
+  getExperimentRuntimePath,
+} from './registry'
+
 import AppIcon from '../components/ui/AppIcon'
 import PageContainer from '../components/ui/PageContainer'
 
@@ -179,18 +183,17 @@ export default function ExperimentPlaceholder() {
   const isIntegrating =
     availability === 'integrating'
 
+  const runtimePath =
+    getExperimentRuntimePath(experiment.slug)
 
-  if (
-    experiment.runtimePath?.trim()
-  ) {
+  if (runtimePath) {
     return (
       <Navigate
-        to={experiment.runtimePath}
+        to={runtimePath}
         replace
       />
     )
   }
-
 
   const theme =
     chapterThemeClasses[
