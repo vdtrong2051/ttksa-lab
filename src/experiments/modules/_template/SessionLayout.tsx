@@ -1,6 +1,5 @@
 import {
   Outlet,
-  useLocation,
 } from 'react-router'
 
 import ExperimentRuntimeHost from '../../core/ExperimentRuntimeHost'
@@ -8,12 +7,7 @@ import ExperimentShell from '../../core/ExperimentShell'
 import ExperimentViewShell from '../../core/ExperimentViewShell'
 
 import {
-  getExperimentPhaseFromPathname,
-  initialExperimentPhase,
-} from '../../core/routing'
-
-import {
-  useExperimentNavigation,
+  useExperimentSessionRoute,
 } from '../../core/navigation'
 
 import TemplateRuntimeDemo from './components/TemplateRuntimeDemo'
@@ -34,38 +28,19 @@ import {
 import './styles.css'
 
 export default function TemplateSessionLayout() {
-  const location =
-    useLocation()
-
-
-  const activePhase =
-    getExperimentPhaseFromPathname(
-      location.pathname,
-    ) ??
-    initialExperimentPhase
-
-
   /*
    * Controller được tạo tại SessionLayout.
    *
    * Child route đổi nhưng SessionLayout
    * vẫn mount => state controller còn nguyên.
    */
-  const controller =
-    useTemplateController()
+  const {
+    activePhase,
+    isPractice,
+    navigation,
+  } = useExperimentSessionRoute(templateMeta.slug)
 
-
-  const navigation =
-    useExperimentNavigation(
-      templateMeta.slug,
-      activePhase,
-    )
-
-
-  const isPractice =
-    activePhase ===
-    'practice'
-
+  const controller = useTemplateController()
 
   return (
     <TemplateSessionContext.Provider

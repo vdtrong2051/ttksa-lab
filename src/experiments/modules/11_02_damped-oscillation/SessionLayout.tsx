@@ -1,6 +1,5 @@
 import {
   Outlet,
-  useLocation,
 } from 'react-router'
 
 import ExperimentRuntimeHost from '../../core/ExperimentRuntimeHost'
@@ -8,13 +7,8 @@ import ExperimentShell from '../../core/ExperimentShell'
 import ExperimentViewShell from '../../core/ExperimentViewShell'
 
 import {
-  useExperimentNavigation,
+  useExperimentSessionRoute,
 } from '../../core/navigation'
-
-import {
-  getExperimentPhaseFromPathname,
-  initialExperimentPhase,
-} from '../../core/routing'
 
 import {
   DampedOscillationSessionContext,
@@ -32,25 +26,13 @@ import './styles.css'
 
 
 export default function DampedOscillationSessionLayout() {
-  const location =
-    useLocation()
-
-  const activePhase =
-    getExperimentPhaseFromPathname(
-      location.pathname,
-    ) ??
-    initialExperimentPhase
-
-  const navigation =
-    useExperimentNavigation(
-      dampedOscillationMeta.slug,
-      activePhase,
-    )
-
-  const isPractice =
-    activePhase ===
-    'practice'
-
+  const {
+    activePhase,
+    isPractice,
+    navigation,
+  } = useExperimentSessionRoute(
+    dampedOscillationMeta.slug,
+  )
 
   return (
     <DampedOscillationSessionContext.Provider

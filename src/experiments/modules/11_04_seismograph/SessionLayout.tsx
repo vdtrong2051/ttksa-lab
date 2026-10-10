@@ -8,7 +8,6 @@ import {
 
 import {
   Outlet,
-  useLocation,
 } from 'react-router'
 
 import 'katex/dist/katex.min.css'
@@ -19,13 +18,8 @@ import ExperimentRuntimeHost from '../../core/ExperimentRuntimeHost'
 import SimulationErrorBoundary from '../../core/SimulationErrorBoundary'
 
 import {
-  useExperimentNavigation,
+  useExperimentSessionRoute,
 } from '../../core/navigation'
-
-import {
-  getExperimentPhaseFromPathname,
-  initialExperimentPhase,
-} from '../../core/routing'
 
 import {
   SeismographSessionContext,
@@ -49,21 +43,13 @@ const SeismographRuntime = lazy(
 
 
 export default function SeismographSessionLayout() {
-  const location = useLocation()
-
-  const activePhase =
-    getExperimentPhaseFromPathname(
-      location.pathname,
-    ) ?? initialExperimentPhase
-
-  const navigation =
-    useExperimentNavigation(
-      seismographMeta.slug,
-      activePhase,
-    )
-
-  const isPractice =
-    activePhase === 'practice'
+  const {
+    activePhase,
+    isPractice,
+    navigation,
+  } = useExperimentSessionRoute(
+    seismographMeta.slug,
+  )
 
   const controller =
     useSeismographController(isPractice)

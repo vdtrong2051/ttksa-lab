@@ -5,7 +5,6 @@ import {
 
 import {
   Outlet,
-  useLocation,
 } from 'react-router'
 
 import 'katex/dist/katex.min.css'
@@ -16,13 +15,8 @@ import ExperimentViewShell from '../../core/ExperimentViewShell'
 import SimulationErrorBoundary from '../../core/SimulationErrorBoundary'
 
 import {
-  useExperimentNavigation,
+  useExperimentSessionRoute,
 } from '../../core/navigation'
-
-import {
-  getExperimentPhaseFromPathname,
-  initialExperimentPhase,
-} from '../../core/routing'
 
 import {
   HarmonicMotionSessionContext,
@@ -39,24 +33,13 @@ import './styles.css'
 
 
 export default function HarmonicMotionSessionLayout() {
-  const location =
-    useLocation()
-
-  const activePhase =
-    getExperimentPhaseFromPathname(
-      location.pathname,
-    ) ??
-    initialExperimentPhase
-
-  const navigation =
-    useExperimentNavigation(
-      harmonicMotionMeta.slug,
-      activePhase,
-    )
-
-  const isPractice =
-    activePhase ===
-    'practice'
+  const {
+    activePhase,
+    isPractice,
+    navigation,
+  } = useExperimentSessionRoute(
+    harmonicMotionMeta.slug,
+  )
 
   const [
     runtimeMounted,

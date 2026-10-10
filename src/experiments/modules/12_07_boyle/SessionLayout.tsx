@@ -5,7 +5,6 @@ import {
 
 import {
   Outlet,
-  useLocation,
 } from 'react-router'
 
 import ExperimentRuntimeHost from '../../core/ExperimentRuntimeHost'
@@ -14,13 +13,8 @@ import ExperimentViewShell from '../../core/ExperimentViewShell'
 import SimulationErrorBoundary from '../../core/SimulationErrorBoundary'
 
 import {
-  useExperimentNavigation,
+  useExperimentSessionRoute,
 } from '../../core/navigation'
-
-import {
-  getExperimentPhaseFromPathname,
-  initialExperimentPhase,
-} from '../../core/routing'
 
 import {
   BoyleSessionContext,
@@ -45,28 +39,13 @@ import './styles.css'
 
 
 export default function BoyleSessionLayout() {
-  const location =
-    useLocation()
+  const {
+    activePhase,
+    isPractice,
+    navigation,
+  } = useExperimentSessionRoute(boyleMeta.slug)
 
-  const activePhase =
-    getExperimentPhaseFromPathname(
-      location.pathname,
-    ) ??
-    initialExperimentPhase
-
-  const controller =
-    useBoyleController()
-
-  const navigation =
-    useExperimentNavigation(
-      boyleMeta.slug,
-      activePhase,
-    )
-
-  const isPractice =
-    activePhase ===
-    'practice'
-
+  const controller = useBoyleController()
 
   const [runtimeMounted, setRuntimeMounted] =
     useState(

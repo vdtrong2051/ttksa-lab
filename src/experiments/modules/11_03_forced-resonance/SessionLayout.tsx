@@ -8,7 +8,6 @@ import {
 
 import {
   Outlet,
-  useLocation,
 } from 'react-router'
 
 import 'katex/dist/katex.min.css'
@@ -19,13 +18,8 @@ import ExperimentViewShell from '../../core/ExperimentViewShell'
 import SimulationErrorBoundary from '../../core/SimulationErrorBoundary'
 
 import {
-  useExperimentNavigation,
+  useExperimentSessionRoute,
 } from '../../core/navigation'
-
-import {
-  getExperimentPhaseFromPathname,
-  initialExperimentPhase,
-} from '../../core/routing'
 
 import {
   ForcedResonanceSessionContext,
@@ -54,21 +48,13 @@ const ForcedResonanceRuntime = lazy(
 
 
 export default function ForcedResonanceSessionLayout() {
-  const location = useLocation()
-
-  const activePhase =
-    getExperimentPhaseFromPathname(
-      location.pathname,
-    ) ?? initialExperimentPhase
-
-  const navigation =
-    useExperimentNavigation(
-      forcedResonanceMeta.slug,
-      activePhase,
-    )
-
-  const isPractice =
-    activePhase === 'practice'
+  const {
+    activePhase,
+    isPractice,
+    navigation,
+  } = useExperimentSessionRoute(
+    forcedResonanceMeta.slug,
+  )
 
   /*
    * Controller sống trong SessionLayout.

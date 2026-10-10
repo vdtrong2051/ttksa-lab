@@ -1,10 +1,13 @@
 import {
+  useLocation,
   useNavigate,
 } from 'react-router'
 
 import {
   getAdjacentExperimentPhase,
+  getExperimentPhaseFromPathname,
   getExperimentPhasePath,
+  initialExperimentPhase,
 } from './routing'
 
 import type {
@@ -165,5 +168,37 @@ export function useExperimentNavigation(
       onComplete:
         next,
     },
+  }
+}
+
+/**
+ * Điều hướng và trạng thái route của một phiên thí nghiệm.
+ *
+ * URL là nguồn xác định phase hiện tại.
+ * Không tạo thêm React state.
+ */
+export function useExperimentSessionRoute(
+  experimentSlug: string,
+) {
+  const location = useLocation()
+
+  const activePhase =
+    getExperimentPhaseFromPathname(
+      location.pathname,
+    ) ?? initialExperimentPhase
+
+  const navigation =
+    useExperimentNavigation(
+      experimentSlug,
+      activePhase,
+    )
+
+  const isPractice =
+    activePhase === 'practice'
+
+  return {
+    activePhase,
+    isPractice,
+    navigation,
   }
 }
