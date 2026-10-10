@@ -32,7 +32,7 @@ export const templateMeta:
       'khi-li-tuong',
 
     topic:
-      'Khung chuẩn GĐ2',
+      'Mẫu kiến trúc thí nghiệm',
 
     title:
       'Thí nghiệm mẫu',

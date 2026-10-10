@@ -10,9 +10,12 @@ import {
   useTemplateSession,
 } from '../context'
 
+import {
+  templateRuntimeConfig,
+} from '../model/data'
 
 const TARGET_MEASUREMENT_COUNT =
-  3
+  templateRuntimeConfig.targetMeasurementCount
 
 
 type PracticeFeedback =
