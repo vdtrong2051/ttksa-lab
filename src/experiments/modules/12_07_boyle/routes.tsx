@@ -1,133 +1,32 @@
-import {
-  Navigate,
-} from 'react-router'
 
-import type {
-  RouteObject,
-} from 'react-router'
+import { createModuleRoutes } from '../../core/createModuleRoutes'
+import { boyleMeta } from './model/data'
 
-import {
-  getExperimentEntryPath,
-} from '../../core/routing'
+const boyleRoutes = createModuleRoutes({
+  slug: boyleMeta.slug,
 
+  sessionLayout: async () =>
+    (await import('./SessionLayout')).default,
 
-const boyleRoutes:
-  RouteObject[] = [
-  {
-    path: 'boyle',
+  pages: {
+    intro: async () =>
+      (await import('./view/IntroPage')).default,
 
-    lazy: {
-      Component:
-        async () =>
-          (
-            await import(
-              './SessionLayout'
-            )
-          ).default,
-    },
+    preparation: async () =>
+      (await import('./view/PreparationPage')).default,
 
-    children: [
-      {
-        index: true,
-        element: (
-          <Navigate
-            to={
-              getExperimentEntryPath(
-                'boyle',
-              )
-            }
-            replace
-          />
-        ),
-      },
-      {
-        path: 'intro',
-        lazy: {
-          Component:
-            async () =>
-              (
-                await import(
-                  './view/IntroPage'
-                )
-              ).default,
-        },
-      },
-      {
-        path: 'preparation',
-        lazy: {
-          Component:
-            async () =>
-              (
-                await import(
-                  './view/PreparationPage'
-                )
-              ).default,
-        },
-      },
-      {
-        path: 'practice',
-        lazy: {
-          Component:
-            async () =>
-              (
-                await import(
-                  './view/PracticePage'
-                )
-              ).default,
-        },
-      },
-      {
-        path: 'conclusion',
-        lazy: {
-          Component:
-            async () =>
-              (
-                await import(
-                  './view/ConclusionPage'
-                )
-              ).default,
-        },
-      },
-      {
-        path: 'quiz',
-        lazy: {
-          Component:
-            async () =>
-              (
-                await import(
-                  './view/QuizPage'
-                )
-              ).default,
-        },
-      },
-      {
-        path: 'report',
-        lazy: {
-          Component:
-            async () =>
-              (
-                await import(
-                  './view/ReportPage'
-                )
-              ).default,
-        },
-      },
-      {
-        path: '*',
-        element: (
-          <Navigate
-            to={
-              getExperimentEntryPath(
-                'boyle',
-              )
-            }
-            replace
-          />
-        ),
-      },
-    ],
+    practice: async () =>
+      (await import('./view/PracticePage')).default,
+
+    conclusion: async () =>
+      (await import('./view/ConclusionPage')).default,
+
+    quiz: async () =>
+      (await import('./view/QuizPage')).default,
+
+    report: async () =>
+      (await import('./view/ReportPage')).default,
   },
-]
-
+})
 
 export default boyleRoutes

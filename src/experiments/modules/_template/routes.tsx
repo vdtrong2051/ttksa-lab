@@ -1,158 +1,39 @@
-import {
-  Navigate,
-} from 'react-router'
-
-import type {
-  RouteObject,
-} from 'react-router'
 
 import {
-  getExperimentEntryPath,
-} from '../../core/routing'
+  createModuleRoutes,
+} from '../../core/createModuleRoutes'
+
+import {
+  templateMeta,
+} from './model/data'
 
 
-const templateRoutes:
-  RouteObject[] =
-  [
-    {
-      path:
-        'template',
+const templateRoutes = createModuleRoutes({
+  slug: templateMeta.slug,
 
-      lazy: {
-        Component:
-          async () =>
-            (
-              await import(
-                './SessionLayout'
-              )
-            ).default,
-      },
+  sessionLayout: async () =>
+    (await import('./SessionLayout')).default,
 
-      children: [
-        {
-          index:
-            true,
+  pages: {
+    intro: async () =>
+      (await import('./view/IntroPage')).default,
 
-          element: (
-            <Navigate
-              to={
-                getExperimentEntryPath(
-                  'template',
-                )
-              }
-              replace
-            />
-          ),
-        },
+    preparation: async () =>
+      (await import('./view/PreparationPage')).default,
 
-        {
-          path:
-            'intro',
+    practice: async () =>
+      (await import('./view/PracticePage')).default,
 
-          lazy: {
-            Component:
-              async () =>
-                (
-                  await import(
-                    './view/IntroPage'
-                  )
-                ).default,
-          },
-        },
+    conclusion: async () =>
+      (await import('./view/ConclusionPage')).default,
 
-        {
-          path:
-            'preparation',
+    quiz: async () =>
+      (await import('./view/QuizPage')).default,
 
-          lazy: {
-            Component:
-              async () =>
-                (
-                  await import(
-                    './view/PreparationPage'
-                  )
-                ).default,
-          },
-        },
-
-        {
-          path:
-            'practice',
-
-          lazy: {
-            Component:
-              async () =>
-                (
-                  await import(
-                    './view/PracticePage'
-                  )
-                ).default,
-          },
-        },
-
-        {
-          path:
-            'conclusion',
-
-          lazy: {
-            Component:
-              async () =>
-                (
-                  await import(
-                    './view/ConclusionPage'
-                  )
-                ).default,
-          },
-        },
-
-        {
-          path:
-            'quiz',
-
-          lazy: {
-            Component:
-              async () =>
-                (
-                  await import(
-                    './view/QuizPage'
-                  )
-                ).default,
-          },
-        },
-
-        {
-          path:
-            'report',
-
-          lazy: {
-            Component:
-              async () =>
-                (
-                  await import(
-                    './view/ReportPage'
-                  )
-                ).default,
-          },
-        },
-
-        {
-          path:
-            '*',
-
-          element: (
-            <Navigate
-              to={
-                getExperimentEntryPath(
-                  'template',
-                )
-              }
-              replace
-            />
-          ),
-        },
-      ],
-    },
-  ]
+    report: async () =>
+      (await import('./view/ReportPage')).default,
+  },
+})
 
 
 export default templateRoutes

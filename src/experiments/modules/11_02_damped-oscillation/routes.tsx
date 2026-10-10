@@ -1,157 +1,32 @@
-import {
-  Navigate,
-} from 'react-router'
 
-import type {
-  RouteObject,
-} from 'react-router'
+import { createModuleRoutes } from '../../core/createModuleRoutes'
+import { dampedOscillationMeta } from './model/data'
 
-import {
-  getExperimentEntryPath,
-} from '../../core/routing'
+const dampedOscillationRoutes = createModuleRoutes({
+  slug: dampedOscillationMeta.slug,
 
+  sessionLayout: async () =>
+    (await import('./SessionLayout')).default,
 
-const dampedOscillationRoutes:
-  RouteObject[] = [
-    {
-      path:
-        'damped-oscillation',
+  pages: {
+    intro: async () =>
+      (await import('./view/IntroPage')).default,
 
-      lazy: {
-        Component:
-          async () =>
-            (
-              await import(
-                './SessionLayout'
-              )
-            ).default,
-      },
+    preparation: async () =>
+      (await import('./view/PreparationPage')).default,
 
-      children: [
-        {
-          index:
-            true,
+    practice: async () =>
+      (await import('./view/PracticePage')).default,
 
-          element: (
-            <Navigate
-              to={
-                getExperimentEntryPath(
-                  'damped-oscillation',
-                )
-              }
-              replace
-            />
-          ),
-        },
+    conclusion: async () =>
+      (await import('./view/ConclusionPage')).default,
 
-        {
-          path:
-            'intro',
+    quiz: async () =>
+      (await import('./view/QuizPage')).default,
 
-          lazy: {
-            Component:
-              async () =>
-                (
-                  await import(
-                    './view/IntroPage'
-                  )
-                ).default,
-          },
-        },
-
-        {
-          path:
-            'preparation',
-
-          lazy: {
-            Component:
-              async () =>
-                (
-                  await import(
-                    './view/PreparationPage'
-                  )
-                ).default,
-          },
-        },
-
-        {
-          path:
-            'practice',
-
-          lazy: {
-            Component:
-              async () =>
-                (
-                  await import(
-                    './view/PracticePage'
-                  )
-                ).default,
-          },
-        },
-
-        {
-          path:
-            'conclusion',
-
-          lazy: {
-            Component:
-              async () =>
-                (
-                  await import(
-                    './view/ConclusionPage'
-                  )
-                ).default,
-          },
-        },
-
-        {
-          path:
-            'quiz',
-
-          lazy: {
-            Component:
-              async () =>
-                (
-                  await import(
-                    './view/QuizPage'
-                  )
-                ).default,
-          },
-        },
-
-        {
-          path:
-            'report',
-
-          lazy: {
-            Component:
-              async () =>
-                (
-                  await import(
-                    './view/ReportPage'
-                  )
-                ).default,
-          },
-        },
-
-        {
-          path:
-            '*',
-
-          element: (
-            <Navigate
-              to={
-                getExperimentEntryPath(
-                  'damped-oscillation',
-                )
-              }
-              replace
-            />
-          ),
-        },
-      ],
-    },
-  ]
-
+    report: async () =>
+      (await import('./view/ReportPage')).default,
+  },
+})
 
 export default dampedOscillationRoutes

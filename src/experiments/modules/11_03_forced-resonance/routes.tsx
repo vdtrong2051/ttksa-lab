@@ -1,157 +1,32 @@
-import {
-  Navigate,
-} from 'react-router'
 
-import type {
-  RouteObject,
-} from 'react-router'
+import { createModuleRoutes } from '../../core/createModuleRoutes'
+import { forcedResonanceMeta } from './model/data'
 
-import {
-  getExperimentEntryPath,
-} from '../../core/routing'
+const forcedResonanceRoutes = createModuleRoutes({
+  slug: forcedResonanceMeta.slug,
 
+  sessionLayout: async () =>
+    (await import('./SessionLayout')).default,
 
-const forcedResonanceRoutes:
-  RouteObject[] = [
-    {
-      path:
-        'forced-resonance',
+  pages: {
+    intro: async () =>
+      (await import('./view/IntroPage')).default,
 
-      lazy: {
-        Component:
-          async () =>
-            (
-              await import(
-                './SessionLayout'
-              )
-            ).default,
-      },
+    preparation: async () =>
+      (await import('./view/PreparationPage')).default,
 
-      children: [
-        {
-          index:
-            true,
+    practice: async () =>
+      (await import('./view/PracticePage')).default,
 
-          element: (
-            <Navigate
-              to={
-                getExperimentEntryPath(
-                  'forced-resonance',
-                )
-              }
-              replace
-            />
-          ),
-        },
+    conclusion: async () =>
+      (await import('./view/ConclusionPage')).default,
 
-        {
-          path:
-            'intro',
+    quiz: async () =>
+      (await import('./view/QuizPage')).default,
 
-          lazy: {
-            Component:
-              async () =>
-                (
-                  await import(
-                    './view/IntroPage'
-                  )
-                ).default,
-          },
-        },
-
-        {
-          path:
-            'preparation',
-
-          lazy: {
-            Component:
-              async () =>
-                (
-                  await import(
-                    './view/PreparationPage'
-                  )
-                ).default,
-          },
-        },
-
-        {
-          path:
-            'practice',
-
-          lazy: {
-            Component:
-              async () =>
-                (
-                  await import(
-                    './view/PracticePage'
-                  )
-                ).default,
-          },
-        },
-
-        {
-          path:
-            'conclusion',
-
-          lazy: {
-            Component:
-              async () =>
-                (
-                  await import(
-                    './view/ConclusionPage'
-                  )
-                ).default,
-          },
-        },
-
-        {
-          path:
-            'quiz',
-
-          lazy: {
-            Component:
-              async () =>
-                (
-                  await import(
-                    './view/QuizPage'
-                  )
-                ).default,
-          },
-        },
-
-        {
-          path:
-            'report',
-
-          lazy: {
-            Component:
-              async () =>
-                (
-                  await import(
-                    './view/ReportPage'
-                  )
-                ).default,
-          },
-        },
-
-        {
-          path:
-            '*',
-
-          element: (
-            <Navigate
-              to={
-                getExperimentEntryPath(
-                  'forced-resonance',
-                )
-              }
-              replace
-            />
-          ),
-        },
-      ],
-    },
-  ]
-
+    report: async () =>
+      (await import('./view/ReportPage')).default,
+  },
+})
 
 export default forcedResonanceRoutes

@@ -1,93 +1,32 @@
 
-import { Navigate } from 'react-router'
+import { createModuleRoutes } from '../../core/createModuleRoutes'
+import { seismographMeta } from './model/data'
 
-import type { RouteObject } from 'react-router'
+const seismographRoutes = createModuleRoutes({
+  slug: seismographMeta.slug,
 
-import {
-  getExperimentEntryPath,
-} from '../../core/routing'
+  sessionLayout: async () =>
+    (await import('./SessionLayout')).default,
 
+  pages: {
+    intro: async () =>
+      (await import('./view/IntroPage')).default,
 
-const seismographRoutes: RouteObject[] = [
-  {
-    path: 'seismograph',
+    preparation: async () =>
+      (await import('./view/PreparationPage')).default,
 
-    lazy: {
-      Component: async () =>
-        (await import('./SessionLayout')).default,
-    },
+    practice: async () =>
+      (await import('./view/PracticePage')).default,
 
-    children: [
-      {
-        index: true,
-        element: (
-          <Navigate
-            to={getExperimentEntryPath('seismograph')}
-            replace
-          />
-        ),
-      },
+    conclusion: async () =>
+      (await import('./view/ConclusionPage')).default,
 
-      {
-        path: 'intro',
-        lazy: {
-          Component: async () =>
-            (await import('./view/IntroPage')).default,
-        },
-      },
+    quiz: async () =>
+      (await import('./view/QuizPage')).default,
 
-      {
-        path: 'preparation',
-        lazy: {
-          Component: async () =>
-            (await import('./view/PreparationPage')).default,
-        },
-      },
-
-      {
-        path: 'practice',
-        lazy: {
-          Component: async () =>
-            (await import('./view/PracticePage')).default,
-        },
-      },
-
-      {
-        path: 'conclusion',
-        lazy: {
-          Component: async () =>
-            (await import('./view/ConclusionPage')).default,
-        },
-      },
-
-      {
-        path: 'quiz',
-        lazy: {
-          Component: async () =>
-            (await import('./view/QuizPage')).default,
-        },
-      },
-
-      {
-        path: 'report',
-        lazy: {
-          Component: async () =>
-            (await import('./view/ReportPage')).default,
-        },
-      },
-
-      {
-        path: '*',
-        element: (
-          <Navigate
-            to={getExperimentEntryPath('seismograph')}
-            replace
-          />
-        ),
-      },
-    ],
+    report: async () =>
+      (await import('./view/ReportPage')).default,
   },
-]
-
+})
 
 export default seismographRoutes
