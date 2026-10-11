@@ -1,14 +1,20 @@
 /*
  * TTKSA LAB — CANONICAL EXPERIMENT SHELL
- *
+ * 
  * Single stylesheet for shared experiment shell and core UI.
+ * 
  * Consolidated from repository main's 8,123-line legacy cascade.
- *
+ * 
  * Design contract:
+ * 
  *   - Base shell and colors first.
+ * 
  *   - Breakpoints separated by device class, no duplicated media blocks.
+ * 
  *   - Individual lab styles remain inside each experiment module.
+ * 
  *   - Do not append another revision at the bottom; edit the owner rule.
+ * 
  *   - WebGL physics, runtime lifecycle, and module-specific UI are untouched.
  */
 
@@ -38,30 +44,10 @@
   --lab-shadow: 0 18px 48px rgba(0, 0, 0, 0.24);
   overflow: hidden;
   color: var(--lab-text);
-  background: radial-gradient(
-      circle at 50% -20%,
-      color-mix(
-        in srgb,
-        var(--lab-accent) 8%,
-        transparent
-      ),
-      transparent 36%
-    ), var(--lab-bg);
-  --lab-accent-soft: color-mix(
-      in srgb,
-      var(--lab-accent) 14%,
-      transparent
-    );
-  --lab-accent-border: color-mix(
-      in srgb,
-      var(--lab-accent) 30%,
-      transparent
-    );
-  --lab-accent-glow: color-mix(
-      in srgb,
-      var(--lab-accent) 28%,
-      transparent
-    );
+  background: radial-gradient( circle at 50% -20%, color-mix( in srgb, var(--lab-accent) 8%, transparent ), transparent 36% ), var(--lab-bg);
+  --lab-accent-soft: color-mix( in srgb, var(--lab-accent) 14%, transparent );
+  --lab-accent-border: color-mix( in srgb, var(--lab-accent) 30%, transparent );
+  --lab-accent-glow: color-mix( in srgb, var(--lab-accent) 28%, transparent );
   width: 100%;
   height: 100dvh;
   min-height: 100dvh;
@@ -146,26 +132,13 @@
   min-width: 0;
   min-height: 0;
   flex: 0 0 auto;
-  padding: 16px calc(
-      var(--page-padding) +
-      120px
-    ) 12px;
+  padding: 16px calc( var(--page-padding) + 120px ) 12px;
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  background: rgba(
-      5,
-      11,
-      20,
-      0.95
-    );
+  background: rgba( 5, 11, 20, 0.95 );
   border: 0;
-  border-bottom: 1px solid rgba(
-      255,
-      255,
-      255,
-      0.055
-    );
+  border-bottom: 1px solid rgba( 255, 255, 255, 0.055 );
   border-radius: 0;
   box-shadow: none;
   backdrop-filter: blur(14px);
@@ -183,18 +156,8 @@
   justify-content: center;
   gap: 7px;
   color: var(--lab-text-muted);
-  background: rgba(
-      255,
-      255,
-      255,
-      0.045
-    );
-  border: 1px solid rgba(
-      255,
-      255,
-      255,
-      0.09
-    );
+  background: rgba( 255, 255, 255, 0.045 );
+  border: 1px solid rgba( 255, 255, 255, 0.09 );
   border-radius: 8px;
   box-shadow: none;
   font-size: 12px;
@@ -206,12 +169,7 @@
 
 .experiment-header__back:hover {
   color: var(--lab-text);
-  background: rgba(
-      255,
-      255,
-      255,
-      0.075
-    );
+  background: rgba( 255, 255, 255, 0.075 );
   border-color: var(--lab-border-strong);
   transform: translateX(-2px);
 }
@@ -222,10 +180,7 @@
 }
 
 .experiment-header__identity {
-  width: min(
-      100%,
-      900px
-    );
+  width: min( 100%, 900px );
   min-width: 0;
   display: flex;
   flex-direction: column;
@@ -278,22 +233,13 @@
   max-width: 900px;
   margin: 9px 0 0;
   color: var(--lab-text);
-  font-size: clamp(
-      23px,
-      2.7vw,
-      34px
-    );
+  font-size: clamp( 23px, 2.7vw, 34px );
   font-weight: 700;
   line-height: 1.08;
   letter-spacing: 0.025em;
   text-transform: uppercase;
   text-wrap: balance;
-  text-shadow: 0 0 18px rgba(
-      255,
-      255,
-      255,
-      0.07
-    );
+  text-shadow: 0 0 18px rgba( 255, 255, 255, 0.07 );
 }
 
 .experiment-header__description {
@@ -340,20 +286,10 @@
   z-index: 100;
   flex: 0 0 auto;
   flex-shrink: 0;
-  background: rgba(
-      5,
-      11,
-      20,
-      0.97
-    );
+  background: rgba( 5, 11, 20, 0.97 );
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  box-shadow: 0 8px 24px rgba(
-      2,
-      6,
-      23,
-      0.18
-    );
+  box-shadow: 0 8px 24px rgba( 2, 6, 23, 0.18 );
   width: 100%;
   min-width: 0;
   overflow-x: auto;
@@ -432,10 +368,7 @@
   width: 100%;
   height: auto;
   min-width: 0;
-  min-height: calc(
-      100dvh +
-      var(--experiment-utility-height)
-    );
+  min-height: calc( 100dvh + var(--experiment-utility-height) );
   display: flex;
   flex-direction: column;
   overflow: visible;
@@ -457,22 +390,14 @@
   z-index: 20;
   width: 100%;
   min-width: 0;
-  min-height: var(
-      --experiment-utility-height,
-      48px
-    );
+  min-height: var( --experiment-utility-height, 48px );
   flex: 0 0 auto;
   padding: 8px 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  background: rgba(
-      5,
-      11,
-      20,
-      0.92
-    );
+  background: rgba( 5, 11, 20, 0.92 );
   border: 0;
   border-bottom: 1px solid var(--lab-border);
   border-radius: 0;
@@ -521,10 +446,7 @@
   overflow: hidden;
   width: 100%;
   min-width: 0;
-  min-height: calc(
-      100dvh -
-      var(--experiment-phase-nav-height)
-    );
+  min-height: calc( 100dvh - var(--experiment-phase-nav-height) );
   flex: 0 0 auto;
   position: relative;
   background: transparent;
@@ -547,19 +469,10 @@
   position: relative;
   isolation: isolate;
   width: 100%;
-  height: calc(
-      100dvh -
-      var(--experiment-phase-nav-height)
-    );
+  height: calc( 100dvh - var(--experiment-phase-nav-height) );
   min-width: 0;
-  min-height: calc(
-      100dvh -
-      var(--experiment-phase-nav-height)
-    );
-  max-height: calc(
-      100dvh -
-      var(--experiment-phase-nav-height)
-    );
+  min-height: calc( 100dvh - var(--experiment-phase-nav-height) );
+  max-height: calc( 100dvh - var(--experiment-phase-nav-height) );
   flex: 0 0 auto;
   padding: 0;
   overflow: hidden;
@@ -624,11 +537,7 @@
   justify-content: center;
   padding: 24px;
   color: #f8fafc;
-  background: radial-gradient(
-      circle at 50% 25%,
-      rgba(34, 211, 238, 0.08),
-      transparent 34%
-    ), #07101d;
+  background: radial-gradient( circle at 50% 25%, rgba(34, 211, 238, 0.08), transparent 34% ), #07101d;
 }
 
 .experiment-loading__content {
@@ -670,10 +579,7 @@
 }
 
 .experiment-error__card {
-  width: min(
-      100%,
-      480px
-    );
+  width: min( 100%, 480px );
   padding: 30px;
   text-align: center;
   background: #0f1a2b;
@@ -824,11 +730,7 @@
 
 .experiment-lab-button--primary:hover:not(:disabled) {
   color: var(--lab-bg);
-  background: color-mix(
-      in srgb,
-      var(--lab-accent) 90%,
-      white
-    );
+  background: color-mix( in srgb, var(--lab-accent) 90%, white );
 }
 
 .experiment-lab-button:disabled {
@@ -848,10 +750,7 @@
 }
 
 .simulation-error__content {
-  width: min(
-      100%,
-      460px
-    );
+  width: min( 100%, 460px );
   padding: 24px;
   text-align: center;
   background: var(--lab-surface);
@@ -904,10 +803,7 @@
 }
 
 .experiment-quiz {
-  width: min(
-      100%,
-      920px
-    );
+  width: min( 100%, 920px );
   margin-inline: auto;
   display: flex;
   flex-direction: column;
@@ -985,10 +881,7 @@
 }
 
 .experiment-report-sheet {
-  width: min(
-      100%,
-      210mm
-    );
+  width: min( 100%, 210mm );
   min-height: 297mm;
   margin-inline: auto;
   padding: 18mm 16mm;
@@ -1183,12 +1076,7 @@
 
 .experiment-template__utility-actions .experiment-lab-button:hover:not( :disabled ) {
   color: var(--lab-text);
-  background: rgba(
-      255,
-      255,
-      255,
-      0.055
-    );
+  background: rgba( 255, 255, 255, 0.055 );
   border-color: var(--lab-border);
   box-shadow: none;
 }
@@ -1201,11 +1089,7 @@
 
 .experiment-template__utility-actions .experiment-lab-button--primary:hover:not( :disabled ) {
   color: var(--lab-text);
-  background: color-mix(
-      in srgb,
-      var(--lab-accent) 18%,
-      transparent
-    );
+  background: color-mix( in srgb, var(--lab-accent) 18%, transparent );
   border-color: var(--lab-accent);
 }
 
@@ -1226,18 +1110,8 @@
   min-height: 36px;
   padding: 7px 10px;
   color: var(--lab-text-muted);
-  background: rgba(
-      255,
-      255,
-      255,
-      0.045
-    );
-  border: 1px solid rgba(
-      255,
-      255,
-      255,
-      0.09
-    );
+  background: rgba( 255, 255, 255, 0.045 );
+  border: 1px solid rgba( 255, 255, 255, 0.09 );
   border-radius: 8px;
   box-shadow: none;
   font-size: 11px;
@@ -1245,12 +1119,7 @@
 
 .experiment-header__actions .experiment-lab-button:hover:not( :disabled ) {
   color: var(--lab-text);
-  background: rgba(
-      255,
-      255,
-      255,
-      0.075
-    );
+  background: rgba( 255, 255, 255, 0.075 );
   border-color: var(--lab-border-strong);
 }
 
@@ -1424,12 +1293,7 @@
   align-items: center;
   gap: 6px;
   color: var(--lab-text-muted);
-  background: rgba(
-      7,
-      15,
-      28,
-      0.82
-    );
+  background: rgba( 7, 15, 28, 0.82 );
   border: 1px solid var(--lab-border);
   border-radius: 7px;
   font-size: 10px;
@@ -1441,18 +1305,12 @@
 .experiment-workspace__escape-hint kbd {
   padding: 2px 5px;
   color: var(--lab-text-soft);
-  background: rgba(
-      255,
-      255,
-      255,
-      0.06
-    );
+  background: rgba( 255, 255, 255, 0.06 );
   border: 1px solid var(--lab-border-strong);
   border-radius: 4px;
   font: inherit;
   font-weight: 700;
 }
-
 
 /* ===== SHARED PRACTICE TOOLBAR ===== */
 
@@ -1461,31 +1319,25 @@
   z-index: 60;
   top: 60px;
   right: 16px;
-
   display: flex;
   flex-direction: column;
   align-items: stretch;
   gap: 6px;
-
   width: max-content;
   max-width: calc(100% - 24px);
   max-height: calc(100% - 136px);
   padding: 6px;
-
   overflow-x: hidden;
   overflow-y: auto;
   overscroll-behavior: contain;
   scrollbar-width: thin;
-
   color: var(--lab-text);
   background: rgba(7, 15, 28, 0.93);
   border: 1px solid var(--lab-border-strong);
   border-radius: var(--lab-radius-lg);
   box-shadow: var(--lab-shadow);
-
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-
   pointer-events: auto;
 }
 
@@ -1494,26 +1346,19 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-
   width: 42px;
   min-width: 42px;
   min-height: 42px;
   padding: 9px;
-
   color: var(--lab-text-soft);
   background: transparent;
   border: 1px solid transparent;
   border-radius: var(--lab-radius-md);
-
   font: inherit;
   font-size: 12px;
   font-weight: 600;
   cursor: pointer;
-
-  transition:
-    color var(--transition-fast),
-    background var(--transition-fast),
-    border-color var(--transition-fast);
+  transition: color var(--transition-fast), background var(--transition-fast), border-color var(--transition-fast);
 }
 
 .experiment-practice-toolbar__button:hover:not(:disabled) {
@@ -1551,14 +1396,12 @@
   white-space: nowrap;
 }
 
-.experiment-practice-toolbar--expanded
-.experiment-practice-toolbar__button {
+.experiment-practice-toolbar--expanded .experiment-practice-toolbar__button {
   justify-content: flex-start;
   width: 184px;
 }
 
-.experiment-practice-toolbar--expanded
-.experiment-practice-toolbar__label {
+.experiment-practice-toolbar--expanded .experiment-practice-toolbar__label {
   display: inline;
 }
 
@@ -1570,7 +1413,6 @@
   background: var(--lab-border);
 }
 
-
 /* ===== SHARED FLOATING PRACTICE PANEL ===== */
 
 .experiment-floating-panel {
@@ -1578,24 +1420,19 @@
   z-index: 50;
   top: 60px;
   right: 74px;
-
   display: flex;
   flex-direction: column;
-
   width: min(340px, calc(100% - 110px));
   max-height: calc(100% - 148px);
   min-width: 0;
   overflow: hidden;
-
   color: var(--lab-text);
   background: rgba(7, 15, 28, 0.96);
   border: 1px solid var(--lab-border-strong);
   border-radius: var(--lab-radius-lg);
   box-shadow: var(--lab-shadow);
-
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-
   pointer-events: auto;
   will-change: transform;
 }
@@ -1604,11 +1441,9 @@
   display: flex;
   align-items: center;
   gap: 8px;
-
   min-height: 48px;
   padding: 6px 8px;
   flex: 0 0 auto;
-
   background: var(--lab-surface);
   border-bottom: 1px solid var(--lab-border);
 }
@@ -1618,21 +1453,17 @@
   align-items: center;
   gap: 8px;
   flex: 1 1 auto;
-
   min-width: 0;
   min-height: 34px;
   padding: 6px;
-
   color: var(--lab-text);
   background: transparent;
   border: 0;
   border-radius: var(--lab-radius-sm);
-
   font: inherit;
   font-size: 13px;
   font-weight: 700;
   text-align: left;
-
   cursor: grab;
   touch-action: none;
   user-select: none;
@@ -1659,16 +1490,13 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
   width: 32px;
   height: 32px;
   padding: 0;
-
   color: var(--lab-text-muted);
   background: transparent;
   border: 1px solid transparent;
   border-radius: var(--lab-radius-sm);
-
   cursor: pointer;
 }
 
@@ -1677,8 +1505,7 @@
   background: var(--lab-surface-hover);
 }
 
-.experiment-floating-panel__drag-handle:focus-visible,
-.experiment-floating-panel__actions button:focus-visible {
+.experiment-floating-panel__drag-handle:focus-visible, .experiment-floating-panel__actions button:focus-visible {
   outline: 2px solid var(--lab-accent);
   outline-offset: 2px;
 }
@@ -1686,13 +1513,185 @@
 .experiment-floating-panel__content {
   flex: 1 1 auto;
   min-height: 0;
-
   padding: 16px;
   overflow-x: hidden;
   overflow-y: auto;
   overscroll-behavior: contain;
-
   pointer-events: auto;
+}
+
+/* ===== SHARED PRACTICE STATUS DOCK ===== */
+
+.experiment-practice-dock {
+  position: absolute;
+  z-index: 70;
+  left: 50%;
+  bottom: 12px;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: min(960px, calc(100% - 24px));
+  min-width: 0;
+  min-height: 58px;
+  padding: 8px 12px;
+  color: var(--lab-text);
+  background: rgba(7, 15, 28, 0.95);
+  border: 1px solid var(--lab-border-strong);
+  border-radius: var(--lab-radius-lg);
+  box-shadow: var(--lab-shadow);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  pointer-events: auto;
+}
+
+/* STATUS */
+
+.experiment-practice-dock__status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: 220px;
+  color: var(--lab-text-soft);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.experiment-practice-dock__status-label {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.experiment-practice-dock__status-dot {
+  flex: 0 0 8px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--lab-text-muted);
+}
+
+.experiment-practice-dock__status--success .experiment-practice-dock__status-dot {
+  background: #34d399;
+}
+
+.experiment-practice-dock__status--warning .experiment-practice-dock__status-dot {
+  background: #fbbf24;
+}
+
+.experiment-practice-dock__status--error .experiment-practice-dock__status-dot {
+  background: #fb7185;
+}
+
+/* METRICS */
+
+.experiment-practice-dock__metrics {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1 1 auto;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+}
+
+.experiment-practice-dock__metric {
+  display: flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.experiment-practice-dock__metric dt {
+  color: var(--lab-text-muted);
+  font-size: 10px;
+  line-height: 1.2;
+}
+
+.experiment-practice-dock__metric dd {
+  margin: 0;
+  color: var(--lab-text-soft);
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.experiment-practice-dock__metric--emphasis dd {
+  color: var(--lab-accent);
+}
+
+/* ACTIONS */
+
+.experiment-practice-dock__actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: 55%;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: thin;
+}
+
+.experiment-practice-dock__button {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 36px;
+  padding: 7px 12px;
+  color: var(--lab-text-soft);
+  background: var(--lab-surface-soft);
+  border: 1px solid var(--lab-border-strong);
+  border-radius: var(--lab-radius-md);
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.experiment-practice-dock__button:hover:not(:disabled) {
+  color: var(--lab-text);
+  background: var(--lab-surface-hover);
+}
+
+.experiment-practice-dock__button--primary {
+  color: var(--lab-bg);
+  background: var(--lab-accent);
+  border-color: var(--lab-accent);
+}
+
+.experiment-practice-dock__button--primary:hover:not(:disabled) {
+  color: var(--lab-bg);
+  background: color-mix( in srgb, var(--lab-accent) 90%, white );
+}
+
+.experiment-practice-dock__button:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.experiment-practice-dock__button:focus-visible {
+  outline: 2px solid var(--lab-accent);
+  outline-offset: 2px;
+}
+
+.experiment-practice-dock__button-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
 }
 
 /* ===== 02  DESKTOP — ≥ 1025 PX ===== */
@@ -1705,14 +1704,8 @@
   }
 
   .experiment-header {
-    padding-left: calc(
-        var(--experiment-page-gutter) +
-        120px
-      );
-    padding-right: calc(
-        var(--experiment-page-gutter) +
-        120px
-      );
+    padding-left: calc( var(--experiment-page-gutter) + 120px );
+    padding-right: calc( var(--experiment-page-gutter) + 120px );
   }
 
   .experiment-header__back {
@@ -1760,11 +1753,7 @@
   }
 
   .experiment-header__identity h1 {
-    font-size: clamp(
-        22px,
-        3.4vw,
-        32px
-      );
+    font-size: clamp( 22px, 3.4vw, 32px );
   }
 }
 
@@ -1792,11 +1781,7 @@
   }
 
   .experiment-header__identity h1 {
-    font-size: clamp(
-        22px,
-        3.4vw,
-        30px
-      );
+    font-size: clamp( 22px, 3.4vw, 30px );
   }
 
   .experiment-header__description {
@@ -1863,11 +1848,7 @@
   .experiment-header__identity h1 {
     letter-spacing: 0.015em;
     margin-top: 6px;
-    font-size: clamp(
-        20px,
-        6vw,
-        27px
-      );
+    font-size: clamp( 20px, 6vw, 27px );
     text-align: left;
   }
 
@@ -1940,32 +1921,17 @@
   }
 
   .experiment-template {
-    min-height: calc(
-        100dvh +
-        var(--experiment-utility-height)
-      );
+    min-height: calc( 100dvh + var(--experiment-utility-height) );
   }
 
   .experiment-template__stage {
-    min-height: calc(
-        100dvh -
-        var(--experiment-phase-nav-height)
-      );
+    min-height: calc( 100dvh - var(--experiment-phase-nav-height) );
   }
 
   .experiment-template__stage--practice {
-    height: calc(
-        100dvh -
-        var(--experiment-phase-nav-height)
-      );
-    min-height: calc(
-        100dvh -
-        var(--experiment-phase-nav-height)
-      );
-    max-height: calc(
-        100dvh -
-        var(--experiment-phase-nav-height)
-      );
+    height: calc( 100dvh - var(--experiment-phase-nav-height) );
+    min-height: calc( 100dvh - var(--experiment-phase-nav-height) );
+    max-height: calc( 100dvh - var(--experiment-phase-nav-height) );
   }
 
   .experiment-template__phase-info {
@@ -2024,37 +1990,33 @@
     padding-right: 10px;
   }
 
-  
   /* Practice toolbar trên mobile */
+
   .experiment-practice-toolbar {
     top: 52px;
     right: 10px;
     max-height: calc(100% - 120px);
   }
 
-  .experiment-practice-toolbar--expanded
-  .experiment-practice-toolbar__button {
+  .experiment-practice-toolbar--expanded .experiment-practice-toolbar__button {
     justify-content: center;
     width: 42px;
   }
 
-  .experiment-practice-toolbar__label,
-  .experiment-practice-toolbar__expand-toggle {
+  .experiment-practice-toolbar__label, .experiment-practice-toolbar__expand-toggle {
     display: none;
   }
 
-  
   /* Floating panel chuyển thành bottom sheet */
+
   .experiment-floating-panel {
     top: auto;
     right: 10px;
     bottom: 76px;
     left: 10px;
-
     width: auto;
     max-width: none;
     max-height: min(68%, 540px);
-
     transform: none !important;
   }
 
@@ -2071,6 +2033,43 @@
     display: none !important;
   }
 
+  /* Shared Practice Dock — Mobile */
+
+  .experiment-practice-dock {
+    bottom: 10px;
+    gap: 8px;
+    min-height: 52px;
+    padding: 6px 8px;
+  }
+
+  .experiment-practice-dock__status {
+    max-width: 32%;
+    gap: 5px;
+    font-size: 11px;
+  }
+
+  .experiment-practice-dock__metrics {
+    gap: 10px;
+  }
+
+  .experiment-practice-dock__metric dt {
+    font-size: 9px;
+  }
+
+  .experiment-practice-dock__metric dd {
+    font-size: 11px;
+  }
+
+  .experiment-practice-dock__actions {
+    max-width: 56%;
+    gap: 4px;
+  }
+
+  .experiment-practice-dock__button {
+    min-height: 34px;
+    padding: 6px 9px;
+    font-size: 11px;
+  }
 }
 
 /* ===== 07  SMALL MOBILE — ≤ 480 PX ===== */
@@ -2138,11 +2137,7 @@
 
   .experiment-header__identity h1 {
     margin-top: 4px;
-    font-size: clamp(
-        18px,
-        2.5vw,
-        24px
-      );
+    font-size: clamp( 18px, 2.5vw, 24px );
   }
 
   .experiment-header__description {
@@ -2181,32 +2176,17 @@
   }
 
   .experiment-template {
-    min-height: calc(
-        100dvh +
-        var(--experiment-utility-height)
-      );
+    min-height: calc( 100dvh + var(--experiment-utility-height) );
   }
 
   .experiment-template__stage {
-    min-height: calc(
-        100dvh -
-        var(--experiment-phase-nav-height)
-      );
+    min-height: calc( 100dvh - var(--experiment-phase-nav-height) );
   }
 
   .experiment-template__stage--practice {
-    height: calc(
-        100dvh -
-        var(--experiment-phase-nav-height)
-      );
-    min-height: calc(
-        100dvh -
-        var(--experiment-phase-nav-height)
-      );
-    max-height: calc(
-        100dvh -
-        var(--experiment-phase-nav-height)
-      );
+    height: calc( 100dvh - var(--experiment-phase-nav-height) );
+    min-height: calc( 100dvh - var(--experiment-phase-nav-height) );
+    max-height: calc( 100dvh - var(--experiment-phase-nav-height) );
   }
 
   .experiment-template__stage--content {
@@ -2242,37 +2222,33 @@
     min-height: 22px;
   }
 
-  
   /* Practice toolbar trên màn hình thấp */
+
   .experiment-practice-toolbar {
     top: 8px;
     right: 8px;
     max-height: calc(100% - 72px);
   }
 
-  .experiment-practice-toolbar--expanded
-  .experiment-practice-toolbar__button {
+  .experiment-practice-toolbar--expanded .experiment-practice-toolbar__button {
     justify-content: center;
     width: 42px;
   }
 
-  .experiment-practice-toolbar__label,
-  .experiment-practice-toolbar__expand-toggle {
+  .experiment-practice-toolbar__label, .experiment-practice-toolbar__expand-toggle {
     display: none;
   }
 
-  
   /* Bottom sheet cho landscape / short viewport */
+
   .experiment-floating-panel {
     top: auto;
     right: 8px;
     bottom: 56px;
     left: 8px;
-
     width: auto;
     max-width: none;
     max-height: calc(100% - 72px);
-
     transform: none !important;
   }
 
@@ -2289,6 +2265,24 @@
     display: none !important;
   }
 
+  /* Shared Practice Dock — Short Viewport */
+
+  .experiment-practice-dock {
+    bottom: 8px;
+    min-height: 44px;
+    gap: 8px;
+    padding: 5px 8px;
+  }
+
+  .experiment-practice-dock__status {
+    font-size: 10px;
+  }
+
+  .experiment-practice-dock__button {
+    min-height: 32px;
+    padding: 5px 8px;
+    font-size: 10px;
+  }
 }
 
 /* ===== 09  MOBILE LANDSCAPE ===== */
@@ -2397,8 +2391,11 @@
     background: #fff !important;
   }
 
-  
   .experiment-floating-panel {
+    display: none !important;
+  }
+
+  .experiment-practice-dock {
     display: none !important;
   }
 
