@@ -1,38 +1,5 @@
-
 import type { RefObject } from 'react'
-
-export type PendulumId =
-  | 'driver'
-  | 'l1'
-  | 'l2'
-  | 'l3'
-
-export type TestPendulumId =
-  Exclude<PendulumId, 'driver'>
-
-export interface PendulumConfig {
-  length: number
-  posX: number
-}
-
-export type PendulumConfigMap =
-  Record<PendulumId, PendulumConfig>
-
-export const DEFAULT_PENDULUMS:
-  Readonly<PendulumConfigMap> = {
-    driver: { length: 5, posX: -1 },
-    l1: { length: 3, posX: -3 },
-    l2: { length: 5, posX: 2 },
-    l3: { length: 7, posX: 5 },
-  }
-
-export const PENDULUM_COLORS:
-  Record<PendulumId, string> = {
-    driver: '#ef4444',
-    l1: '#3b82f6',
-    l2: '#10b981',
-    l3: '#8b5cf6',
-  }
+import type { PendulumConfigMap, PendulumId, TestPendulumId } from '../model/types'
 
 export interface ResonanceController {
   pendulums: PendulumConfigMap

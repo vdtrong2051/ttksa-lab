@@ -18,11 +18,11 @@ import Pendulum from './Pendulum'
 
 import {
   PENDULUM_COLORS,
-} from './types'
+} from '../model/constants'
 
 import type {
   ResonanceController,
-} from './types'
+} from '../controller/types'
 
 
 interface ForcedResonanceSceneProps {

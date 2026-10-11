@@ -9,14 +9,14 @@ import {
 
 import {
   DEFAULT_PENDULUMS,
-} from './types'
+} from '../model/constants'
 
 import type {
   PendulumConfigMap,
   PendulumId,
-  ResonanceController,
   TestPendulumId,
-} from './types'
+} from '../model/types'
+import type { ResonanceController } from './types'
 
 
 function initialPendulums(): PendulumConfigMap {

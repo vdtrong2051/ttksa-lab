@@ -10,7 +10,7 @@ import type {
 
 import type {
   ResonanceController,
-} from './simulation/types'
+} from './controller/types'
 
 
 export interface ForcedResonanceSession {

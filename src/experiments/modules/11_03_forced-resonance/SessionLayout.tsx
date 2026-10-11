@@ -32,7 +32,7 @@ import {
 
 import {
   useResonanceController,
-} from './simulation/useResonanceController'
+} from './controller/useResonanceController'
 
 import './styles.css'
 

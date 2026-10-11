@@ -17,7 +17,7 @@ import ForcedResonanceScene from './ForcedResonanceScene'
 
 import type {
   ResonanceController,
-} from './types'
+} from '../controller/types'
 
 
 interface ForcedResonanceRuntimeProps {

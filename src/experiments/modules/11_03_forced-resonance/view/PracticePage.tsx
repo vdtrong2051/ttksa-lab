@@ -17,14 +17,12 @@ import {
 
 import {
   PENDULUM_COLORS,
-} from '../simulation/types'
+} from '../model/constants'
 
-import type {
-  PendulumId,
-  ResonanceController,
-} from '../simulation/types'
+import type { PendulumId } from '../model/types'
+import type { ResonanceController } from '../controller/types'
 
-import './practice.css'
+import '../styles/practice.css'
 
 
 type ActivePanel = 'controls' | 'observation' | null
