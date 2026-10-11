@@ -25,17 +25,11 @@ import type {
   BoyleObservationId,
   BoylePreparationState,
   BoylePreparationToolId,
+  BoyleRecordMeasurementResult,
   BoyleQuestionId,
   BoyleRuntimeState,
   BoyleThermalCondition,
 } from '../model/types'
-
-
-export type BoyleRecordMeasurementResult =
-  | 'recorded'
-  | 'thermal-transient'
-  | 'duplicate-volume'
-  | 'limit-reached'
 
 
 function createInitialPreparation():

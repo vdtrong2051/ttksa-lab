@@ -146,8 +146,7 @@ export default function PracticePage() {
     )
 
   const hasEnoughMeasurements =
-    controller.measurements.length >=
-    boylePhysicsConfig.targetMeasurementCount
+    controller.canOpenConclusion
 
 
   function showFeedback(
