@@ -10,7 +10,7 @@ import type {
 
 import type {
   SeismographController,
-} from './model/types'
+} from './controller/types'
 
 
 export interface SeismographSession {

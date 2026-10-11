@@ -14,9 +14,9 @@ import {
 
 import type {
   SeismographConfig,
-  SeismographController,
   SeismographSnapshot,
 } from '../model/types'
+import type { SeismographController } from './types'
 
 
 function normalizeHalfStep(

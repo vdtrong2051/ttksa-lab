@@ -3,7 +3,7 @@ import { useState } from 'react'
 
 import { useSeismographSession } from '../context'
 
-import './content.css'
+import '../styles/content.css'
 
 interface ReportRow {
   id: number

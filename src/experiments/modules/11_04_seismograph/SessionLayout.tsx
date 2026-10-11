@@ -32,7 +32,7 @@ import {
 
 import {
   useSeismographController,
-} from './simulation/useSeismographController'
+} from './controller/useSeismographController'
 
 import './styles.css'
 

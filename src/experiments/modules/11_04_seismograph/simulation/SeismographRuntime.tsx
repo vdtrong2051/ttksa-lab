@@ -9,7 +9,7 @@ import {
 
 import type {
   SeismographController,
-} from '../model/types'
+} from '../controller/types'
 
 import SeismographScene from './SeismographScene'
 

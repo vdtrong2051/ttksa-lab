@@ -21,11 +21,11 @@ import {
   SEISMOGRAPH_GRAPH_COLORS,
 } from '../model/types'
 
-import SeismogramGraph from '../simulation/SeismogramGraph'
+import SeismogramGraph from '../components/SeismogramGraph'
 
 import AnalysisPanel from '../components/AnalysisPanel'
 
-import './practice.css'
+import '../styles/practice.css'
 
 
 type ActivePanel =

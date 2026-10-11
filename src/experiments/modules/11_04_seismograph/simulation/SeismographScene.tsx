@@ -27,7 +27,7 @@ import {
 
 import type {
   SeismographController,
-} from '../model/types'
+} from '../controller/types'
 
 
 interface SeismographSceneProps {

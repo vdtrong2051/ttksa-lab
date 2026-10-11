@@ -1,7 +1,7 @@
 
 import { useSeismographSession } from '../context'
 
-import './content.css'
+import '../styles/content.css'
 
 const components = [
   {

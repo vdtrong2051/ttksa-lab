@@ -3,7 +3,7 @@ import { InlineMath } from 'react-katex'
 
 import { useSeismographSession } from '../context'
 
-import './content.css'
+import '../styles/content.css'
 
 export default function ConclusionPage() {
   const { navigation } = useSeismographSession()

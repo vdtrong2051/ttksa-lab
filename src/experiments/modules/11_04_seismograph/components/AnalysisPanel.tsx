@@ -14,7 +14,7 @@ import type {
   SeismographSnapshot,
 } from '../model/types'
 
-import SeismogramGraph from '../simulation/SeismogramGraph'
+import SeismogramGraph from './SeismogramGraph'
 
 
 interface AnalysisPanelProps {

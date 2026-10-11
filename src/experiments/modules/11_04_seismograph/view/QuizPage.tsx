@@ -5,7 +5,7 @@ import { useSeismographSession } from '../context'
 import { seismographQuestions } from '../model/questions'
 import type { SeismographQuestion } from '../model/questions'
 
-import './content.css'
+import '../styles/content.css'
 
 type AnswerId = SeismographQuestion['answer']
 

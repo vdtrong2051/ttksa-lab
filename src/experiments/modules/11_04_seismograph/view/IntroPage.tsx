@@ -4,7 +4,7 @@ import { useSeismographSession } from '../context'
 import zhangHengImage from '../assets/seismograph-zhang-heng.webp'
 import johnMilneImage from '../assets/seismograph-john-milne.webp'
 
-import './content.css'
+import '../styles/content.css'
 
 const applications = [
   {
