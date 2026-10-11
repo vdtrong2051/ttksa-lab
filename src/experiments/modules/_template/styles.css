@@ -4144,14 +4144,6 @@
       45;
   }
 
-
-  .template-practice__instructions
-    li:nth-child(n + 4) {
-    display:
-      none;
-  }
-
-
   .template-practice-toolbar {
     left:
       10px;
