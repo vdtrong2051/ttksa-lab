@@ -138,13 +138,9 @@ export default function PracticePage() {
       : 'Bảng đo'
 
   return (
-    <div
-      className={[
-        'template-practice',
-        workspaceExpanded ? 'template-practice--expanded' : '',
-      ].filter(Boolean).join(' ')}
-    >
+    <div className="template-practice">
       <ExperimentPracticeWorkspace
+        expanded={workspaceExpanded}
         toolbar={
           <ExperimentPracticeToolbar
             items={tools}

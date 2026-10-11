@@ -1335,16 +1335,15 @@
   pointer-events: none;
 }
 
-/* ===== TEMPLATE PRACTICE FULLSCREEN ===== */
+/* ===== SHARED PRACTICE FULLSCREEN ===== */
 
 /*
- * Fullscreen chỉ tồn tại khi PracticePage
- * đang có class --expanded.
- * Khi đổi route, PracticePage unmount,
- * fullscreen tự động thoát.
+ * PracticePage điều khiển expanded.
+ * Khi rời Practice, component unmount
+ * và chế độ mở rộng tự kết thúc.
  */
 .experiment-template__stage--practice:has(
-  .template-practice--expanded
+  .experiment-practice-workspace--expanded
 ) {
   position: fixed;
   inset: 0;
@@ -1360,7 +1359,9 @@
   overflow: hidden;
 }
 
-.experiment-page:has(.template-practice--expanded) {
+.experiment-page:has(
+  .experiment-practice-workspace--expanded
+) {
   overflow: hidden;
 }
 

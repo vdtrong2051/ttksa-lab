@@ -7,30 +7,24 @@ interface ExperimentPracticeWorkspaceProps {
   dock: ReactNode
   children?: ReactNode
   className?: string
+  expanded?: boolean
 }
 
-/**
- * Lớp giao diện nằm phía trên simulation.
- *
- * Không sở hữu:
- * - Canvas / WebGL
- * - Controller
- * - Navigation
- * - Trạng thái mở panel
- *
- * Chỉ bố trí các thành phần giao diện.
- */
 export default function ExperimentPracticeWorkspace({
   toolbar,
   panel,
   dock,
   children,
   className = '',
+  expanded = false,
 }: ExperimentPracticeWorkspaceProps) {
   return (
     <div
       className={[
         'experiment-practice-workspace',
+        expanded
+          ? 'experiment-practice-workspace--expanded'
+          : '',
         className,
       ].filter(Boolean).join(' ')}
     >
