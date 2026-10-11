@@ -1,11 +1,17 @@
+
 /* =========================================================
-   TTKSA LAB — _TEMPLATE MODULE STYLES
+   TTKSA LAB — TEMPLATE MODULE STYLES
 
    Ownership:
-   - Chỉ chứa selector thuộc module _template (.template-*).
-   - Shared experiment framework nằm ở src/styles/experiment.css.
-   - Import file này từ _template/SessionLayout.tsx bằng:
-     import './styles.css'
+   - Quản lý giao diện riêng của _template.
+   - Sử dụng các selector .template-*.
+   - Có thể kết hợp selector .experiment-* khi
+     quy tắc chỉ tác động đến thành phần template.
+   - Không định nghĩa lại CSS framework toàn cục.
+   - Shared CSS nằm ở src/styles/experiment.css.
+
+   Imported by:
+   _template/SessionLayout.tsx
    ========================================================= */
 
 .experiment-template__route--practice
