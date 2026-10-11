@@ -1048,7 +1048,7 @@ export default function Experiment({
             preserveDrawingBuffer:
               true,
           }}
-          shadows
+          shadows="percentage"
           camera={{
             position: [
               9,

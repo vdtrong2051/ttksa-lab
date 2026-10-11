@@ -66,7 +66,7 @@ export default function BoyleSimulation({
     <div className="boyle-simulation">
       <Canvas
         dpr={[1, 1.5]}
-        shadows
+        shadows="percentage"
         camera={{
           position: [
             0,

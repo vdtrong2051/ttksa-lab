@@ -35,7 +35,7 @@ export default function SeismographRuntime({
   return (
     <div className="seismo-runtime">
       <Canvas
-        shadows
+        shadows="percentage"
         dpr={isCoarsePointer ? 1 : [1, 2]}
         frameloop={frameloop}
         camera={{

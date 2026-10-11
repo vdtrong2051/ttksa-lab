@@ -1087,7 +1087,7 @@ export default function Experiment({
 
       <div className="absolute inset-0">
         <Canvas
-          shadows
+          shadows="percentage"
           camera={{
             position: [
               -6,

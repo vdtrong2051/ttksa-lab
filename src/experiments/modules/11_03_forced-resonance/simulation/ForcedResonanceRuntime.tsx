@@ -62,7 +62,7 @@ export default function ForcedResonanceRuntime({
   return (
     <div className="h-full w-full overflow-hidden bg-[#f8fafc]">
       <Canvas
-        shadows
+        shadows="percentage"
         dpr={
           isCoarsePointer
             ? 1
