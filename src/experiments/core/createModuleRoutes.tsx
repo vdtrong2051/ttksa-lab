@@ -13,6 +13,7 @@ import type {
   ExperimentPhaseId,
 } from './types'
 
+import PageLoading from '../../components/ui/PageLoading'
 
 type LazyComponentLoader =
   () => Promise<ComponentType>
@@ -52,6 +53,8 @@ export function createModuleRoutes({
   return [
     {
       path: slug,
+
+      HydrateFallback: PageLoading,
 
       lazy: {
         Component: sessionLayout,

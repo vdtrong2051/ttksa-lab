@@ -7,6 +7,7 @@ import experimentRoutes from '../experiments/routes'
 
 import RootLayout from './RootLayout'
 
+import PageLoading from '../components/ui/PageLoading'
 
 const router =
   createBrowserRouter([
@@ -15,8 +16,8 @@ const router =
     // =====================================================
 
     {
-      Component:
-        RootLayout,
+      Component: RootLayout,
+      HydrateFallback: PageLoading,
 
       children: [
         {
