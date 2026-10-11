@@ -1505,10 +1505,6 @@
     padding: 15px 132px 11px;
   }
 
-  .experiment-page {
-    --experiment-phase-nav-height: 60px;
-  }
-
   .experiment-template__stage--content {
     padding: 14px;
   }
@@ -1790,10 +1786,6 @@
 /* ===== 07  SMALL MOBILE — ≤ 480 PX ===== */
 
 @media (max-width: 480px) {
-  .experiment-header__subject {
-    display: none;
-  }
-
   .experiment-header__identity h1 {
     font-size: 20px;
   }
@@ -2067,10 +2059,6 @@
     background: #fff !important;
   }
 
-  .experiment-header, .experiment-phase-nav, .experiment-template__utility {
-    display: none !important;
-  }
-
   .experiment-main, .experiment-workspace, .experiment-template, .experiment-template__body, .experiment-template__stage {
     width: 100%;
     height: auto;
@@ -2082,10 +2070,6 @@
     background: #fff;
     border: 0;
     box-shadow: none;
-  }
-
-  .experiment-runtime-host {
-    display: none !important;
   }
 
   .experiment-report-sheet {
