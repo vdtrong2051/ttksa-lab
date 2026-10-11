@@ -90,8 +90,8 @@ export default function ConclusionPage() {
                 Tần số góc
               </small>
 
-              <strong>
-                <InlineMath math="\omega_{\mathrm{tròn}} = \omega_{\mathrm{DĐĐH}}" />
+              <strong>   
+                <InlineMath math="\omega_{\text{tròn}} = \omega_{\text{DĐĐH}}" />
               </strong>
 
               <p>

@@ -131,7 +131,7 @@ export default function IntroPage() {
               </span>
 
               <strong>
-                <InlineMath math="\omega_{\mathrm{tròn}} = \omega_{\mathrm{DĐĐH}}" />
+                <InlineMath math="\omega_{\text{tròn}} = \omega_{\text{DĐĐH}}" />
               </strong>
 
               <p>
