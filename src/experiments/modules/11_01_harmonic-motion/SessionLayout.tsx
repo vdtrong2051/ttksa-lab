@@ -25,6 +25,10 @@ import {
 import Experiment from './legacy/Experiment'
 
 import {
+  useHarmonicMotionController,
+} from './controller/useHarmonicMotionController'
+
+import {
   harmonicMotionMeta,
   harmonicMotionPhases,
 } from './model/data'
@@ -40,6 +44,9 @@ export default function HarmonicMotionSessionLayout() {
   } = useExperimentSessionRoute(
     harmonicMotionMeta.slug,
   )
+
+  const controller =
+    useHarmonicMotionController()
 
   const [
     runtimeMounted,
@@ -96,6 +103,7 @@ export default function HarmonicMotionSessionLayout() {
     <HarmonicMotionSessionContext.Provider
       value={{
         navigation,
+        controller,
       }}
     >
       <ExperimentShell
@@ -129,6 +137,7 @@ export default function HarmonicMotionSessionLayout() {
               >
                 <div className="harmonic-motion-runtime">
                   <Experiment
+                    controller={controller}
                     onPrev={
                       navigation.previous
                     }

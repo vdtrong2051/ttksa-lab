@@ -7,10 +7,17 @@ import type {
   ExperimentNavigation,
 } from '../../core/types'
 
+import type {
+  HarmonicMotionController,
+} from './controller/useHarmonicMotionController'
+
 
 export interface HarmonicMotionSession {
   navigation:
     ExperimentNavigation
+
+  controller:
+    HarmonicMotionController
 }
 
 

@@ -12,6 +12,10 @@ import AppIcon from '../../../../components/ui/AppIcon'
 
 import SimulationScene from '../simulation/HarmonicMotionScene'
 
+import type {
+  HarmonicMotionController,
+} from '../controller/useHarmonicMotionController'
+
 
 type PracticePanel =
   | 'controls'
@@ -35,44 +39,26 @@ type AudioWindow =
 export default function Experiment({
   onNext,
   onPrev,
+  controller,
 }: {
   onNext:
     () => void
 
   onPrev:
     () => void
+
+  controller:
+    HarmonicMotionController
 }) {
-  const [
+  const {
     isPlaying,
-    setIsPlaying,
-  ] =
-    useState(
-      false,
-    )
-
-  const [
     speed,
-    setSpeed,
-  ] =
-    useState(
-      1.5,
-    )
-
-  const [
     amplitude,
-    setAmplitude,
-  ] =
-    useState(
-      2.5,
-    )
-
-  const [
     showRays,
-    setShowRays,
-  ] =
-    useState(
-      true,
-    )
+    setSpeed,
+    setAmplitude,
+  } = controller
+
 
   const [
     activePanel,
@@ -126,25 +112,13 @@ export default function Experiment({
 
   function handleTogglePlaying() {
     playClick()
-
-    setIsPlaying(
-      (
-        current,
-      ) =>
-        !current,
-    )
+    controller.togglePlaying()
   }
 
 
   function handleToggleRays() {
     playClick()
-
-    setShowRays(
-      (
-        current,
-      ) =>
-        !current,
-    )
+    controller.toggleRays()
   }
 
 
@@ -212,6 +186,9 @@ export default function Experiment({
             }
             showRays={
               showRays
+            }
+            timeRef={
+              controller.timeRef
             }
           />
 

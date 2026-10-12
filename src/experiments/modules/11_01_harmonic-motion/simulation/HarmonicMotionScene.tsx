@@ -1,5 +1,7 @@
 import { useMemo, useRef } from 'react'
 
+import type { MutableRefObject } from 'react'
+
 import * as THREE from 'three'
 
 import { useFrame } from '@react-three/fiber'
@@ -19,6 +21,7 @@ export default function SimulationScene({
   speed,
   amplitude,
   showRays,
+  timeRef,
 }: {
   isPlaying:
     boolean
@@ -31,12 +34,10 @@ export default function SimulationScene({
 
   showRays:
     boolean
-}) {
-  const timeRef =
-    useRef(
-      0,
-    )
 
+  timeRef:
+    MutableRefObject<number>
+}) {
   const pegRef =
     useRef<
       THREE.Group
