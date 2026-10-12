@@ -27,7 +27,7 @@ export default function HarmonicMotionRuntime({
   } = controller
 
   return (
-      <div className="absolute inset-0">
+      <div className="harmonic-motion-canvas absolute inset-0">
         <Canvas
           shadows="percentage"
           camera={{

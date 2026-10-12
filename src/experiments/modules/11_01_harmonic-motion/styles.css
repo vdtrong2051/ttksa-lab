@@ -1,8 +1,8 @@
 /* =========================================================
    HARMONIC MOTION — UI ADAPTER
    =========================================================
-   Core simulation remains in legacy/Experiment.tsx.
-   This file only adapts layout/presentation to current TTKSA.
+   Persistent Canvas lives in simulation/HarmonicMotionRuntime.tsx.
+   Routed controls and overlays are styled in styles/practice.css.
    ========================================================= */
 
 .harmonic-motion-runtime {
@@ -14,10 +14,10 @@
 
 
 /* =========================================================
-   PRACTICE — KEEP LEGACY CORE, REFINE PRESENTATION
+   PRACTICE — PERSISTENT CANVAS CONTAINER
    ========================================================= */
 
-.harmonic-motion-runtime > div {
+.harmonic-motion-runtime > .harmonic-motion-canvas {
   position: relative;
   display: block !important;
 
@@ -31,10 +31,10 @@
 }
 
 
-/* Legacy canvas viewport */
+/* Three Fiber Canvas wrapper (the only direct child of the runtime canvas host). */
 .harmonic-motion-runtime
-> div
-> div:first-child {
+> .harmonic-motion-canvas
+> div {
   position: absolute;
   inset: 0;
 
@@ -43,139 +43,6 @@
 
   min-width: 0;
   min-height: 0;
-}
-
-
-/* Legacy right control panel becomes a floating lab panel */
-.harmonic-motion-runtime
-> div
-> div:nth-child(2) {
-  position: absolute;
-  top: 16px;
-  right: 16px;
-  bottom: 16px;
-
-  z-index: 28;
-
-  width: min(330px, calc(100% - 32px));
-
-  gap: 12px !important;
-
-  padding: 14px !important;
-
-  overflow-y: auto;
-
-  background:
-    rgba(2, 6, 23, 0.9) !important;
-
-  border:
-    1px solid
-    rgba(148, 163, 184, 0.16) !important;
-
-  border-radius: 18px;
-
-  box-shadow:
-    0 22px 60px
-    rgba(2, 6, 23, 0.42);
-
-  backdrop-filter:
-    blur(18px);
-}
-
-
-/* Observation card */
-.harmonic-motion-runtime
-> div
-> div:nth-child(2)
-> div:first-child {
-  padding: 14px !important;
-
-  background:
-    rgba(99, 102, 241, 0.08) !important;
-
-  border:
-    1px solid
-    rgba(129, 140, 248, 0.16) !important;
-
-  border-radius: 14px !important;
-
-  box-shadow: none !important;
-}
-
-
-/* Main play button block */
-.harmonic-motion-runtime
-> div
-> div:nth-child(2)
-> div:nth-child(2) {
-  gap: 8px !important;
-}
-
-
-/* Controls card */
-.harmonic-motion-runtime
-> div
-> div:nth-child(2)
-> div:nth-child(3) {
-  gap: 18px !important;
-
-  padding: 15px !important;
-
-  background:
-    rgba(15, 23, 42, 0.72) !important;
-
-  border:
-    1px solid
-    rgba(148, 163, 184, 0.12) !important;
-
-  border-radius: 14px !important;
-
-  box-shadow: none !important;
-}
-
-
-/* Bottom navigation inside legacy practice stays functional,
-   but visually matches the compact TTKSA action style. */
-.harmonic-motion-runtime
-> div
-> div:nth-child(2)
-> div:last-child {
-  gap: 8px !important;
-
-  padding-top: 10px !important;
-}
-
-
-/* Hint pill */
-.harmonic-motion-runtime
-> div
-> div:first-child
-> div:last-child {
-  top: 16px !important;
-
-  padding:
-    8px
-    14px !important;
-
-  border:
-    1px solid
-    rgba(148, 163, 184, 0.14) !important;
-
-  background:
-    rgba(2, 6, 23, 0.76) !important;
-
-  box-shadow:
-    0 12px 32px
-    rgba(2, 6, 23, 0.28) !important;
-
-  font-size:
-    11px !important;
-
-  letter-spacing:
-    0.01em;
-
-  backdrop-filter:
-    blur(14px);
 }
 
 
@@ -2087,50 +1954,6 @@
 @media (
   max-width: 767px
 ) {
-  .harmonic-motion-runtime
-  > div
-  > div:nth-child(2) {
-    top:
-      auto;
-
-    right:
-      8px;
-
-    bottom:
-      8px;
-
-    left:
-      8px;
-
-    width:
-      auto;
-
-    max-height:
-      43%;
-
-    padding:
-      11px !important;
-
-    border-radius:
-      15px;
-  }
-
-
-  .harmonic-motion-runtime
-  > div
-  > div:first-child
-  > div:last-child {
-    top:
-      8px !important;
-
-    max-width:
-      calc(100% - 16px);
-
-    font-size:
-      10px !important;
-  }
-
-
   .harmonic-motion-intro__observation {
     grid-template-columns:
       1fr;
@@ -2188,46 +2011,6 @@
 }
 
 
-@media (
-  max-height: 560px
-) {
-  .harmonic-motion-runtime
-  > div
-  > div:nth-child(2) {
-    top:
-      8px;
-
-    right:
-      8px;
-
-    bottom:
-      8px;
-
-    width:
-      300px;
-
-    gap:
-      7px !important;
-
-    padding:
-      9px !important;
-  }
-
-
-  .harmonic-motion-runtime
-  > div
-  > div:nth-child(2)
-  > div:first-child,
-  .harmonic-motion-runtime
-  > div
-  > div:nth-child(2)
-  > div:nth-child(3) {
-    padding:
-      10px !important;
-  }
-}
-
-
 /* =========================================================
    PRINT
    ========================================================= */
@@ -2273,23 +2056,4 @@
     box-shadow:
       none;
   }
-}
-
-/* GĐ3.5.4.4 — Routed Practice overlays the persistent Canvas.
-   The routed area must remain transparent to canvas pointer events.
-   Legacy structural selectors are retained for review in GĐ3.5.4.5. */
-.harmonic-motion-practice-overlay {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  color: #f1f5f9;
-  pointer-events: none;
-}
-
-.harmonic-motion-practice-panel,
-.harmonic-motion-practice-toolbar,
-.harmonic-motion-practice-dock {
-  pointer-events: auto;
 }

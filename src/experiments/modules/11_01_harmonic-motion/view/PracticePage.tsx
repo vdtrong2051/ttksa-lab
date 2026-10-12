@@ -6,6 +6,8 @@ import AppIcon from '../../../../components/ui/AppIcon'
 
 import { useHarmonicMotionSession } from '../context'
 
+import '../styles/practice.css'
+
 
 type PracticePanel =
   | 'controls'
