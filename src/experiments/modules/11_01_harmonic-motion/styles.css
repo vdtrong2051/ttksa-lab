@@ -2274,3 +2274,22 @@
       none;
   }
 }
+
+/* GĐ3.5.4.4 — Routed Practice overlays the persistent Canvas.
+   The routed area must remain transparent to canvas pointer events.
+   Legacy structural selectors are retained for review in GĐ3.5.4.5. */
+.harmonic-motion-practice-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  color: #f1f5f9;
+  pointer-events: none;
+}
+
+.harmonic-motion-practice-panel,
+.harmonic-motion-practice-toolbar,
+.harmonic-motion-practice-dock {
+  pointer-events: auto;
+}

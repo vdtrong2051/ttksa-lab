@@ -22,7 +22,7 @@ import {
   HarmonicMotionSessionContext,
 } from './context'
 
-import Experiment from './legacy/Experiment'
+import HarmonicMotionRuntime from './simulation/HarmonicMotionRuntime'
 
 import {
   useHarmonicMotionController,
@@ -136,15 +136,9 @@ export default function HarmonicMotionSessionLayout() {
                 }
               >
                 <div className="harmonic-motion-runtime">
-                  <Experiment
-                    controller={controller}
-                    onPrev={
-                      navigation.previous
-                    }
-                    onNext={
-                      navigation.next
-                    }
-                  />
+                  <div className="relative h-full w-full overflow-hidden bg-[#020617] text-slate-100">
+                    <HarmonicMotionRuntime controller={controller} />
+                  </div>
                 </div>
               </ExperimentRuntimeHost>
             </SimulationErrorBoundary>
